@@ -5,7 +5,7 @@ program
 	;
 //函数定义
 functionDeclaration
-	:   (type | 'void') Identifier '(' (type Identifier (',' type Identifier)*)? ')' blockStatement
+	:   (type | voidtype) Identifier '(' (type Identifier (',' type Identifier)*)? ')' blockStatement
 	;
 //类定义
 classDeclaration
@@ -35,7 +35,7 @@ fragment ESC
 	:   '\\' [bntr"\\]
 	;
 //标识符
-identifier
+Identifier
 	:   [a-zA-Z_][a-zA-Z0-9_]*
 	;
 //类型 (exclude 'void')
@@ -50,6 +50,11 @@ type
 		#Class_Type
 	|   type '[' ']'
 		#Array_Type
+	;
+//void类型
+voidtype
+	:   'void'
+		#Void_type
 	;
 //常量
 constant

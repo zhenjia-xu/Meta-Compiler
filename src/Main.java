@@ -11,7 +11,8 @@ public class Main{
     public static void main(String[] args) throws Exception {
         String inputFile = null;
         if ( args.length>0 ) inputFile = args[0];
-        File file = new File("/media/xzj/project/Meta-Compiler/src/FrontEnd/code.cpp");
+//        File file = new File("/media/xzj/project/Meta-Compiler/src/FrontEnd/code.cpp");
+        File file = new File("code.cpp");
         InputStream is = new FileInputStream(file);
         ANTLRInputStream input = new ANTLRInputStream(is);
         MetaLexer lexer = new MetaLexer(input);

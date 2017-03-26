@@ -1,0 +1,16 @@
+Scope:
+	BlockScope
+	LoopScope
+	FunctionType
+	ClassType
+
+Type:
+	single:
+		NullType(compatible with string, class, array)
+		BoolType
+		IntType
+		StringType
+	multi:
+		FunctionType(compatible with nothing)
+		ClassType
+		ArrayType

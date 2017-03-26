@@ -98,6 +98,18 @@ public interface MetaListener extends ParseTreeListener {
 	 */
 	void exitArray_Type(MetaParser.Array_TypeContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code Void_type}
+	 * labeled alternative in {@link MetaParser#voidtype}.
+	 * @param ctx the parse tree
+	 */
+	void enterVoid_type(MetaParser.Void_typeContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Void_type}
+	 * labeled alternative in {@link MetaParser#voidtype}.
+	 * @param ctx the parse tree
+	 */
+	void exitVoid_type(MetaParser.Void_typeContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code Null_Constant}
 	 * labeled alternative in {@link MetaParser#constant}.
 	 * @param ctx the parse tree

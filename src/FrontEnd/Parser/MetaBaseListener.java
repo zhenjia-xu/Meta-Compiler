@@ -112,6 +112,18 @@ public class MetaBaseListener implements MetaListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterVoid_type(MetaParser.Void_typeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitVoid_type(MetaParser.Void_typeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterNull_Constant(MetaParser.Null_ConstantContext ctx) { }
 	/**
 	 * {@inheritDoc}

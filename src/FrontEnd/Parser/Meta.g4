@@ -5,7 +5,7 @@ program
 	;
 //函数定义
 functionDeclaration
-	:   (type | 'void') Identifier '(' (type Identifier (',' type Identifier)*)? ')' blockStatement
+	:   (type | voidtype) Identifier '(' (type Identifier (',' type Identifier)*)? ')' blockStatement
 	;
 //类定义
 classDeclaration
@@ -50,6 +50,11 @@ type
 		#Class_Type
 	|   type '[' ']'
 		#Array_Type
+	;
+//void类型
+voidtype
+	:   'void'
+		#Void_type
 	;
 //常量
 constant
