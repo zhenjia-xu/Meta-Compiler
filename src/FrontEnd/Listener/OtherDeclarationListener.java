@@ -31,13 +31,13 @@ public class OtherDeclarationListener extends BaseListener{
 	}
 	@Override
 	public void exitFunctionDeclaration(MetaParser.FunctionDeclarationContext ctx) {
-		String functionName = ctx.Identifier(0).toString();
+		String functionName = ctx.Identifier(0).getText();
 		Type returnType = (Type)returnNode.get(ctx.type(0));
 		List<Symbol> parameterList = new ArrayList<>();
 		int parameterNum = ctx.type().size() - 1;
 		for(int i = 1; i <= parameterNum; i++){
 			Type parameterType = (Type)returnNode.get(ctx.type(i));
-			String parameterName = ctx.Identifier(i).toString();
+			String parameterName = ctx.Identifier(i).getText();
 			parameterList.add(new Symbol(parameterName, parameterType));
 		}
 		FunctionType function = new FunctionType(functionName, returnType, parameterList);
@@ -45,9 +45,10 @@ public class OtherDeclarationListener extends BaseListener{
 	}
 	@Override
 	public void exitVariableDeclaration(MetaParser.VariableDeclarationContext ctx) {
-		String name = ctx.Identifier().toString();
+		String name = ctx.Identifier().getText();
 		Type type = (Type) returnNode.get(ctx.type());
-		returnNode.put(ctx, new VariableDeclarationStatement(name, type));
+		VariableDeclarationStatement statement = new VariableDeclarationStatement(name, type);
+		returnNode.put(ctx, statement);
 	}
 	@Override
 	public void exitInteger_Type(MetaParser.Integer_TypeContext ctx) {
@@ -67,7 +68,7 @@ public class OtherDeclarationListener extends BaseListener{
 	}
 	@Override
 	public void exitClass_Type(MetaParser.Class_TypeContext ctx) {
-		String className = ctx.Identifier().toString();
+		String className = ctx.Identifier().getText();
 		returnNode.put(ctx, Environment.classTable.getClassType(className));
 	}
 	@Override

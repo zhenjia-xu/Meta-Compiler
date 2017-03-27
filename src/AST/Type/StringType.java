@@ -8,9 +8,9 @@ public class StringType extends Type{
 	static public StringType getInstance(){
 		return instance;
 	}
+	@Override
 	public boolean compatibleWith(Type other){
 		return (this == other || other == NullType.getInstance());
-
 	}
 	@Override
 	public String toString(){

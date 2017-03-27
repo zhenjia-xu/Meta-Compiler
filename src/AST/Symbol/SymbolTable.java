@@ -2,7 +2,6 @@ package AST.Symbol;
 
 import AST.Type.ClassType;
 import AST.Type.FunctionType;
-import AST.Scope.Scope;
 import AST.Statement.LoopStatement;
 import Utility.CompilationError;
 
@@ -17,6 +16,7 @@ public class SymbolTable {
 	private Stack<LoopStatement> loopStack;
 	private Map<String, Stack<Symbol>> symbolMap;
 	private Stack<Map<String, Symbol>> temporarySymbolStack;
+
 	public SymbolTable(){
 		scopeStack = new Stack<>();
 		currentClass = null;
@@ -68,6 +68,13 @@ public class SymbolTable {
 	}
 	public Symbol getSymbol(String name){
 		return symbolMap.get(name).peek();
+	}
+	public Scope getCurrentScope(){
+		if(scopeStack.empty()){
+			return null;
+		}else {
+			return scopeStack.peek();
+		}
 	}
 	public FunctionType getCurrentFunction(){
 		return currentFunction;

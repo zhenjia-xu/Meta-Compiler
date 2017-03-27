@@ -1,12 +1,14 @@
 package AST.Type;
 
 import Utility.CompilationError;
+import Utility.Utility;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class ClassTable{
     private Map<String, ClassType> classMap;
+
     public ClassTable(){
         classMap = new HashMap<>();
     }
@@ -22,7 +24,15 @@ public class ClassTable{
         }
         return classMap.get(className);
     }
-    public void print(){
-        classMap.forEach((name, classType) -> System.out.println(classType.toString(0)));
+    @Override
+    public String toString(){
+        return "class table";
+    }
+    public String toString(int indents){
+        StringBuilder str = new StringBuilder();
+        str.append(Utility.getIndent(indents) + "[class table]\n");
+        classMap.forEach((name, classType) ->
+                str.append(classType.toString(indents + 1)));
+        return str.toString();
     }
 }

@@ -31,7 +31,8 @@ public class VariableTable{
 	public String toString(int indents){
 		StringBuilder str = new StringBuilder();
 		str.append(Utility.getIndent(indents) + "[variable table]\n");
-		variableMap.forEach((name, variable) -> str.append(variable.toString()));
+		variableMap.forEach((name, variable) ->
+				str.append(variable.toString(indents + 1)));
 		return str.toString();
 	}
 }

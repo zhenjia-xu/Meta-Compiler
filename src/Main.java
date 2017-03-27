@@ -1,5 +1,4 @@
-package FrontEnd;
-
+import AST.Environment;
 import org.antlr.v4.misc.OrderedHashMap;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
@@ -11,8 +10,7 @@ public class Main{
     public static void main(String[] args) throws Exception {
         String inputFile = null;
         if ( args.length>0 ) inputFile = args[0];
-//        File file = new File("/media/xzj/project/Meta-Compiler/src/FrontEnd/code.cpp");
-        File file = new File("code.cpp");
+        File file = new File("testcode.cpp");
         InputStream is = new FileInputStream(file);
         ANTLRInputStream input = new ANTLRInputStream(is);
         MetaLexer lexer = new MetaLexer(input);
@@ -20,10 +18,14 @@ public class Main{
         MetaParser parser = new MetaParser(tokens);
         ParseTree tree = parser.program();
 
-        // create a standard ANTLR parse tree walker
+        Environment.initialize();
         ParseTreeWalker walker = new ParseTreeWalker();
-        // create listener then feed to walker
-        BaseListener loader = new BaseListener();
-        walker.walk(loader, tree);        // walk parse tree
+
+        walker.walk(new ClassDeclarationListener(), tree);
+
+        walker.walk(new OtherDeclarationListener(), tree);
+
+        walker.walk(new ASTreeListener(), tree);
+        Environment.print();
     }
 }

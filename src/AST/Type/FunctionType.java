@@ -1,7 +1,7 @@
 package AST.Type;
 
-import AST.Scope.Scope;
 import AST.Statement.BlockStatement;
+import AST.Symbol.Scope;
 import AST.Symbol.Symbol;
 import Utility.Utility;
 
@@ -39,17 +39,15 @@ public class FunctionType extends Type implements Scope {
     }
     @Override
     public String toString(){
-        return "function: " + name;
+        return "function:" + name;
     }
     @Override
     public String toString(int indents){
         StringBuilder str = new StringBuilder();
         str.append(Utility.getIndent(indents));
-        str.append("[function: " + name + "  (returnType: " + returnType+ ")]\n");
-        for (Symbol x: parameterList) {
-            str.append(Utility.getIndent(indents + 1));
-            str.append("(parameter:  " + x.getName() + "  type:  " + x.getType() + ")\n");
-        }
+        str.append("[function: " + name + "  returnType: " + returnType+ "]\n");
+        parameterList.forEach(parameter ->
+            str.append(parameter.toString(indents)));
         str.append(blockStatement.toString(indents + 1));
         return str.toString();
     }

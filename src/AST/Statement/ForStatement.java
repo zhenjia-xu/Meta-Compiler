@@ -2,6 +2,7 @@ package AST.Statement;
 
 import AST.Expression.Expression;
 import AST.Type.BoolType;
+import AST.Constant.BoolConstant;
 import Utility.CompilationError;
 import Utility.Utility;
 
@@ -9,13 +10,25 @@ public class ForStatement extends LoopStatement{
 	private Expression init, condition, increment;
 	private Statement statement;
 
-	public ForStatement(Expression init, Expression condition, Expression increment, Statement statement){
-		if(!(condition.getType() instanceof BoolType)){
-			throw new CompilationError("The condition must be a bool type");
-		}
+	public ForStatement(){
+		this.init = null;
+		this.condition = new BoolConstant(true);
+		this.increment = null;
+		this.statement = null;
+	}
+	public void addInit(Expression init){
 		this.init = init;
+	}
+	public void addCondition(Expression condition){
+		if(!(condition.getType() instanceof BoolType)){
+			throw new CompilationError("The condition should be bool type");
+		}
 		this.condition = condition;
+	}
+	public void addIncrement(Expression increment){
 		this.increment = increment;
+	}
+	public void addStatement(Statement statement){
 		this.statement = statement;
 	}
 	public Expression getInit(){

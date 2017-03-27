@@ -1,12 +1,10 @@
 package AST.Type;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import AST.Statement.VariableDeclarationStatement;
-import Utility.CompilationError;
 
-import AST.Scope.Scope;
+import AST.Symbol.Scope;
 import Utility.Utility;
 public class ClassType extends Type implements Scope {
     private String name;

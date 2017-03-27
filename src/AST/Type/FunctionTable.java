@@ -31,7 +31,8 @@ public class FunctionTable{
 	public String toString(int indents){
 		StringBuilder str = new StringBuilder();
 		str.append(Utility.getIndent(indents) + "[function table]\n");
-		functionMap.forEach((name, function) -> str.append(function.toString(indents + 1)));
+		functionMap.forEach((name, function) ->
+				str.append(function.toString(indents + 1)));
 		return str.toString();
 	}
 }

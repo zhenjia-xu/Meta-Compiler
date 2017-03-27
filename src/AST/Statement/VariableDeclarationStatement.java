@@ -29,13 +29,13 @@ public class VariableDeclarationStatement extends Statement {
 	}
 	@Override
 	public String toString() {
-		return "variable declaration statement (" + type + name + ")";
+		return "variable declaration statement (" + type + " " + name + ")";
 	}
 	@Override
 	public String toString(int indents) {
 		StringBuilder str = new StringBuilder();
 		str.append(Utility.getIndent(indents) + "[variable declaration statement]\n");
-		str.append(Utility.getIndent(indents + 1) + "name:" + name + " , type:" + type + "\n");
+		str.append(Utility.getIndent(indents + 1) + "name: " + name + "  type: " + type + "\n");
 		if(expression != null){
 			str.append(expression.toString(indents + 1));
 		}

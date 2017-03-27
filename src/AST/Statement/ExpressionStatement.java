@@ -20,7 +20,9 @@ public class ExpressionStatement extends Statement{
 	public String toString(int indents){
 		StringBuilder str = new StringBuilder();
 		str.append(Utility.getIndent(indents) + "[expression statement]\n");
-		str.append(expression.toString(indents + 1));
+		if(expression != null){
+			str.append(expression.toString(indents + 1));
+		}
 		return str.toString();
 	}
 }

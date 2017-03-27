@@ -1,6 +1,6 @@
 Scope:
-	BlockScope
-	LoopScope
+	BlockStatement
+	LoopStatement
 	FunctionType
 	ClassType
 

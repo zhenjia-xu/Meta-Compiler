@@ -1,5 +1,6 @@
 package AST.Statement;
 
+import AST.Constant.BoolConstant;
 import AST.Expression.Expression;
 import AST.Type.BoolType;
 import Utility.CompilationError;
@@ -8,11 +9,17 @@ public class WhileStatement extends LoopStatement{
 	private Expression condition;
 	private Statement statement;
 
-	public WhileStatement(Expression condition, Statement statement){
+	public WhileStatement(){
+		this.condition = new BoolConstant(true);
+		this.statement = null;
+	}
+	public void addCondition(Expression condition){
 		if(!(condition.getType() instanceof BoolType)){
-			throw new CompilationError("The condition must be a bool type");
+			throw new CompilationError("The condition should be bool type");
 		}
 		this.condition = condition;
+	}
+	public void addStatement(Statement statement){
 		this.statement = statement;
 	}
 	public Expression getCondition(){

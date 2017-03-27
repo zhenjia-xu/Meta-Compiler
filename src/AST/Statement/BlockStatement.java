@@ -1,11 +1,12 @@
 package AST.Statement;
 
+import AST.Symbol.Scope;
 import Utility.Utility;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class BlockStatement extends Statement{
+public class BlockStatement extends Statement implements Scope{
 	private List<Statement> statementList;
 
 	public BlockStatement(){
@@ -22,7 +23,8 @@ public class BlockStatement extends Statement{
 	public String toString(int indents){
 		StringBuilder str = new StringBuilder();
 		str.append(Utility.getIndent(indents) + "[block statement]\n");
-		statementList.forEach(x -> str.append(x.toString(indents + 1)));
+		statementList.forEach(statement ->
+			str.append(statement.toString(indents + 1)));
 		return str.toString();
 	}
 }
