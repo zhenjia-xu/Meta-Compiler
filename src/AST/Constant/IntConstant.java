@@ -10,6 +10,9 @@ public class IntConstant extends Constant{
 		super(IntType.getInstance());
 		this.value = value;
 	}
+	public int getValue(){
+		return value;
+	}
 	@Override
 	public String toString(){
 		return "int constant";

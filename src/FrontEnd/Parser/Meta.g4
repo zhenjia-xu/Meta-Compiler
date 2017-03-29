@@ -128,7 +128,7 @@ expression
 		#Function_Expression
 	|   expression '[' expression ']'
 		#Array_Expression
-	|   expression '.' (Identifier | expression '(' (expression (',' expression)*)? ')')
+	|   expression '.' Identifier
 		#Member_Expression
 	|   expression op=('++' | '--')
 		#Suffix_Expression

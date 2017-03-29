@@ -10,6 +10,9 @@ public class BoolConstant extends Constant{
 		super(BoolType.getInstance());
 		this.value = value;
 	}
+	public boolean getValue(){
+		return value;
+	}
 	@Override
 	public String toString(){
 		return "bool constant";
