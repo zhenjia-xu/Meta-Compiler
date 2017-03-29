@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fcadd001-2a06-4938-849d-b3b3c3569bfe" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryDivision.java" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryDivision.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryEqual.java" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryEqual.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryGreater.java" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryGreater.java" />
@@ -11,13 +12,8 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryLessEqual.java" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryLessEqual.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryMinus.java" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryMinus.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryModulo.java" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryModulo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryMultiplication.java" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryMultiplication.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryPlus.java" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryPlus.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryRightShift.java" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryRightShift.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/PrefixOperation/PrefixMinus.java" afterPath="$PROJECT_DIR$/src/AST/Expression/PrefixOperation/PrefixMinus.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/PrefixOperation/PrefixNot.java" afterPath="$PROJECT_DIR$/src/AST/Expression/PrefixOperation/PrefixNot.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/PrefixOperation/PrefixPlus.java" afterPath="$PROJECT_DIR$/src/AST/Expression/PrefixOperation/PrefixPlus.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/PrefixOperation/PrefixReverse.java" afterPath="$PROJECT_DIR$/src/AST/Expression/PrefixOperation/PrefixReverse.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -38,23 +34,11 @@
     <splitter split-orientation="horizontal" split-proportion="0.72124755">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="BinaryMultiplication.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryMultiplication.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="270">
-                  <caret line="22" column="73" lean-forward="false" selection-start-line="22" selection-start-column="73" selection-end-line="22" selection-end-column="73" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
           <file leaf-file-name="BinaryModulo.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryModulo.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="135">
-                  <caret line="22" column="65" lean-forward="false" selection-start-line="22" selection-start-column="65" selection-end-line="22" selection-end-column="65" />
+                <state relative-caret-position="419">
+                  <caret line="22" column="63" lean-forward="false" selection-start-line="22" selection-start-column="63" selection-end-line="22" selection-end-column="63" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -65,8 +49,8 @@
           <file leaf-file-name="BinaryLess.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryLess.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="270">
-                  <caret line="23" column="63" lean-forward="false" selection-start-line="23" selection-start-column="63" selection-end-line="23" selection-end-column="63" />
+                <state relative-caret-position="450">
+                  <caret line="23" column="61" lean-forward="false" selection-start-line="23" selection-start-column="61" selection-end-line="23" selection-end-column="61" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -74,15 +58,61 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="BinaryDivision.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryDivision.java">
+          <file leaf-file-name="BinaryMultiplication.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryMultiplication.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="338">
-                  <caret line="22" column="67" lean-forward="false" selection-start-line="22" selection-start-column="67" selection-end-line="22" selection-end-column="67" />
+                <state relative-caret-position="330">
+                  <caret line="24" column="13" lean-forward="true" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
                   <folding>
                     <element signature="imports" expanded="true" />
-                    <element signature="e#855#856#0" expanded="true" />
-                    <element signature="e#886#887#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="BinaryNotEqual.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryNotEqual.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="300">
+                  <caret line="10" column="53" lean-forward="true" selection-start-line="10" selection-start-column="53" selection-end-line="10" selection-end-column="53" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="BinaryPlus.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryPlus.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="449">
+                  <caret line="22" column="61" lean-forward="false" selection-start-line="22" selection-start-column="61" selection-end-line="22" selection-end-column="61" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="BinaryRightShift.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryRightShift.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="240">
+                  <caret line="19" column="33" lean-forward="false" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="33" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="PrefixMinus.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/AST/Expression/PrefixOperation/PrefixMinus.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="308">
+                  <caret line="18" column="43" lean-forward="false" selection-start-line="18" selection-start-column="43" selection-end-line="18" selection-end-column="43" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -91,8 +121,8 @@
           <file leaf-file-name="BinaryLeftShift.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryLeftShift.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="210">
-                  <caret line="22" column="68" lean-forward="false" selection-start-line="22" selection-start-column="68" selection-end-line="22" selection-end-column="68" />
+                <state relative-caret-position="360">
+                  <caret line="21" column="9" lean-forward="true" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -103,32 +133,8 @@
           <file leaf-file-name="BinaryMinus.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryMinus.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="135">
-                  <caret line="22" column="64" lean-forward="false" selection-start-line="22" selection-start-column="64" selection-end-line="22" selection-end-column="64" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="BinaryGreater.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryGreater.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="264">
-                  <caret line="23" column="66" lean-forward="false" selection-start-line="23" selection-start-column="66" selection-end-line="23" selection-end-column="66" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="BinaryEqual.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryEqual.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="435">
-                  <caret line="18" column="9" lean-forward="false" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
+                <state relative-caret-position="419">
+                  <caret line="22" column="62" lean-forward="false" selection-start-line="22" selection-start-column="62" selection-end-line="22" selection-end-column="62" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -140,19 +146,7 @@
             <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryLessEqual.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="352">
-                  <caret line="23" column="68" lean-forward="false" selection-start-line="23" selection-start-column="68" selection-end-line="23" selection-end-column="68" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="BinaryGreaterEqual.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryGreaterEqual.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="510">
-                  <caret line="23" column="71" lean-forward="false" selection-start-line="23" selection-start-column="71" selection-end-line="23" selection-end-column="71" />
+                  <caret line="23" column="66" lean-forward="false" selection-start-line="23" selection-start-column="66" selection-end-line="23" selection-end-column="66" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -261,7 +255,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Utility/Main.java" />
         <option value="$PROJECT_DIR$/src/AST/Type/FunctionTable.java" />
         <option value="$PROJECT_DIR$/src/AST/Type/ClassTable.java" />
         <option value="$PROJECT_DIR$/src/AST/Type/VariableTable.java" />
@@ -296,22 +289,23 @@
         <option value="$PROJECT_DIR$/src/AST/Constant/BoolConstant.java" />
         <option value="$PROJECT_DIR$/src/AST/Constant/StringConstant.java" />
         <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryMul.java" />
-        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryEqual.java" />
         <option value="$PROJECT_DIR$/src/AST/Expression/PrefixOperation/PrefixNot.java" />
         <option value="$PROJECT_DIR$/src/AST/Expression/PrefixOperation/PrefixMinus.java" />
         <option value="$PROJECT_DIR$/src/AST/Expression/PrefixOperation/PrefixPlus.java" />
         <option value="$PROJECT_DIR$/src/AST/Expression/PrefixOperation/PrefixReverse.java" />
-        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryRightShift.java" />
-        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryPlus.java" />
         <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryMultiplication.java" />
-        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryModulo.java" />
-        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryMinus.java" />
-        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryLessEqual.java" />
-        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryLess.java" />
-        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryLeftShift.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryEqual.java" />
         <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryGreaterEqual.java" />
         <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryGreater.java" />
         <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryDivision.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryLeftShift.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryLess.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryLessEqual.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryMinus.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryModulo.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryNotEqual.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryPlus.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryRightShift.java" />
       </list>
     </option>
   </component>
@@ -1131,14 +1125,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/AST/Environment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="17" column="50" lean-forward="false" selection-start-line="17" selection-start-column="50" selection-end-line="17" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AST/Constant/Constant.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -1468,90 +1454,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/PrefixOperation/PrefixMinus.java">
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryDivision.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="18" column="43" lean-forward="false" selection-start-line="18" selection-start-column="43" selection-end-line="18" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryRightShift.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="22" column="69" lean-forward="false" selection-start-line="22" selection-start-column="69" selection-end-line="22" selection-end-column="69" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryPlus.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="22" column="63" lean-forward="false" selection-start-line="22" selection-start-column="63" selection-end-line="22" selection-end-column="63" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryMultiplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="22" column="73" lean-forward="false" selection-start-line="22" selection-start-column="73" selection-end-line="22" selection-end-column="73" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryModulo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
+        <state relative-caret-position="345">
           <caret line="22" column="65" lean-forward="false" selection-start-line="22" selection-start-column="65" selection-end-line="22" selection-end-column="65" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#855#856#0" expanded="true" />
+            <element signature="e#886#887#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryMinus.java">
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryEqual.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="22" column="64" lean-forward="false" selection-start-line="22" selection-start-column="64" selection-end-line="22" selection-end-column="64" />
+        <state relative-caret-position="60">
+          <caret line="8" column="55" lean-forward="true" selection-start-line="8" selection-start-column="55" selection-end-line="8" selection-end-column="55" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryLessEqual.java">
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryGreater.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="23" column="68" lean-forward="false" selection-start-line="23" selection-start-column="68" selection-end-line="23" selection-end-column="68" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryLess.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="23" column="63" lean-forward="false" selection-start-line="23" selection-start-column="63" selection-end-line="23" selection-end-column="63" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryLeftShift.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="22" column="68" lean-forward="false" selection-start-line="22" selection-start-column="68" selection-end-line="22" selection-end-column="68" />
+        <state relative-caret-position="120">
+          <caret line="16" column="46" lean-forward="false" selection-start-line="16" selection-start-column="46" selection-end-line="16" selection-end-column="46" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1561,16 +1489,36 @@
     <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryGreaterEqual.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
-          <caret line="23" column="71" lean-forward="false" selection-start-line="23" selection-start-column="71" selection-end-line="23" selection-end-column="71" />
+          <caret line="23" column="69" lean-forward="false" selection-start-line="23" selection-start-column="69" selection-end-line="23" selection-end-column="69" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryGreater.java">
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryLeftShift.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
+        <state relative-caret-position="360">
+          <caret line="21" column="9" lean-forward="true" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryLess.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="23" column="61" lean-forward="false" selection-start-line="23" selection-start-column="61" selection-end-line="23" selection-end-column="61" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryLessEqual.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
           <caret line="23" column="66" lean-forward="false" selection-start-line="23" selection-start-column="66" selection-end-line="23" selection-end-column="66" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1578,24 +1526,72 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryEqual.java">
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryMinus.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="18" column="9" lean-forward="false" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
+        <state relative-caret-position="419">
+          <caret line="22" column="62" lean-forward="false" selection-start-line="22" selection-start-column="62" selection-end-line="22" selection-end-column="62" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryDivision.java">
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryModulo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="22" column="67" lean-forward="false" selection-start-line="22" selection-start-column="67" selection-end-line="22" selection-end-column="67" />
+        <state relative-caret-position="419">
+          <caret line="22" column="63" lean-forward="false" selection-start-line="22" selection-start-column="63" selection-end-line="22" selection-end-column="63" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#855#856#0" expanded="true" />
-            <element signature="e#886#887#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryMultiplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="24" column="13" lean-forward="true" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryPlus.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="449">
+          <caret line="22" column="61" lean-forward="false" selection-start-line="22" selection-start-column="61" selection-end-line="22" selection-end-column="61" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryRightShift.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="19" column="33" lean-forward="false" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/PrefixOperation/PrefixMinus.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="18" column="43" lean-forward="false" selection-start-line="18" selection-start-column="43" selection-end-line="18" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryNotEqual.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="10" column="53" lean-forward="true" selection-start-line="10" selection-start-column="53" selection-end-line="10" selection-end-column="53" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

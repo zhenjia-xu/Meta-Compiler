@@ -10,17 +10,17 @@ import Utility.Utility;
 public class BinaryRightShift extends Expression{
 	private Expression leftExpression, rightExpression;
 
-	private BinaryRightShift(Expression leftExpression, Expression rightExpressoin){
+	private BinaryRightShift(Expression leftExpression, Expression rightExpression){
 		super(IntType.getInstance(), false);
 		this.leftExpression = leftExpression;
-		this.rightExpression = rightExpressoin;
+		this.rightExpression = rightExpression;
 	}
-	public Expression getExpression(Expression leftExpression, Expression rightExpressoin){
+	public Expression getExpression(Expression leftExpression, Expression rightExpression){
 		if(!(leftExpression.getType() instanceof IntType) ||
-				!(rightExpressoin.getType() instanceof IntType)){
+				!(rightExpression.getType() instanceof IntType)){
 			throw new CompilationError("binary right shift needs int");
 		}
-		return new BinaryRightShift(leftExpression, rightExpressoin);
+		return new BinaryRightShift(leftExpression, rightExpression);
 	}
 	@Override
 	public String toString(){

@@ -5,23 +5,23 @@ import AST.Type.*;
 import Utility.*;
 import AST.Expression.Expression;
 
-public class BinaryEqual extends Expression{
+public class BinaryNotEqual extends Expression{
 	private Expression leftExpression, rightExpression;
 
-	private BinaryEqual(Expression leftExpression, Expression rightExpression){
+	private BinaryNotEqual(Expression leftExpression, Expression rightExpression){
 		super(BoolType.getInstance(), false);
 		this.leftExpression = leftExpression;
 		this.rightExpression = rightExpression;
 	}
 	public Expression getExpression(Expression leftExpression, Expression rightExpression){
 		if(!(leftExpression.getType().compatibleWith(rightExpression.getType()))){
-			throw new CompilationError("binary equal needs two compatible type");
+			throw new CompilationError("binary not equal needs two compatible type");
 		}
-		return new BinaryEqual(leftExpression, rightExpression);
+		return new BinaryNotEqual(leftExpression, rightExpression);
 	}
 	@Override
 	public String toString(){
-		return "binary equal";
+		return "binary not equal";
 	}
 	@Override
 	public String toString(int indents){

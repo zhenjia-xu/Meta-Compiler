@@ -10,17 +10,17 @@ import Utility.Utility;
 public class BinaryModulo extends Expression{
 	private Expression leftExpression, rightExpression;
 
-	private BinaryModulo(Expression leftExpression, Expression rightExpressoin){
+	private BinaryModulo(Expression leftExpression, Expression rightExpression){
 		super(IntType.getInstance(), false);
 		this.leftExpression = leftExpression;
-		this.rightExpression = rightExpressoin;
+		this.rightExpression = rightExpression;
 	}
-	public Expression getExpression(Expression leftExpression, Expression rightExpressoin){
+	public Expression getExpression(Expression leftExpression, Expression rightExpression){
 		if(!(leftExpression.getType() instanceof IntType) ||
-				!(rightExpressoin.getType() instanceof IntType)){
+				!(rightExpression.getType() instanceof IntType)){
 			throw new CompilationError("binary modulo needs int");
 		}
-		return new BinaryModulo(leftExpression, rightExpressoin);
+		return new BinaryModulo(leftExpression, rightExpression);
 	}
 	@Override
 	public String toString(){

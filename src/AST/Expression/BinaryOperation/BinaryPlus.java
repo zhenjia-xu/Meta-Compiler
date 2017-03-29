@@ -10,17 +10,17 @@ import Utility.Utility;
 public class BinaryPlus extends Expression{
 	private Expression leftExpression, rightExpression;
 
-	private BinaryPlus(Expression leftExpression, Expression rightExpressoin){
+	private BinaryPlus(Expression leftExpression, Expression rightExpression){
 		super(IntType.getInstance(), false);
 		this.leftExpression = leftExpression;
-		this.rightExpression = rightExpressoin;
+		this.rightExpression = rightExpression;
 	}
-	public Expression getExpression(Expression leftExpression, Expression rightExpressoin){
+	public Expression getExpression(Expression leftExpression, Expression rightExpression){
 		if(!(leftExpression.getType() instanceof IntType) ||
-				!(rightExpressoin.getType() instanceof IntType)){
+				!(rightExpression.getType() instanceof IntType)){
 			throw new CompilationError("binary plus needs int");
 		}
-		return new BinaryPlus(leftExpression, rightExpressoin);
+		return new BinaryPlus(leftExpression, rightExpression);
 	}
 	@Override
 	public String toString(){

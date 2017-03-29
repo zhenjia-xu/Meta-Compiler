@@ -11,17 +11,17 @@ import Utility.Utility;
 public class BinaryLessEqual extends Expression{
 	private Expression leftExpression, rightExpression;
 
-	private BinaryLessEqual(Expression leftExpression, Expression rightExpressoin){
+	private BinaryLessEqual(Expression leftExpression, Expression rightExpression){
 		super(BoolType.getInstance(), false);
 		this.leftExpression = leftExpression;
-		this.rightExpression = rightExpressoin;
+		this.rightExpression = rightExpression;
 	}
-	public Expression getExpression(Expression leftExpression, Expression rightExpressoin){
+	public Expression getExpression(Expression leftExpression, Expression rightExpression){
 		if(!(leftExpression.getType() instanceof IntType) ||
-				!(rightExpressoin.getType() instanceof IntType)){
+				!(rightExpression.getType() instanceof IntType)){
 			throw new CompilationError("binary less equal needs int");
 		}
-		return new BinaryLessEqual(leftExpression, rightExpressoin);
+		return new BinaryLessEqual(leftExpression, rightExpression);
 	}
 	@Override
 	public String toString(){
