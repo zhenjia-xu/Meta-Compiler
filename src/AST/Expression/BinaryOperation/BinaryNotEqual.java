@@ -25,7 +25,7 @@ public class BinaryNotEqual extends Expression{
 	}
 	@Override
 	public String toString(int indents){
-		return Utility.getIndent(indents) + "[binary equal]\n"
+		return Utility.getIndent(indents) + "[binary not equal]\n"
 				+ leftExpression.toString(indents + 1)
 				+ rightExpression.toString(indents + 1);
 	}
