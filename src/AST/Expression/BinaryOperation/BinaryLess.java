@@ -21,13 +21,7 @@ public class BinaryLess extends Expression{
 				!(rightExpressoin.getType() instanceof IntType)){
 			throw new CompilationError("binary less needs int");
 		}
-		if((leftExpression instanceof IntConstant) && (rightExpression instanceof IntConstant)){
-			int leftValue = ((IntConstant) leftExpression).getValue();
-			int rightValue = ((IntConstant) rightExpressoin).getValue();
-			return new BoolConstant(leftValue < rightValue);
-		}else{
-			return new BinaryLess(leftExpression, rightExpressoin);
-		}
+		return new BinaryLess(leftExpression, rightExpressoin);
 	}
 	@Override
 	public String toString(){

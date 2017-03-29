@@ -16,12 +16,7 @@ public class PrefixPlus extends Expression{
 		if(!(expression.getType() instanceof IntType)){
 			throw new CompilationError("prefix plus needs int");
 		}
-		if(expression instanceof IntConstant){
-			int value = ((IntConstant) expression).getValue();
-			return new IntConstant(+value);
-		}else{
-			return new PrefixPlus(expression);
-		}
+		return new PrefixPlus(expression);
 	}
 	@Override
 	public String toString(){

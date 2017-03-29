@@ -16,12 +16,7 @@ public class PrefixMinus extends Expression{
 		if(!(expression.getType() instanceof IntType)){
 			throw new CompilationError("prefix minus needs int");
 		}
-		if(expression instanceof IntConstant){
-			int value = ((IntConstant) expression).getValue();
-			return new IntConstant(-value);
-		}else{
-			return new PrefixMinus(expression);
-		}
+		return new PrefixMinus(expression);
 	}
 	@Override
 	public String toString(){

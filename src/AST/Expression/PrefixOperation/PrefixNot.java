@@ -16,12 +16,7 @@ public class PrefixNot extends Expression{
 		if(!(expression.getType() instanceof BoolType)){
 			throw new CompilationError("prefix not needs bool");
 		}
-		if(expression instanceof BoolConstant){
-			boolean value = ((BoolConstant) expression).getValue();
-			return new BoolConstant(!value);
-		}else{
-			return new PrefixNot(expression);
-		}
+		return new PrefixNot(expression);
 	}
 	@Override
 	public String toString(){

@@ -21,13 +21,7 @@ public class BinaryGreaterEqual extends Expression{
 				!(rightExpressoin.getType() instanceof IntType)){
 			throw new CompilationError("binary greater equal needs int");
 		}
-		if((leftExpression instanceof IntConstant) && (rightExpression instanceof IntConstant)){
-			int leftValue = ((IntConstant) leftExpression).getValue();
-			int rightValue = ((IntConstant) rightExpressoin).getValue();
-			return new BoolConstant(leftValue >= rightValue);
-		}else{
-			return new BinaryGreaterEqual(leftExpression, rightExpressoin);
-		}
+		return new BinaryGreaterEqual(leftExpression, rightExpressoin);
 	}
 	@Override
 	public String toString(){

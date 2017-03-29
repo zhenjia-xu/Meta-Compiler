@@ -13,15 +13,10 @@ public class PrefixReverse extends Expression{
 		this.expression = expression;
 	}
 	public Expression getExpression(Expression expression){
-		if(!(expression.getType() instanceof IntType)){
+		if(!(expression.getType() instanceof IntType)) {
 			throw new CompilationError("prefix reverse needs int");
 		}
-		if(expression instanceof IntConstant){
-			int value = ((IntConstant) expression).getValue();
-			return new IntConstant(~value);
-		}else{
-			return new PrefixReverse(expression);
-		}
+		return new PrefixReverse(expression);
 	}
 	@Override
 	public String toString(){
