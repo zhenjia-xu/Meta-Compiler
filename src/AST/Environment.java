@@ -67,12 +67,4 @@ public class Environment {
         parameterList.add(symbol);
         return new FunctionType(functionName, returnType, parameterList);
     }
-    private static FunctionType function_length(){
-        String functionName = "length";
-        Type returnType = IntType.getInstance();
-        List<Symbol> parameterList = new ArrayList<>();
-        FunctionType function = new FunctionType(functionName, returnType, parameterList);
-        function.addClassScope(StringType.getInstance());
-        return function;
-    }
 }

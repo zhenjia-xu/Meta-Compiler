@@ -1,5 +1,6 @@
 package AST.Expression;
 
+import AST.Symbol.*;
 import AST.Type.*;
 import Utility.*;
 
@@ -15,13 +16,21 @@ public class FunctionExpression extends Expression{
 		this.expressionList = expressionList;
 	}
 	public static Expression getExpression(Expression functionExpression, List<Expression> expressionList){
-		if(functionExpression == null){
-			System.out.println("NULL");
-		}
 		if(!(functionExpression.getType() instanceof FunctionType)){
 			throw new CompilationError("Can't find a function");
 		}
 		FunctionType function = (FunctionType) functionExpression.getType();
+		List<Symbol> parameterList = function.getParameterList();
+		if(parameterList.size() != expressionList.size()){
+			throw new CompilationError("The number of parameters doesn't match");
+		}
+		for(int i = 0; i < parameterList.size(); i++){
+			Type parameterType = parameterList.get(i).getType();
+			Type expressionType = expressionList.get(i).getType();
+			if(!parameterType.compatibleWith(expressionType)){
+				throw new CompilationError("The type of parameters doesn't match");
+			}
+		}
 		return new FunctionExpression(function, expressionList);
 	}
 	@Override

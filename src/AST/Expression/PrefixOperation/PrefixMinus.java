@@ -24,7 +24,7 @@ public class PrefixMinus extends Expression{
 	}
 	@Override
 	public String toString(int indents){
-		return Utility.getIndent(indents) + "[prefix minus]"
+		return Utility.getIndent(indents) + "[prefix minus]\n"
 				+ expression.toString(indents + 1);
 	}
 }

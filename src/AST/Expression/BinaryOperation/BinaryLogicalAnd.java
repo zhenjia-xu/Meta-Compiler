@@ -6,6 +6,7 @@ import AST.Expression.Expression;
 import AST.Type.*;
 import Utility.CompilationError;
 import Utility.Utility;
+import jdk.nashorn.internal.codegen.types.BooleanType;
 
 public class BinaryLogicalAnd extends Expression{
 	private Expression leftExpression, rightExpression;
@@ -16,9 +17,9 @@ public class BinaryLogicalAnd extends Expression{
 		this.rightExpression = rightExpression;
 	}
 	public static Expression getExpression(Expression leftExpression, Expression rightExpression){
-		if(!(leftExpression.getType() instanceof IntType) ||
-				!(rightExpression.getType() instanceof IntType)){
-			throw new CompilationError("binary logical and needs int");
+		if(!(leftExpression.getType() instanceof BoolType) ||
+				!(rightExpression.getType() instanceof BoolType)){
+			throw new CompilationError("binary logical and needs bool");
 		}
 		return new BinaryLogicalAnd(leftExpression, rightExpression);
 	}

@@ -48,11 +48,11 @@ public class ASTreeListener extends BaseListener{
     public void enterClassDeclaration(MetaParser.ClassDeclarationContext ctx) {
         ClassType classType = (ClassType) returnNode.get(ctx);
         Environment.symbolTable.enterScope(classType);
+        Environment.symbolTable.addSymbol(new Symbol("this", classType));
         classType.getMemberFunctionTable().forEach((name, function) ->
                 Environment.symbolTable.addSymbol(new Symbol(name, function)));
         classType.getMemberVariableTable().forEach((name, variable) ->
                 Environment.symbolTable.addSymbol(new Symbol(name, variable.getType())));
-
     }
     @Override
     public void exitClassDeclaration(MetaParser.ClassDeclarationContext ctx) {
@@ -273,14 +273,14 @@ public class ASTreeListener extends BaseListener{
         returnNode.put(ctx, expression);
     }
     @Override
-    public void enterLogical_And_Expression(MetaParser.Logical_And_ExpressionContext ctx) {
+    public void enterLogical_And_Expression(MetaParser.Logical_And_ExpressionContext ctx) { }
+    @Override
+    public void exitLogical_And_Expression(MetaParser.Logical_And_ExpressionContext ctx) {
         Expression leftExpression = (Expression) returnNode.get(ctx.expression(0));
         Expression rightExpression = (Expression) returnNode.get(ctx.expression(1));
         Expression expression = BinaryLogicalAnd.getExpression(leftExpression, rightExpression);
         returnNode.put(ctx, expression);
     }
-    @Override
-    public void exitLogical_And_Expression(MetaParser.Logical_And_ExpressionContext ctx) { }
     @Override
     public void enterBit_And_Expression(MetaParser.Bit_And_ExpressionContext ctx) { }
     @Override

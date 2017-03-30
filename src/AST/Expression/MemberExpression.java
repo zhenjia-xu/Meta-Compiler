@@ -56,7 +56,7 @@ public class MemberExpression extends Expression{
 			}
 			if(identifier.equals("ord")){
 				String functionName = "ord";
-				Type returnType = StringType.getInstance();
+				Type returnType = IntType.getInstance();
 				List<Symbol> parameterList = new ArrayList<>();
 				parameterList.add(new Symbol("pos", IntType.getInstance()));
 				FunctionType function = new FunctionType(functionName, returnType, parameterList);

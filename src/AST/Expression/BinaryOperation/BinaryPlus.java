@@ -11,7 +11,7 @@ public class BinaryPlus extends Expression{
 	private Expression leftExpression, rightExpression;
 
 	private BinaryPlus(Expression leftExpression, Expression rightExpression){
-		super(IntType.getInstance(), false);
+		super(leftExpression.getType(), false);
 		this.leftExpression = leftExpression;
 		this.rightExpression = rightExpression;
 	}

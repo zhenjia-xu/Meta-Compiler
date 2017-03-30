@@ -8,7 +8,7 @@ public class PrefixDecrement extends Expression{
 	private Expression expression;
 
 	private PrefixDecrement(Expression expression){
-		super(expression.getType(), false);
+		super(expression.getType(), true);
 		this.expression = expression;
 	}
 	public static Expression getExpression(Expression expression){
@@ -26,7 +26,7 @@ public class PrefixDecrement extends Expression{
 	}
 	@Override
 	public String toString(int indents){
-		return Utility.getIndent(indents) + "[prefix decrement]"
+		return Utility.getIndent(indents) + "[prefix decrement]\n"
 				+ expression.toString(indents + 1);
 	}
 }

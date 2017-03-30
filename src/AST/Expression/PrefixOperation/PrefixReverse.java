@@ -24,7 +24,7 @@ public class PrefixReverse extends Expression{
 	}
 	@Override
 	public String toString(int indents){
-		return Utility.getIndent(indents) + "[prefix reverse]"
+		return Utility.getIndent(indents) + "[prefix reverse]\n"
 				+ expression.toString(indents + 1);
 	}
 }

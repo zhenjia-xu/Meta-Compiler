@@ -26,7 +26,7 @@ public class SuffixIncrement extends Expression{
 	}
 	@Override
 	public String toString(int indents){
-		return Utility.getIndent(indents) + "[suffix increment]"
+		return Utility.getIndent(indents) + "[suffix increment]\n"
 				+ expression.toString(indents + 1);
 	}
 }

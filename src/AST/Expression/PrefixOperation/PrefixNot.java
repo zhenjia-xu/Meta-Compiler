@@ -24,7 +24,7 @@ public class PrefixNot extends Expression{
 	}
 	@Override
 	public String toString(int indents){
-		return Utility.getIndent(indents) + "[prefix not]"
+		return Utility.getIndent(indents) + "[prefix not]\n"
 				+ expression.toString(indents + 1);
 	}
 }

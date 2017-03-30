@@ -45,11 +45,15 @@ public class OtherDeclarationListener extends BaseListener{
 	@Override
 	public void exitFunctionDeclaration(MetaParser.FunctionDeclarationContext ctx) {
 		String functionName = ctx.Identifier(0).getText();
-		Type returnType = (Type)returnNode.get(ctx.type(0));
+		Type returnType = (Type)returnNode.get(ctx.getChild(0));
+		int delta = 0;
+		if(ctx.Identifier().size() != ctx.type().size()){
+			delta = 1;
+		}
 		List<Symbol> parameterList = new ArrayList<>();
-		int parameterNum = ctx.type().size() - 1;
+		int parameterNum = ctx.Identifier().size() - 1;
 		for(int i = 1; i <= parameterNum; i++){
-			Type parameterType = (Type)returnNode.get(ctx.type(i));
+			Type parameterType = (Type)returnNode.get(ctx.type(i - delta));
 			String parameterName = ctx.Identifier(i).getText();
 			parameterList.add(new Symbol(parameterName, parameterType));
 		}

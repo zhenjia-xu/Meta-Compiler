@@ -3,6 +3,7 @@ package AST.Symbol;
 import AST.Type.ClassType;
 import AST.Type.FunctionType;
 import AST.Statement.LoopStatement;
+import FrontEnd.Listener.BaseListener;
 import Utility.CompilationError;
 
 import java.util.HashMap;

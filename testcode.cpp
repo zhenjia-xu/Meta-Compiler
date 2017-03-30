@@ -1,19 +1,54 @@
-class A{
-	int x;
-	int get(int y){
-		return x + y;
-	}
+A object;
+
+int main() {
+    object.func1(2, 3);
+
+    object.set(0, 1)
+          .set(1, 0);
+
+    object.copy(object
+          .
+           getThis())
+          .copy(object.getThis().getThis());
+
+    return 0;
 }
-int global;
-void work(int x){
+
+class A {
+    void func1(int x, int y) {
+        func2(this.x*x, this.y*y);
+    }
+
+    void func2(int xx, int yy) {
+        func1(x*this.x, y*this.y);
+    }
+
+    A set(int xx, int yy) {
+        return set(x, y).set(this.x, this.y).set(xx, yy).getThis();
+    }
+
+    A copy(A other) {
+        this = other;
+        return this;
+    }
+
+    A getThis() {
+        return getThis().getThis().getThis().getThis().copy(this);
+    }
+
+    int x; int y;
 }
-int main(){
-	A a;
-	a.x = 234;
-	int num = a.get(123);
-	work(global);
-	println(toString(a.x));
-	int[][][] arr;
-	int arr_size = arr.size();
-	print(toString(arr_size));
-}
+
+
+/*!! metadata:
+=== comment ===
+test return in class
+class-1-515030910117-zhenglianmin.mx
+=== assert ===
+success_compile
+=== phase ===
+semantic extended
+=== is_public ===
+True
+
+!!*/
