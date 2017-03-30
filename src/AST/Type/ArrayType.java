@@ -2,6 +2,8 @@ package AST.Type;
 
 import Utility.Utility;
 
+import java.util.Map;
+
 public class ArrayType extends Type{
 	private Type baseType;
 	private int dimension;
@@ -20,7 +22,7 @@ public class ArrayType extends Type{
 	public boolean compatibleWith(Type other){
 		if(other == NullType.getInstance()) return true;
 		if(other instanceof ArrayType
-				&& baseType.compatibleWith((ArrayType)((ArrayType) other).getBaseType())
+				&& baseType.compatibleWith(((ArrayType) other).getBaseType())
 				&& dimension == ((ArrayType) other).getDimension()) return true;
 		return false;
 	}

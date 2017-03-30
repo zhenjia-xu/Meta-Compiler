@@ -12,15 +12,16 @@ public class CreationExpression extends Expression{
 		super(type, false);
 		this.expressionsList = expressionsList;
 	}
-	public Expression getExpression(Type type, List<Expression> expressionsList){
-		if(type instanceof ClassType){
-			return new CreationExpression(type, expressionsList);
+	public static Expression getExpression(Type type, List<Expression> expressionsList){
+		if(!(type instanceof ClassType) && expressionsList.isEmpty()){
+			throw new CompilationError("Can't new a basic type");
 		}
-		else{
-			if(expressionsList.isEmpty()){
-				throw new CompilationError("Can't new a basic type");
-			}
+		int size = expressionsList.size();
+		if(size == 0) {
 			return new CreationExpression(type, expressionsList);
+		}else{
+			Type arrayType = new ArrayType(type, size);
+			return new CreationExpression(arrayType, expressionsList);
 		}
 	}
 	@Override
@@ -31,8 +32,13 @@ public class CreationExpression extends Expression{
 	public String toString(int indents){
 		StringBuilder str = new StringBuilder();
 		str.append(Utility.getIndent(indents) + "[creation] " + getType().toString() + "\n");
-		expressionsList.forEach(expression ->
-				str.append(expression.toString(indents + 1)));
+		for(Expression expression: expressionsList){
+			if(expression == null){
+				str.append(Utility.getIndent(indents + 1) + "null\n");
+			}else{
+				str.append(expression.toString(indents + 1));
+			}
+		}
 		return str.toString();
 	}
 }

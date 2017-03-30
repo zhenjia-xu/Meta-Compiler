@@ -15,7 +15,7 @@ public class BinaryMultiplication extends Expression{
 		this.leftExpression = leftExpression;
 		this.rightExpression = rightExpressoin;
 	}
-	public Expression getExpression(Expression leftExpression, Expression rightExpressoin){
+	public static Expression getExpression(Expression leftExpression, Expression rightExpressoin){
 		if(!(leftExpression.getType() instanceof IntType) ||
 				!(rightExpressoin.getType() instanceof IntType)){
 			throw new CompilationError("binary multiplication needs int");

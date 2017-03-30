@@ -1,16 +1,20 @@
 package AST.Type;
 
+import AST.Symbol.Scope;
 import Utility.Utility;
 
-public class StringType extends Type{
+import java.util.Map;
+
+public class StringType extends Type implements Scope{
 	private static final StringType instance = new StringType();
+
 	private StringType(){}
 	static public StringType getInstance(){
 		return instance;
 	}
 	@Override
 	public boolean compatibleWith(Type other){
-		return (this == other || other == NullType.getInstance());
+		return this == other;
 	}
 	@Override
 	public String toString(){

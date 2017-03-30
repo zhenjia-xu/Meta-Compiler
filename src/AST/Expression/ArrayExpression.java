@@ -11,7 +11,7 @@ public class ArrayExpression extends Expression{
 		this.arrayExpression = arrayExpression;
 		this.subscriptExpression = subscriptExpression;
 	}
-	public Expression getExpression(Expression arrayExpression, Expression subscriptExpression){
+	public static Expression getExpression(Expression arrayExpression, Expression subscriptExpression){
 		if(!(arrayExpression.getType() instanceof ArrayType)){
 			throw new CompilationError("Can't find an array type in array subscript");
 		}

@@ -24,6 +24,9 @@ public class VariableTable{
 		}
 		variableMap.put(variableName, variable);
 	}
+	public VariableDeclarationStatement getVariable(String name){
+		return variableMap.get(name);
+	}
 	@Override
 	public String toString(){
 		return "variable table";

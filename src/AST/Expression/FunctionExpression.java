@@ -14,7 +14,10 @@ public class FunctionExpression extends Expression{
 		this.function = function;
 		this.expressionList = expressionList;
 	}
-	public Expression getExpression(Expression functionExpression, List<Expression> expressionList){
+	public static Expression getExpression(Expression functionExpression, List<Expression> expressionList){
+		if(functionExpression == null){
+			System.out.println("NULL");
+		}
 		if(!(functionExpression.getType() instanceof FunctionType)){
 			throw new CompilationError("Can't find a function");
 		}

@@ -12,7 +12,7 @@ public class PrefixNot extends Expression{
 		super(expression.getType(), false);
 		this.expression = expression;
 	}
-	public Expression getExpression(Expression expression){
+	public static Expression getExpression(Expression expression){
 		if(!(expression.getType() instanceof BoolType)){
 			throw new CompilationError("prefix not needs bool");
 		}

@@ -120,7 +120,7 @@ expression
 		#Constant_Expression
 	|   Identifier
 		#Identifier_Expression
-	|   'New' type ('[' expression ']')* ('[' ']')*
+	|   'new' type ('[' expression ']')* ('[' ']')*
 		#Creation_Expression
 	|   '(' expression ')'
 		#Subgroup_Expression
@@ -128,7 +128,7 @@ expression
 		#Function_Expression
 	|   expression '[' expression ']'
 		#Array_Expression
-	|   expression '.' (Identifier | expression '(' (expression (',' expression)*)? ')')
+	|   expression '.' Identifier
 		#Member_Expression
 	|   expression op=('++' | '--')
 		#Suffix_Expression

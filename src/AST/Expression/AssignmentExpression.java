@@ -1,36 +1,33 @@
-package AST.Expression.BinaryOperation;
+package AST.Expression;
 
 
-import AST.Constant.IntConstant;
-import AST.Expression.Expression;
-import AST.Type.*;
 import Utility.CompilationError;
 import Utility.Utility;
 
-public class BinaryAssignment extends Expression{
+public class AssignmentExpression extends Expression{
 	private Expression leftExpression, rightExpression;
 
-	private BinaryAssignment(Expression leftExpression, Expression rightExpression){
+	private AssignmentExpression(Expression leftExpression, Expression rightExpression){
 		super(leftExpression.getType(), true);
 		this.leftExpression = leftExpression;
 		this.rightExpression = rightExpression;
 	}
-	public Expression getExpression(Expression leftExpression, Expression rightExpression){
+	public static Expression getExpression(Expression leftExpression, Expression rightExpression){
 		if(!(leftExpression.getLeftValue())){
-			throw new CompilationError("The left expression in Assignment should be left-value");
+			throw new CompilationError("The left expression in assignment should be left-value");
 		}
 		if(!(leftExpression.getType().compatibleWith(rightExpression.getType()))){
 			throw new CompilationError("Assignment needs two compatible type");
 		}
-		return new BinaryAssignment(leftExpression, rightExpression);
+		return new AssignmentExpression(leftExpression, rightExpression);
 	}
 	@Override
 	public String toString(){
-		return "binary assignment";
+		return "assignment";
 	}
 	@Override
 	public String toString(int indents){
-		return Utility.getIndent(indents) + "[binary assignment]\n"
+		return Utility.getIndent(indents) + "[assignment]\n"
 				+ leftExpression.toString(indents + 1)
 				+ rightExpression.toString(indents + 1);
 	}

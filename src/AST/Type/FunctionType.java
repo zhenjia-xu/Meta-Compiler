@@ -12,11 +12,16 @@ public class FunctionType extends Type implements Scope {
     private Type returnType;
     private List<Symbol> parameterList;
     private BlockStatement blockStatement;
+    private Scope classScope;
 
     public FunctionType(String name, Type returnType, List<Symbol> parameterList){
         this.name = name;
         this.returnType = returnType;
         this.parameterList = parameterList;
+        this.classScope = null;
+    }
+    public void addClassScope(Scope classScope){
+        this.classScope = classScope;
     }
     public void addBlockStatement(BlockStatement blockStatement){
         this.blockStatement = blockStatement;
@@ -32,6 +37,9 @@ public class FunctionType extends Type implements Scope {
     }
     public BlockStatement getBlockStatement(){
         return blockStatement;
+    }
+    public Scope getClassScope(){
+        return classScope;
     }
     @Override
     public boolean compatibleWith(Type other){

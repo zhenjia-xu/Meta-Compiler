@@ -4,6 +4,7 @@ import Utility.Utility;
 
 public class NullType extends Type{
 	private static final NullType instance = new NullType();
+
 	private NullType(){}
 	static public NullType getInstance(){
 		return instance;
@@ -11,7 +12,6 @@ public class NullType extends Type{
 	@Override
 	public boolean compatibleWith(Type other){
 		if(other == NullType.getInstance()) return true;
-		if(other == StringType.getInstance()) return true;
 		if(other instanceof ArrayType) return true;
 		if(other instanceof ClassType) return true;
 		return false;

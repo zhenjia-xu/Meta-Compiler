@@ -15,7 +15,7 @@ public class IdentifierExpression extends Expression{
 		super(symbol.getType(), leftValue);
 		this.symbol = symbol;
 	}
-	public Expression getExpression(String identifier){
+	public static Expression getExpression(String identifier){
 		if(Environment.symbolTable.haveSymbol(identifier) == false){
 			throw new CompilationError("Can't find the identifier named " + identifier);
 		}

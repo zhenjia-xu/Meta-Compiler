@@ -40,6 +40,11 @@ public class ReturnStatement extends Statement{
 	}
 	@Override
 	public String toString(int indents){
-		return Utility.getIndent(indents) + "[return statement] -> " + function.toString() + "\n";
+		StringBuilder str = new StringBuilder();
+		str.append(Utility.getIndent(indents) + "[return statement] -> " + function.toString() + "\n");
+		if(returnExpression != null){
+			str.append(returnExpression.toString(indents + 1));
+		}
+		return str.toString();
 	}
 }

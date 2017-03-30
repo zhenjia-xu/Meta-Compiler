@@ -11,7 +11,7 @@ public class PrefixDecrement extends Expression{
 		super(expression.getType(), false);
 		this.expression = expression;
 	}
-	public Expression getExpression(Expression expression){
+	public static Expression getExpression(Expression expression){
 		if(!(expression.getType() instanceof IntType)){
 			throw new CompilationError("prefix decrement needs int");
 		}

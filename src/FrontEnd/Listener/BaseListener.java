@@ -11,5 +11,10 @@ public class BaseListener extends MetaBaseListener{
     public void enterEveryRule(ParserRuleContext ctx) {
         row = ctx.getStart().getLine();
         column = ctx.getStart().getCharPositionInLine();
-    }
+     }
+    @Override
+    public void exitEveryRule(ParserRuleContext ctx) {
+        row = ctx.getStart().getLine();
+        column = ctx.getStart().getCharPositionInLine();
+     }
 }

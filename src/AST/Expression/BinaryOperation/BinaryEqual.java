@@ -13,7 +13,7 @@ public class BinaryEqual extends Expression{
 		this.leftExpression = leftExpression;
 		this.rightExpression = rightExpression;
 	}
-	public Expression getExpression(Expression leftExpression, Expression rightExpression){
+	public static Expression getExpression(Expression leftExpression, Expression rightExpression){
 		if(!(leftExpression.getType().compatibleWith(rightExpression.getType()))){
 			throw new CompilationError("binary equal needs two compatible type");
 		}

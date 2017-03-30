@@ -22,6 +22,12 @@ public class ClassType extends Type implements Scope {
     public Map<String, VariableDeclarationStatement> getMemberVariableTable(){
         return memberVariableTable.getVariableMap();
     }
+    public FunctionType getMemberFunction(String name){
+        return memberFunctionTable.getFunctionType(name);
+    }
+    public VariableDeclarationStatement getMemberVariable(String name){
+        return memberVariableTable.getVariable(name);
+    }
     public void addMemberFunction(FunctionType function){
         memberFunctionTable.addFunction(function);
     }

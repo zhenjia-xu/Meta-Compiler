@@ -5,6 +5,7 @@ import AST.Statement.VariableDeclarationStatement;
 import AST.Symbol.Symbol;
 import AST.Type.*;
 import FrontEnd.Parser.MetaParser;
+import org.antlr.v4.runtime.tree.ParseTree;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,8 +13,14 @@ import java.util.List;
 public class OtherDeclarationListener extends BaseListener{
 	@Override
 	public void exitProgram(MetaParser.ProgramContext ctx) {
-		ctx.functionDeclaration().forEach(function_ctx ->
-			Environment.globalFunctionTable.addFunction((FunctionType) returnNode.get(function_ctx)));
+		for(ParseTree x: ctx.functionDeclaration()){
+			FunctionType function = (FunctionType) returnNode.get(x);
+			Environment.globalFunctionTable.addFunction(function);
+		}
+		for(ParseTree x: ctx.variableDeclaration()){
+			VariableDeclarationStatement variable = (VariableDeclarationStatement) returnNode.get(x);
+			Environment.globalVariableTable.addVariable(variable);
+		}
 	}
 	@Override
 	public void enterClassDeclaration(MetaParser.ClassDeclarationContext ctx) {
@@ -23,10 +30,16 @@ public class OtherDeclarationListener extends BaseListener{
 	@Override
 	public void exitClassDeclaration(MetaParser.ClassDeclarationContext ctx) {
 		ClassType classType = (ClassType)returnNode.get(ctx);
-		ctx.functionDeclaration().forEach(function_ctx ->
-				classType.addMemberFunction((FunctionType) returnNode.get(function_ctx)));
-		ctx.variableDeclaration().forEach(variable_ctx ->
-				classType.addMemberVariable((VariableDeclarationStatement) returnNode.get(variable_ctx)));
+		for(ParseTree x: ctx.functionDeclaration()){
+			FunctionType function = (FunctionType) returnNode.get(x);
+			function.addClassScope(classType);
+			classType.addMemberFunction(function);
+		}
+		for(ParseTree x: ctx.variableDeclaration()){
+			VariableDeclarationStatement variable = (VariableDeclarationStatement) returnNode.get(x);
+			variable.addClassScope(classType);
+			classType.addMemberVariable(variable);
+		}
 		Environment.symbolTable.exitScope();
 	}
 	@Override

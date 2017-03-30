@@ -15,7 +15,7 @@ public class BinaryBitOr extends Expression{
 		this.leftExpression = leftExpression;
 		this.rightExpression = rightExpression;
 	}
-	public Expression getExpression(Expression leftExpression, Expression rightExpression){
+	public static Expression getExpression(Expression leftExpression, Expression rightExpression){
 		if(!(leftExpression.getType() instanceof IntType) ||
 				!(rightExpression.getType() instanceof IntType)){
 			throw new CompilationError("binary bit or needs int");

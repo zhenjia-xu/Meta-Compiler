@@ -4,6 +4,7 @@ import Utility.Utility;
 
 public class BoolType extends Type{
 	private static final BoolType instance = new BoolType();
+
 	private BoolType(){}
 	static public BoolType getInstance(){
 		return instance;

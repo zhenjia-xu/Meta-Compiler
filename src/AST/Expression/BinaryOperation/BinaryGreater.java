@@ -16,12 +16,16 @@ public class BinaryGreater extends Expression{
 		this.leftExpression = leftExpression;
 		this.rightExpression = rightExpression;
 	}
-	public Expression getExpression(Expression leftExpression, Expression rightExpression){
-		if(!(leftExpression.getType() instanceof IntType) ||
-				!(rightExpression.getType() instanceof IntType)){
-			throw new CompilationError("binary greater needs int");
+	public static Expression getExpression(Expression leftExpression, Expression rightExpression){
+		Type leftType = leftExpression.getType();
+		Type rightType = rightExpression.getType();
+		if(leftType instanceof IntType && rightType instanceof IntType){
+			return new BinaryGreater(leftExpression, rightExpression);
 		}
-		return new BinaryGreater(leftExpression, rightExpression);
+		if(leftType instanceof StringType && rightType instanceof StringType){
+			return new BinaryGreater(leftExpression, rightExpression);
+		}
+		throw new CompilationError("binary greater needs int or string");
 	}
 	@Override
 	public String toString(){

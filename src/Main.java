@@ -1,4 +1,5 @@
 import AST.Environment;
+import Utility.CompilationError;
 import org.antlr.v4.misc.OrderedHashMap;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
@@ -17,15 +18,17 @@ public class Main{
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         MetaParser parser = new MetaParser(tokens);
         ParseTree tree = parser.program();
+        try {
+            Environment.initialize();
+            ParseTreeWalker walker = new ParseTreeWalker();
 
-        Environment.initialize();
-        ParseTreeWalker walker = new ParseTreeWalker();
-
-        walker.walk(new ClassDeclarationListener(), tree);
-
-        walker.walk(new OtherDeclarationListener(), tree);
-
-        walker.walk(new ASTreeListener(), tree);
-        Environment.print();
+            walker.walk(new ClassDeclarationListener(), tree);
+            walker.walk(new OtherDeclarationListener(), tree);
+            walker.walk(new ASTreeListener(), tree);
+            Environment.print();
+        }catch(CompilationError ce){
+            System.out.println(ce.getMessage());
+            System.exit(1);
+        }
     }
 }

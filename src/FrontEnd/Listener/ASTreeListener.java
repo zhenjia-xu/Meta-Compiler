@@ -1,25 +1,37 @@
 package FrontEnd.Listener;
 
 import AST.Environment;
+import AST.Symbol.ProgramScope;
+import AST.Symbol.Scope;
 import AST.Symbol.Symbol;
 import AST.Type.*;
 import AST.Constant.*;
 import AST.Expression.*;
+import AST.Expression.BinaryOperation.*;
+import AST.Expression.PrefixOperation.*;
+import AST.Expression.SuffixOperation.*;
 import AST.Statement.*;
 import FrontEnd.Parser.MetaParser;
-import com.sun.org.apache.xpath.internal.operations.Bool;
+import com.sun.org.apache.xpath.internal.functions.Function;
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
-import FrontEnd.Listener.BaseListener;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ASTreeListener extends BaseListener{
     @Override
-    public void enterProgram(MetaParser.ProgramContext ctx) { }
+    public void enterProgram(MetaParser.ProgramContext ctx) {
+        Environment.symbolTable.enterScope(new ProgramScope());
+        Environment.globalFunctionTable.getFunctionMap().forEach((name, function) ->
+                Environment.symbolTable.addSymbol(new Symbol(name, function)));
+    }
     @Override
-    public void exitProgram(MetaParser.ProgramContext ctx) { }
+    public void exitProgram(MetaParser.ProgramContext ctx) {
+        Environment.symbolTable.exitScope();
+    }
     @Override
     public void enterFunctionDeclaration(MetaParser.FunctionDeclarationContext ctx) {
         FunctionType function = (FunctionType) returnNode.get(ctx);
@@ -91,7 +103,6 @@ public class ASTreeListener extends BaseListener{
     public void enterString_Constant(MetaParser.String_ConstantContext ctx) { }
     @Override
     public void exitString_Constant(MetaParser.String_ConstantContext ctx) {
-        //remove ""
         String string = ctx.getText().substring(1, ctx.getText().length() - 1);
         StringConstant stringConstant = new StringConstant(string);
         returnNode.put(ctx, stringConstant);
@@ -117,11 +128,13 @@ public class ASTreeListener extends BaseListener{
     @Override
     public void enterBlockStatement(MetaParser.BlockStatementContext ctx) {
         BlockStatement blockStatement = new BlockStatement();
+        Scope currentScope = Environment.symbolTable.getCurrentScope();
         Environment.symbolTable.enterScope(blockStatement);
-        if(Environment.symbolTable.getCurrentScope() instanceof FunctionType){
-            FunctionType function = (FunctionType) Environment.symbolTable.getCurrentScope();
-            function.getParameterList().forEach(symbol ->
-                    Environment.symbolTable.addSymbol(symbol));
+        if(currentScope instanceof FunctionType){
+            FunctionType function = (FunctionType) currentScope;
+            for(Symbol symbol: function.getParameterList()){
+                Environment.symbolTable.addSymbol(symbol);
+            }
         }
         returnNode.put(ctx, blockStatement);
     }
@@ -151,8 +164,11 @@ public class ASTreeListener extends BaseListener{
             Expression expression = (Expression) returnNode.get(ctx.expression());
             variableDeclarationStatement.addExpression(expression);
         }
-        if(Environment.symbolTable.getCurrentScope() == null){
-            Environment.globalVariableTable.addVariable(variableDeclarationStatement);
+        String name = variableDeclarationStatement.getName();
+        Type type = variableDeclarationStatement.getType();
+        if(variableDeclarationStatement.getClassScope() == null) {
+            Symbol symbol = new Symbol(name, type);
+            Environment.symbolTable.addSymbol(symbol);
         }
     }
     @Override
@@ -246,106 +262,256 @@ public class ASTreeListener extends BaseListener{
     @Override
     public void enterFunction_Expression(MetaParser.Function_ExpressionContext ctx) { }
     @Override
-    public void exitFunction_Expression(MetaParser.Function_ExpressionContext ctx) { }
+    public void exitFunction_Expression(MetaParser.Function_ExpressionContext ctx) {
+        Expression functionExpression = (Expression) returnNode.get(ctx.expression(0));
+        List<Expression> parameterList = new ArrayList<>();
+        for(int i = 1; i < ctx.expression().size(); i++){
+            Expression parameter = (Expression) returnNode.get(ctx.expression(i));
+            parameterList.add(parameter);
+        }
+        Expression expression = FunctionExpression.getExpression(functionExpression, parameterList);
+        returnNode.put(ctx, expression);
+    }
     @Override
-    public void enterLogical_And_Expression(MetaParser.Logical_And_ExpressionContext ctx) { }
+    public void enterLogical_And_Expression(MetaParser.Logical_And_ExpressionContext ctx) {
+        Expression leftExpression = (Expression) returnNode.get(ctx.expression(0));
+        Expression rightExpression = (Expression) returnNode.get(ctx.expression(1));
+        Expression expression = BinaryLogicalAnd.getExpression(leftExpression, rightExpression);
+        returnNode.put(ctx, expression);
+    }
     @Override
     public void exitLogical_And_Expression(MetaParser.Logical_And_ExpressionContext ctx) { }
     @Override
     public void enterBit_And_Expression(MetaParser.Bit_And_ExpressionContext ctx) { }
     @Override
-    public void exitBit_And_Expression(MetaParser.Bit_And_ExpressionContext ctx) { }
+    public void exitBit_And_Expression(MetaParser.Bit_And_ExpressionContext ctx) {
+        Expression leftExpression = (Expression) returnNode.get(ctx.expression(0));
+        Expression rightExpression = (Expression) returnNode.get(ctx.expression(1));
+        Expression expression = BinaryBitAnd.getExpression(leftExpression, rightExpression);
+        returnNode.put(ctx, expression);
+    }
     @Override
     public void enterIdentifier_Expression(MetaParser.Identifier_ExpressionContext ctx) { }
     @Override
-    public void exitIdentifier_Expression(MetaParser.Identifier_ExpressionContext ctx) { }
+    public void exitIdentifier_Expression(MetaParser.Identifier_ExpressionContext ctx) {
+        String identifier = ctx.getText();
+        Expression expression = IdentifierExpression.getExpression(identifier);
+        returnNode.put(ctx, expression);
+    }
     @Override
     public void enterPrefix_Expression(MetaParser.Prefix_ExpressionContext ctx) { }
     @Override
-    public void exitPrefix_Expression(MetaParser.Prefix_ExpressionContext ctx) { }
+    public void exitPrefix_Expression(MetaParser.Prefix_ExpressionContext ctx) {
+        Expression op_expression = (Expression) returnNode.get(ctx.expression());
+        Expression expression = null;
+        String op = ctx.op.getText();
+        if(op.equals("++")){
+            expression = PrefixIncrement.getExpression(op_expression);
+        }
+        if(op.equals("--")){
+            expression = PrefixDecrement.getExpression(op_expression);
+        }
+        if(op.equals("+")){
+            expression = PrefixPlus.getExpression(op_expression);
+        }
+        if(op.equals("-")){
+            expression = PrefixMinus.getExpression(op_expression);
+        }
+        if(op.equals("!")){
+            expression = PrefixNot.getExpression(op_expression);
+        }
+        if(op.equals("~")){
+            expression = PrefixReverse.getExpression(op_expression);
+        }
+        returnNode.put(ctx, expression);
+    }
     @Override
     public void enterMember_Expression(MetaParser.Member_ExpressionContext ctx) { }
     @Override
-    public void exitMember_Expression(MetaParser.Member_ExpressionContext ctx) { }
+    public void exitMember_Expression(MetaParser.Member_ExpressionContext ctx) {
+        Expression op_expression = (Expression) returnNode.get(ctx.expression());
+        String identifier = ctx.Identifier().getText();
+        Expression expression = MemberExpression.getExpression(op_expression, identifier);
+        returnNode.put(ctx, expression);
+    }
     @Override
     public void enterShift_Expression(MetaParser.Shift_ExpressionContext ctx) { }
     @Override
-    public void exitShift_Expression(MetaParser.Shift_ExpressionContext ctx) { }
+    public void exitShift_Expression(MetaParser.Shift_ExpressionContext ctx) {
+        Expression leftExpression = (Expression) returnNode.get(ctx.expression(0));
+        Expression rightExpression = (Expression) returnNode.get(ctx.expression(1));
+        Expression expression = null;
+        String op = ctx.op.getText();
+        if(op.equals("<<")){
+            expression = BinaryLeftShift.getExpression(leftExpression, rightExpression);
+        }
+        if(op.equals(">>")){
+            expression = BinaryRightShift.getExpression(leftExpression, rightExpression);
+        }
+        returnNode.put(ctx, expression);
+    }
     @Override
     public void enterSuffix_Expression(MetaParser.Suffix_ExpressionContext ctx) { }
     @Override
-    public void exitSuffix_Expression(MetaParser.Suffix_ExpressionContext ctx) { }
+    public void exitSuffix_Expression(MetaParser.Suffix_ExpressionContext ctx) {
+        Expression op_expression = (Expression) returnNode.get(ctx.expression());
+        Expression expression = null;
+        String op = ctx.op.getText();
+        if(op.equals("++")){
+            expression = SuffixIncrement.getExpression(op_expression);
+        }
+        if(op.equals("--")){
+            expression = SuffixDecrement.getExpression(op_expression);
+        }
+        returnNode.put(ctx, expression);
+    }
     @Override
     public void enterMul_Div_Mod_Expression(MetaParser.Mul_Div_Mod_ExpressionContext ctx) { }
     @Override
-    public void exitMul_Div_Mod_Expression(MetaParser.Mul_Div_Mod_ExpressionContext ctx) { }
+    public void exitMul_Div_Mod_Expression(MetaParser.Mul_Div_Mod_ExpressionContext ctx) {
+        Expression leftExpression = (Expression) returnNode.get(ctx.expression(0));
+        Expression rightExpression = (Expression) returnNode.get(ctx.expression(1));
+        Expression expression = null;
+        String op = ctx.op.getText();
+        if(op.equals("*")){
+            expression = BinaryMultiplication.getExpression(leftExpression, rightExpression);
+        }
+        if(op.equals("/")){
+            expression = BinaryDivision.getExpression(leftExpression, rightExpression);
+        }
+        if(op.equals("%")){
+            expression = BinaryModulo.getExpression(leftExpression, rightExpression);
+        }
+        returnNode.put(ctx, expression);
+    }
     @Override
     public void enterBit_or_Expression(MetaParser.Bit_or_ExpressionContext ctx) { }
     @Override
-    public void exitBit_or_Expression(MetaParser.Bit_or_ExpressionContext ctx) { }
+    public void exitBit_or_Expression(MetaParser.Bit_or_ExpressionContext ctx) {
+        Expression leftExpression = (Expression) returnNode.get(ctx.expression(0));
+        Expression rightExpression = (Expression) returnNode.get(ctx.expression(1));
+        Expression expression = BinaryBitOr.getExpression(leftExpression, rightExpression);
+        returnNode.put(ctx, expression);
+    }
     @Override
     public void enterCreation_Expression(MetaParser.Creation_ExpressionContext ctx) { }
     @Override
-    public void exitCreation_Expression(MetaParser.Creation_ExpressionContext ctx) { }
+    public void exitCreation_Expression(MetaParser.Creation_ExpressionContext ctx) {
+        Type type = (Type) returnNode.get(ctx.type());
+        List<Expression> expressionList = new ArrayList<>();
+        int flag = 0;
+        for(ParseTree x: ctx.children){
+            if(x.getText().equals("[")){
+                Expression expression = (Expression) returnNode.get(ctx.expression(flag));
+                expressionList.add(expression);
+                flag++;
+            }
+        }
+        Expression expression = CreationExpression.getExpression(type, expressionList);
+        returnNode.put(ctx, expression);
+    }
     @Override
     public void enterArray_Expression(MetaParser.Array_ExpressionContext ctx) { }
     @Override
-    public void exitArray_Expression(MetaParser.Array_ExpressionContext ctx) { }
+    public void exitArray_Expression(MetaParser.Array_ExpressionContext ctx) {
+        Expression arrayExpression = (Expression) returnNode.get(ctx.expression(0));
+        Expression subscriptExpression = (Expression) returnNode.get(ctx.expression(1));
+        Expression expression = ArrayExpression.getExpression(arrayExpression, subscriptExpression);
+        returnNode.put(ctx, expression);
+    }
     @Override
     public void enterAdd_Sub_Expression(MetaParser.Add_Sub_ExpressionContext ctx) { }
     @Override
-    public void exitAdd_Sub_Expression(MetaParser.Add_Sub_ExpressionContext ctx) { }
+    public void exitAdd_Sub_Expression(MetaParser.Add_Sub_ExpressionContext ctx) {
+        Expression leftExpression = (Expression) returnNode.get(ctx.expression(0));
+        Expression rightExpression = (Expression) returnNode.get(ctx.expression(1));
+        Expression expression = null;
+        String op = ctx.op.getText();
+        if(op.equals("+")){
+            expression = BinaryPlus.getExpression(leftExpression, rightExpression);
+        }
+        if(op.equals("-")){
+            expression = BinaryMinus.getExpression(leftExpression, rightExpression);
+        }
+        returnNode.put(ctx, expression);
+    }
     @Override
     public void enterBit_Xor_Expreeeion(MetaParser.Bit_Xor_ExpreeeionContext ctx) { }
     @Override
-    public void exitBit_Xor_Expreeeion(MetaParser.Bit_Xor_ExpreeeionContext ctx) { }
+    public void exitBit_Xor_Expreeeion(MetaParser.Bit_Xor_ExpreeeionContext ctx) {
+        Expression leftExpression = (Expression) returnNode.get(ctx.expression(0));
+        Expression rightExpression = (Expression) returnNode.get(ctx.expression(1));
+        Expression expression = BinaryBitXor.getExpression(leftExpression, rightExpression);
+        returnNode.put(ctx, expression);
+    }
     @Override
     public void enterAssignment_Expression(MetaParser.Assignment_ExpressionContext ctx) { }
     @Override
-    public void exitAssignment_Expression(MetaParser.Assignment_ExpressionContext ctx) { }
+    public void exitAssignment_Expression(MetaParser.Assignment_ExpressionContext ctx) {
+        Expression leftExpression = (Expression) returnNode.get(ctx.expression(0));
+        Expression rightExpression = (Expression) returnNode.get(ctx.expression(1));
+        Expression expression = AssignmentExpression.getExpression(leftExpression, rightExpression);
+        returnNode.put(ctx, expression);
+    }
     @Override
     public void enterConstant_Expression(MetaParser.Constant_ExpressionContext ctx) { }
     @Override
-    public void exitConstant_Expression(MetaParser.Constant_ExpressionContext ctx) { }
+    public void exitConstant_Expression(MetaParser.Constant_ExpressionContext ctx) {
+        Expression expression = (Expression) returnNode.get(ctx.constant());
+        returnNode.put(ctx, expression);
+    }
     @Override
     public void enterLogical_Or_Expression(MetaParser.Logical_Or_ExpressionContext ctx) { }
     @Override
-    public void exitLogical_Or_Expression(MetaParser.Logical_Or_ExpressionContext ctx) { }
+    public void exitLogical_Or_Expression(MetaParser.Logical_Or_ExpressionContext ctx) {
+        Expression leftExpression = (Expression) returnNode.get(ctx.expression(0));
+        Expression rightExpression = (Expression) returnNode.get(ctx.expression(1));
+        Expression expression = BinaryLogicalOr.getExpression(leftExpression, rightExpression);
+        returnNode.put(ctx, expression);
+    }
     @Override
     public void enterEquality_Expression(MetaParser.Equality_ExpressionContext ctx) { }
     @Override
-    public void exitEquality_Expression(MetaParser.Equality_ExpressionContext ctx) { }
+    public void exitEquality_Expression(MetaParser.Equality_ExpressionContext ctx) {
+        Expression leftExpression = (Expression) returnNode.get(ctx.expression(0));
+        Expression rightExpression = (Expression) returnNode.get(ctx.expression(1));
+        Expression expression = null;
+        String op = ctx.op.getText();
+        if(op.equals("==")){
+            expression = BinaryEqual.getExpression(leftExpression, rightExpression);
+        }
+        if(op.equals("!=")){
+            expression = BinaryNotEqual.getExpression(leftExpression, rightExpression);
+        }
+        returnNode.put(ctx, expression);
+    }
     @Override
     public void enterSubgroup_Expression(MetaParser.Subgroup_ExpressionContext ctx) { }
     @Override
-    public void exitSubgroup_Expression(MetaParser.Subgroup_ExpressionContext ctx) { }
+    public void exitSubgroup_Expression(MetaParser.Subgroup_ExpressionContext ctx) {
+        Expression expression = (Expression) returnNode.get(ctx.expression());
+        returnNode.put(ctx, expression);
+    }
     @Override
     public void enterRelation_Expression(MetaParser.Relation_ExpressionContext ctx) { }
     @Override
-    public void exitRelation_Expression(MetaParser.Relation_ExpressionContext ctx) { }
-
-    /**
-     * {@inheritDoc}
-     *
-     * <p>The default implementation does nothing.</p>
-     */
-    @Override public void enterEveryRule(ParserRuleContext ctx) { }
-    /**
-     * {@inheritDoc}
-     *
-     * <p>The default implementation does nothing.</p>
-     */
-    @Override public void exitEveryRule(ParserRuleContext ctx) { }
-    /**
-     * {@inheritDoc}
-     *
-     * <p>The default implementation does nothing.</p>
-     */
-    @Override public void visitTerminal(TerminalNode node) { }
-    /**
-     * {@inheritDoc}
-     *
-     * <p>The default implementation does nothing.</p>
-     */
-    @Override public void visitErrorNode(ErrorNode node) { }
+    public void exitRelation_Expression(MetaParser.Relation_ExpressionContext ctx) {
+        Expression leftExpression = (Expression) returnNode.get(ctx.expression(0));
+        Expression rightExpression = (Expression) returnNode.get(ctx.expression(1));
+        Expression expression = null;
+        String op = ctx.op.getText();
+        if(op.equals("<")){
+            expression = BinaryLess.getExpression(leftExpression, rightExpression);
+        }
+        if(op.equals(">")){
+            expression = BinaryGreater.getExpression(leftExpression, rightExpression);
+        }
+        if(op.equals("<=")){
+            expression = BinaryLessEqual.getExpression(leftExpression, rightExpression);
+        }
+        if(op.equals(">=")){
+            expression = BinaryGreaterEqual.getExpression(leftExpression, rightExpression);
+        }
+        returnNode.put(ctx, expression);
+    }
 }
