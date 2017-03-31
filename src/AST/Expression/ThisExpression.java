@@ -8,7 +8,7 @@ public class ThisExpression extends Expression{
 	private ThisExpression(Type type){
 		super(type, true);
 	}
-	public Expression getExpression(){
+	public static Expression getExpression(){
 		if(Environment.symbolTable.getCurrentClass() == null){
 			throw new CompilationError("This should be used in a class");
 		}

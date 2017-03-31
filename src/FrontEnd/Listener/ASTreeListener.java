@@ -1,9 +1,7 @@
 package FrontEnd.Listener;
 
 import AST.Environment;
-import AST.Symbol.ProgramScope;
-import AST.Symbol.Scope;
-import AST.Symbol.Symbol;
+import AST.Symbol.*;
 import AST.Type.*;
 import AST.Constant.*;
 import AST.Expression.*;
@@ -47,7 +45,6 @@ public class ASTreeListener extends BaseListener{
     public void enterClassDeclaration(MetaParser.ClassDeclarationContext ctx) {
         ClassType classType = (ClassType) returnNode.get(ctx);
         Environment.symbolTable.enterScope(classType);
-        Environment.symbolTable.addSymbol(new Symbol("this", classType));
         classType.getMemberFunctionTable().forEach((name, function) ->
                 Environment.symbolTable.addSymbol(new Symbol(name, function)));
         classType.getMemberVariableTable().forEach((name, variable) ->
@@ -427,11 +424,12 @@ public class ASTreeListener extends BaseListener{
         returnNode.put(ctx, expression);
     }
     @Override
-    public void enterThis_Expression(MetaParser.This_ExpressionContext ctx) {
-
-    }
+    public void enterThis_Expression(MetaParser.This_ExpressionContext ctx) { }
     @Override
-    public void exitThis_Expression(MetaParser.This_ExpressionContext ctx) { }
+    public void exitThis_Expression(MetaParser.This_ExpressionContext ctx) {
+        Expression expression = ThisExpression.getExpression();
+        returnNode.put(ctx, expression);
+    }
     @Override
     public void enterAdd_Sub_Expression(MetaParser.Add_Sub_ExpressionContext ctx) { }
     @Override
