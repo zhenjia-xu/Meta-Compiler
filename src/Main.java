@@ -9,16 +9,16 @@ import FrontEnd.Listener.*;
 import java.util.Map;
 public class Main{
     public static void main(String[] args) throws Exception {
-        String inputFile = null;
-        if ( args.length>0 ) inputFile = args[0];
         File file = new File("program.txt");
         InputStream is = new FileInputStream(file);
         ANTLRInputStream input = new ANTLRInputStream(is);
         MetaLexer lexer = new MetaLexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         MetaParser parser = new MetaParser(tokens);
-        ParseTree tree = parser.program();
         try {
+            parser.removeErrorListeners();
+            parser.addErrorListener(new SyntaxErrorListener());
+            ParseTree tree = parser.program();
             Environment.initialize();
             ParseTreeWalker walker = new ParseTreeWalker();
 
