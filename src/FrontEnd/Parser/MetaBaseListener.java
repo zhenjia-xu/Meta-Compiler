@@ -292,6 +292,18 @@ public class MetaBaseListener implements MetaListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterThisToken(MetaParser.ThisTokenContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitThisToken(MetaParser.ThisTokenContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterFunction_Expression(MetaParser.Function_ExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -431,6 +443,18 @@ public class MetaBaseListener implements MetaListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitArray_Expression(MetaParser.Array_ExpressionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterThis_Expression(MetaParser.This_ExpressionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitThis_Expression(MetaParser.This_ExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

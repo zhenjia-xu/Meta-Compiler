@@ -13,10 +13,25 @@ public class CreationExpression extends Expression{
 		this.expressionsList = expressionsList;
 	}
 	public static Expression getExpression(Type type, List<Expression> expressionsList){
-		if(!(type instanceof ClassType) && expressionsList.isEmpty()){
+		int size = expressionsList.size();
+		if(!(type instanceof ClassType) && size == 0){
 			throw new CompilationError("Can't new a basic type");
 		}
-		int size = expressionsList.size();
+		if(size != 0){
+			if(expressionsList.get(0) == null){
+				throw new CompilationError("Creation Error");
+			}
+			boolean flag = true;
+			for(Expression expression: expressionsList){
+				if(expression == null){
+					flag = false;
+				} else{
+					if(!flag){
+						throw new CompilationError("Creation Error");
+					}
+				}
+			}
+		}
 		if(size == 0) {
 			return new CreationExpression(type, expressionsList);
 		}else{

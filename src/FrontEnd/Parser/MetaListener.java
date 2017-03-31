@@ -258,6 +258,16 @@ public interface MetaListener extends ParseTreeListener {
 	 */
 	void exitReturnStatement(MetaParser.ReturnStatementContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link MetaParser#thisToken}.
+	 * @param ctx the parse tree
+	 */
+	void enterThisToken(MetaParser.ThisTokenContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MetaParser#thisToken}.
+	 * @param ctx the parse tree
+	 */
+	void exitThisToken(MetaParser.ThisTokenContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code Function_Expression}
 	 * labeled alternative in {@link MetaParser#expression}.
 	 * @param ctx the parse tree
@@ -401,6 +411,18 @@ public interface MetaListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitArray_Expression(MetaParser.Array_ExpressionContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code This_Expression}
+	 * labeled alternative in {@link MetaParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterThis_Expression(MetaParser.This_ExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code This_Expression}
+	 * labeled alternative in {@link MetaParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitThis_Expression(MetaParser.This_ExpressionContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code Add_Sub_Expression}
 	 * labeled alternative in {@link MetaParser#expression}.

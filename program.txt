@@ -1,16 +1,19 @@
-int main(){
-	if(true) int c;
-	return c;
+int this(){
+
+}
+int main() {
+    return 0;
 }
 
 
 /*!! metadata:
 === comment ===
-scope-2-5140519064-youyurong.mx
+creator test
+creator-515030910117-zhenglianmin.mx
 === assert ===
 failure_compile
 === phase ===
-semantic pretest
+semantic extended
 === is_public ===
 True
 

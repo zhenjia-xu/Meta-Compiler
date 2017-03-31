@@ -404,12 +404,14 @@ public class ASTreeListener extends BaseListener{
     public void exitCreation_Expression(MetaParser.Creation_ExpressionContext ctx) {
         Type type = (Type) returnNode.get(ctx.type());
         List<Expression> expressionList = new ArrayList<>();
-        int flag = 0;
-        for(ParseTree x: ctx.children){
-            if(x.getText().equals("[")){
-                Expression expression = (Expression) returnNode.get(ctx.expression(flag));
-                expressionList.add(expression);
-                flag++;
+        int childrenNum = ctx.children.size();
+        for(int i = 0; i < childrenNum; i++){
+            if(ctx.getChild(i).getText().equals("[")){
+                if(ctx.getChild(i + 1).getText().equals("]")){
+                    expressionList.add(null);
+                } else{
+                    expressionList.add((Expression) returnNode.get(ctx.getChild(i + 1)));
+                }
             }
         }
         Expression expression = CreationExpression.getExpression(type, expressionList);
@@ -424,6 +426,12 @@ public class ASTreeListener extends BaseListener{
         Expression expression = ArrayExpression.getExpression(arrayExpression, subscriptExpression);
         returnNode.put(ctx, expression);
     }
+    @Override
+    public void enterThis_Expression(MetaParser.This_ExpressionContext ctx) {
+
+    }
+    @Override
+    public void exitThis_Expression(MetaParser.This_ExpressionContext ctx) { }
     @Override
     public void enterAdd_Sub_Expression(MetaParser.Add_Sub_ExpressionContext ctx) { }
     @Override

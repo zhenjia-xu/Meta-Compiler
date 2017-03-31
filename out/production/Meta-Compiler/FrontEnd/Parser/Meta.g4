@@ -114,13 +114,18 @@ breakStatement
 returnStatement
 	:   'return' expression? ';'
 	;
+thisToken
+	:	'this'
+	;
 //表达式
 expression
 	:   constant
 		#Constant_Expression
 	|   Identifier
 		#Identifier_Expression
-	|   'new' type ('[' expression ']')* ('[' ']')*
+	|	thisToken
+		#This_Expression
+	|   'new' type ('[' expression? ']')*
 		#Creation_Expression
 	|   '(' expression ')'
 		#Subgroup_Expression
