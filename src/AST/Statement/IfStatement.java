@@ -38,7 +38,7 @@ public class IfStatement extends Statement{
 		StringBuilder str = new StringBuilder();
 		str.append(Utility.getIndent(indents) + "[if statement]\n");
 		str.append(condition.toString(indents + 1));
-		str.append(trueStatement.toString(indents));
+		str.append(trueStatement.toString(indents + 1));
 		if(falseStatement != null){
 			str.append(falseStatement.toString(indents + 1));
 		}

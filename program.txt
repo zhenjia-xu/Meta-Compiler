@@ -1,1 +1,17 @@
 int main(){
+	if(true) int c;
+	return c;
+}
+
+
+/*!! metadata:
+=== comment ===
+scope-2-5140519064-youyurong.mx
+=== assert ===
+failure_compile
+=== phase ===
+semantic pretest
+=== is_public ===
+True
+
+!!*/

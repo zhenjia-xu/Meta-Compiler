@@ -115,12 +115,18 @@ public class ASTreeListener extends BaseListener{
         returnNode.put(ctx, intConstant);
     }
 
-
-    @Override
-    public void enterStatement(MetaParser.StatementContext ctx) { }
     //Very Important!!!
     @Override
+    public void enterStatement(MetaParser.StatementContext ctx) {
+        if(ctx.getParent() instanceof MetaParser.IfStatementContext){
+            Environment.symbolTable.enterScope(new BlockStatement());
+        }
+    }
+    @Override
     public void exitStatement(MetaParser.StatementContext ctx) {
+        if(ctx.getParent() instanceof MetaParser.IfStatementContext){
+            Environment.symbolTable.exitScope();
+        }
         Statement statement = (Statement) returnNode.get(ctx.getChild(0));
         returnNode.put(ctx, statement);
     }
