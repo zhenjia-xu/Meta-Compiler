@@ -6,7 +6,7 @@ Scope:
 
 Type:
 	single:
-		NullType(compatible with string, class, array)
+		NullType(compatible with class, array)
 		BoolType
 		IntType
 		StringType

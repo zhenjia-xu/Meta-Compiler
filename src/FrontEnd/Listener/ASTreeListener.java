@@ -12,7 +12,6 @@ import AST.Expression.PrefixOperation.*;
 import AST.Expression.SuffixOperation.*;
 import AST.Statement.*;
 import FrontEnd.Parser.MetaParser;
-import com.sun.org.apache.xpath.internal.functions.Function;
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.ParseTree;
