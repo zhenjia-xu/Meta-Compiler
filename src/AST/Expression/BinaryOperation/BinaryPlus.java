@@ -1,6 +1,7 @@
 package AST.Expression.BinaryOperation;
 
 
+import AST.Constant.StringConstant;
 import AST.Constant.IntConstant;
 import AST.Expression.Expression;
 import AST.Type.*;
@@ -19,10 +20,22 @@ public class BinaryPlus extends Expression{
 		Type leftType = leftExpression.getType();
 		Type rightType = rightExpression.getType();
 		if(leftType instanceof IntType && rightType instanceof IntType){
-			return new BinaryPlus(leftExpression, rightExpression);
+			if((leftExpression instanceof IntConstant) && (rightExpression instanceof IntConstant)){
+				int leftValue = ((IntConstant) leftExpression).getValue();
+				int rightValue = ((IntConstant) rightExpression).getValue();
+				return new IntConstant(leftValue + rightValue);
+			}else {
+				return new BinaryPlus(leftExpression, rightExpression);
+			}
 		}
 		if(leftType instanceof StringType && rightType instanceof StringType){
-			return new BinaryPlus(leftExpression, rightExpression);
+			if((leftExpression instanceof StringConstant) && (rightExpression instanceof StringConstant)){
+				String leftValue = ((StringConstant) leftExpression).getValue();
+				String rightValue = ((StringConstant) rightExpression).getValue();
+				return new StringConstant(leftValue + rightValue);
+			}else {
+				return new BinaryPlus(leftExpression, rightExpression);
+			}
 		}
 		throw new CompilationError("binary plus needs int or string");
 	}

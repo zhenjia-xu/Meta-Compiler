@@ -20,6 +20,11 @@ public class BinaryModulo extends Expression{
 				!(rightExpression.getType() instanceof IntType)){
 			throw new CompilationError("binary modulo needs int");
 		}
+		if((leftExpression instanceof IntConstant) && (rightExpression instanceof IntConstant)){
+			int leftValue = ((IntConstant) leftExpression).getValue();
+			int rightValue = ((IntConstant) rightExpression).getValue();
+			return new IntConstant(leftValue % rightValue);
+		}
 		return new BinaryModulo(leftExpression, rightExpression);
 	}
 	@Override

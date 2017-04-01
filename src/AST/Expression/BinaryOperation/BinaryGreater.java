@@ -3,6 +3,7 @@ package AST.Expression.BinaryOperation;
 
 import AST.Constant.BoolConstant;
 import AST.Constant.IntConstant;
+import AST.Constant.StringConstant;
 import AST.Expression.Expression;
 import AST.Type.*;
 import Utility.CompilationError;
@@ -20,10 +21,22 @@ public class BinaryGreater extends Expression{
 		Type leftType = leftExpression.getType();
 		Type rightType = rightExpression.getType();
 		if(leftType instanceof IntType && rightType instanceof IntType){
-			return new BinaryGreater(leftExpression, rightExpression);
+			if((leftExpression instanceof IntConstant) && (rightExpression instanceof IntConstant)){
+				int leftValue = ((IntConstant) leftExpression).getValue();
+				int rightValue = ((IntConstant) rightExpression).getValue();
+				return new BoolConstant(leftValue > rightValue);
+			}else {
+				return new BinaryGreater(leftExpression, rightExpression);
+			}
 		}
 		if(leftType instanceof StringType && rightType instanceof StringType){
-			return new BinaryGreater(leftExpression, rightExpression);
+			if((leftExpression instanceof StringConstant) && (rightExpression instanceof StringConstant)){
+				String leftValue = ((StringConstant) leftExpression).getValue();
+				String rightValue = ((StringConstant) rightExpression).getValue();
+				return new BoolConstant(leftValue.compareTo(rightValue) > 0);
+			}else {
+				return new BinaryGreater(leftExpression, rightExpression);
+			}
 		}
 		throw new CompilationError("binary greater needs int or string");
 	}

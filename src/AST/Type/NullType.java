@@ -14,7 +14,7 @@ public class NullType extends Type{
 		if(other == NullType.getInstance()) return true;
 		if(other instanceof ArrayType) return true;
 		if(other instanceof ClassType) return true;
-		if(other instanceof StringType) return true;
+//		if(other instanceof StringType) return true;
 		return false;
 	}
 	@Override

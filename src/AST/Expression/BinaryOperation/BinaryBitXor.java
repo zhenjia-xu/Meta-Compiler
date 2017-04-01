@@ -20,6 +20,11 @@ public class BinaryBitXor extends Expression{
 				!(rightExpression.getType() instanceof IntType)){
 			throw new CompilationError("binary bit xor needs int");
 		}
+		if((leftExpression instanceof IntConstant) && (rightExpression instanceof IntConstant)){
+			int leftValue = ((IntConstant) leftExpression).getValue();
+			int rightValue = ((IntConstant) rightExpression).getValue();
+			return new IntConstant(leftValue ^ rightValue);
+		}
 		return new BinaryBitXor(leftExpression, rightExpression);
 	}
 	@Override

@@ -15,12 +15,17 @@ public class BinaryMultiplication extends Expression{
 		this.leftExpression = leftExpression;
 		this.rightExpression = rightExpressoin;
 	}
-	public static Expression getExpression(Expression leftExpression, Expression rightExpressoin){
+	public static Expression getExpression(Expression leftExpression, Expression rightExpression){
 		if(!(leftExpression.getType() instanceof IntType) ||
-				!(rightExpressoin.getType() instanceof IntType)){
+				!(rightExpression.getType() instanceof IntType)){
 			throw new CompilationError("binary multiplication needs int");
 		}
-		return new BinaryMultiplication(leftExpression, rightExpressoin);
+		if((leftExpression instanceof IntConstant) && (rightExpression instanceof IntConstant)){
+			int leftValue = ((IntConstant) leftExpression).getValue();
+			int rightValue = ((IntConstant) rightExpression).getValue();
+			return new IntConstant(leftValue * rightValue);
+		}
+		return new BinaryMultiplication(leftExpression, rightExpression);
 	}
 	@Override
 	public String toString(){

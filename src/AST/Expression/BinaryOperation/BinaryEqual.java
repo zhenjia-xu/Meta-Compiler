@@ -17,6 +17,24 @@ public class BinaryEqual extends Expression{
 		if(!(leftExpression.getType().compatibleWith(rightExpression.getType()))){
 			throw new CompilationError("binary equal needs two compatible type");
 		}
+		if((leftExpression instanceof IntConstant) && (rightExpression instanceof IntConstant)){
+			int leftValue = ((IntConstant) leftExpression).getValue();
+			int rightValue = ((IntConstant) rightExpression).getValue();
+			return new BoolConstant(leftValue == rightValue);
+		}
+		if((leftExpression instanceof BoolConstant) && (rightExpression instanceof BoolConstant)){
+			boolean leftValue = ((BoolConstant) leftExpression).getValue();
+			boolean rightValue = ((BoolConstant) rightExpression).getValue();
+			return new BoolConstant(leftValue == rightValue);
+		}
+		if((leftExpression instanceof StringConstant) && (rightExpression instanceof StringConstant)){
+			String leftValue = ((StringConstant) leftExpression).getValue();
+			String rightValue = ((StringConstant) rightExpression).getValue();
+			return new BoolConstant(leftValue.equals(rightValue));
+		}
+		if((leftExpression instanceof NullConstant) && (rightExpression instanceof NullConstant)){
+			return new BoolConstant(true);
+		}
 		return new BinaryEqual(leftExpression, rightExpression);
 	}
 	@Override

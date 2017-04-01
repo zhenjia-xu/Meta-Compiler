@@ -20,6 +20,11 @@ public class BinaryRightShift extends Expression{
 				!(rightExpression.getType() instanceof IntType)){
 			throw new CompilationError("binary right shift needs int");
 		}
+		if((leftExpression instanceof IntConstant) && (rightExpression instanceof IntConstant)){
+			int leftValue = ((IntConstant) leftExpression).getValue();
+			int rightValue = ((IntConstant) rightExpression).getValue();
+			return new IntConstant(leftValue >> rightValue);
+		}
 		return new BinaryRightShift(leftExpression, rightExpression);
 	}
 	@Override

@@ -1,6 +1,7 @@
 package AST.Expression.BinaryOperation;
 
 
+import AST.Constant.BoolConstant;
 import AST.Constant.IntConstant;
 import AST.Expression.Expression;
 import AST.Type.*;
@@ -20,6 +21,11 @@ public class BinaryLogicalAnd extends Expression{
 		if(!(leftExpression.getType() instanceof BoolType) ||
 				!(rightExpression.getType() instanceof BoolType)){
 			throw new CompilationError("binary logical and needs bool");
+		}
+		if((leftExpression instanceof BoolConstant) && (rightExpression instanceof BoolConstant)){
+			boolean leftValue = ((BoolConstant) leftExpression).getValue();
+			boolean rightValue = ((BoolConstant) rightExpression).getValue();
+			return new BoolConstant(leftValue && rightValue);
 		}
 		return new BinaryLogicalAnd(leftExpression, rightExpression);
 	}

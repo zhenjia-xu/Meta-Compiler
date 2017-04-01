@@ -14,7 +14,7 @@ public class StringType extends Type implements Scope{
 	}
 	@Override
 	public boolean compatibleWith(Type other){
-		return this == other || (other instanceof NullType);
+		return this == other;
 	}
 	@Override
 	public String toString(){
