@@ -4,6 +4,7 @@ import AST.Environment;
 import AST.Statement.VariableDeclarationStatement;
 import AST.Symbol.Symbol;
 import AST.Type.*;
+import FrontEnd.Parser.MetaLexer;
 import FrontEnd.Parser.MetaParser;
 import Utility.CompilationError;
 import org.antlr.v4.runtime.tree.ParseTree;
@@ -44,7 +45,11 @@ public class OtherDeclarationListener extends BaseListener{
 		for(ParseTree x: ctx.functionDeclaration()){
 			FunctionType function = (FunctionType) returnNode.get(x);
 			function.addClassScope(classType);
-			classType.addMemberFunction(function);
+			if(function.getName() == null) {
+				classType.addConstructFunction(function);
+			}else{
+				classType.addMemberFunction(function);
+			}
 		}
 		for(ParseTree x: ctx.variableDeclaration()){
 			VariableDeclarationStatement variable = (VariableDeclarationStatement) returnNode.get(x);
@@ -55,17 +60,20 @@ public class OtherDeclarationListener extends BaseListener{
 	}
 	@Override
 	public void exitFunctionDeclaration(MetaParser.FunctionDeclarationContext ctx) {
-		String functionName = ctx.Identifier(0).getText();
+		String functionName = null, name;
 		Type returnType = (Type)returnNode.get(ctx.getChild(0));
-		int delta = 0;
-		if(ctx.Identifier().size() != ctx.type().size()){
-			delta = 1;
+		int typeStart = 1, identifierStart = 0;
+		if(returnType instanceof VoidType){
+			typeStart = 0;
+		}
+		if(ctx.Identifier().size() != ctx.type().size() - typeStart){
+			functionName = ctx.Identifier(0).getText();
+			identifierStart = 1;
 		}
 		List<Symbol> parameterList = new ArrayList<>();
-		int parameterNum = ctx.Identifier().size() - 1;
-		for(int i = 1; i <= parameterNum; i++){
-			Type parameterType = (Type)returnNode.get(ctx.type(i - delta));
-			String parameterName = ctx.Identifier(i).getText();
+		for(int i = 0; i < ctx.type().size() - typeStart; i++){
+			Type parameterType = (Type)returnNode.get(ctx.type(i + typeStart));
+			String parameterName = ctx.Identifier(i + identifierStart).getText();
 			parameterList.add(new Symbol(parameterName, parameterType));
 		}
 		FunctionType function = new FunctionType(functionName, returnType, parameterList);

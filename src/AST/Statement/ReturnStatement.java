@@ -15,15 +15,21 @@ public class ReturnStatement extends Statement{
 		if(function == null){
 			throw new CompilationError("The return statement should be in a function");
 		}
-		boolean returnError = false;
-		if(returnExpression == null && function.getReturnType() != VoidType.getInstance()){
-			returnError = true;
-		}
-		if(returnExpression != null && !returnExpression.getType().compatibleWith(function.getReturnType())){
-			returnError = true;
-		}
-		if(returnError){
-			throw new CompilationError("value of return should be the same type as the function");
+		if(function.getName() == null){
+			if(returnExpression != null){
+				throw new CompilationError("Construct function can't has return value");
+			}
+		}else {
+			boolean returnError = false;
+			if (returnExpression == null && function.getReturnType() != VoidType.getInstance()) {
+				returnError = true;
+			}
+			if (returnExpression != null && !returnExpression.getType().compatibleWith(function.getReturnType())) {
+				returnError = true;
+			}
+			if (returnError) {
+				throw new CompilationError("value of return should be the same type as the function");
+			}
 		}
 		this.function = function;
 		this.returnExpression = returnExpression;

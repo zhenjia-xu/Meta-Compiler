@@ -1,20 +1,21 @@
 package AST.Type;
 
 import java.util.Map;
-
 import AST.Statement.VariableDeclarationStatement;
-
 import AST.Symbol.Scope;
-import Utility.Utility;
+import Utility.*;
+
 public class ClassType extends Type implements Scope {
     private String name;
     private VariableTable memberVariableTable;
     private FunctionTable memberFunctionTable;
+    private FunctionType construstFunction;
 
     public ClassType(String name){
         this.name = name;
         this.memberFunctionTable = new FunctionTable();
         this.memberVariableTable = new VariableTable();
+        construstFunction = null;
     }
     public Map<String, FunctionType> getMemberFunctionTable(){
         return memberFunctionTable.getFunctionMap();
@@ -33,6 +34,12 @@ public class ClassType extends Type implements Scope {
     }
     public void addMemberVariable(VariableDeclarationStatement variable){
         memberVariableTable.addVariable(variable);
+    }
+    public void addConstructFunction(FunctionType function){
+        if(construstFunction != null){
+            throw new CompilationError("Class " + name + " can't has two construct functions");
+        }
+        construstFunction = function;
     }
     public String getName(){
         return name;

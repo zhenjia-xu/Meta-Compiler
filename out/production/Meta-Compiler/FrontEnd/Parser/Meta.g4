@@ -5,7 +5,7 @@ program
 	;
 //函数定义
 functionDeclaration
-	:   (type | voidtype) Identifier '(' (type Identifier (',' type Identifier)*)? ')' blockStatement
+	:   (type | voidtype) Identifier? '(' (type Identifier (',' type Identifier)*)? ')' blockStatement
 	;
 //类定义
 classDeclaration
@@ -125,7 +125,7 @@ expression
 		#Identifier_Expression
 	|	thisToken
 		#This_Expression
-	|   'new' type ('[' expression? ']')*
+	|   'new' type (('[' expression? ']')* | '(' ')')
 		#Creation_Expression
 	|   '(' expression ')'
 		#Subgroup_Expression
