@@ -396,9 +396,18 @@ public class ASTreeListener extends BaseListener{
         returnNode.put(ctx, expression);
     }
     @Override
-    public void enterCreation_Expression(MetaParser.Creation_ExpressionContext ctx) { }
+    public void enterClass_Creation_Expression(MetaParser.Class_Creation_ExpressionContext ctx) { }
     @Override
-    public void exitCreation_Expression(MetaParser.Creation_ExpressionContext ctx) {
+    public void exitClass_Creation_Expression(MetaParser.Class_Creation_ExpressionContext ctx) {
+        Type type = (Type) returnNode.get(ctx.type());
+        List<Expression> expressionList = new ArrayList<>();
+        Expression expression = CreationExpression.getExpression(type, expressionList);
+        returnNode.put(ctx, expression);
+    }
+    @Override
+    public void enterArray_Creation_Expression(MetaParser.Array_Creation_ExpressionContext ctx) { }
+    @Override
+    public void exitArray_Creation_Expression(MetaParser.Array_Creation_ExpressionContext ctx) {
         Type type = (Type) returnNode.get(ctx.type());
         List<Expression> expressionList = new ArrayList<>();
         int childrenNum = ctx.children.size();

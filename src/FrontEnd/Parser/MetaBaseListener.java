@@ -352,6 +352,30 @@ public class MetaBaseListener implements MetaListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterClass_Creation_Expression(MetaParser.Class_Creation_ExpressionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitClass_Creation_Expression(MetaParser.Class_Creation_ExpressionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterArray_Creation_Expression(MetaParser.Array_Creation_ExpressionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitArray_Creation_Expression(MetaParser.Array_Creation_ExpressionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterPrefix_Expression(MetaParser.Prefix_ExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -419,18 +443,6 @@ public class MetaBaseListener implements MetaListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitBit_or_Expression(MetaParser.Bit_or_ExpressionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterCreation_Expression(MetaParser.Creation_ExpressionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitCreation_Expression(MetaParser.Creation_ExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

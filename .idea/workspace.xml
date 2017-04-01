@@ -2,64 +2,40 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fcadd001-2a06-4938-849d-b3b3c3569bfe" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Type/ClassType.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Type/ClassType.class" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$Creation_ExpressionContext.class" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Type/NullType.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Type/NullType.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Type/StringType.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Type/StringType.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Listener/ASTreeListener.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Listener/ASTreeListener.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Listener/OtherDeclarationListener.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Listener/OtherDeclarationListener.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaBaseListener.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaBaseListener.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaListener.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaListener.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$Add_Sub_ExpressionContext.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$Add_Sub_ExpressionContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$Array_ExpressionContext.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$Array_ExpressionContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$Array_TypeContext.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$Array_TypeContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$Assignment_ExpressionContext.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$Assignment_ExpressionContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$Bit_And_ExpressionContext.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$Bit_And_ExpressionContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$Bit_Xor_ExpreeeionContext.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$Bit_Xor_ExpreeeionContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$Bit_or_ExpressionContext.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$Bit_or_ExpressionContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$BlockStatementContext.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$BlockStatementContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$Bool_ConstantContext.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$Bool_ConstantContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$Bool_TypeContext.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$Bool_TypeContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$BreakStatementContext.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$BreakStatementContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$ClassDeclarationContext.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$ClassDeclarationContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$Class_TypeContext.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$Class_TypeContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$ConstantContext.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$ConstantContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$Constant_ExpressionContext.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$Constant_ExpressionContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$ContinueStatementContext.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$ContinueStatementContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$Creation_ExpressionContext.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$Creation_ExpressionContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$Equality_ExpressionContext.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$Equality_ExpressionContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$ExpressionContext.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$ExpressionContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$ExpressionStatementContext.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$ExpressionStatementContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$ForStatementContext.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$ForStatementContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$FunctionDeclarationContext.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$FunctionDeclarationContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$Function_ExpressionContext.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$Function_ExpressionContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$Identifier_ExpressionContext.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$Identifier_ExpressionContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$IfStatementContext.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$IfStatementContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$Integer_ConstantContext.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$Integer_ConstantContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$Integer_TypeContext.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$Integer_TypeContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$Logical_And_ExpressionContext.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$Logical_And_ExpressionContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$Logical_Or_ExpressionContext.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$Logical_Or_ExpressionContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$Member_ExpressionContext.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$Member_ExpressionContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$Mul_Div_Mod_ExpressionContext.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$Mul_Div_Mod_ExpressionContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$Null_ConstantContext.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$Null_ConstantContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$Prefix_ExpressionContext.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$Prefix_ExpressionContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$Relation_ExpressionContext.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$Relation_ExpressionContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$ReturnStatementContext.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$ReturnStatementContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$Shift_ExpressionContext.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$Shift_ExpressionContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$StatementContext.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$StatementContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$String_ConstantContext.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$String_ConstantContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$String_TypeContext.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$String_TypeContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$Subgroup_ExpressionContext.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$Subgroup_ExpressionContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$Suffix_ExpressionContext.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$Suffix_ExpressionContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$ThisTokenContext.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$ThisTokenContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$This_ExpressionContext.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$This_ExpressionContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$TypeContext.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$TypeContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$VariableDeclarationContext.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$VariableDeclarationContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$Void_typeContext.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$Void_typeContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$VoidtypeContext.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$VoidtypeContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$WhileStatementContext.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser$WhileStatementContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/MetaParser.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/Meta.g4" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/FrontEnd/Parser/Meta.g4" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/program.txt" afterPath="$PROJECT_DIR$/program.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Statement/ReturnStatement.java" afterPath="$PROJECT_DIR$/src/AST/Statement/ReturnStatement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Type/ClassType.java" afterPath="$PROJECT_DIR$/src/AST/Type/ClassType.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Type/NullType.java" afterPath="$PROJECT_DIR$/src/AST/Type/NullType.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Type/StringType.java" afterPath="$PROJECT_DIR$/src/AST/Type/StringType.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FrontEnd/Listener/ASTreeListener.java" afterPath="$PROJECT_DIR$/src/FrontEnd/Listener/ASTreeListener.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FrontEnd/Listener/OtherDeclarationListener.java" afterPath="$PROJECT_DIR$/src/FrontEnd/Listener/OtherDeclarationListener.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FrontEnd/Parser/Meta.g4" afterPath="$PROJECT_DIR$/src/FrontEnd/Parser/Meta.g4" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FrontEnd/Parser/MetaBaseListener.java" afterPath="$PROJECT_DIR$/src/FrontEnd/Parser/MetaBaseListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FrontEnd/Parser/MetaListener.java" afterPath="$PROJECT_DIR$/src/FrontEnd/Parser/MetaListener.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FrontEnd/Parser/MetaParser.java" afterPath="$PROJECT_DIR$/src/FrontEnd/Parser/MetaParser.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -78,27 +54,37 @@
     <favorites_list name="Meta-Compiler" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.81981385">
+    <splitter split-orientation="horizontal" split-proportion="0.46343085">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="ASTreeListener.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/FrontEnd/Listener/ASTreeListener.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="198">
-                  <caret line="253" column="26" lean-forward="false" selection-start-line="253" selection-start-column="16" selection-end-line="253" selection-end-column="26" />
+                <state relative-caret-position="5730">
+                  <caret line="211" column="10" lean-forward="false" selection-start-line="211" selection-start-column="10" selection-end-line="211" selection-end-column="10" />
                   <folding>
                     <element signature="imports" expanded="true" />
-                    <marker date="1490971742173" expanded="true" signature="20888:20983" ph="{...}" />
+                    <marker date="1491037392802" expanded="true" signature="21388:21483" ph="{...}" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="ReturnStatement.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="ReturnStatement.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/AST/Statement/ReturnStatement.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="180">
-                  <caret line="25" column="13" lean-forward="true" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+                <state relative-caret-position="630">
+                  <caret line="25" column="13" lean-forward="false" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Environment.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/AST/Environment.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="240">
+                  <caret line="12" column="32" lean-forward="false" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
                   <folding />
                 </state>
               </provider>
@@ -109,19 +95,16 @@
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="150">
                   <caret line="5" column="11" lean-forward="false" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
-                  <folding>
-                    <element signature="e#3449#3450#0" expanded="false" />
-                    <element signature="e#3476#3477#0" expanded="false" />
-                  </folding>
+                  <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="OtherDeclarationListener.java" pinned="false" current-in-tab="false">
+          <file leaf-file-name="OtherDeclarationListener.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/FrontEnd/Listener/OtherDeclarationListener.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="443">
-                  <caret line="43" column="23" lean-forward="true" selection-start-line="43" selection-start-column="23" selection-end-line="43" selection-end-column="23" />
+                <state relative-caret-position="210">
+                  <caret line="17" column="43" lean-forward="false" selection-start-line="17" selection-start-column="42" selection-end-line="17" selection-end-column="43" />
                   <folding />
                 </state>
               </provider>
@@ -130,7 +113,7 @@
           <file leaf-file-name="ClassType.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/AST/Type/ClassType.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="417">
+                <state relative-caret-position="480">
                   <caret line="21" column="5" lean-forward="false" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
                   <folding>
                     <element signature="imports" expanded="true" />
@@ -146,11 +129,7 @@
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="420">
                   <caret line="17" column="34" lean-forward="false" selection-start-line="17" selection-start-column="34" selection-end-line="17" selection-end-column="34" />
-                  <folding>
-                    <element signature="imports" expanded="false" />
-                    <element signature="e#1125#1126#0" expanded="false" />
-                    <element signature="e#1149#1150#0" expanded="false" />
-                  </folding>
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -160,13 +139,7 @@
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="510">
                   <caret line="23" column="39" lean-forward="false" selection-start-line="23" selection-start-column="39" selection-end-line="23" selection-end-column="39" />
-                  <folding>
-                    <element signature="imports" expanded="false" />
-                    <element signature="e#938#939#0" expanded="false" />
-                    <element signature="e#958#959#0" expanded="false" />
-                    <element signature="e#996#997#0" expanded="false" />
-                    <element signature="e#1022#1023#0" expanded="false" />
-                  </folding>
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -176,24 +149,7 @@
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="180">
                   <caret line="10" column="18" lean-forward="false" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
-                  <folding>
-                    <element signature="e#172#173#0" expanded="false" />
-                    <element signature="e#196#197#0" expanded="false" />
-                    <element signature="e#478#479#0" expanded="false" />
-                    <element signature="e#498#499#0" expanded="false" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="MetaBaseListener.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/FrontEnd/Parser/MetaBaseListener.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="13650">
-                  <caret line="457" column="4" lean-forward="false" selection-start-line="450" selection-start-column="4" selection-end-line="457" selection-end-column="4" />
-                  <folding>
-                    <element signature="imports" expanded="false" />
-                  </folding>
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -203,9 +159,7 @@
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="120">
                   <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-                  <folding>
-                    <element signature="imports" expanded="false" />
-                  </folding>
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -217,8 +171,8 @@
           <file leaf-file-name="Meta.g4" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/FrontEnd/Parser/Meta.g4">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="390">
-                  <caret line="13" column="5" lean-forward="false" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
+                <state relative-caret-position="210">
+                  <caret line="126" column="18" lean-forward="false" selection-start-line="126" selection-start-column="18" selection-end-line="126" selection-end-column="18" />
                   <folding />
                 </state>
               </provider>
@@ -227,28 +181,8 @@
           <file leaf-file-name="program.txt" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/program.txt">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="60">
-                  <caret line="2" column="15" lean-forward="false" selection-start-line="2" selection-start-column="15" selection-end-line="2" selection-end-column="15" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="CompilationError.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/Utility/CompilationError.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="210">
-                  <caret line="7" column="4" lean-forward="false" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="structure.txt" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/structure.txt">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="210">
-                  <caret line="7" column="11" lean-forward="false" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
+                <state relative-caret-position="180">
+                  <caret line="12" column="32" lean-forward="false" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
                   <folding />
                 </state>
               </provider>
@@ -268,7 +202,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>exitexpress</find>
       <find>exitsta</find>
       <find>exitexpre</find>
       <find>shift</find>
@@ -297,6 +230,7 @@
       <find>this_e</find>
       <find>Identifier</find>
       <find>functionde</find>
+      <find>array_cr</find>
       <find>exitreturn</find>
     </findStrings>
   </component>
@@ -338,14 +272,12 @@
         <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryGreaterEqual.java" />
         <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryLess.java" />
         <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryLessEqual.java" />
-        <option value="$PROJECT_DIR$/src/AST/Type/NullType.java" />
         <option value="$PROJECT_DIR$/src/AST/Type/IntType.java" />
         <option value="$PROJECT_DIR$/src/AST/Type/VoidType.java" />
         <option value="$PROJECT_DIR$/src/AST/Type/BoolType.java" />
         <option value="$PROJECT_DIR$/src/AST/Type/FunctionType.java" />
         <option value="$PROJECT_DIR$/src/AST/Type/FunctionTable.java" />
         <option value="$PROJECT_DIR$/src/AST/Symbol/ProgramScope.java" />
-        <option value="$PROJECT_DIR$/src/AST/Type/StringType.java" />
         <option value="$PROJECT_DIR$/src/AST/Type/ArrayType.java" />
         <option value="$PROJECT_DIR$/src/AST/Expression/SuffixOperation/SuffixDecrement.java" />
         <option value="$PROJECT_DIR$/src/AST/Expression/SuffixOperation/SuffixIncrement.java" />
@@ -369,13 +301,15 @@
         <option value="$PROJECT_DIR$/src/AST/Statement/IfStatement.java" />
         <option value="$PROJECT_DIR$/src/FrontEnd/Parser/MetaBaseListener.java" />
         <option value="$PROJECT_DIR$/src/AST/Expression/CreationExpression.java" />
-        <option value="$PROJECT_DIR$/src/FrontEnd/Listener/ASTreeListener.java" />
         <option value="$PROJECT_DIR$/src/AST/Expression/ThisExpression.java" />
         <option value="$PROJECT_DIR$/src/AST/Expression/MemberExpression.java" />
-        <option value="$PROJECT_DIR$/src/FrontEnd/Parser/Meta.g4" />
         <option value="$PROJECT_DIR$/src/AST/Type/ClassType.java" />
-        <option value="$PROJECT_DIR$/src/FrontEnd/Listener/OtherDeclarationListener.java" />
         <option value="$PROJECT_DIR$/src/AST/Statement/ReturnStatement.java" />
+        <option value="$PROJECT_DIR$/src/FrontEnd/Listener/ASTreeListener.java" />
+        <option value="$PROJECT_DIR$/src/FrontEnd/Listener/OtherDeclarationListener.java" />
+        <option value="$PROJECT_DIR$/src/AST/Type/StringType.java" />
+        <option value="$PROJECT_DIR$/src/AST/Type/NullType.java" />
+        <option value="$PROJECT_DIR$/src/FrontEnd/Parser/Meta.g4" />
         <option value="$PROJECT_DIR$/program.txt" />
       </list>
     </option>
@@ -519,6 +453,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -647,77 +583,9 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Meta-Compiler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Meta-Compiler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AST" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Symbol" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Meta-Compiler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Meta-Compiler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AST" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Statement" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Meta-Compiler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Meta-Compiler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AST" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Expression" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="PackagesPane" />
-      <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1073,7 +941,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="66" y="-11" width="1855" height="1092" extended-state="7" />
+    <frame x="66" y="-11" width="1855" height="1092" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1095,7 +963,7 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30081302" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.273374" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18834323" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1127,19 +995,10 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/AST/Type/NullType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AST/Type/IntType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1147,7 +1006,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1155,10 +1013,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
           <caret line="27" column="37" lean-forward="false" selection-start-line="27" selection-start-column="37" selection-end-line="27" selection-end-column="37" />
-          <folding>
-            <element signature="e#807#808#0" expanded="false" />
-            <element signature="e#842#843#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1166,7 +1020,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1174,7 +1027,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="2" column="22" lean-forward="false" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1182,12 +1034,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="62">
           <caret line="17" column="25" lean-forward="true" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
-          <folding>
-            <element signature="e#1068#1069#0" expanded="true" />
-            <element signature="e#1105#1106#0" expanded="true" />
-            <element signature="e#1139#1140#0" expanded="true" />
-            <element signature="e#1172#1173#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1202,19 +1048,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Type/StringType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="13" column="5" lean-forward="false" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#273#274#0" expanded="false" />
-            <element signature="e#295#296#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1222,7 +1055,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="2" column="42" lean-forward="false" selection-start-line="2" selection-start-column="42" selection-end-line="2" selection-end-column="42" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1306,16 +1138,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Environment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1950">
-          <caret line="65" column="38" lean-forward="true" selection-start-line="65" selection-start-column="38" selection-end-line="65" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryPlus.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="277">
@@ -1327,9 +1149,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="900">
           <caret line="34" column="5" lean-forward="false" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1338,10 +1157,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1770">
           <caret line="70" column="8" lean-forward="false" selection-start-line="70" selection-start-column="8" selection-end-line="70" selection-end-column="8" />
-          <folding>
-            <element signature="e#1990#1991#0" expanded="false" />
-            <element signature="e#2030#2031#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1349,7 +1164,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="9" column="11" lean-forward="false" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1375,7 +1189,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="810">
           <caret line="40" column="53" lean-forward="false" selection-start-line="40" selection-start-column="53" selection-end-line="40" selection-end-column="53" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1383,7 +1196,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1391,17 +1203,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="9" column="19" lean-forward="false" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/FrontEnd/Parser/MetaBaseListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="13650">
-          <caret line="457" column="4" lean-forward="false" selection-start-line="450" selection-start-column="4" selection-end-line="457" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1409,9 +1210,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1419,12 +1218,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="10" column="18" lean-forward="false" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
-          <folding>
-            <element signature="e#172#173#0" expanded="false" />
-            <element signature="e#196#197#0" expanded="false" />
-            <element signature="e#478#479#0" expanded="false" />
-            <element signature="e#498#499#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1432,13 +1226,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
           <caret line="23" column="39" lean-forward="false" selection-start-line="23" selection-start-column="39" selection-end-line="23" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#938#939#0" expanded="false" />
-            <element signature="e#958#959#0" expanded="false" />
-            <element signature="e#996#997#0" expanded="false" />
-            <element signature="e#1022#1023#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1446,18 +1234,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
           <caret line="17" column="34" lean-forward="false" selection-start-line="17" selection-start-column="34" selection-end-line="17" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1125#1126#0" expanded="false" />
-            <element signature="e#1149#1150#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Utility/CompilationError.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="7" column="4" lean-forward="false" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
           <folding />
         </state>
       </provider>
@@ -1466,7 +1242,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="7" column="11" lean-forward="false" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1474,10 +1249,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="5" column="11" lean-forward="false" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
-          <folding>
-            <element signature="e#3449#3450#0" expanded="false" />
-            <element signature="e#3476#3477#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1504,25 +1276,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/FrontEnd/Parser/Meta.g4">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="13" column="5" lean-forward="false" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AST/Type/FunctionTable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="690">
           <caret line="35" column="58" lean-forward="false" selection-start-line="35" selection-start-column="58" selection-end-line="35" selection-end-column="58" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AST/Type/ClassType.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="417">
+        <state relative-caret-position="480">
           <caret line="21" column="5" lean-forward="false" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1532,37 +1295,90 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/FrontEnd/Listener/OtherDeclarationListener.java">
+    <entry file="file://$PROJECT_DIR$/src/AST/Statement/ReturnStatement.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="443">
-          <caret line="43" column="23" lean-forward="true" selection-start-line="43" selection-start-column="23" selection-end-line="43" selection-end-column="23" />
+        <state relative-caret-position="630">
+          <caret line="25" column="13" lean-forward="false" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AST/Environment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="12" column="32" lean-forward="false" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FrontEnd/Parser/MetaBaseListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="535">
+          <caret line="373" column="4" lean-forward="true" selection-start-line="354" selection-start-column="4" selection-end-line="373" selection-end-column="4" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/FrontEnd/Listener/ASTreeListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="253" column="26" lean-forward="false" selection-start-line="253" selection-start-column="16" selection-end-line="253" selection-end-column="26" />
+        <state relative-caret-position="5730">
+          <caret line="211" column="10" lean-forward="false" selection-start-line="211" selection-start-column="10" selection-end-line="211" selection-end-column="10" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1490971742173" expanded="true" signature="20888:20983" ph="{...}" />
+            <marker date="1491037392802" expanded="true" signature="21388:21483" ph="{...}" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AST/Type/StringType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="3" column="23" lean-forward="false" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
+          <folding>
+            <element signature="e#273#274#0" expanded="true" />
+            <element signature="e#295#296#0" expanded="true" />
+            <element signature="e#350#351#0" expanded="true" />
+            <element signature="e#408#409#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AST/Type/NullType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="16" column="38" lean-forward="false" selection-start-line="16" selection-start-column="38" selection-end-line="16" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Utility/CompilationError.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="7" column="4" lean-forward="false" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FrontEnd/Parser/Meta.g4">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="126" column="18" lean-forward="false" selection-start-line="126" selection-start-column="18" selection-end-line="126" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FrontEnd/Listener/OtherDeclarationListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="17" column="43" lean-forward="false" selection-start-line="17" selection-start-column="42" selection-end-line="17" selection-end-column="43" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/program.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="2" column="15" lean-forward="false" selection-start-line="2" selection-start-column="15" selection-end-line="2" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Statement/ReturnStatement.java">
-      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
-          <caret line="25" column="13" lean-forward="true" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+          <caret line="12" column="32" lean-forward="false" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
           <folding />
         </state>
       </provider>

@@ -316,6 +316,30 @@ public interface MetaListener extends ParseTreeListener {
 	 */
 	void exitIdentifier_Expression(MetaParser.Identifier_ExpressionContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code Class_Creation_Expression}
+	 * labeled alternative in {@link MetaParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterClass_Creation_Expression(MetaParser.Class_Creation_ExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Class_Creation_Expression}
+	 * labeled alternative in {@link MetaParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitClass_Creation_Expression(MetaParser.Class_Creation_ExpressionContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code Array_Creation_Expression}
+	 * labeled alternative in {@link MetaParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterArray_Creation_Expression(MetaParser.Array_Creation_ExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Array_Creation_Expression}
+	 * labeled alternative in {@link MetaParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitArray_Creation_Expression(MetaParser.Array_Creation_ExpressionContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code Prefix_Expression}
 	 * labeled alternative in {@link MetaParser#expression}.
 	 * @param ctx the parse tree
@@ -387,18 +411,6 @@ public interface MetaListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitBit_or_Expression(MetaParser.Bit_or_ExpressionContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code Creation_Expression}
-	 * labeled alternative in {@link MetaParser#expression}.
-	 * @param ctx the parse tree
-	 */
-	void enterCreation_Expression(MetaParser.Creation_ExpressionContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code Creation_Expression}
-	 * labeled alternative in {@link MetaParser#expression}.
-	 * @param ctx the parse tree
-	 */
-	void exitCreation_Expression(MetaParser.Creation_ExpressionContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code Array_Expression}
 	 * labeled alternative in {@link MetaParser#expression}.

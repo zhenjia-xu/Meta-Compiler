@@ -15,20 +15,19 @@ import java.util.List;
 public class OtherDeclarationListener extends BaseListener{
 	@Override
 	public void exitProgram(MetaParser.ProgramContext ctx) {
-		boolean main_flag = false;
 		for(ParseTree x: ctx.functionDeclaration()){
 			FunctionType function = (FunctionType) returnNode.get(x);
 			if(function.getName().equals("main")) {
 				if (!(function.getReturnType() instanceof IntType)) {
-					throw new CompilationError("The return yype of main should be int");
+					throw new CompilationError("The return type of main should be int");
 				}
-				main_flag = true;
+				if(function.getParameterList().size() != 0){
+					throw new CompilationError("The main function can't have parameters");
+				}
 			}
 			Environment.globalFunctionTable.addFunction(function);
 		}
-		if(!main_flag){
-			throw new CompilationError("Can't find main");
-		}
+
 		for(ParseTree x: ctx.variableDeclaration()){
 			VariableDeclarationStatement variable = (VariableDeclarationStatement) returnNode.get(x);
 			Environment.globalVariableTable.addVariable(variable);

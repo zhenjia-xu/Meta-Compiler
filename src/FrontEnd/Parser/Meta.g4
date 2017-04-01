@@ -125,8 +125,10 @@ expression
 		#Identifier_Expression
 	|	thisToken
 		#This_Expression
-	|   'new' type (('[' expression? ']')* | '(' ')')
-		#Creation_Expression
+	|   'new' type ('[' expression? ']')+
+		#Array_Creation_Expression
+	|	'new' type
+		#Class_Creation_Expression
 	|   '(' expression ')'
 		#Subgroup_Expression
 	|   expression '(' (expression (',' expression)*)? ')'
