@@ -39,6 +39,9 @@ public class ClassType extends Type implements Scope {
         if(construstFunction != null){
             throw new CompilationError("Class " + name + " can't has two construct functions");
         }
+        if(!compatibleWith(function.getReturnType())){
+            throw new CompilationError("Class " + name + "'s construct functions error");
+        }
         construstFunction = function;
     }
     public String getName(){

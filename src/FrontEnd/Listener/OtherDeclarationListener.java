@@ -15,6 +15,7 @@ import java.util.List;
 public class OtherDeclarationListener extends BaseListener{
 	@Override
 	public void exitProgram(MetaParser.ProgramContext ctx) {
+		boolean main_flag = false;
 		for(ParseTree x: ctx.functionDeclaration()){
 			FunctionType function = (FunctionType) returnNode.get(x);
 			if(function.getName().equals("main")) {
@@ -24,10 +25,13 @@ public class OtherDeclarationListener extends BaseListener{
 				if(function.getParameterList().size() != 0){
 					throw new CompilationError("The main function can't have parameters");
 				}
+				main_flag = true;
 			}
 			Environment.globalFunctionTable.addFunction(function);
 		}
-
+		if(!main_flag){
+			throw new CompilationError("Can't find main function");
+		}
 		for(ParseTree x: ctx.variableDeclaration()){
 			VariableDeclarationStatement variable = (VariableDeclarationStatement) returnNode.get(x);
 			Environment.globalVariableTable.addVariable(variable);

@@ -1,61 +1,68 @@
-class ClassA{
-	int num;
-	string str;
-	bool[] bool_arr;
-	ClassA(){
-		str = null;
-		num = 1;
-		bool_arr = null;
-		bool_arr = new bool[100];
-		return;
-	}
-	ClassA getClassA(int x){
-		ClassA tmp = new ClassA;
-		tmp.num = x;
-		this.num = x;
-		return tmp;
-	}
-	string getString(){
-		return str;
-	}
+
+class naive
+{
+    interesting[][] HongKong;
+    naive()
+    {
+        HongKong = new interesting[100][];
+        HongKong[1] = null;
+        int i = 0;
+        for(i = 1; i < 99; i ++)
+        {
+            HongKong[i] = new interesting[233];
+        }
+        HongKong[99] = new interesting[1];
+        return;
+    }
+
+    int Journalist(interesting news)
+    {
+        println(news.learnmore);
+        println("news.learnmore");
+    }
+
 }
-int Main(int parameter){
-	ClassA a = new ClassA;
-	ClassA b = a.getClassA(parameter);
-	b.num = parameter;
-	parameter = getInt();
-	int[] int_arr = (new int[2][])[3];
-	int number = b.getString().parseInt() + getString().ord(123) % b.getString().substring(1, 3).length();
-	string str1 = "123";
-	string str2 = "456";
-	int num = 0;
-	if(str1 < str2) num++;
-	if(str1 <= str2) num++;
-	if(str1 > str2) num++;
-	if(str1 >= str2) num++;
-	if((str1 + str2) == (str1 + str2)){
-		num++;
-	}else if(false)
-			num--;
-			else --num;
-	for(;;){
-		break;
-	}
-	while(true)
-		continue;
-	println(str1);
-	print(str2);
-	return num;
+
+class interesting
+{
+     string learnmore;
+     int second;
+
+     interesting()
+     {
+        second = 0;
+        learnmore = "+1s";
+        second = learnmore.length() + second;
+     }
 }
+
+int main()
+{
+  naive[] Shanghai = new naive[233];
+  interesting[][] Beijing = new interesting[12][34];
+  ++Beijing[1][1].second = ((Beijing[0][0].second))*(((((((((((((((((((((23333)))))))))))))))))))));
+  ++++++++--------++++++------++++++++Beijing[2][2].second ;
+  {}
+  {
+  {}
+  {
+
+  }
+  }
+  return 0;
+}
+
+
 
 
 /*!! metadata:
 === comment ===
-trivial test
+class-testcase-515030910592-lijinning.txt
+Test class and construction function. And expression.
 === assert ===
 success_compile
 === phase ===
-semantic pretest
+semantic extended
 === is_public ===
 True
 
