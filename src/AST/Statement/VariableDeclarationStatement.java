@@ -4,9 +4,13 @@ import AST.Expression.Expression;
 import AST.Type.ClassType;
 import AST.Type.Type;
 import FrontEnd.Listener.BaseListener;
+import IR.Instruction;
+import IR.MoveInstruction;
 import Utility.*;
 
-public class VariableDeclarationStatement extends Statement {
+import java.util.List;
+
+public class  VariableDeclarationStatement extends Statement {
 	private Type type;
 	private String name;
 	private Expression expression;
@@ -52,5 +56,12 @@ public class VariableDeclarationStatement extends Statement {
 			str.append(expression.toString(indents + 1));
 		}
 		return str.toString();
+	}
+	@Override
+	public void generateInstruction(List<Instruction> instructionList){
+		if(expression != null){
+			expression.generateInstruction(instructionList);
+			instructionList.add(new MoveInstruction());
+		}
 	}
 }

@@ -5,9 +5,12 @@ import AST.Constant.BoolConstant;
 import AST.Constant.IntConstant;
 import AST.Expression.Expression;
 import AST.Type.*;
+import IR.Instruction;
 import Utility.CompilationError;
 import Utility.Utility;
 import jdk.nashorn.internal.codegen.types.BooleanType;
+
+import java.util.List;
 
 public class BinaryLogicalAnd extends Expression{
 	private Expression leftExpression, rightExpression;
@@ -38,5 +41,9 @@ public class BinaryLogicalAnd extends Expression{
 		return Utility.getIndent(indents) + "[binary logical and]\n"
 				+ leftExpression.toString(indents + 1)
 				+ rightExpression.toString(indents + 1);
+	}
+	@Override
+	public void generateInstruction(List<Instruction> instructionList){
+
 	}
 }

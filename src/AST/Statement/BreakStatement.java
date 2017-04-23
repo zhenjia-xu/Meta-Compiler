@@ -1,14 +1,18 @@
 package AST.Statement;
 
-import AST.Environment;
+import AST.ProgramAST;
+import IR.Instruction;
+import IR.JumpInstruction;
 import Utility.CompilationError;
 import Utility.Utility;
+
+import java.util.List;
 
 public class BreakStatement extends Statement{
 	private LoopStatement loopStatement;
 
 	public BreakStatement(){
-		LoopStatement loopStatement = Environment.symbolTable.getCurrentLoop();
+		LoopStatement loopStatement = ProgramAST.symbolTable.getCurrentLoop();
 		if(loopStatement == null){
 			throw new CompilationError("The break statement should be in a loop statement");
 		}
@@ -25,5 +29,9 @@ public class BreakStatement extends Statement{
 	public String toString(int indents){
 		return Utility.getIndent(indents) + "[break statement] -> "
 				+ loopStatement.toString() + "\n";
+	}
+	@Override
+	public void generateInstruction(List<Instruction> instructionList){
+		instructionList.add(new JumpInstruction(loopStatement.exitLabel));
 	}
 }

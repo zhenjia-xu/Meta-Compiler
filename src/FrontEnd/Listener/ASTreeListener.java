@@ -1,6 +1,6 @@
 package FrontEnd.Listener;
 
-import AST.Environment;
+import AST.ProgramAST;
 import AST.Symbol.*;
 import AST.Type.*;
 import AST.Constant.*;
@@ -10,10 +10,7 @@ import AST.Expression.PrefixOperation.*;
 import AST.Expression.SuffixOperation.*;
 import AST.Statement.*;
 import FrontEnd.Parser.MetaParser;
-import org.antlr.v4.runtime.ParserRuleContext;
-import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.ParseTree;
-import org.antlr.v4.runtime.tree.TerminalNode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,38 +18,38 @@ import java.util.List;
 public class ASTreeListener extends BaseListener{
     @Override
     public void enterProgram(MetaParser.ProgramContext ctx) {
-        Environment.symbolTable.enterScope(new ProgramScope());
-        Environment.globalFunctionTable.getFunctionMap().forEach((name, function) ->
-                Environment.symbolTable.addSymbol(new Symbol(name, function)));
+        ProgramAST.symbolTable.enterScope(new ProgramScope());
+        ProgramAST.globalFunctionTable.getFunctionMap().forEach((name, function) ->
+                ProgramAST.symbolTable.addSymbol(new Symbol(name, function)));
     }
     @Override
     public void exitProgram(MetaParser.ProgramContext ctx) {
-        Environment.symbolTable.exitScope();
+        ProgramAST.symbolTable.exitScope();
     }
     @Override
     public void enterFunctionDeclaration(MetaParser.FunctionDeclarationContext ctx) {
         FunctionType function = (FunctionType) returnNode.get(ctx);
-        Environment.symbolTable.enterScope(function);
+        ProgramAST.symbolTable.enterScope(function);
     }
     @Override
     public void exitFunctionDeclaration(MetaParser.FunctionDeclarationContext ctx) {
         FunctionType function = (FunctionType) returnNode.get(ctx);
         BlockStatement blockStatement = (BlockStatement) returnNode.get(ctx.blockStatement());
         function.addBlockStatement(blockStatement);
-        Environment.symbolTable.exitScope();
+        ProgramAST.symbolTable.exitScope();
     }
     @Override
     public void enterClassDeclaration(MetaParser.ClassDeclarationContext ctx) {
         ClassType classType = (ClassType) returnNode.get(ctx);
-        Environment.symbolTable.enterScope(classType);
+        ProgramAST.symbolTable.enterScope(classType);
         classType.getMemberFunctionTable().forEach((name, function) ->
-                Environment.symbolTable.addSymbol(new Symbol(name, function)));
+                ProgramAST.symbolTable.addSymbol(new Symbol(name, function)));
         classType.getMemberVariableTable().forEach((name, variable) ->
-                Environment.symbolTable.addSymbol(new Symbol(name, variable.getType())));
+                ProgramAST.symbolTable.addSymbol(new Symbol(name, variable.getType())));
     }
     @Override
     public void exitClassDeclaration(MetaParser.ClassDeclarationContext ctx) {
-        Environment.symbolTable.exitScope();
+        ProgramAST.symbolTable.exitScope();
     }
     @Override
     public void enterInteger_Type(MetaParser.Integer_TypeContext ctx) { }
@@ -116,13 +113,13 @@ public class ASTreeListener extends BaseListener{
     @Override
     public void enterStatement(MetaParser.StatementContext ctx) {
         if(ctx.getParent() instanceof MetaParser.IfStatementContext){
-            Environment.symbolTable.enterScope(new BlockStatement());
+            ProgramAST.symbolTable.enterScope(new BlockStatement());
         }
     }
     @Override
     public void exitStatement(MetaParser.StatementContext ctx) {
         if(ctx.getParent() instanceof MetaParser.IfStatementContext){
-            Environment.symbolTable.exitScope();
+            ProgramAST.symbolTable.exitScope();
         }
         Statement statement = (Statement) returnNode.get(ctx.getChild(0));
         returnNode.put(ctx, statement);
@@ -130,12 +127,12 @@ public class ASTreeListener extends BaseListener{
     @Override
     public void enterBlockStatement(MetaParser.BlockStatementContext ctx) {
         BlockStatement blockStatement = new BlockStatement();
-        Scope currentScope = Environment.symbolTable.getCurrentScope();
-        Environment.symbolTable.enterScope(blockStatement);
+        Scope currentScope = ProgramAST.symbolTable.getCurrentScope();
+        ProgramAST.symbolTable.enterScope(blockStatement);
         if(currentScope instanceof FunctionType){
             FunctionType function = (FunctionType) currentScope;
             for(Symbol symbol: function.getParameterList()){
-                Environment.symbolTable.addSymbol(symbol);
+                ProgramAST.symbolTable.addSymbol(symbol);
             }
         }
         returnNode.put(ctx, blockStatement);
@@ -145,7 +142,7 @@ public class ASTreeListener extends BaseListener{
         BlockStatement blockStatement = (BlockStatement) returnNode.get(ctx);
         ctx.statement().forEach(statement_ctx ->
                 blockStatement.addStatement((Statement) returnNode.get(statement_ctx)));
-        Environment.symbolTable.exitScope();
+        ProgramAST.symbolTable.exitScope();
     }
     @Override
     public void enterExpressionStatement(MetaParser.ExpressionStatementContext ctx) { }
@@ -170,7 +167,7 @@ public class ASTreeListener extends BaseListener{
         Type type = variableDeclarationStatement.getType();
         if(variableDeclarationStatement.getClassScope() == null) {
             Symbol symbol = new Symbol(name, type);
-            Environment.symbolTable.addSymbol(symbol);
+            ProgramAST.symbolTable.addSymbol(symbol);
         }
     }
     @Override
@@ -189,7 +186,7 @@ public class ASTreeListener extends BaseListener{
     @Override
     public void enterForStatement(MetaParser.ForStatementContext ctx) {
         ForStatement forStatement = new ForStatement();
-        Environment.symbolTable.enterScope(forStatement);
+        ProgramAST.symbolTable.enterScope(forStatement);
         returnNode.put(ctx, forStatement);
     }
     @Override
@@ -215,12 +212,12 @@ public class ASTreeListener extends BaseListener{
         }
         Statement statement = (Statement) returnNode.get(ctx.statement());
         forStatement.addStatement(statement);
-        Environment.symbolTable.exitScope();
+        ProgramAST.symbolTable.exitScope();
     }
     @Override
     public void enterWhileStatement(MetaParser.WhileStatementContext ctx) {
         WhileStatement whileStatement = new WhileStatement();
-        Environment.symbolTable.enterScope(whileStatement);
+        ProgramAST.symbolTable.enterScope(whileStatement);
         returnNode.put(ctx, whileStatement);
     }
     @Override
@@ -232,7 +229,7 @@ public class ASTreeListener extends BaseListener{
         }
         Statement statement = (Statement) returnNode.get(ctx.statement());
         whileStatement.addStatement(statement);
-        Environment.symbolTable.exitScope();
+        ProgramAST.symbolTable.exitScope();
     }
     @Override
     public void enterContinueStatement(MetaParser.ContinueStatementContext ctx) { }

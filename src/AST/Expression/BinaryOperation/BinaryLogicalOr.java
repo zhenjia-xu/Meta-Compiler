@@ -5,8 +5,11 @@ import AST.Constant.BoolConstant;
 import AST.Constant.IntConstant;
 import AST.Expression.Expression;
 import AST.Type.*;
+import IR.Instruction;
 import Utility.CompilationError;
 import Utility.Utility;
+
+import java.util.List;
 
 public class BinaryLogicalOr extends Expression{
 	private Expression leftExpression, rightExpression;
@@ -37,5 +40,9 @@ public class BinaryLogicalOr extends Expression{
 		return Utility.getIndent(indents) + "[binary logical or]\n"
 				+ leftExpression.toString(indents + 1)
 				+ rightExpression.toString(indents + 1);
+	}
+	@Override
+	public void generateInstruction(List<Instruction> instructionList){
+
 	}
 }

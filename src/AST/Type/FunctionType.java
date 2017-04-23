@@ -1,8 +1,11 @@
 package AST.Type;
 
 import AST.Statement.BlockStatement;
+import AST.Statement.Statement;
 import AST.Symbol.Scope;
 import AST.Symbol.Symbol;
+import IR.FunctionGraph;
+import IR.LabelInstruction;
 import Utility.Utility;
 
 import java.util.List;
@@ -13,6 +16,7 @@ public class FunctionType extends Type implements Scope {
     private List<Symbol> parameterList;
     private BlockStatement blockStatement;
     private Scope classScope;
+	public LabelInstruction enterLabel, exitLabel;
 
     public FunctionType(String name, Type returnType, List<Symbol> parameterList){
         this.name = name;
@@ -29,6 +33,13 @@ public class FunctionType extends Type implements Scope {
     public String getName(){
         return name;
     }
+    public String getIRName(){
+        if(classScope == null){
+            return name;
+        }else{
+            return ((ClassType)classScope).getName() + name;
+        }
+    }
     public Type getReturnType(){
         return returnType;
     }
@@ -38,10 +49,13 @@ public class FunctionType extends Type implements Scope {
     public BlockStatement getBlockStatement(){
         return blockStatement;
     }
+    public List<Statement> getBlockStatementList(){
+    	return blockStatement.getStatementList();
+    }
     public Scope getClassScope(){
         return classScope;
     }
-    @Override
+	@Override
     public boolean compatibleWith(Type other){
         return false;
     }

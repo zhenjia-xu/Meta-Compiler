@@ -1,17 +1,20 @@
 package AST.Statement;
 
-import AST.Environment;
+import AST.ProgramAST;
 import AST.Expression.Expression;
 import AST.Type.*;
+import IR.Instruction;
 import Utility.CompilationError;
 import Utility.Utility;
+
+import java.util.List;
 
 public class ReturnStatement extends Statement{
 	private FunctionType function;
 	private Expression returnExpression;
 
 	public ReturnStatement(Expression returnExpression){
-		FunctionType function = Environment.symbolTable.getCurrentFunction();
+		FunctionType function = ProgramAST.symbolTable.getCurrentFunction();
 		if(function == null){
 			throw new CompilationError("The return statement should be in a function");
 		}
@@ -52,5 +55,9 @@ public class ReturnStatement extends Statement{
 			str.append(returnExpression.toString(indents + 1));
 		}
 		return str.toString();
+	}
+	@Override
+	public void generateInstruction(List<Instruction> instructionList){
+
 	}
 }

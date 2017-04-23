@@ -14,3 +14,19 @@ Type:
 		FunctionType(compatible with nothing)
 		ClassType
 		ArrayType
+
+BinaryOperation:
+	ADD
+	SUB
+	MUL
+	DIV
+	MOD
+	SHL
+	SHR
+	BITAND
+	BITOR
+	BITXOR
+
+UnaryOperation:
+	NOT
+	REV

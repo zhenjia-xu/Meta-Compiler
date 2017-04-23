@@ -1,6 +1,6 @@
 package AST.Expression;
 
-import AST.Environment;
+import AST.ProgramAST;
 import AST.Type.Type;
 import Utility.*;
 
@@ -9,10 +9,10 @@ public class ThisExpression extends Expression{
 		super(type, true);
 	}
 	public static Expression getExpression(){
-		if(Environment.symbolTable.getCurrentClass() == null){
+		if(ProgramAST.symbolTable.getCurrentClass() == null){
 			throw new CompilationError("This should be used in a class");
 		}
-		return new ThisExpression(Environment.symbolTable.getCurrentClass());
+		return new ThisExpression(ProgramAST.symbolTable.getCurrentClass());
 	}
 	@Override
 	public String toString(){

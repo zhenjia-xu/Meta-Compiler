@@ -2,8 +2,14 @@ package AST.Expression.BinaryOperation;
 
 import AST.Constant.*;
 import AST.Type.*;
+import IR.BinaryInstruction;
+import IR.Instruction;
+import IR.RegisterManager;
+import IR.VirtualRegister;
 import Utility.*;
 import AST.Expression.Expression;
+
+import java.util.List;
 
 public class BinaryNotEqual extends Expression{
 	private Expression leftExpression, rightExpression;
@@ -46,5 +52,13 @@ public class BinaryNotEqual extends Expression{
 		return Utility.getIndent(indents) + "[binary not equal]\n"
 				+ leftExpression.toString(indents + 1)
 				+ rightExpression.toString(indents + 1);
+	}
+	@Override
+	public void generateInstruction(List<Instruction> instructionList){
+		leftExpression.generateInstruction(instructionList);
+		rightExpression.generateInstruction(instructionList);
+		operand = RegisterManager.getTemporaryRegister();
+		Instruction instruction = new BinaryInstruction(BinaryInstruction.BinaryOp.NEQ, (VirtualRegister) operand, leftExpression.operand, rightExpression.operand);
+		instructionList.add(instruction);
 	}
 }

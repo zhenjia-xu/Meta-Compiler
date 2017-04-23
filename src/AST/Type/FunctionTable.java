@@ -1,5 +1,6 @@
 package AST.Type;
 
+import IR.LabelInstruction;
 import Utility.CompilationError;
 import Utility.Utility;
 
@@ -8,6 +9,7 @@ import java.util.Map;
 
 public class FunctionTable{
 	private Map<String, FunctionType> functionMap;
+
 	public FunctionTable(){
 		functionMap = new HashMap<>();
 	}

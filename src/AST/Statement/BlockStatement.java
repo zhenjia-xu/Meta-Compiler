@@ -1,6 +1,7 @@
 package AST.Statement;
 
 import AST.Symbol.Scope;
+import IR.Instruction;
 import Utility.Utility;
 
 import java.util.ArrayList;
@@ -15,6 +16,9 @@ public class BlockStatement extends Statement implements Scope{
 	public void addStatement(Statement statement){
 		statementList.add(statement);
 	}
+	public List<Statement> getStatementList(){
+		return statementList;
+	}
 	@Override
 	public String toString(){
 		return "block statement";
@@ -26,5 +30,11 @@ public class BlockStatement extends Statement implements Scope{
 		statementList.forEach(statement ->
 			str.append(statement.toString(indents + 1)));
 		return str.toString();
+	}
+	@Override
+	public void generateInstruction(List<Instruction> instructionList){
+		for(Statement statement: statementList){
+			statement.generateInstruction(instructionList);
+		}
 	}
 }

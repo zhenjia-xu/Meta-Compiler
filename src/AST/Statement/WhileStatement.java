@@ -3,8 +3,15 @@ package AST.Statement;
 import AST.Constant.BoolConstant;
 import AST.Expression.Expression;
 import AST.Type.BoolType;
+import IR.BranchInstruction;
+import IR.Instruction;
+import IR.JumpInstruction;
+import IR.LabelInstruction;
 import Utility.CompilationError;
 import Utility.Utility;
+
+import java.util.List;
+
 public class WhileStatement extends LoopStatement{
 	private Expression condition;
 	private Statement statement;
@@ -37,5 +44,37 @@ public class WhileStatement extends LoopStatement{
 		return Utility.getIndent(indents) + "[while statement]\n"
 				+ condition.toString(indents + 1)
 				+ statement.toString(indents + 1);
+	}
+	@Override
+	public void generateInstruction(List<Instruction> instructionList){
+		conditionLabel = new LabelInstruction("loop_condition");
+		nextStepLabel = conditionLabel;
+		bodyLabel = new LabelInstruction("loop_body");
+		exitLabel = new LabelInstruction("loop_exit");
+		/*
+			%...:
+				jump %loop_condition
+			%loop_condition:
+				(condition)
+				branch condition loop_body loop_exit
+			%loop_body:
+				(statement)
+				jump loop_condition
+			%loop_exit:
+				...
+		 */
+		instructionList.add(new JumpInstruction(conditionLabel));
+
+		instructionList.add(conditionLabel);
+		condition.generateInstruction(instructionList);
+		instructionList.add(new BranchInstruction(condition.operand, bodyLabel, exitLabel));
+
+		instructionList.add(bodyLabel);
+		if(statement != null){
+			statement.generateInstruction(instructionList);
+		}
+		instructionList.add(new JumpInstruction(conditionLabel));
+
+		instructionList.add(exitLabel);
 	}
 }

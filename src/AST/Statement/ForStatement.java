@@ -3,8 +3,14 @@ package AST.Statement;
 import AST.Expression.Expression;
 import AST.Type.BoolType;
 import AST.Constant.BoolConstant;
+import IR.BranchInstruction;
+import IR.Instruction;
+import IR.JumpInstruction;
+import IR.LabelInstruction;
 import Utility.CompilationError;
 import Utility.Utility;
+
+import java.util.List;
 
 public class ForStatement extends LoopStatement{
 	private Expression init, condition, increment;
@@ -71,5 +77,50 @@ public class ForStatement extends LoopStatement{
 		}
 		str.append(statement.toString(indents + 1));
 		return str.toString();
+	}
+	@Override
+	public void generateInstruction(List<Instruction> instructionList){
+		conditionLabel = new LabelInstruction("loop_condition");
+		bodyLabel = new LabelInstruction("loop_body");
+		nextStepLabel = new LabelInstruction("loop_increment");
+		exitLabel = new LabelInstruction("loop_exit");
+		/*
+			%...:
+				(init)
+				jump %loop_condition
+			%loop_condition:
+				(condition)
+				branch $condition loop_body loop_exit
+			%loop_body:
+				(statement)
+				jump loop_increment
+			%loop_increment:
+				(increment)
+				jump loop_condition
+			%loop_exit:
+				...
+		*/
+		if(init != null){
+			init.generateInstruction(instructionList);
+		}
+		instructionList.add(new JumpInstruction(conditionLabel));
+
+		instructionList.add(conditionLabel);
+		condition.generateInstruction(instructionList);
+		instructionList.add(new BranchInstruction(condition.operand, bodyLabel, exitLabel));
+
+		instructionList.add(bodyLabel);
+		if (statement != null){
+			statement.generateInstruction(instructionList);
+		}
+		instructionList.add(new JumpInstruction(nextStepLabel));
+
+		instructionList.add(nextStepLabel);
+		if(increment != null){
+			increment.generateInstruction(instructionList);
+		}
+		instructionList.add(new JumpInstruction(conditionLabel));
+
+		instructionList.add(exitLabel);
 	}
 }

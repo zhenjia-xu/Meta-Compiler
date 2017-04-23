@@ -1,12 +1,11 @@
 package AST.Expression;
 
-import AST.Environment;
+import AST.ProgramAST;
 import AST.Symbol.Symbol;
 import AST.Type.FunctionType;
 import AST.Type.Type;
 import Utility.Utility;
 import Utility.CompilationError;
-import jdk.nashorn.internal.codegen.CompilationException;
 
 public class IdentifierExpression extends Expression{
 	private Symbol symbol;
@@ -16,10 +15,10 @@ public class IdentifierExpression extends Expression{
 		this.symbol = symbol;
 	}
 	public static Expression getExpression(String identifier){
-		if(Environment.symbolTable.haveSymbol(identifier) == false){
+		if(ProgramAST.symbolTable.haveSymbol(identifier) == false){
 			throw new CompilationError("Can't find the identifier named " + identifier);
 		}
-		Symbol symbol = Environment.symbolTable.getSymbol(identifier);
+		Symbol symbol = ProgramAST.symbolTable.getSymbol(identifier);
 		Type type = symbol.getType();
 		if(type instanceof FunctionType) {
 			return new IdentifierExpression(symbol, false);

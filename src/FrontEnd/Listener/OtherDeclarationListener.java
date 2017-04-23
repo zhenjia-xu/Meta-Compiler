@@ -1,10 +1,9 @@
 package FrontEnd.Listener;
 
-import AST.Environment;
+import AST.ProgramAST;
 import AST.Statement.VariableDeclarationStatement;
 import AST.Symbol.Symbol;
 import AST.Type.*;
-import FrontEnd.Parser.MetaLexer;
 import FrontEnd.Parser.MetaParser;
 import Utility.CompilationError;
 import org.antlr.v4.runtime.tree.ParseTree;
@@ -27,20 +26,20 @@ public class OtherDeclarationListener extends BaseListener{
 				}
 				main_flag = true;
 			}
-			Environment.globalFunctionTable.addFunction(function);
+			ProgramAST.globalFunctionTable.addFunction(function);
 		}
 		if(!main_flag){
 			throw new CompilationError("Can't find main function");
 		}
 		for(ParseTree x: ctx.variableDeclaration()){
 			VariableDeclarationStatement variable = (VariableDeclarationStatement) returnNode.get(x);
-			Environment.globalVariableTable.addVariable(variable);
+			ProgramAST.globalVariableTable.addVariable(variable);
 		}
 	}
 	@Override
 	public void enterClassDeclaration(MetaParser.ClassDeclarationContext ctx) {
 		ClassType classType = (ClassType)returnNode.get(ctx);
-		Environment.symbolTable.enterScope(classType);
+		ProgramAST.symbolTable.enterScope(classType);
 	}
 	@Override
 	public void exitClassDeclaration(MetaParser.ClassDeclarationContext ctx) {
@@ -59,7 +58,7 @@ public class OtherDeclarationListener extends BaseListener{
 			variable.addClassScope(classType);
 			classType.addMemberVariable(variable);
 		}
-		Environment.symbolTable.exitScope();
+		ProgramAST.symbolTable.exitScope();
 	}
 	@Override
 	public void exitFunctionDeclaration(MetaParser.FunctionDeclarationContext ctx) {
@@ -108,7 +107,7 @@ public class OtherDeclarationListener extends BaseListener{
 	@Override
 	public void exitClass_Type(MetaParser.Class_TypeContext ctx) {
 		String className = ctx.Identifier().getText();
-		returnNode.put(ctx, Environment.classTable.getClassType(className));
+		returnNode.put(ctx, ProgramAST.classTable.getClassType(className));
 	}
 	@Override
 	public void exitArray_Type(MetaParser.Array_TypeContext ctx) {

@@ -4,8 +4,14 @@ package AST.Expression.BinaryOperation;
 import AST.Constant.IntConstant;
 import AST.Expression.Expression;
 import AST.Type.*;
+import IR.BinaryInstruction;
+import IR.Instruction;
+import IR.RegisterManager;
+import IR.VirtualRegister;
 import Utility.CompilationError;
 import Utility.Utility;
+
+import java.util.List;
 
 public class BinaryDivision extends Expression{
 	private Expression leftExpression, rightExpression;
@@ -36,5 +42,13 @@ public class BinaryDivision extends Expression{
 		return Utility.getIndent(indents) + "[binary division]\n"
 				+ leftExpression.toString(indents + 1)
 				+ rightExpression.toString(indents + 1);
+	}
+	@Override
+	public void generateInstruction(List<Instruction> instructionList){
+		leftExpression.generateInstruction(instructionList);
+		rightExpression.generateInstruction(instructionList);
+		operand = RegisterManager.getTemporaryRegister();
+		Instruction instruction = new BinaryInstruction(BinaryInstruction.BinaryOp.DIV, (VirtualRegister) operand, leftExpression.operand, rightExpression.operand);
+		instructionList.add(instruction);
 	}
 }

@@ -6,7 +6,7 @@ import AST.Type.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Environment {
+public class ProgramAST {
     public static ClassTable classTable;
     public static SymbolTable symbolTable;
     public static FunctionTable globalFunctionTable;
