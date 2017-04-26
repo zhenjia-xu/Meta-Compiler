@@ -1,10 +1,10 @@
 package IR;
 
 public class MoveInstruction extends Instruction{
-	public VirtualRegister target;
+	public Location target;
 	public Operand operand;
 
-	public MoveInstruction(VirtualRegister target, Operand operand){
+	public MoveInstruction(Location target, Operand operand){
 		this.target = target;
 		this.operand = operand;
 	}

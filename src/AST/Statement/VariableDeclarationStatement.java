@@ -1,6 +1,7 @@
 package AST.Statement;
 
 import AST.Expression.Expression;
+import AST.Symbol.Symbol;
 import AST.Type.ClassType;
 import AST.Type.Type;
 import FrontEnd.Listener.BaseListener;
@@ -15,12 +16,14 @@ public class  VariableDeclarationStatement extends Statement {
 	private String name;
 	private Expression expression;
 	private ClassType classScope;
+	private Symbol symbol;
 
 	public VariableDeclarationStatement(String name, Type type) {
 		this.type = type;
 		this.name = name;
 		this.expression = null;
 		this.classScope = null;
+		this.symbol = new Symbol(name, type);
 	}
 	public void addClassScope(ClassType classScope){
 		this.classScope = classScope;
@@ -43,6 +46,9 @@ public class  VariableDeclarationStatement extends Statement {
 	public ClassType getClassScope(){
 		return classScope;
 	}
+	public Symbol getSymbol(){
+		return symbol;
+	}
 	@Override
 	public String toString() {
 		return "variable declaration statement (" + type + " " + name + ")";
@@ -60,8 +66,8 @@ public class  VariableDeclarationStatement extends Statement {
 	@Override
 	public void generateInstruction(List<Instruction> instructionList){
 		if(expression != null){
-			expression.generateInstruction(instructionList);
-			instructionList.add(new MoveInstruction());
+			//expression.generateInstruction(instructionList);
+			//instructionList.add(new MoveInstruction());
 		}
 	}
 }

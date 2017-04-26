@@ -7,7 +7,7 @@ import java.util.List;
 
 public class FunctionGraph {
 	private FunctionType function;
-	private List<VirtualRegister> parameterRegisterList;
+	private List<Location> parameterRegisterList;
 	public LabelInstruction enterBlock, exitBlock;
 
 	public FunctionGraph(FunctionType function){

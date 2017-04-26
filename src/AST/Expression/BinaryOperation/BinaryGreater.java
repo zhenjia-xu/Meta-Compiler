@@ -8,8 +8,8 @@ import AST.Expression.Expression;
 import AST.Type.*;
 import IR.BinaryInstruction;
 import IR.Instruction;
-import IR.RegisterManager;
-import IR.VirtualRegister;
+import IR.MemoryManager;
+import IR.Location;
 import Utility.CompilationError;
 import Utility.Utility;
 
@@ -60,8 +60,8 @@ public class BinaryGreater extends Expression{
 	public void generateInstruction(List<Instruction> instructionList){
 		leftExpression.generateInstruction(instructionList);
 		rightExpression.generateInstruction(instructionList);
-		operand = RegisterManager.getTemporaryRegister();
-		Instruction instruction = new BinaryInstruction(BinaryInstruction.BinaryOp.GR, (VirtualRegister) operand, leftExpression.operand, rightExpression.operand);
+		operand = MemoryManager.getTemporaryLocation();
+		Instruction instruction = new BinaryInstruction(BinaryInstruction.BinaryOp.GR, (Location) operand, leftExpression.operand, rightExpression.operand);
 		instructionList.add(instruction);
 	}
 }

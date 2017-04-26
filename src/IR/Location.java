@@ -1,6 +1,6 @@
 package IR;
 
-public class VirtualRegister extends Operand{
+public class Location extends Operand{
 	private String name;
 
 	public String getName(){

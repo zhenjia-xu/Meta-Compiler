@@ -4,8 +4,11 @@ import AST.ProgramAST;
 import AST.Symbol.Symbol;
 import AST.Type.FunctionType;
 import AST.Type.Type;
+import IR.Instruction;
 import Utility.Utility;
 import Utility.CompilationError;
+
+import java.util.List;
 
 public class IdentifierExpression extends Expression{
 	private Symbol symbol;
@@ -37,5 +40,9 @@ public class IdentifierExpression extends Expression{
 	public String toString(int indents){
 		return Utility.getIndent(indents) + "[identifier]\n"
 				+ symbol.toString(indents + 1);
+	}
+	@Override
+	public void generateInstruction(List<Instruction> instructionList) {
+
 	}
 }

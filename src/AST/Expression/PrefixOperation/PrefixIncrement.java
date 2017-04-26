@@ -2,7 +2,10 @@ package AST.Expression.PrefixOperation;
 
 import AST.Expression.Expression;
 import AST.Type.*;
+import IR.Instruction;
 import Utility.*;
+
+import java.util.List;
 
 public class PrefixIncrement extends Expression{
 	private Expression expression;
@@ -28,5 +31,9 @@ public class PrefixIncrement extends Expression{
 	public String toString(int indents){
 		return Utility.getIndent(indents) + "[prefix increment]\n"
 				+ expression.toString(indents + 1);
+	}
+	@Override
+	public void generateInstruction(List<Instruction> instructionList) {
+
 	}
 }

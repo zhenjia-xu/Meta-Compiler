@@ -7,10 +7,10 @@ public class BinaryInstruction extends Instruction{
 		EQ,  NEQ, GR,  GREQ, LE, LEEQ
 	}
 	public BinaryOp op;
-	public VirtualRegister result;
+	public Location result;
 	public Operand leftOperand, rightOperand;
 
-	public BinaryInstruction(BinaryOp op, VirtualRegister result, Operand leftOperand, Operand rightOperand){
+	public BinaryInstruction(BinaryOp op, Location result, Operand leftOperand, Operand rightOperand){
 		this.op = op;
 		this.result = result;
 		this.leftOperand = leftOperand;

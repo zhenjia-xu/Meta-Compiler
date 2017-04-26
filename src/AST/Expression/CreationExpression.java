@@ -1,6 +1,7 @@
 package AST.Expression;
 
 import AST.Type.*;
+import IR.Instruction;
 import Utility.*;
 
 import java.util.List;
@@ -55,5 +56,9 @@ public class CreationExpression extends Expression{
 			}
 		}
 		return str.toString();
+	}
+	@Override
+	public void generateInstruction(List<Instruction> instructionList) {
+
 	}
 }

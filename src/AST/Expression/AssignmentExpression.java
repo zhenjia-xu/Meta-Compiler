@@ -1,8 +1,11 @@
 package AST.Expression;
 
 
+import IR.Instruction;
 import Utility.CompilationError;
 import Utility.Utility;
+
+import java.util.List;
 
 public class AssignmentExpression extends Expression{
 	private Expression leftExpression, rightExpression;
@@ -30,5 +33,9 @@ public class AssignmentExpression extends Expression{
 		return Utility.getIndent(indents) + "[assignment]\n"
 				+ leftExpression.toString(indents + 1)
 				+ rightExpression.toString(indents + 1);
+	}
+	@Override
+	public void generateInstruction(List<Instruction> instructionList) {
+
 	}
 }

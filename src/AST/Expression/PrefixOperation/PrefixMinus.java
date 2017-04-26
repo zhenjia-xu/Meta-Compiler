@@ -3,7 +3,10 @@ package AST.Expression.PrefixOperation;
 import AST.Constant.IntConstant;
 import AST.Expression.Expression;
 import AST.Type.*;
+import IR.Instruction;
 import Utility.*;
+
+import java.util.List;
 
 public class PrefixMinus extends Expression{
 	Expression expression;
@@ -26,5 +29,9 @@ public class PrefixMinus extends Expression{
 	public String toString(int indents){
 		return Utility.getIndent(indents) + "[prefix minus]\n"
 				+ expression.toString(indents + 1);
+	}
+	@Override
+	public void generateInstruction(List<Instruction> instructionList) {
+
 	}
 }

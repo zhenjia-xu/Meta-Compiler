@@ -2,7 +2,10 @@ package AST.Expression;
 
 import AST.ProgramAST;
 import AST.Type.Type;
+import IR.Instruction;
 import Utility.*;
+
+import java.util.List;
 
 public class ThisExpression extends Expression{
 	private ThisExpression(Type type){
@@ -21,5 +24,9 @@ public class ThisExpression extends Expression{
 	@Override
 	public String toString(int indents){
 		return Utility.getIndent(indents) + "[this]\n";
+	}
+	@Override
+	public void generateInstruction(List<Instruction> instructionList) {
+
 	}
 }

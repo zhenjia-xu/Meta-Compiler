@@ -1,7 +1,10 @@
 package AST.Constant;
 
 import AST.Type.StringType;
+import IR.Instruction;
 import Utility.Utility;
+
+import java.util.List;
 
 public class StringConstant extends Constant{
 	private String value;
@@ -20,5 +23,9 @@ public class StringConstant extends Constant{
 	@Override
 	public String toString(int indents){
 		return Utility.getIndent(indents) + "[string constant: " + value + "]\n";
+	}
+	@Override
+	public void generateInstruction(List<Instruction> instructionList) {
+
 	}
 }

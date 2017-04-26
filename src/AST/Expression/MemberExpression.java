@@ -2,6 +2,7 @@ package AST.Expression;
 
 import AST.Statement.VariableDeclarationStatement;
 import FrontEnd.Listener.BaseListener;
+import IR.Instruction;
 import Utility.*;
 import AST.Type.*;
 import AST.Symbol.*;
@@ -86,5 +87,9 @@ public class MemberExpression extends Expression{
 		return Utility.getIndent(indents) + "[member call]\n" +
 				expression.toString(indents + 1)
 				+ Utility.getIndent(indents + 1) + "member: " + identifier + "\n";
+	}
+	@Override
+	public void generateInstruction(List<Instruction> instructionList) {
+
 	}
 }

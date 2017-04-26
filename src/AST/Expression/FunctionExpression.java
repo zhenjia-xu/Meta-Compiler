@@ -2,6 +2,7 @@ package AST.Expression;
 
 import AST.Symbol.*;
 import AST.Type.*;
+import IR.Instruction;
 import Utility.*;
 
 import java.util.List;
@@ -44,5 +45,9 @@ public class FunctionExpression extends Expression{
 		expressionList.forEach(expression ->
 				str.append(expression.toString(indents + 1)));
 		return str.toString();
+	}
+	@Override
+	public void generateInstruction(List<Instruction> instructionList) {
+
 	}
 }

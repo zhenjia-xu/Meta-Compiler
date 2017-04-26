@@ -45,7 +45,7 @@ public class ASTreeListener extends BaseListener{
         classType.getMemberFunctionTable().forEach((name, function) ->
                 ProgramAST.symbolTable.addSymbol(new Symbol(name, function)));
         classType.getMemberVariableTable().forEach((name, variable) ->
-                ProgramAST.symbolTable.addSymbol(new Symbol(name, variable.getType())));
+                ProgramAST.symbolTable.addSymbol(variable.getSymbol()));
     }
     @Override
     public void exitClassDeclaration(MetaParser.ClassDeclarationContext ctx) {
@@ -163,11 +163,8 @@ public class ASTreeListener extends BaseListener{
             Expression expression = (Expression) returnNode.get(ctx.expression());
             variableDeclarationStatement.addExpression(expression);
         }
-        String name = variableDeclarationStatement.getName();
-        Type type = variableDeclarationStatement.getType();
         if(variableDeclarationStatement.getClassScope() == null) {
-            Symbol symbol = new Symbol(name, type);
-            ProgramAST.symbolTable.addSymbol(symbol);
+            ProgramAST.symbolTable.addSymbol(variableDeclarationStatement.getSymbol());
         }
     }
     @Override

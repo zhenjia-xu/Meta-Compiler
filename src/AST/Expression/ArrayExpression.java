@@ -1,7 +1,10 @@
 package AST.Expression;
 
+import IR.Instruction;
 import Utility.*;
 import AST.Type.*;
+
+import java.util.List;
 
 public class ArrayExpression extends Expression{
 	public Expression arrayExpression, subscriptExpression;
@@ -38,5 +41,9 @@ public class ArrayExpression extends Expression{
 		str.append(arrayExpression.toString(indents + 1));
 		str.append(subscriptExpression.toString(indents + 1));
 		return str.toString();
+	}
+	@Override
+	public void generateInstruction(List<Instruction> instructionList) {
+
 	}
 }
