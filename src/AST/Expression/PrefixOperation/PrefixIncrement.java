@@ -2,7 +2,7 @@ package AST.Expression.PrefixOperation;
 
 import AST.Expression.Expression;
 import AST.Type.*;
-import IR.Instruction;
+import IR.*;
 import Utility.*;
 
 import java.util.List;
@@ -34,6 +34,8 @@ public class PrefixIncrement extends Expression{
 	}
 	@Override
 	public void generateInstruction(List<Instruction> instructionList) {
-
+		expression.generateInstruction(instructionList);
+		operand = expression.operand;
+		instructionList.add(new UnaryInstruction(UnaryInstruction.UnaryOp.INC, (Address)operand, operand));
 	}
 }

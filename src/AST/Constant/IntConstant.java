@@ -1,6 +1,7 @@
 package AST.Constant;
 
 import AST.Type.IntType;
+import IR.ImmediateOperand;
 import IR.Instruction;
 import Utility.Utility;
 
@@ -26,6 +27,6 @@ public class IntConstant extends Constant{
 	}
 	@Override
 	public void generateInstruction(List<Instruction> instructionList) {
-
+		operand = new ImmediateOperand(value);
 	}
 }

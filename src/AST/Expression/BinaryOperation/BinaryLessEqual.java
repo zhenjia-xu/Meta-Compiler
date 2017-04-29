@@ -9,7 +9,7 @@ import AST.Type.*;
 import IR.BinaryInstruction;
 import IR.Instruction;
 import IR.MemoryManager;
-import IR.Location;
+import IR.Address;
 import Utility.CompilationError;
 import Utility.Utility;
 
@@ -60,8 +60,8 @@ public class BinaryLessEqual extends Expression{
 	public void generateInstruction(List<Instruction> instructionList){
 		leftExpression.generateInstruction(instructionList);
 		rightExpression.generateInstruction(instructionList);
-		operand = MemoryManager.getTemporaryLocation();
-		Instruction instruction = new BinaryInstruction(BinaryInstruction.BinaryOp.LEEQ, (Location) operand, leftExpression.operand, rightExpression.operand);
+		operand = MemoryManager.getTemporaryAddress();
+		Instruction instruction = new BinaryInstruction(BinaryInstruction.BinaryOp.LEEQ, (Address) operand, leftExpression.operand, rightExpression.operand);
 		instructionList.add(instruction);
 	}
 }

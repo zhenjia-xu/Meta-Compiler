@@ -1,8 +1,11 @@
 package IR;
 
-public class Location extends Operand{
+public class Address extends Operand{
 	private String name;
 
+	public Address(String name){
+		this.name = name;
+	}
 	public String getName(){
 		return name;
 	}

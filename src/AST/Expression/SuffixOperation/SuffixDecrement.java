@@ -2,7 +2,7 @@ package AST.Expression.SuffixOperation;
 
 import AST.Expression.Expression;
 import AST.Type.*;
-import IR.Instruction;
+import IR.*;
 import Utility.*;
 
 import java.util.List;
@@ -34,6 +34,9 @@ public class SuffixDecrement extends Expression{
 	}
 	@Override
 	public void generateInstruction(List<Instruction> instructionList) {
-
+		expression.generateInstruction(instructionList);
+		operand = MemoryManager.getTemporaryAddress();
+		instructionList.add(new MoveInstruction(operand, expression.operand));
+		instructionList.add(new UnaryInstruction(UnaryInstruction.UnaryOp.DEC, (Address)expression.operand, expression.operand));
 	}
 }

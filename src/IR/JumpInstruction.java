@@ -9,4 +9,9 @@ public class JumpInstruction extends Instruction{
 	public LabelInstruction getTarget(){
 		return target;
 	}
+
+	@Override
+	public String toString(){
+		return String.format("jump %s", target.block);
+	}
 }

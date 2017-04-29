@@ -32,6 +32,6 @@ public class PrefixPlus extends Expression{
 	}
 	@Override
 	public void generateInstruction(List<Instruction> instructionList) {
-
+		operand = expression.operand;
 	}
 }

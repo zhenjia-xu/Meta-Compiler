@@ -1,4 +1,5 @@
 import AST.ProgramAST;
+import IR.ProgramIR;
 import Utility.CompilationError;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
@@ -29,13 +30,14 @@ public class Main{
 			walker.walk(new ClassDeclarationListener(), tree);
 			walker.walk(new OtherDeclarationListener(), tree);
 			walker.walk(new ASTreeListener(), tree);
-			ProgramAST.print();
+			//ProgramAST.print();
 		}catch(CompilationError ce){
 			System.out.println(ce.getMessage());
 			System.exit(1);
 		}
 	}
 	public static void getIR(){
-
+		ProgramIR.BuildProgramIR();
+		ProgramIR.print();
 	}
 }

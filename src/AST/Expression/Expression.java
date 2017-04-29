@@ -1,6 +1,7 @@
 package AST.Expression;
 
 import AST.Type.Type;
+import IR.Address;
 import IR.Instruction;
 import IR.Operand;
 

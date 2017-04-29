@@ -9,4 +9,8 @@ public class BranchInstruction extends Instruction{
 		this.trueTarget = trueTarget;
 		this.falseTarget = falseTarget;
 	}
+	@Override
+	public String toString(){
+		return String.format("branch %s %s %s", condition, trueTarget.block, falseTarget.block);
+	}
 }

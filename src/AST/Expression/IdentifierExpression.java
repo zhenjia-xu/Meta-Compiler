@@ -43,6 +43,6 @@ public class IdentifierExpression extends Expression{
 	}
 	@Override
 	public void generateInstruction(List<Instruction> instructionList) {
-
+		operand = symbol.address;
 	}
 }

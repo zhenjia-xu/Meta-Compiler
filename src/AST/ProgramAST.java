@@ -37,7 +37,9 @@ public class ProgramAST {
         List<Symbol> parameterList = new ArrayList<>();
         Symbol symbol = new Symbol("str", StringType.getInstance());
         parameterList.add(symbol);
-        return new FunctionType(functionName, returnType, parameterList);
+        FunctionType function = new FunctionType(functionName, returnType, parameterList);
+        function.setBuiltin();
+        return function;
     }
     private static FunctionType function_println(){
         String functionName = "println";
@@ -45,19 +47,25 @@ public class ProgramAST {
         List<Symbol> parameterList = new ArrayList<>();
         Symbol symbol = new Symbol("str", StringType.getInstance());
         parameterList.add(symbol);
-        return new FunctionType(functionName, returnType, parameterList);
+        FunctionType function = new FunctionType(functionName, returnType, parameterList);
+        function.setBuiltin();
+        return function;
     }
     private static FunctionType function_getString(){
         String functionName = "getString";
         Type returnType = StringType.getInstance();
         List<Symbol> parameterList = new ArrayList<>();
-        return new FunctionType(functionName, returnType, parameterList);
+        FunctionType function = new FunctionType(functionName, returnType, parameterList);
+        function.setBuiltin();
+        return function;
     }
     private static FunctionType function_getInt(){
         String functionName = "getInt";
         Type returnType = IntType.getInstance();
         List<Symbol> parameterList = new ArrayList<>();
-        return new FunctionType(functionName, returnType, parameterList);
+        FunctionType function = new FunctionType(functionName, returnType, parameterList);
+        function.setBuiltin();
+        return function;
     }
     private static FunctionType function_toString(){
         String functionName = "toString";
@@ -65,6 +73,8 @@ public class ProgramAST {
         List<Symbol> parameterList = new ArrayList<>();
         Symbol symbol = new Symbol("num", IntType.getInstance());
         parameterList.add(symbol);
-        return new FunctionType(functionName, returnType, parameterList);
+        FunctionType function = new FunctionType(functionName, returnType, parameterList);
+        function.setBuiltin();
+        return function;
     }
 }

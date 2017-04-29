@@ -1,4 +1,5 @@
 package IR;
+import Utility.Utility;
 
 public class BinaryInstruction extends Instruction{
 	public enum BinaryOp {
@@ -7,13 +8,18 @@ public class BinaryInstruction extends Instruction{
 		EQ,  NEQ, GR,  GREQ, LE, LEEQ
 	}
 	public BinaryOp op;
-	public Location result;
+	public Address result;
 	public Operand leftOperand, rightOperand;
 
-	public BinaryInstruction(BinaryOp op, Location result, Operand leftOperand, Operand rightOperand){
+	public BinaryInstruction(BinaryOp op, Address result, Operand leftOperand, Operand rightOperand){
 		this.op = op;
 		this.result = result;
 		this.leftOperand = leftOperand;
 		this.rightOperand = rightOperand;
+	}
+
+	@Override
+	public String toString(){
+		return String.format("%s = %s %s %s", result, op, leftOperand, rightOperand);
 	}
 }

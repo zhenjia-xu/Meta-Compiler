@@ -1,7 +1,9 @@
 package AST.Expression;
 
 
+import IR.Address;
 import IR.Instruction;
+import IR.MoveInstruction;
 import Utility.CompilationError;
 import Utility.Utility;
 
@@ -36,6 +38,9 @@ public class AssignmentExpression extends Expression{
 	}
 	@Override
 	public void generateInstruction(List<Instruction> instructionList) {
-
+		leftExpression.generateInstruction(instructionList);
+		rightExpression.generateInstruction(instructionList);
+		operand = leftExpression.operand;
+		instructionList.add(new MoveInstruction(leftExpression.operand, rightExpression.operand));
 	}
 }

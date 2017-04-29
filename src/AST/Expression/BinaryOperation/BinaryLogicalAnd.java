@@ -5,7 +5,7 @@ import AST.Constant.BoolConstant;
 import AST.Constant.IntConstant;
 import AST.Expression.Expression;
 import AST.Type.*;
-import IR.Instruction;
+import IR.*;
 import Utility.CompilationError;
 import Utility.Utility;
 import jdk.nashorn.internal.codegen.types.BooleanType;
@@ -44,6 +44,36 @@ public class BinaryLogicalAnd extends Expression{
 	}
 	@Override
 	public void generateInstruction(List<Instruction> instructionList){
+		LabelInstruction trueLabel = new LabelInstruction("logical_true");
+		LabelInstruction falseLabel = new LabelInstruction("logical_false");
+		LabelInstruction exitLabel = new LabelInstruction("logical_exit");
+		/*
+			%...:
+				(left_expression)
+				branch left_expression.operand logical_true logical_false
+			%logical_true:
+				(right_expression)
+				move operand right_expression.operand
+				jump logical_exit
+			%logical_false:
+				move operand False
+				jump logical_exit
+			%logical_exit:
+				...
+		 */
+		operand = MemoryManager.getTemporaryAddress();
+		leftExpression.generateInstruction(instructionList);
+		instructionList.add(new BranchInstruction(leftExpression.operand, trueLabel, falseLabel));
 
+		instructionList.add(trueLabel);
+		rightExpression.generateInstruction(instructionList);
+		instructionList.add(new MoveInstruction(operand, rightExpression.operand));
+		instructionList.add(new JumpInstruction(exitLabel));
+
+		instructionList.add(falseLabel);
+		instructionList.add(new MoveInstruction(operand, new ImmediateOperand(0)));
+		instructionList.add(new JumpInstruction(exitLabel));
+
+		instructionList.add(exitLabel);
 	}
 }

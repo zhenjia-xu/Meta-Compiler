@@ -1,6 +1,7 @@
 package AST.Constant;
 
 import AST.Type.BoolType;
+import IR.ImmediateOperand;
 import IR.Instruction;
 import Utility.Utility;
 
@@ -26,6 +27,6 @@ public class BoolConstant extends Constant{
 	}
 	@Override
 	public void generateInstruction(List<Instruction> instructionList) {
-
+		operand = new ImmediateOperand(value ? 1 : 0);
 	}
 }

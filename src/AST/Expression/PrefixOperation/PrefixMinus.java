@@ -1,9 +1,9 @@
 package AST.Expression.PrefixOperation;
 
-import AST.Constant.IntConstant;
 import AST.Expression.Expression;
 import AST.Type.*;
-import IR.Instruction;
+import IR.*;
+import IR.UnaryInstruction;
 import Utility.*;
 
 import java.util.List;
@@ -32,6 +32,8 @@ public class PrefixMinus extends Expression{
 	}
 	@Override
 	public void generateInstruction(List<Instruction> instructionList) {
-
+		expression.generateInstruction(instructionList);
+		operand = MemoryManager.getTemporaryAddress();
+		instructionList.add(new UnaryInstruction(UnaryInstruction.UnaryOp.NEG, (Address)operand, expression.operand));
 	}
 }

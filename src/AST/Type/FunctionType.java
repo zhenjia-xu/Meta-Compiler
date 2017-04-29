@@ -4,9 +4,10 @@ import AST.Statement.BlockStatement;
 import AST.Statement.Statement;
 import AST.Symbol.Scope;
 import AST.Symbol.Symbol;
-import IR.FunctionGraph;
 import IR.LabelInstruction;
 import Utility.Utility;
+import com.sun.org.apache.xpath.internal.functions.FuncFalse;
+import sun.util.locale.provider.FallbackLocaleProviderAdapter;
 
 import java.util.List;
 
@@ -16,6 +17,7 @@ public class FunctionType extends Type implements Scope {
     private List<Symbol> parameterList;
     private BlockStatement blockStatement;
     private Scope classScope;
+    private boolean builtin;
 	public LabelInstruction enterLabel, exitLabel;
 
     public FunctionType(String name, Type returnType, List<Symbol> parameterList){
@@ -23,6 +25,7 @@ public class FunctionType extends Type implements Scope {
         this.returnType = returnType;
         this.parameterList = parameterList;
         this.classScope = null;
+        this.builtin =false;
     }
     public void addClassScope(Scope classScope){
         this.classScope = classScope;
@@ -39,6 +42,12 @@ public class FunctionType extends Type implements Scope {
         }else{
             return ((ClassType)classScope).getName() + name;
         }
+    }
+    public void setBuiltin(){
+        builtin = true;
+    }
+    public boolean isBuiltin(){
+        return builtin;
     }
     public Type getReturnType(){
         return returnType;

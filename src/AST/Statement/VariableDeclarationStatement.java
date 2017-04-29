@@ -4,7 +4,6 @@ import AST.Expression.Expression;
 import AST.Symbol.Symbol;
 import AST.Type.ClassType;
 import AST.Type.Type;
-import FrontEnd.Listener.BaseListener;
 import IR.Instruction;
 import IR.MoveInstruction;
 import Utility.*;
@@ -66,8 +65,8 @@ public class  VariableDeclarationStatement extends Statement {
 	@Override
 	public void generateInstruction(List<Instruction> instructionList){
 		if(expression != null){
-			//expression.generateInstruction(instructionList);
-			//instructionList.add(new MoveInstruction());
+			expression.generateInstruction(instructionList);
+			instructionList.add(new MoveInstruction(symbol.address, expression.operand));
 		}
 	}
 }

@@ -2,9 +2,8 @@ package AST.Expression.PrefixOperation;
 
 import AST.Expression.Expression;
 import AST.Type.*;
-import IR.Instruction;
+import IR.*;
 import Utility.*;
-import AST.Constant.BoolConstant;
 
 import java.util.List;
 
@@ -32,6 +31,8 @@ public class PrefixNot extends Expression{
 	}
 	@Override
 	public void generateInstruction(List<Instruction> instructionList) {
-
+		expression.generateInstruction(instructionList);
+		operand = MemoryManager.getTemporaryAddress();
+		instructionList.add(new BinaryInstruction(BinaryInstruction.BinaryOp.XOR, (Address)operand, expression.operand, new ImmediateOperand(1)));
 	}
 }

@@ -5,7 +5,7 @@ import AST.Type.*;
 import IR.BinaryInstruction;
 import IR.Instruction;
 import IR.MemoryManager;
-import IR.Location;
+import IR.Address;
 import Utility.*;
 import AST.Expression.Expression;
 
@@ -57,8 +57,8 @@ public class BinaryEqual extends Expression{
 	public void generateInstruction(List<Instruction> instructionList){
 		leftExpression.generateInstruction(instructionList);
 		rightExpression.generateInstruction(instructionList);
-		operand = MemoryManager.getTemporaryLocation();
-		Instruction instruction = new BinaryInstruction(BinaryInstruction.BinaryOp.EQ, (Location) operand, leftExpression.operand, rightExpression.operand);
+		operand = MemoryManager.getTemporaryAddress();
+		Instruction instruction = new BinaryInstruction(BinaryInstruction.BinaryOp.EQ, (Address) operand, leftExpression.operand, rightExpression.operand);
 		instructionList.add(instruction);
 	}
 }
