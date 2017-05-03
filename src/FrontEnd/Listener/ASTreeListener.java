@@ -265,7 +265,7 @@ public class ASTreeListener extends BaseListener{
             Expression parameter = (Expression) returnNode.get(ctx.expression(i));
             parameterList.add(parameter);
         }
-        Expression expression = FunctionExpression.getExpression(functionExpression, parameterList);
+        Expression expression = FunctionCallExpression.getExpression(functionExpression, parameterList);
         returnNode.put(ctx, expression);
     }
     @Override

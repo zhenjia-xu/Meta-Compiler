@@ -1,14 +1,5 @@
-int fun(int a, int b){
-	int c = a + b;
-}
 int main(){
-	int a = 0;
-	int b = 123;
-	int c = (a + b) * a % b;
-	int i;
-	for(i = 1; i <= c; i++){
-		b++;
-	}
-	if (a == 1)
-		c = b;
+	string str;
+	int len;
+	len = str.length(123);
 }

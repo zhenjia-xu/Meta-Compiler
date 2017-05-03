@@ -7,11 +7,11 @@ import Utility.*;
 
 import java.util.List;
 
-public class FunctionExpression extends Expression{
+public class FunctionCallExpression extends Expression{
 	private FunctionType function;
 	private List<Expression> expressionList;
 
-	private FunctionExpression(FunctionType function, List<Expression> expressionList){
+	private FunctionCallExpression(FunctionType function, List<Expression> expressionList){
 		super(function.getReturnType(), false);
 		this.function = function;
 		this.expressionList = expressionList;
@@ -32,7 +32,7 @@ public class FunctionExpression extends Expression{
 				throw new CompilationError("The type of parameters doesn't match");
 			}
 		}
-		return new FunctionExpression(function, expressionList);
+		return new FunctionCallExpression(function, expressionList);
 	}
 	@Override
 	public String toString(){
@@ -48,6 +48,10 @@ public class FunctionExpression extends Expression{
 	}
 	@Override
 	public void generateInstruction(List<Instruction> instructionList) {
+		if(!function.isBuiltin()){
 
+		}else{
+			//builtin function
+		}
 	}
 }

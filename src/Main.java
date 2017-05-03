@@ -13,7 +13,7 @@ public class Main{
 		File file = new File("program.txt");
 		InputStream in = new FileInputStream(file);
 		getAST(in);
-		getIR();
+		//getIR();
 	}
 	public static void getAST(InputStream in)throws Exception{
 		ANTLRInputStream input = new ANTLRInputStream(in);
@@ -30,7 +30,7 @@ public class Main{
 			walker.walk(new ClassDeclarationListener(), tree);
 			walker.walk(new OtherDeclarationListener(), tree);
 			walker.walk(new ASTreeListener(), tree);
-			//ProgramAST.print();
+			ProgramAST.print();
 		}catch(CompilationError ce){
 			System.out.println(ce.getMessage());
 			System.exit(1);
