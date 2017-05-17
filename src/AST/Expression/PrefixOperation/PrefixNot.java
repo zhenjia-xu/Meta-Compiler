@@ -32,7 +32,13 @@ public class PrefixNot extends Expression{
 	@Override
 	public void generateInstruction(List<Instruction> instructionList) {
 		expression.generateInstruction(instructionList);
-		operand = RegisterManager.getTemporaryRegister();
-		instructionList.add(new BinaryInstruction(BinaryInstruction.BinaryOp.XOR, (VirtualRegister)operand, expression.operand, new ImmediateOperand(1)));
+		VirtualRegister operand;
+		if(expression.operand instanceof VirtualRegister){
+			operand = (VirtualRegister) expression.operand;
+		}else{
+			operand = RegisterManager.getTemporaryRegister();
+			instructionList.add(new MoveInstruction(operand, expression.operand));
+		}
+		instructionList.add(new BinaryInstruction(BinaryInstruction.BinaryOp.XOR, operand, expression.operand, new ImmediateOperand(1)));
 	}
 }

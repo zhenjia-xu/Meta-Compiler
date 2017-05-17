@@ -1,7 +1,9 @@
 package AST.Expression;
 
+import AST.ProgramAST;
 import AST.Symbol.*;
 import AST.Type.*;
+import FrontEnd.Listener.BaseListener;
 import IR.*;
 import Utility.*;
 
@@ -25,8 +27,12 @@ public class FunctionCallExpression extends Expression{
 		List<Symbol> parameterList = function.getParameterList();
 		if(functionExpression instanceof MemberExpression){
 			expressionList.add(0, ((MemberExpression) functionExpression).getExpression());
-		}
+		}else
+			if(function.getClassScope() != null){
+				expressionList.add(0, IdentifierExpression.getExpression("this"));
+			}
 		if(parameterList.size() != expressionList.size()){
+			System.out.println(parameterList.size() + " " + expressionList.size());
 			throw new CompilationError("The number of parameters doesn't match");
 		}
 		for(int i = 0; i < parameterList.size(); i++){

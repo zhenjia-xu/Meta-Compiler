@@ -430,7 +430,6 @@ public class ASTreeListener extends BaseListener{
     public void enterThis_Expression(MetaParser.This_ExpressionContext ctx) { }
     @Override
     public void exitThis_Expression(MetaParser.This_ExpressionContext ctx) {
-        //Expression expression = ThisExpression.getExpression();
         Expression expression = IdentifierExpression.getExpression("this");
         returnNode.put(ctx, expression);
     }

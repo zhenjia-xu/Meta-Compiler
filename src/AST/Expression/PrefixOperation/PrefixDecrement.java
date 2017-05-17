@@ -38,7 +38,13 @@ public class PrefixDecrement extends Expression {
 	@Override
 	public void generateInstruction(List<Instruction> instructionList) {
 		expression.generateInstruction(instructionList);
-		operand = expression.operand;
-		instructionList.add(new UnaryInstruction(UnaryInstruction.UnaryOp.DEC, (VirtualRegister)operand, operand));
+		VirtualRegister operand;
+		if(expression.operand instanceof VirtualRegister){
+			operand = (VirtualRegister) expression.operand;
+		}else{
+			operand = RegisterManager.getTemporaryRegister();
+			instructionList.add(new MoveInstruction(operand, expression.operand));
+		}
+		instructionList.add(new UnaryInstruction(UnaryInstruction.UnaryOp.DEC, operand, operand));
 	}
 }

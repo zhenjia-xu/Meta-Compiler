@@ -2,10 +2,7 @@ package AST.Expression.PrefixOperation;
 
 import AST.Expression.Expression;
 import AST.Type.*;
-import IR.Instruction;
-import IR.VirtualRegister;
-import IR.RegisterManager;
-import IR.UnaryInstruction;
+import IR.*;
 import Utility.*;
 
 import java.util.List;
@@ -35,7 +32,13 @@ public class PrefixReverse extends Expression{
 	@Override
 	public void generateInstruction(List<Instruction> instructionList) {
 		expression.generateInstruction(instructionList);
-		operand = RegisterManager.getTemporaryRegister();
-		instructionList.add(new UnaryInstruction(UnaryInstruction.UnaryOp.REV, (VirtualRegister)operand, expression.operand));
+		VirtualRegister operand;
+		if(expression.operand instanceof VirtualRegister){
+			operand = (VirtualRegister) expression.operand;
+		}else{
+			operand = RegisterManager.getTemporaryRegister();
+			instructionList.add(new MoveInstruction(operand, expression.operand));
+		}
+		instructionList.add(new UnaryInstruction(UnaryInstruction.UnaryOp.REV, operand, expression.operand));
 	}
 }
