@@ -6,8 +6,6 @@ import AST.Symbol.Scope;
 import AST.Symbol.Symbol;
 import IR.LabelInstruction;
 import Utility.Utility;
-import com.sun.org.apache.xpath.internal.functions.FuncFalse;
-import sun.util.locale.provider.FallbackLocaleProviderAdapter;
 
 import java.util.List;
 

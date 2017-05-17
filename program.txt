@@ -11,4 +11,5 @@ int main(){
 	int[] arr = new int [10];
 	A a = new A;
 	arr[5] = a.a.a.p;
+	arr[2] = arr[4] + arr[6];
 }
