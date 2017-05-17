@@ -18,7 +18,7 @@ public class ReturnStatement extends Statement{
 		if(function == null){
 			throw new CompilationError("The return statement should be in a function");
 		}
-		if(function.getName() == null){
+		if(function.getRawName() == null){
 			if(returnExpression != null){
 				throw new CompilationError("Construct function can't has return value");
 			}
