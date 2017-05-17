@@ -35,8 +35,8 @@ public class SuffixDecrement extends Expression{
 	@Override
 	public void generateInstruction(List<Instruction> instructionList) {
 		expression.generateInstruction(instructionList);
-		operand = MemoryManager.getTemporaryAddress();
+		operand = RegisterManager.getTemporaryRegister();
 		instructionList.add(new MoveInstruction(operand, expression.operand));
-		instructionList.add(new UnaryInstruction(UnaryInstruction.UnaryOp.DEC, (Address)expression.operand, expression.operand));
+		instructionList.add(new UnaryInstruction(UnaryInstruction.UnaryOp.DEC, (VirtualRegister)expression.operand, expression.operand));
 	}
 }

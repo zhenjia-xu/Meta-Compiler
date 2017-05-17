@@ -1,5 +1,14 @@
+class A{
+	int p;
+	A a;
+	void fun(int a, int b){
+		p = a;
+		b = this.p;
+	}
+	A(){}
+}
 int main(){
-	string str;
-	int len;
-	len = str.length(123);
+	int[] arr = new int [10];
+	A a = new A;
+	arr[5] = a.a.a.p;
 }

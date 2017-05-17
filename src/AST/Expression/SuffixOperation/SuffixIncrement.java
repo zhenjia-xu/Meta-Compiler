@@ -35,8 +35,8 @@ public class SuffixIncrement extends Expression{
 	@Override
 	public void generateInstruction(List<Instruction> instructionList) {
 		expression.generateInstruction(instructionList);
-		operand = MemoryManager.getTemporaryAddress();
+		operand = RegisterManager.getTemporaryRegister();
 		instructionList.add(new MoveInstruction(operand, expression.operand));
-		instructionList.add(new UnaryInstruction(UnaryInstruction.UnaryOp.INC, (Address)expression.operand, expression.operand));
+		instructionList.add(new UnaryInstruction(UnaryInstruction.UnaryOp.INC, (VirtualRegister)expression.operand, expression.operand));
 	}
 }

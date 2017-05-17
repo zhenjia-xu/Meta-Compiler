@@ -7,6 +7,7 @@ import AST.Type.*;
 import FrontEnd.Parser.MetaParser;
 import Utility.CompilationError;
 import org.antlr.v4.runtime.tree.ParseTree;
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +48,8 @@ public class OtherDeclarationListener extends BaseListener{
 		for(ParseTree x: ctx.functionDeclaration()){
 			FunctionType function = (FunctionType) returnNode.get(x);
 			function.addClassScope(classType);
-			if(function.getName() == null) {
+			function.getParameterList().add(0, new Symbol("this", classType));
+			if(function.getRawName() == null) {
 				classType.addConstructFunction(function);
 			}else{
 				classType.addMemberFunction(function);

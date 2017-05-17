@@ -3,8 +3,8 @@ package AST.Expression.PrefixOperation;
 import AST.Expression.Expression;
 import AST.Type.*;
 import IR.Instruction;
-import IR.Address;
-import IR.MemoryManager;
+import IR.VirtualRegister;
+import IR.RegisterManager;
 import IR.UnaryInstruction;
 import Utility.*;
 
@@ -35,7 +35,7 @@ public class PrefixReverse extends Expression{
 	@Override
 	public void generateInstruction(List<Instruction> instructionList) {
 		expression.generateInstruction(instructionList);
-		operand = MemoryManager.getTemporaryAddress();
-		instructionList.add(new UnaryInstruction(UnaryInstruction.UnaryOp.REV, (Address)operand, expression.operand));
+		operand = RegisterManager.getTemporaryRegister();
+		instructionList.add(new UnaryInstruction(UnaryInstruction.UnaryOp.REV, (VirtualRegister)operand, expression.operand));
 	}
 }

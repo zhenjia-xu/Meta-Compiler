@@ -1,6 +1,6 @@
 package AST.Expression;
 
-import IR.Instruction;
+import IR.*;
 import Utility.*;
 import AST.Type.*;
 
@@ -22,13 +22,7 @@ public class ArrayExpression extends Expression{
 			throw new CompilationError("The subscript should be int");
 		}
 		ArrayType arrayType = (ArrayType) arrayExpression.getType();
-		Type type;
-		if(arrayType.getDimension() == 1){
-			type = arrayType.getBaseType();
-		} else {
-			type = new ArrayType(arrayType.getBaseType(), arrayType.getDimension() - 1);
-		}
-		return new ArrayExpression(type, arrayExpression, subscriptExpression);
+		return new ArrayExpression(arrayType.reduceDimension(), arrayExpression, subscriptExpression);
 	}
 	@Override
 	public String toString(){
@@ -44,6 +38,25 @@ public class ArrayExpression extends Expression{
 	}
 	@Override
 	public void generateInstruction(List<Instruction> instructionList) {
-
+		arrayExpression.generateInstruction(instructionList);
+		subscriptExpression.generateInstruction(instructionList);
+		VirtualRegister offset = RegisterManager.getTemporaryRegister();
+		ArrayType arrayType = (ArrayType) arrayExpression.getType();
+		Type newType = arrayType.reduceDimension();
+		if(newType instanceof ClassType) {
+			instructionList.add(new BinaryInstruction(BinaryInstruction.BinaryOp.MUL, offset, subscriptExpression.operand, new ImmediateOperand(((ClassType) newType).getAllocateSize())));
+		}else{
+			instructionList.add(new BinaryInstruction(BinaryInstruction.BinaryOp.MUL, offset, subscriptExpression.operand, new ImmediateOperand(4)));
+		}
+		VirtualRegister base, pos;
+		pos = RegisterManager.getTemporaryRegister();
+		if(arrayExpression.operand instanceof VirtualRegister){
+			base = (VirtualRegister) arrayExpression.operand;
+		}else{
+			base = RegisterManager.getTemporaryRegister();
+			instructionList.add(new MoveInstruction(arrayExpression.operand, base));
+		}
+		instructionList.add(new BinaryInstruction(BinaryInstruction.BinaryOp.ADD, pos, base, offset));
+		operand = new Address(pos);
 	}
 }

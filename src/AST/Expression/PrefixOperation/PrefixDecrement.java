@@ -39,6 +39,6 @@ public class PrefixDecrement extends Expression {
 	public void generateInstruction(List<Instruction> instructionList) {
 		expression.generateInstruction(instructionList);
 		operand = expression.operand;
-		instructionList.add(new UnaryInstruction(UnaryInstruction.UnaryOp.DEC, (Address)operand, operand));
+		instructionList.add(new UnaryInstruction(UnaryInstruction.UnaryOp.DEC, (VirtualRegister)operand, operand));
 	}
 }

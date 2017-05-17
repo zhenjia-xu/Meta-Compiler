@@ -6,8 +6,8 @@ import AST.Expression.Expression;
 import AST.Type.*;
 import IR.BinaryInstruction;
 import IR.Instruction;
-import IR.MemoryManager;
-import IR.Address;
+import IR.RegisterManager;
+import IR.VirtualRegister;
 import Utility.CompilationError;
 import Utility.Utility;
 
@@ -47,8 +47,8 @@ public class BinaryBitXor extends Expression{
 	public void generateInstruction(List<Instruction> instructionList){
 		leftExpression.generateInstruction(instructionList);
 		rightExpression.generateInstruction(instructionList);
-		operand = MemoryManager.getTemporaryAddress();
-		Instruction instruction = new BinaryInstruction(BinaryInstruction.BinaryOp.XOR, (Address) operand, leftExpression.operand, rightExpression.operand);
+		operand = RegisterManager.getTemporaryRegister();
+		Instruction instruction = new BinaryInstruction(BinaryInstruction.BinaryOp.XOR, (VirtualRegister) operand, leftExpression.operand, rightExpression.operand);
 		instructionList.add(instruction);
 	}
 }

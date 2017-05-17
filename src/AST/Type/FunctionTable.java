@@ -17,7 +17,7 @@ public class FunctionTable{
 		return functionMap;
 	}
 	public void addFunction(FunctionType functionType){
-		String functionName = functionType.getName();
+		String functionName = functionType.getRawName();
 		if(functionMap.containsKey(functionName)){
 			throw new CompilationError("This scope can't have two functions named \"" + functionName +"\"");
 		}

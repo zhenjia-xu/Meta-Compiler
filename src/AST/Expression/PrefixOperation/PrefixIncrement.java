@@ -36,6 +36,6 @@ public class PrefixIncrement extends Expression{
 	public void generateInstruction(List<Instruction> instructionList) {
 		expression.generateInstruction(instructionList);
 		operand = expression.operand;
-		instructionList.add(new UnaryInstruction(UnaryInstruction.UnaryOp.INC, (Address)operand, operand));
+		instructionList.add(new UnaryInstruction(UnaryInstruction.UnaryOp.INC, (VirtualRegister)operand, operand));
 	}
 }

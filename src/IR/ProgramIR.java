@@ -1,18 +1,32 @@
 package IR;
 
 import AST.ProgramAST;
+import AST.Type.ClassType;
 import AST.Type.FunctionType;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Stack;
 
 public class ProgramIR {
 	private static Map<String, FunctionIR> functionMap;
+	public static VirtualRegister scopeRegister = new VirtualRegister("scope");
+
 	public static void BuildProgramIR(){
 		functionMap = new HashMap<>();
 		for(FunctionType function: ProgramAST.globalFunctionTable.getFunctionMap().values()){
 			if(!function.isBuiltin()){
 				functionMap.put(function.getName(), new FunctionIR(function));
+			}
+		}
+		for(ClassType classType: ProgramAST.classTable.getClassMap().values()){
+			for(FunctionType function: classType.getMemberFunctionTable().values()){
+				if(!function.isBuiltin()){
+					functionMap.put(function.getName(), new FunctionIR(function));
+				}
+			}
+			if(classType.getConstrustFunction() != null){
+				functionMap.put(classType.getConstrustFunction().getName(), new FunctionIR(classType.getConstrustFunction()));
 			}
 		}
 	}

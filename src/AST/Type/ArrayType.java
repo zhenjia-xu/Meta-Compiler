@@ -18,6 +18,13 @@ public class ArrayType extends Type{
 	public int getDimension(){
 		return dimension;
 	}
+	public Type reduceDimension(){
+		if(dimension == 1){
+			return baseType;
+		}else{
+			return new ArrayType(baseType, dimension - 1);
+		}
+	}
 	@Override
 	public boolean compatibleWith(Type other){
 		if(other == NullType.getInstance()) return true;

@@ -2,9 +2,10 @@ package AST.Expression;
 
 import AST.Symbol.*;
 import AST.Type.*;
-import IR.Instruction;
+import IR.*;
 import Utility.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class FunctionCallExpression extends Expression{
@@ -22,12 +23,18 @@ public class FunctionCallExpression extends Expression{
 		}
 		FunctionType function = (FunctionType) functionExpression.getType();
 		List<Symbol> parameterList = function.getParameterList();
+		if(functionExpression instanceof MemberExpression){
+			expressionList.add(0, ((MemberExpression) functionExpression).getExpression());
+		}
 		if(parameterList.size() != expressionList.size()){
 			throw new CompilationError("The number of parameters doesn't match");
 		}
 		for(int i = 0; i < parameterList.size(); i++){
 			Type parameterType = parameterList.get(i).getType();
 			Type expressionType = expressionList.get(i).getType();
+			if(i == 0 && functionExpression instanceof MemberExpression && parameterType == null){
+				continue;
+			}
 			if(!parameterType.compatibleWith(expressionType)){
 				throw new CompilationError("The type of parameters doesn't match");
 			}
@@ -49,7 +56,16 @@ public class FunctionCallExpression extends Expression{
 	@Override
 	public void generateInstruction(List<Instruction> instructionList) {
 		if(!function.isBuiltin()){
-
+			List<Operand> parameterList = new ArrayList<>();
+			for(Expression exp: expressionList){
+				exp.generateInstruction(instructionList);
+				parameterList.add(exp.operand);
+			}
+			operand = null;
+			if(!(function.getReturnType() instanceof VoidType)){
+				operand = RegisterManager.getTemporaryRegister();
+			}
+			instructionList.add(new FunctionCallInstruction(function, (VirtualRegister) operand, parameterList));
 		}else{
 			//builtin function
 		}

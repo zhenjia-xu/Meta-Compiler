@@ -2,13 +2,11 @@ package AST.Expression.BinaryOperation;
 
 
 import AST.Constant.BoolConstant;
-import AST.Constant.IntConstant;
 import AST.Expression.Expression;
 import AST.Type.*;
 import IR.*;
 import Utility.CompilationError;
 import Utility.Utility;
-import jdk.nashorn.internal.codegen.types.BooleanType;
 
 import java.util.List;
 
@@ -61,7 +59,7 @@ public class BinaryLogicalAnd extends Expression{
 			%logical_exit:
 				...
 		 */
-		operand = MemoryManager.getTemporaryAddress();
+		operand = RegisterManager.getTemporaryRegister();
 		leftExpression.generateInstruction(instructionList);
 		instructionList.add(new BranchInstruction(leftExpression.operand, trueLabel, falseLabel));
 

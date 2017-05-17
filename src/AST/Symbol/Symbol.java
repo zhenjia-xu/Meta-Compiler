@@ -1,18 +1,18 @@
 package AST.Symbol;
 
 import AST.Type.Type;
-import IR.Address;
+import IR.VirtualRegister;
 import Utility.Utility;
 
 public class Symbol {
 	private String name;
 	private Type type;
-	public Address address;
+	public VirtualRegister virtualRegister;
 
 	public Symbol(String name, Type type){
 		this.name = name;
 		this.type = type;
-		this.address = new Address(name);
+		this.virtualRegister = new VirtualRegister(name);
 	}
 	public String getName(){
 		return name;

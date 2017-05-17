@@ -18,6 +18,11 @@ public class ProgramAST {
         globalFunctionTable.addFunction(function_getString());
         globalFunctionTable.addFunction(function_getInt());
         globalFunctionTable.addFunction(function_toString());
+        globalFunctionTable.addFunction(function_array_size());
+        globalFunctionTable.addFunction(function_string_length());
+        globalFunctionTable.addFunction(function_string_substring());
+        globalFunctionTable.addFunction(function_string_parseInt());
+        globalFunctionTable.addFunction(function_string_ord());
     }
     public static void initialize(){
         classTable = new ClassTable();
@@ -35,8 +40,7 @@ public class ProgramAST {
         String functionName = "print";
         Type returnType = VoidType.getInstance();
         List<Symbol> parameterList = new ArrayList<>();
-        Symbol symbol = new Symbol("str", StringType.getInstance());
-        parameterList.add(symbol);
+        parameterList.add(new Symbol("str", StringType.getInstance()));
         FunctionType function = new FunctionType(functionName, returnType, parameterList);
         function.setBuiltin();
         return function;
@@ -45,8 +49,7 @@ public class ProgramAST {
         String functionName = "println";
         Type returnType = VoidType.getInstance();
         List<Symbol> parameterList = new ArrayList<>();
-        Symbol symbol = new Symbol("str", StringType.getInstance());
-        parameterList.add(symbol);
+        parameterList.add(new Symbol("str", StringType.getInstance()));
         FunctionType function = new FunctionType(functionName, returnType, parameterList);
         function.setBuiltin();
         return function;
@@ -71,8 +74,55 @@ public class ProgramAST {
         String functionName = "toString";
         Type returnType = StringType.getInstance();
         List<Symbol> parameterList = new ArrayList<>();
-        Symbol symbol = new Symbol("num", IntType.getInstance());
-        parameterList.add(symbol);
+        parameterList.add(new Symbol("num", IntType.getInstance()));
+        FunctionType function = new FunctionType(functionName, returnType, parameterList);
+        function.setBuiltin();
+        return function;
+    }
+    private static FunctionType function_array_size(){
+        String functionName = "__array_size";
+        Type returnType = IntType.getInstance();
+        List<Symbol> parameterList = new ArrayList<>();
+        parameterList.add(new Symbol("this", null));
+        FunctionType function = new FunctionType(functionName, returnType, parameterList);
+        function.setBuiltin();
+        return function;
+    }
+    private static FunctionType function_string_length(){
+        String functionName = "__string_length";
+        Type returnType = IntType.getInstance();
+        List<Symbol> parameterList = new ArrayList<>();
+        parameterList.add(new Symbol("this", null));
+        FunctionType function = new FunctionType(functionName, returnType, parameterList);
+        function.setBuiltin();
+        return function;
+    }
+    private static FunctionType function_string_substring(){
+        String functionName = "__string_substring";
+        Type returnType = StringType.getInstance();
+        List<Symbol> parameterList = new ArrayList<>();
+        parameterList.add(new Symbol("this", null));
+        parameterList.add(new Symbol("left", IntType.getInstance()));
+        parameterList.add(new Symbol("right", IntType.getInstance()));
+        FunctionType function = new FunctionType(functionName, returnType, parameterList);
+        function.setBuiltin();
+        return function;
+    }
+    private static FunctionType function_string_parseInt(){
+        String functionName = "__string_parseInt";
+        Type returnType = IntType.getInstance();
+        List<Symbol> parameterList = new ArrayList<>();
+        parameterList.add(new Symbol("this", null));
+        FunctionType function = new FunctionType(functionName, returnType, parameterList);
+        function.setBuiltin();
+        return function;
+    }
+    private static FunctionType function_string_ord(){
+        String functionName = "__string_ord";
+        Type returnType = IntType.getInstance();
+        List<Symbol> parameterList = new ArrayList<>();
+        parameterList.add(new Symbol("this", null));
+        parameterList.add(new Symbol("pos", IntType.getInstance()));
         FunctionType function = new FunctionType(functionName, returnType, parameterList);
         function.setBuiltin();
         return function;

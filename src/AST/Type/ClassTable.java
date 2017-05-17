@@ -24,6 +24,9 @@ public class ClassTable{
         }
         return classMap.get(className);
     }
+    public Map<String, ClassType> getClassMap(){
+        return classMap;
+    }
     @Override
     public String toString(){
         return "class table";

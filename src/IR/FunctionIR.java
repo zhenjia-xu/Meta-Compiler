@@ -1,7 +1,7 @@
 package IR;
 
-import AST.Statement.BlockStatement;
 import AST.Symbol.Symbol;
+import AST.Type.ClassType;
 import AST.Type.FunctionType;
 import AST.Type.VoidType;
 import Utility.Utility;
@@ -11,15 +11,15 @@ import java.util.List;
 
 public class FunctionIR {
 	private FunctionType function;
-	private List<Address> parameterAddressList;
+	private List<VirtualRegister> parameterList;
 	private List<Block> blockList;
 	public LabelInstruction enterBlock, exitBlock;
 
 	public FunctionIR(FunctionType function){
 		this.function = function;
-		parameterAddressList = new ArrayList<>();
+		parameterList = new ArrayList<>();
 		for(Symbol x: function.getParameterList()){
-			parameterAddressList.add(x.address);
+			parameterList.add(x.virtualRegister);
 		}
 		buildGraph();
 	}
@@ -60,7 +60,7 @@ public class FunctionIR {
 			str.append("func ");
 		}
 		str.append(function.getName() + " ");
-		for(Address parameter: parameterAddressList){
+		for(VirtualRegister parameter: parameterList){
 			str.append(parameter + " ");
 		}
 		str.append("{\n");

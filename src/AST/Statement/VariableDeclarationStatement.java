@@ -10,12 +10,13 @@ import Utility.*;
 
 import java.util.List;
 
-public class  VariableDeclarationStatement extends Statement {
+public class VariableDeclarationStatement extends Statement {
 	private Type type;
 	private String name;
 	private Expression expression;
 	private ClassType classScope;
 	private Symbol symbol;
+	public int offset;
 
 	public VariableDeclarationStatement(String name, Type type) {
 		this.type = type;
@@ -23,6 +24,7 @@ public class  VariableDeclarationStatement extends Statement {
 		this.expression = null;
 		this.classScope = null;
 		this.symbol = new Symbol(name, type);
+		this.offset = 0;
 	}
 	public void addClassScope(ClassType classScope){
 		this.classScope = classScope;
@@ -66,7 +68,7 @@ public class  VariableDeclarationStatement extends Statement {
 	public void generateInstruction(List<Instruction> instructionList){
 		if(expression != null){
 			expression.generateInstruction(instructionList);
-			instructionList.add(new MoveInstruction(symbol.address, expression.operand));
+			instructionList.add(new MoveInstruction(symbol.virtualRegister, expression.operand));
 		}
 	}
 }

@@ -3,19 +3,19 @@ package IR;
 import Utility.RuntimeError;
 
 public class MoveInstruction extends Instruction{
-	public Address target;
-	public Operand operand;
+	public Operand target;
+	public Operand source;
 
-	public MoveInstruction(Operand target, Operand operand){
-		if(!(target instanceof Address)){
-			throw new RuntimeError("Type of move instruction ERROR");
+	public MoveInstruction(Operand target, Operand source){
+		if(target instanceof Address && source instanceof Address){
+			throw new RuntimeError("move instruction can't handle two Address");
 		}
-		this.target = (Address)target;
-		this.operand = operand;
+		this.target = target;
+		this.source = source;
 	}
 
 	@Override
 	public String toString(){
-		return String.format("%s = move %s",target, operand);
+		return String.format("%s = move %s",target, source);
 	}
 }

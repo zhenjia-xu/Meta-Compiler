@@ -34,14 +34,14 @@ public class FunctionType extends Type implements Scope {
         this.blockStatement = blockStatement;
     }
     public String getName(){
-        return name;
-    }
-    public String getIRName(){
         if(classScope == null){
             return name;
         }else{
-            return ((ClassType)classScope).getName() + name;
+            return ((ClassType)classScope).getName() + "." + name;
         }
+    }
+    public String getRawName(){
+        return name;
     }
     public void setBuiltin(){
         builtin = true;

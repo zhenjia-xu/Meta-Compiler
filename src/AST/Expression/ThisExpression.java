@@ -8,6 +8,7 @@ import Utility.*;
 import java.util.List;
 
 public class ThisExpression extends Expression{
+
 	private ThisExpression(Type type){
 		super(type, true);
 	}

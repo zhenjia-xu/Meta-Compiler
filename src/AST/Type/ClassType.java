@@ -10,12 +10,14 @@ public class ClassType extends Type implements Scope {
     private VariableTable memberVariableTable;
     private FunctionTable memberFunctionTable;
     private FunctionType construstFunction;
+    private int allocateSize;
 
     public ClassType(String name){
         this.name = name;
         this.memberFunctionTable = new FunctionTable();
         this.memberVariableTable = new VariableTable();
-        construstFunction = null;
+        this.construstFunction = null;
+        this.allocateSize = 0;
     }
     public Map<String, FunctionType> getMemberFunctionTable(){
         return memberFunctionTable.getFunctionMap();
@@ -29,10 +31,18 @@ public class ClassType extends Type implements Scope {
     public VariableDeclarationStatement getMemberVariable(String name){
         return memberVariableTable.getVariable(name);
     }
+    public FunctionType getConstrustFunction(){
+        return construstFunction;
+    }
+    public int getAllocateSize(){
+        return allocateSize;
+    }
     public void addMemberFunction(FunctionType function){
         memberFunctionTable.addFunction(function);
     }
     public void addMemberVariable(VariableDeclarationStatement variable){
+        variable.offset = allocateSize;
+        allocateSize += 4;
         memberVariableTable.addVariable(variable);
     }
     public void addConstructFunction(FunctionType function){

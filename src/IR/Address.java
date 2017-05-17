@@ -1,16 +1,20 @@
 package IR;
 
 public class Address extends Operand{
-	private String name;
+	private VirtualRegister base;
+	private ImmediateOperand offset;
 
-	public Address(String name){
-		this.name = name;
+	public Address(VirtualRegister base, ImmediateOperand offset){
+		this.base = base;
+		this.offset = offset;
 	}
-	public String getName(){
-		return name;
+	public Address(VirtualRegister base){
+		this.base = base;
+		this.offset = new ImmediateOperand(0);
 	}
+
 	@Override
 	public String toString(){
-		return "$" + name;
+		return String.format("Address(%s + %s)",base, offset);
 	}
 }

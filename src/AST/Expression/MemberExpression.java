@@ -1,8 +1,9 @@
 package AST.Expression;
 
+import AST.ProgramAST;
 import AST.Statement.VariableDeclarationStatement;
 import FrontEnd.Listener.BaseListener;
-import IR.Instruction;
+import IR.*;
 import Utility.*;
 import AST.Type.*;
 import AST.Symbol.*;
@@ -34,49 +35,34 @@ public class MemberExpression extends Expression{
 		}
 		if(expression.getType() instanceof StringType){
 			if(identifier.equals("length")){
-				String functionName = "length";
-				Type returnType = IntType.getInstance();
-				List<Symbol> parameterList = new ArrayList<>();
-				FunctionType function = new FunctionType(functionName, returnType, parameterList);
+				FunctionType function = ProgramAST.globalFunctionTable.getFunctionType("__string_length");
 				return new MemberExpression(function, expression, identifier);
 			}
 			if(identifier.equals("substring")){
-				String functionName = "substring";
-				Type returnType = StringType.getInstance();
-				List<Symbol> parameterList = new ArrayList<>();
-				parameterList.add(new Symbol("left", IntType.getInstance()));
-				parameterList.add(new Symbol("right", IntType.getInstance()));
-				FunctionType function = new FunctionType(functionName, returnType, parameterList);
+				FunctionType function = ProgramAST.globalFunctionTable.getFunctionType("__string_substring");
 				return new MemberExpression(function, expression, identifier);
 			}
 			if(identifier.equals("parseInt")){
-				String functionName = "parseInt";
-				Type returnType = IntType.getInstance();
-				List<Symbol> parameterList = new ArrayList<>();
-				FunctionType function = new FunctionType(functionName, returnType, parameterList);
+				FunctionType function = ProgramAST.globalFunctionTable.getFunctionType("__string_parseInt");
 				return new MemberExpression(function, expression, identifier);
 			}
 			if(identifier.equals("ord")){
-				String functionName = "ord";
-				Type returnType = IntType.getInstance();
-				List<Symbol> parameterList = new ArrayList<>();
-				parameterList.add(new Symbol("pos", IntType.getInstance()));
-				FunctionType function = new FunctionType(functionName, returnType, parameterList);
+				FunctionType function = ProgramAST.globalFunctionTable.getFunctionType("__string_ord");
 				return new MemberExpression(function, expression, identifier);
 			}
 			throw new CompilationError("Can't find a member named " + identifier);
 		}
 		if(expression.getType() instanceof ArrayType){
 			if(identifier.equals("size")){
-				String functionName = "size";
-				Type returnType = IntType.getInstance();
-				List<Symbol> parameterList = new ArrayList<>();
-				FunctionType function = new FunctionType(functionName, returnType, parameterList);
+				FunctionType function = ProgramAST.globalFunctionTable.getFunctionType("__array_size");
 				return new MemberExpression(function, expression, identifier);
 			}
 			throw new CompilationError("Can't find a member named " + identifier);
 		}
 		throw new CompilationError("Member call needs class or string or array");
+	}
+	public Expression getExpression(){
+		return expression;
 	}
 	@Override
 	public String toString(){
@@ -90,6 +76,17 @@ public class MemberExpression extends Expression{
 	}
 	@Override
 	public void generateInstruction(List<Instruction> instructionList) {
-
+		if(!(this.getType() instanceof FunctionType)){
+			expression.generateInstruction(instructionList);
+			VariableDeclarationStatement variable = ((ClassType) expression.getType()).getMemberVariable(identifier);
+			VirtualRegister base;
+			if(expression.operand instanceof Address){
+				base = RegisterManager.getTemporaryRegister();
+				instructionList.add(new MoveInstruction(expression.operand, base));
+			}else{
+				base = (VirtualRegister) expression.operand;
+			}
+			operand = new Address(base, new ImmediateOperand(variable.offset));
+		}
 	}
 }

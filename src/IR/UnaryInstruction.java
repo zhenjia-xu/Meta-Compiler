@@ -5,10 +5,10 @@ public class UnaryInstruction extends Instruction{
 		REV, NEG, INC, DEC
 	}
 	public UnaryOp op;
-	public Address result;
+	public VirtualRegister result;
 	public Operand operand;
 
-	public UnaryInstruction(UnaryOp op, Address result, Operand operand){
+	public UnaryInstruction(UnaryOp op, VirtualRegister result, Operand operand){
 		this.op = op;
 		this.result = result;
 		this.operand = operand;
