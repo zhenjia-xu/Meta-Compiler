@@ -20,7 +20,6 @@ public class FunctionCallInstruction extends Instruction {
 
 	@Override
 	public void Prepare(){
-		RegisterManager.getID(returnValue);
 		for(Operand x: parameterList){
 			if(x instanceof VirtualRegister){
 				RegisterManager.getID((VirtualRegister) x);
