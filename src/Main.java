@@ -6,6 +6,7 @@ import org.antlr.v4.runtime.tree.*;
 import FrontEnd.Parser.*;
 import java.io.*;
 import FrontEnd.Listener.*;
+import Translation.Translator;
 
 public class Main{
 
@@ -39,5 +40,6 @@ public class Main{
 	public static void getIR(){
 		ProgramIR.BuildProgramIR();
 		ProgramIR.print();
+		Translator.IRtoNASM();
 	}
 }

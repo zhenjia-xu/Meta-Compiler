@@ -2,6 +2,7 @@ package AST.Expression;
 
 import AST.Type.*;
 import IR.*;
+import IR.Instruction.*;
 import Utility.*;
 
 import java.util.ArrayList;
@@ -52,8 +53,8 @@ public class CreationExpression extends Expression{
 			}
 		}else{
 			VirtualRegister allocateSize = RegisterManager.getTemporaryRegister();
-
-			instructionList.add(new BinaryInstruction(BinaryInstruction.BinaryOp.MUL, allocateSize, list.get(0), new ImmediateOperand(4)));
+			instructionList.add(new MoveInstruction(allocateSize, list.get(0)));
+			instructionList.add(new BinaryInstruction(BinaryInstruction.BinaryOp.MUL, allocateSize, new ImmediateOperand(4)));
 			instructionList.add(new AllocateInstruction(base, allocateSize));
 			Type newType = ((ArrayType)type).reduceDimension();
 			list.remove(0);
@@ -66,33 +67,32 @@ public class CreationExpression extends Expression{
 					%...:
 						(init)
 						jump %allocate_condition
-					%allocate_condition:
-						(condition)
-						branch $condition bodyLabel exitLabel
 					%allocate_body:
 						(statement)
 						jump allocate_increment
-					%allocate_increment:
-						(increment)
-						jump loop_condition
+					%allocate_condition:
+						cmp pos end
+						cjump LE bodyLabel
+						jump exitLabel
 					%allocate_exit:
 						...
 				*/
 				VirtualRegister pos = RegisterManager.getTemporaryRegister();
 				VirtualRegister end = RegisterManager.getTemporaryRegister();
 				instructionList.add(new MoveInstruction(pos, base));
-				instructionList.add(new BinaryInstruction(BinaryInstruction.BinaryOp.ADD, end, pos, allocateSize));
+				instructionList.add(new MoveInstruction(end, base));
+				instructionList.add(new BinaryInstruction(BinaryInstruction.BinaryOp.ADD, end, allocateSize));
 				instructionList.add(new JumpInstruction(conditionLabel));
-
-				instructionList.add(conditionLabel);
-				VirtualRegister condition = RegisterManager.getTemporaryRegister();
-				instructionList.add(new BinaryInstruction(BinaryInstruction.BinaryOp.LE, condition, pos, end));
-				instructionList.add(new BranchInstruction(condition, bodyLabel, exitLabel));
 
 				instructionList.add(bodyLabel);
 				allocate(pos, newType, list, instructionList);
-				instructionList.add(new BinaryInstruction(BinaryInstruction.BinaryOp.ADD, pos, pos, new ImmediateOperand(4)));
+				instructionList.add(new BinaryInstruction(BinaryInstruction.BinaryOp.ADD, pos, new ImmediateOperand(4)));
 				instructionList.add(new JumpInstruction(conditionLabel));
+
+				instructionList.add(conditionLabel);
+				instructionList.add(new CompareInstruction(pos, end));
+				instructionList.add(new CjumpInstruction(ProgramIR.ConditionOp.LE, bodyLabel));
+				instructionList.add(new JumpInstruction(exitLabel));
 
 				instructionList.add(exitLabel);
 			}

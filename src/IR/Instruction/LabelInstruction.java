@@ -1,4 +1,6 @@
-package IR;
+package IR.Instruction;
+
+import IR.Block;
 
 public class LabelInstruction extends Instruction {
 	private String name;
@@ -11,6 +13,8 @@ public class LabelInstruction extends Instruction {
 		return name;
 	}
 
+	@Override
+	public void Prepare(){}
 	@Override
 	public String toString(){
 		return "%" + name;

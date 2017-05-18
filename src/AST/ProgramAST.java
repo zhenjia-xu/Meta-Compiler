@@ -2,6 +2,8 @@ package AST;
 
 import AST.Symbol.*;
 import AST.Type.*;
+import com.sun.org.apache.xpath.internal.operations.Bool;
+import jdk.nashorn.internal.codegen.types.BooleanType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +25,13 @@ public class ProgramAST {
         globalFunctionTable.addFunction(function_string_substring());
         globalFunctionTable.addFunction(function_string_parseInt());
         globalFunctionTable.addFunction(function_string_ord());
+        globalFunctionTable.addFunction(function_string_connection());
+        globalFunctionTable.addFunction(function_string_EQ());
+        globalFunctionTable.addFunction(function_string_NEQ());
+        globalFunctionTable.addFunction(function_string_GR());
+        globalFunctionTable.addFunction(function_string_GREQ());
+        globalFunctionTable.addFunction(function_string_LE());
+        globalFunctionTable.addFunction(function_string_LEEQ());
     }
     public static void initialize(){
         classTable = new ClassTable();
@@ -123,6 +132,76 @@ public class ProgramAST {
         List<Symbol> parameterList = new ArrayList<>();
         parameterList.add(new Symbol("this", null));
         parameterList.add(new Symbol("pos", IntType.getInstance()));
+        FunctionType function = new FunctionType(functionName, returnType, parameterList);
+        function.setBuiltin();
+        return function;
+    }
+    private static FunctionType function_string_connection(){
+        String functionName = "__string_connection";
+        Type returnType = StringType.getInstance();
+        List<Symbol> parameterList = new ArrayList<>();
+        parameterList.add(new Symbol("left", StringType.getInstance()));
+        parameterList.add(new Symbol("right", StringType.getInstance()));
+        FunctionType function = new FunctionType(functionName, returnType, parameterList);
+        function.setBuiltin();
+        return function;
+    }
+    private static FunctionType function_string_EQ(){
+        String functionName = "__string_EQ";
+        Type returnType = BoolType.getInstance();
+        List<Symbol> parameterList = new ArrayList<>();
+        parameterList.add(new Symbol("left", StringType.getInstance()));
+        parameterList.add(new Symbol("right", StringType.getInstance()));
+        FunctionType function = new FunctionType(functionName, returnType, parameterList);
+        function.setBuiltin();
+        return function;
+    }
+    private static FunctionType function_string_NEQ(){
+        String functionName = "__string_NEQ";
+        Type returnType = BoolType.getInstance();
+        List<Symbol> parameterList = new ArrayList<>();
+        parameterList.add(new Symbol("left", StringType.getInstance()));
+        parameterList.add(new Symbol("right", StringType.getInstance()));
+        FunctionType function = new FunctionType(functionName, returnType, parameterList);
+        function.setBuiltin();
+        return function;
+    }
+    private static FunctionType function_string_GR(){
+        String functionName = "__string_GR";
+        Type returnType = BoolType.getInstance();
+        List<Symbol> parameterList = new ArrayList<>();
+        parameterList.add(new Symbol("left", StringType.getInstance()));
+        parameterList.add(new Symbol("right", StringType.getInstance()));
+        FunctionType function = new FunctionType(functionName, returnType, parameterList);
+        function.setBuiltin();
+        return function;
+    }
+    private static FunctionType function_string_GREQ(){
+        String functionName = "__string_GREQ";
+        Type returnType = BoolType.getInstance();
+        List<Symbol> parameterList = new ArrayList<>();
+        parameterList.add(new Symbol("left", StringType.getInstance()));
+        parameterList.add(new Symbol("right", StringType.getInstance()));
+        FunctionType function = new FunctionType(functionName, returnType, parameterList);
+        function.setBuiltin();
+        return function;
+    }
+    private static FunctionType function_string_LE(){
+        String functionName = "__string_LE";
+        Type returnType = BoolType.getInstance();
+        List<Symbol> parameterList = new ArrayList<>();
+        parameterList.add(new Symbol("left", StringType.getInstance()));
+        parameterList.add(new Symbol("right", StringType.getInstance()));
+        FunctionType function = new FunctionType(functionName, returnType, parameterList);
+        function.setBuiltin();
+        return function;
+    }
+    private static FunctionType function_string_LEEQ(){
+        String functionName = "__string_LEEQ";
+        Type returnType = BoolType.getInstance();
+        List<Symbol> parameterList = new ArrayList<>();
+        parameterList.add(new Symbol("left", StringType.getInstance()));
+        parameterList.add(new Symbol("right", StringType.getInstance()));
         FunctionType function = new FunctionType(functionName, returnType, parameterList);
         function.setBuiltin();
         return function;

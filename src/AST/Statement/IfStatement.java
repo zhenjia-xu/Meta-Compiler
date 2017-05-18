@@ -2,10 +2,8 @@ package AST.Statement;
 
 import AST.Expression.Expression;
 import AST.Type.BoolType;
-import IR.BranchInstruction;
-import IR.Instruction;
-import IR.JumpInstruction;
-import IR.LabelInstruction;
+import IR.*;
+import IR.Instruction.*;
 import Utility.CompilationError;
 import Utility.Utility;
 
@@ -58,7 +56,9 @@ public class IfStatement extends Statement{
 		/*
 			%...:
 				(condition)
-				branch condition if_true if_false
+				cmp condition true
+				cjump EQ if_true
+				jump if_false
 			%if_true:
 				(trueStatement)
 				jump if_exit
@@ -69,7 +69,9 @@ public class IfStatement extends Statement{
 				...
 		 */
 		condition.generateInstruction(instructionList);
-		instructionList.add(new BranchInstruction(condition.operand, trueLabel, falseLabel));
+		instructionList.add(new CompareInstruction(condition.operand, new ImmediateOperand(1)));
+		instructionList.add(new CjumpInstruction(ProgramIR.ConditionOp.EQ, trueLabel));
+		instructionList.add(new JumpInstruction(falseLabel));
 
 		instructionList.add(trueLabel);
 		trueStatement.generateInstruction(instructionList);

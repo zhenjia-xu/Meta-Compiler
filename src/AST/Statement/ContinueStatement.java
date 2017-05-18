@@ -1,8 +1,8 @@
 package AST.Statement;
 
 import AST.ProgramAST;
-import IR.Instruction;
-import IR.JumpInstruction;
+import IR.Instruction.Instruction;
+import IR.Instruction.JumpInstruction;
 import Utility.Utility;
 import Utility.CompilationError;
 

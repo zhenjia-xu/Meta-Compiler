@@ -5,6 +5,12 @@ import AST.Constant.BoolConstant;
 import AST.Expression.Expression;
 import AST.Type.*;
 import IR.*;
+import IR.Instruction.LabelInstruction;
+import IR.Instruction.JumpInstruction;
+import IR.Instruction.CompareInstruction;
+import IR.Instruction.CjumpInstruction;
+import IR.Instruction.MoveInstruction;
+import IR.Instruction.Instruction;
 import Utility.CompilationError;
 import Utility.Utility;
 
@@ -48,29 +54,34 @@ public class BinaryLogicalOr extends Expression{
 		/*
 			%...:
 				(left_expression)
-				branch left_expression.operand logical_true logical_false
-			%logical_true:
-				move operand True
-				jump logical_exit
+				cmp left_expression.operand true
+				cjump EQ logical_true
+				jump logical_false
 			%logical_false:
-				(right_expression)
 				move operand right_expression.operand
+				jump logical_exit
+			%logical_true:
+				(right_expression)
+				move operand True
 				jump logical_exit
 			%logical_exit:
 				...
 		 */
 		operand = RegisterManager.getTemporaryRegister();
 		leftExpression.generateInstruction(instructionList);
-		instructionList.add(new BranchInstruction(leftExpression.operand, trueLabel, falseLabel));
+		instructionList.add(new CompareInstruction(leftExpression.operand, new ImmediateOperand(1)));
+		instructionList.add(new CjumpInstruction(ProgramIR.ConditionOp.EQ, trueLabel));
+		instructionList.add(new JumpInstruction(falseLabel));
+
+		instructionList.add(falseLabel);
+		instructionList.add(new MoveInstruction(operand, rightExpression.operand));
+		instructionList.add(new JumpInstruction(exitLabel));
 
 		instructionList.add(trueLabel);
+		rightExpression.generateInstruction(instructionList);
 		instructionList.add(new MoveInstruction(operand, new ImmediateOperand(1)));
 		instructionList.add(new JumpInstruction(exitLabel));
 
-		instructionList.add(falseLabel);
-		rightExpression.generateInstruction(instructionList);
-		instructionList.add(new MoveInstruction(operand, rightExpression.operand));
-		instructionList.add(new JumpInstruction(exitLabel));
 
 		instructionList.add(exitLabel);
 	}

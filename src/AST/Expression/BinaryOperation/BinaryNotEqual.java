@@ -1,14 +1,15 @@
 package AST.Expression.BinaryOperation;
 
 import AST.Constant.*;
+import AST.Expression.FunctionCallExpression;
+import AST.Expression.IdentifierExpression;
 import AST.Type.*;
-import IR.BinaryInstruction;
-import IR.Instruction;
-import IR.RegisterManager;
-import IR.VirtualRegister;
+import IR.*;
+import IR.Instruction.*;
 import Utility.*;
 import AST.Expression.Expression;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BinaryNotEqual extends Expression{
@@ -41,6 +42,15 @@ public class BinaryNotEqual extends Expression{
 		if((leftExpression instanceof NullConstant) && (rightExpression instanceof NullConstant)){
 			return new BoolConstant(false);
 		}
+		if(leftExpression.getType() instanceof StringType && rightExpression.getType() instanceof StringType){
+			List<Expression> expressionList = new ArrayList<>();
+			expressionList.add(leftExpression);
+			expressionList.add(rightExpression);
+			return FunctionCallExpression.getExpression(
+					IdentifierExpression.getExpression("__string_NEQ"),
+					expressionList
+			);
+		}
 		return new BinaryNotEqual(leftExpression, rightExpression);
 	}
 	@Override
@@ -58,7 +68,15 @@ public class BinaryNotEqual extends Expression{
 		leftExpression.generateInstruction(instructionList);
 		rightExpression.generateInstruction(instructionList);
 		operand = RegisterManager.getTemporaryRegister();
-		Instruction instruction = new BinaryInstruction(BinaryInstruction.BinaryOp.NEQ, (VirtualRegister) operand, leftExpression.operand, rightExpression.operand);
-		instructionList.add(instruction);
+		Operand left = leftExpression.operand;
+		Operand right = rightExpression.operand;
+		if(left instanceof Address && right instanceof Address){
+			VirtualRegister tmp = RegisterManager.getTemporaryRegister();
+			instructionList.add(new MoveInstruction(tmp, left));
+			instructionList.add(new CompareInstruction(tmp, right));
+		}else{
+			instructionList.add(new CompareInstruction(left, right));
+		}
+		instructionList.add(new CsetInstruction(ProgramIR.ConditionOp.NEQ, operand));
 	}
 }

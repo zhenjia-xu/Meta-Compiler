@@ -3,6 +3,9 @@ package AST.Expression.SuffixOperation;
 import AST.Expression.Expression;
 import AST.Type.*;
 import IR.*;
+import IR.Instruction.Instruction;
+import IR.Instruction.MoveInstruction;
+import IR.Instruction.UnaryInstruction;
 import Utility.*;
 
 import java.util.List;
@@ -36,14 +39,7 @@ public class SuffixDecrement extends Expression{
 	public void generateInstruction(List<Instruction> instructionList) {
 		expression.generateInstruction(instructionList);
 		operand = RegisterManager.getTemporaryRegister();
-		VirtualRegister num;
-		if(expression.operand instanceof VirtualRegister){
-			num = (VirtualRegister) expression.operand;
-		}else{
-			num = RegisterManager.getTemporaryRegister();
-			instructionList.add(new MoveInstruction(num, expression.operand));
-		}
-		instructionList.add(new MoveInstruction(operand, num));
-		instructionList.add(new UnaryInstruction(UnaryInstruction.UnaryOp.DEC, num, num));
+		instructionList.add(new MoveInstruction(operand, expression.operand));
+		instructionList.add(new UnaryInstruction(UnaryInstruction.UnaryOp.DEC, expression.operand));
 	}
 }

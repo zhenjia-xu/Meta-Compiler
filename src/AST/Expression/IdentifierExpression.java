@@ -4,7 +4,7 @@ import AST.ProgramAST;
 import AST.Symbol.Symbol;
 import AST.Type.FunctionType;
 import AST.Type.Type;
-import IR.Instruction;
+import IR.Instruction.Instruction;
 import Utility.Utility;
 import Utility.CompilationError;
 

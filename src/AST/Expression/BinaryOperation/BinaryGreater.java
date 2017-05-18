@@ -5,14 +5,15 @@ import AST.Constant.BoolConstant;
 import AST.Constant.IntConstant;
 import AST.Constant.StringConstant;
 import AST.Expression.Expression;
+import AST.Expression.FunctionCallExpression;
+import AST.Expression.IdentifierExpression;
 import AST.Type.*;
-import IR.BinaryInstruction;
-import IR.Instruction;
-import IR.RegisterManager;
-import IR.VirtualRegister;
+import IR.*;
+import IR.Instruction.*;
 import Utility.CompilationError;
 import Utility.Utility;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BinaryGreater extends Expression{
@@ -41,7 +42,13 @@ public class BinaryGreater extends Expression{
 				String rightValue = ((StringConstant) rightExpression).getValue();
 				return new BoolConstant(leftValue.compareTo(rightValue) > 0);
 			}else {
-				return new BinaryGreater(leftExpression, rightExpression);
+				List<Expression> expressionList = new ArrayList<>();
+				expressionList.add(leftExpression);
+				expressionList.add(rightExpression);
+				return FunctionCallExpression.getExpression(
+						IdentifierExpression.getExpression("__string_GR"),
+						expressionList
+				);
 			}
 		}
 		throw new CompilationError("binary greater needs int or string");
@@ -60,8 +67,15 @@ public class BinaryGreater extends Expression{
 	public void generateInstruction(List<Instruction> instructionList){
 		leftExpression.generateInstruction(instructionList);
 		rightExpression.generateInstruction(instructionList);
-		operand = RegisterManager.getTemporaryRegister();
-		Instruction instruction = new BinaryInstruction(BinaryInstruction.BinaryOp.GR, (VirtualRegister) operand, leftExpression.operand, rightExpression.operand);
-		instructionList.add(instruction);
+		Operand left = leftExpression.operand;
+		Operand right = rightExpression.operand;
+		if(left instanceof Address && right instanceof Address){
+			VirtualRegister tmp = RegisterManager.getTemporaryRegister();
+			instructionList.add(new MoveInstruction(tmp, left));
+			instructionList.add(new CompareInstruction(tmp, right));
+		}else{
+			instructionList.add(new CompareInstruction(left, right));
+		}
+		instructionList.add(new CsetInstruction(ProgramIR.ConditionOp.GR, operand));
 	}
 }

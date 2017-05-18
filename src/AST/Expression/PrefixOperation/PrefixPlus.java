@@ -1,9 +1,8 @@
 package AST.Expression.PrefixOperation;
 
-import AST.Constant.IntConstant;
 import AST.Expression.Expression;
 import AST.Type.*;
-import IR.Instruction;
+import IR.Instruction.Instruction;
 import Utility.*;
 
 import java.util.List;

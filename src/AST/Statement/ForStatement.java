@@ -3,10 +3,8 @@ package AST.Statement;
 import AST.Expression.Expression;
 import AST.Type.BoolType;
 import AST.Constant.BoolConstant;
-import IR.BranchInstruction;
-import IR.Instruction;
-import IR.JumpInstruction;
-import IR.LabelInstruction;
+import IR.*;
+import IR.Instruction.*;
 import Utility.CompilationError;
 import Utility.Utility;
 
@@ -88,15 +86,17 @@ public class ForStatement extends LoopStatement{
 			%...:
 				(init)
 				jump %loop_condition
-			%loop_condition:
-				(condition)
-				branch $condition loop_body loop_exit
 			%loop_body:
 				(statement)
 				jump loop_increment
 			%loop_increment:
 				(increment)
 				jump loop_condition
+			%loop_condition:
+				(condition)
+				cmp condition true
+				cjump EQ loop_body
+				jump loop_exit
 			%loop_exit:
 				...
 		*/
@@ -105,9 +105,6 @@ public class ForStatement extends LoopStatement{
 		}
 		instructionList.add(new JumpInstruction(conditionLabel));
 
-		instructionList.add(conditionLabel);
-		condition.generateInstruction(instructionList);
-		instructionList.add(new BranchInstruction(condition.operand, bodyLabel, exitLabel));
 
 		instructionList.add(bodyLabel);
 		if (statement != null){
@@ -120,6 +117,12 @@ public class ForStatement extends LoopStatement{
 			increment.generateInstruction(instructionList);
 		}
 		instructionList.add(new JumpInstruction(conditionLabel));
+
+		instructionList.add(conditionLabel);
+		condition.generateInstruction(instructionList);
+		instructionList.add(new CompareInstruction(condition.operand, new ImmediateOperand(1)));
+		instructionList.add(new CjumpInstruction(ProgramIR.ConditionOp.EQ, bodyLabel));
+		instructionList.add(new JumpInstruction(exitLabel));
 
 		instructionList.add(exitLabel);
 	}

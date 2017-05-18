@@ -1,7 +1,7 @@
 package AST.Constant;
 
 import AST.Type.StringType;
-import IR.Instruction;
+import IR.Instruction.Instruction;
 import Utility.Utility;
 
 import java.util.List;

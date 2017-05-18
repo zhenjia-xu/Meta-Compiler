@@ -4,14 +4,15 @@ package AST.Expression.BinaryOperation;
 import AST.Constant.StringConstant;
 import AST.Constant.IntConstant;
 import AST.Expression.Expression;
+import AST.Expression.FunctionCallExpression;
+import AST.Expression.IdentifierExpression;
 import AST.Type.*;
-import IR.BinaryInstruction;
-import IR.Instruction;
-import IR.RegisterManager;
-import IR.VirtualRegister;
+import IR.*;
+import IR.Instruction.*;
 import Utility.CompilationError;
 import Utility.Utility;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BinaryPlus extends Expression{
@@ -40,7 +41,13 @@ public class BinaryPlus extends Expression{
 				String rightValue = ((StringConstant) rightExpression).getValue();
 				return new StringConstant(leftValue + rightValue);
 			}else {
-				return new BinaryPlus(leftExpression, rightExpression);
+				List<Expression> expressionList = new ArrayList<>();
+				expressionList.add(leftExpression);
+				expressionList.add(rightExpression);
+				return FunctionCallExpression.getExpression(
+						IdentifierExpression.getExpression("__string_connection"),
+						expressionList
+				);
 			}
 		}
 		throw new CompilationError("binary plus needs int or string");
@@ -60,7 +67,8 @@ public class BinaryPlus extends Expression{
 		leftExpression.generateInstruction(instructionList);
 		rightExpression.generateInstruction(instructionList);
 		operand = RegisterManager.getTemporaryRegister();
-		Instruction instruction = new BinaryInstruction(BinaryInstruction.BinaryOp.ADD, (VirtualRegister) operand, leftExpression.operand, rightExpression.operand);
+		instructionList.add(new MoveInstruction(operand, leftExpression.operand));
+		Instruction instruction = new BinaryInstruction(BinaryInstruction.BinaryOp.ADD, operand, rightExpression.operand);
 		instructionList.add(instruction);
 	}
 }

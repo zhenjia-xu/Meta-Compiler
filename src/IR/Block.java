@@ -2,13 +2,15 @@ package IR;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import IR.Instruction.Instruction;
 import Utility.Utility;
 
 public class Block {
 	private FunctionIR functionIR;
 	private String blockName;
 	private int id;
-	private List<Instruction> instructionList;
+	public List<Instruction> instructionList;
 
 	public Block(FunctionIR functionGraph, String blockName, int id){
 		this.functionIR = functionGraph;

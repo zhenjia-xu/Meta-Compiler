@@ -1,6 +1,6 @@
 package AST.Statement;
 
-import IR.Instruction;
+import IR.Instruction.Instruction;
 
 import java.util.List;
 

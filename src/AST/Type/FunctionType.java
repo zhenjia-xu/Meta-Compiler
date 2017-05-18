@@ -4,7 +4,7 @@ import AST.Statement.BlockStatement;
 import AST.Statement.Statement;
 import AST.Symbol.Scope;
 import AST.Symbol.Symbol;
-import IR.LabelInstruction;
+import IR.Instruction.LabelInstruction;
 import Utility.Utility;
 
 import java.util.List;

@@ -2,6 +2,8 @@ package AST.Expression;
 
 
 import IR.*;
+import IR.Instruction.Instruction;
+import IR.Instruction.MoveInstruction;
 import Utility.CompilationError;
 import Utility.Utility;
 

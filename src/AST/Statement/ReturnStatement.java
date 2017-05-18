@@ -3,7 +3,7 @@ package AST.Statement;
 import AST.ProgramAST;
 import AST.Expression.Expression;
 import AST.Type.*;
-import IR.Instruction;
+import IR.Instruction.Instruction;
 import Utility.CompilationError;
 import Utility.Utility;
 

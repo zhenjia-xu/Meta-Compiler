@@ -9,7 +9,10 @@ import java.util.Map;
 import java.util.Stack;
 
 public class ProgramIR {
-	private static Map<String, FunctionIR> functionMap;
+	public enum ConditionOp {
+		EQ,  NEQ, GR,  GREQ, LE, LEEQ
+	}
+	public static Map<String, FunctionIR> functionMap;
 	public static VirtualRegister scopeRegister = new VirtualRegister("scope");
 
 	public static void BuildProgramIR(){

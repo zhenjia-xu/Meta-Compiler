@@ -1,9 +1,10 @@
 package IR;
 
 import AST.Symbol.Symbol;
-import AST.Type.ClassType;
 import AST.Type.FunctionType;
 import AST.Type.VoidType;
+import IR.Instruction.LabelInstruction;
+import IR.Instruction.Instruction;
 import Utility.Utility;
 
 import java.util.ArrayList;
@@ -68,6 +69,16 @@ public class FunctionIR {
 			str.append(block.toString(indents + 1));
 		}
 		str.append("}\n");
+		return str.toString();
+	}
+	public String toNASM(){
+		StringBuilder str = new StringBuilder();
+		RegisterManager.initialize();
+		for(Block block: blockList){
+			for(Instruction instruction: block.instructionList){
+				instruction.Prepare();
+			}
+		}
 		return str.toString();
 	}
 }

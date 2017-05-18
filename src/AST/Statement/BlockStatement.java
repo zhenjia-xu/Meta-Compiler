@@ -1,7 +1,7 @@
 package AST.Statement;
 
 import AST.Symbol.Scope;
-import IR.Instruction;
+import IR.Instruction.Instruction;
 import Utility.Utility;
 
 import java.util.ArrayList;

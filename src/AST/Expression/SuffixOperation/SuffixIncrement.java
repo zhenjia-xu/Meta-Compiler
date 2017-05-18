@@ -3,6 +3,9 @@ package AST.Expression.SuffixOperation;
 import AST.Expression.Expression;
 import AST.Type.*;
 import IR.*;
+import IR.Instruction.Instruction;
+import IR.Instruction.MoveInstruction;
+import IR.Instruction.UnaryInstruction;
 import Utility.*;
 
 import java.util.List;
@@ -37,13 +40,11 @@ public class SuffixIncrement extends Expression{
 		expression.generateInstruction(instructionList);
 		operand = RegisterManager.getTemporaryRegister();
 		VirtualRegister num;
-		if(expression.operand instanceof VirtualRegister){
-			num = (VirtualRegister) expression.operand;
-		}else{
-			num = RegisterManager.getTemporaryRegister();
-			instructionList.add(new MoveInstruction(num, expression.operand));
+		if (expression.operand instanceof VirtualRegister) {
+			expression.generateInstruction(instructionList);
+			operand = RegisterManager.getTemporaryRegister();
+			instructionList.add(new MoveInstruction(operand, expression.operand));
+			instructionList.add(new UnaryInstruction(UnaryInstruction.UnaryOp.INC, expression.operand));
 		}
-		instructionList.add(new MoveInstruction(operand, num));
-		instructionList.add(new UnaryInstruction(UnaryInstruction.UnaryOp.INC, num, num));
 	}
 }

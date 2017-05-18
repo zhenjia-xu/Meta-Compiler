@@ -1,6 +1,5 @@
 package AST.Type;
 
-import IR.LabelInstruction;
 import Utility.CompilationError;
 import Utility.Utility;
 

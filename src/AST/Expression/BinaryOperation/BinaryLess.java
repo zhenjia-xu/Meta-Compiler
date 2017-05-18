@@ -5,14 +5,15 @@ import AST.Constant.BoolConstant;
 import AST.Constant.IntConstant;
 import AST.Constant.StringConstant;
 import AST.Expression.Expression;
+import AST.Expression.FunctionCallExpression;
+import AST.Expression.IdentifierExpression;
 import AST.Type.*;
-import IR.BinaryInstruction;
-import IR.Instruction;
-import IR.RegisterManager;
-import IR.VirtualRegister;
+import IR.*;
+import IR.Instruction.*;
 import Utility.CompilationError;
 import Utility.Utility;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BinaryLess extends Expression{
@@ -32,17 +33,23 @@ public class BinaryLess extends Expression{
 				int rightValue = ((IntConstant) rightExpression).getValue();
 				return new BoolConstant(leftValue < rightValue);
 			}else {
-				if((leftExpression instanceof StringConstant) && (rightExpression instanceof StringConstant)){
-					String leftValue = ((StringConstant) leftExpression).getValue();
-					String rightValue = ((StringConstant) rightExpression).getValue();
-					return new BoolConstant(leftValue.compareTo(rightValue) < 0);
-				}else {
-					return new BinaryLess(leftExpression, rightExpression);
-				}
+				return new BinaryLess(leftExpression, rightExpression);
 			}
 		}
 		if(leftType instanceof StringType && rightType instanceof StringType){
-			return new BinaryLess(leftExpression, rightExpression);
+			if((leftExpression instanceof StringConstant) && (rightExpression instanceof StringConstant)){
+				String leftValue = ((StringConstant) leftExpression).getValue();
+				String rightValue = ((StringConstant) rightExpression).getValue();
+				return new BoolConstant(leftValue.compareTo(rightValue) < 0);
+			}else {
+				List<Expression> expressionList = new ArrayList<>();
+				expressionList.add(leftExpression);
+				expressionList.add(rightExpression);
+				return FunctionCallExpression.getExpression(
+						IdentifierExpression.getExpression("__string_LE"),
+						expressionList
+				);
+			}
 		}
 		throw new CompilationError("binary less needs int or string");
 	}
@@ -57,11 +64,19 @@ public class BinaryLess extends Expression{
 				+ rightExpression.toString(indents + 1);
 	}
 	@Override
-	public void generateInstruction(List<Instruction> instructionList){
+	public void generateInstruction(List<Instruction> instructionList) {
 		leftExpression.generateInstruction(instructionList);
 		rightExpression.generateInstruction(instructionList);
 		operand = RegisterManager.getTemporaryRegister();
-		Instruction instruction = new BinaryInstruction(BinaryInstruction.BinaryOp.LE, (VirtualRegister) operand, leftExpression.operand, rightExpression.operand);
-		instructionList.add(instruction);
+		Operand left = leftExpression.operand;
+		Operand right = rightExpression.operand;
+		if (left instanceof Address && right instanceof Address) {
+			VirtualRegister tmp = RegisterManager.getTemporaryRegister();
+			instructionList.add(new MoveInstruction(tmp, left));
+			instructionList.add(new CompareInstruction(tmp, right));
+		} else {
+			instructionList.add(new CompareInstruction(left, right));
+		}
+		instructionList.add(new CsetInstruction(ProgramIR.ConditionOp.LE, operand));
 	}
 }

@@ -1,6 +1,7 @@
 package AST.Expression;
 
 import IR.*;
+import IR.Instruction.*;
 import Utility.*;
 import AST.Type.*;
 
@@ -43,20 +44,15 @@ public class ArrayExpression extends Expression{
 		VirtualRegister offset = RegisterManager.getTemporaryRegister();
 		ArrayType arrayType = (ArrayType) arrayExpression.getType();
 		Type newType = arrayType.reduceDimension();
+		instructionList.add(new MoveInstruction(offset, subscriptExpression.operand));
 		if(newType instanceof ClassType) {
-			instructionList.add(new BinaryInstruction(BinaryInstruction.BinaryOp.MUL, offset, subscriptExpression.operand, new ImmediateOperand(((ClassType) newType).getAllocateSize())));
+			instructionList.add(new BinaryInstruction(BinaryInstruction.BinaryOp.MUL, offset, new ImmediateOperand(((ClassType) newType).getAllocateSize())));
 		}else{
-			instructionList.add(new BinaryInstruction(BinaryInstruction.BinaryOp.MUL, offset, subscriptExpression.operand, new ImmediateOperand(4)));
+			instructionList.add(new BinaryInstruction(BinaryInstruction.BinaryOp.MUL, offset, new ImmediateOperand(4)));
 		}
-		VirtualRegister base, pos;
-		pos = RegisterManager.getTemporaryRegister();
-		if(arrayExpression.operand instanceof VirtualRegister){
-			base = (VirtualRegister) arrayExpression.operand;
-		}else{
-			base = RegisterManager.getTemporaryRegister();
-			instructionList.add(new MoveInstruction(arrayExpression.operand, base));
-		}
-		instructionList.add(new BinaryInstruction(BinaryInstruction.BinaryOp.ADD, pos, base, offset));
+		VirtualRegister pos = RegisterManager.getTemporaryRegister();
+		instructionList.add(new MoveInstruction(pos, arrayExpression.operand));
+		instructionList.add(new BinaryInstruction(BinaryInstruction.BinaryOp.ADD, pos, offset));
 		operand = new Address(pos);
 	}
 }

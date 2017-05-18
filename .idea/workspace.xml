@@ -2,16 +2,124 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fcadd001-2a06-4938-849d-b3b3c3569bfe" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/FrontEnd/Parser/Meta.tokens" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/FrontEnd/Parser/MetaBaseListener.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/FrontEnd/Parser/MetaLexer.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/FrontEnd/Parser/MetaLexer.tokens" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/FrontEnd/Parser/MetaListener.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/FrontEnd/Parser/MetaParser.java" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IR/Instruction/BinaryInstruction.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IR/Instruction/CjumpInstruction.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IR/Instruction/UnaryInstruction.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/AllocateInstruction.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/BinaryInstruction$BinaryOp.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/BinaryInstruction.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/BranchInstruction.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/FunctionCallInstruction.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/Instruction.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/JumpInstruction.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/LabelInstruction.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/MoveInstruction.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/UnaryInstruction$UnaryOp.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/UnaryInstruction.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/IR/BinaryInstruction.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/IR/BranchInstruction.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/IR/UnaryInstruction.java" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/IR/AllocateInstruction.java" afterPath="$PROJECT_DIR$/src/IR/Instruction/AllocateInstruction.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/IR/FunctionCallInstruction.java" afterPath="$PROJECT_DIR$/src/IR/Instruction/FunctionCallInstruction.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/IR/Instruction.java" afterPath="$PROJECT_DIR$/src/IR/Instruction/Instruction.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/IR/JumpInstruction.java" afterPath="$PROJECT_DIR$/src/IR/Instruction/JumpInstruction.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/IR/LabelInstruction.java" afterPath="$PROJECT_DIR$/src/IR/Instruction/LabelInstruction.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/IR/MoveInstruction.java" afterPath="$PROJECT_DIR$/src/IR/Instruction/MoveInstruction.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Expression/ArrayExpression.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Expression/ArrayExpression.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Expression/BinaryOperation/BinaryBitAnd.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Expression/BinaryOperation/BinaryBitAnd.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Expression/BinaryOperation/BinaryBitOr.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Expression/BinaryOperation/BinaryBitOr.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Expression/BinaryOperation/BinaryBitXor.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Expression/BinaryOperation/BinaryBitXor.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Expression/BinaryOperation/BinaryDivision.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Expression/BinaryOperation/BinaryDivision.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Expression/BinaryOperation/BinaryEqual.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Expression/BinaryOperation/BinaryEqual.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Expression/BinaryOperation/BinaryGreater.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Expression/BinaryOperation/BinaryGreater.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Expression/BinaryOperation/BinaryGreaterEqual.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Expression/BinaryOperation/BinaryGreaterEqual.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Expression/BinaryOperation/BinaryLeftShift.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Expression/BinaryOperation/BinaryLeftShift.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Expression/BinaryOperation/BinaryLess.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Expression/BinaryOperation/BinaryLess.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Expression/BinaryOperation/BinaryLessEqual.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Expression/BinaryOperation/BinaryLessEqual.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Expression/BinaryOperation/BinaryLogicalAnd.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Expression/BinaryOperation/BinaryLogicalAnd.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Expression/BinaryOperation/BinaryLogicalOr.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Expression/BinaryOperation/BinaryLogicalOr.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Expression/BinaryOperation/BinaryMinus.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Expression/BinaryOperation/BinaryMinus.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Expression/BinaryOperation/BinaryModulo.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Expression/BinaryOperation/BinaryModulo.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Expression/BinaryOperation/BinaryMultiplication.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Expression/BinaryOperation/BinaryMultiplication.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Expression/BinaryOperation/BinaryNotEqual.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Expression/BinaryOperation/BinaryNotEqual.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Expression/BinaryOperation/BinaryPlus.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Expression/BinaryOperation/BinaryPlus.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Expression/BinaryOperation/BinaryRightShift.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Expression/BinaryOperation/BinaryRightShift.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Expression/CreationExpression.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Expression/CreationExpression.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Expression/FunctionCallExpression.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Expression/FunctionCallExpression.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Expression/PrefixOperation/PrefixDecrement.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Expression/PrefixOperation/PrefixDecrement.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Expression/PrefixOperation/PrefixIncrement.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Expression/PrefixOperation/PrefixIncrement.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Expression/PrefixOperation/PrefixMinus.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Expression/PrefixOperation/PrefixMinus.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Expression/PrefixOperation/PrefixNot.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Expression/PrefixOperation/PrefixNot.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Expression/PrefixOperation/PrefixReverse.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Expression/PrefixOperation/PrefixReverse.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Expression/SuffixOperation/SuffixDecrement.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Expression/SuffixOperation/SuffixDecrement.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Expression/SuffixOperation/SuffixIncrement.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Expression/SuffixOperation/SuffixIncrement.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/ProgramAST.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/ProgramAST.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Statement/ForStatement.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Statement/ForStatement.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Statement/IfStatement.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Statement/IfStatement.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Statement/WhileStatement.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Statement/WhileStatement.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/ProgramIR.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/ProgramIR.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/RegisterManager.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/RegisterManager.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/VirtualRegister.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/VirtualRegister.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/Main.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/Main.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/program.txt" afterPath="$PROJECT_DIR$/program.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Constant/BoolConstant.java" afterPath="$PROJECT_DIR$/src/AST/Constant/BoolConstant.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Constant/IntConstant.java" afterPath="$PROJECT_DIR$/src/AST/Constant/IntConstant.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Constant/NullConstant.java" afterPath="$PROJECT_DIR$/src/AST/Constant/NullConstant.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Constant/StringConstant.java" afterPath="$PROJECT_DIR$/src/AST/Constant/StringConstant.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/ArrayExpression.java" afterPath="$PROJECT_DIR$/src/AST/Expression/ArrayExpression.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/AssignmentExpression.java" afterPath="$PROJECT_DIR$/src/AST/Expression/AssignmentExpression.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryBitAnd.java" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryBitAnd.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryBitOr.java" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryBitOr.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryBitXor.java" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryBitXor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryDivision.java" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryDivision.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryEqual.java" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryEqual.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryGreater.java" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryGreater.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryGreaterEqual.java" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryGreaterEqual.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryLeftShift.java" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryLeftShift.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryLess.java" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryLess.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryLessEqual.java" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryLessEqual.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryLogicalAnd.java" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryLogicalAnd.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryLogicalOr.java" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryLogicalOr.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryMinus.java" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryMinus.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryModulo.java" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryModulo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryMultiplication.java" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryMultiplication.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryNotEqual.java" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryNotEqual.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryPlus.java" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryPlus.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryRightShift.java" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryRightShift.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/CreationExpression.java" afterPath="$PROJECT_DIR$/src/AST/Expression/CreationExpression.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/Expression.java" afterPath="$PROJECT_DIR$/src/AST/Expression/Expression.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/FunctionCallExpression.java" afterPath="$PROJECT_DIR$/src/AST/Expression/FunctionCallExpression.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/IdentifierExpression.java" afterPath="$PROJECT_DIR$/src/AST/Expression/IdentifierExpression.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/MemberExpression.java" afterPath="$PROJECT_DIR$/src/AST/Expression/MemberExpression.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/PrefixOperation/PrefixDecrement.java" afterPath="$PROJECT_DIR$/src/AST/Expression/PrefixOperation/PrefixDecrement.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/PrefixOperation/PrefixIncrement.java" afterPath="$PROJECT_DIR$/src/AST/Expression/PrefixOperation/PrefixIncrement.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/PrefixOperation/PrefixMinus.java" afterPath="$PROJECT_DIR$/src/AST/Expression/PrefixOperation/PrefixMinus.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/PrefixOperation/PrefixNot.java" afterPath="$PROJECT_DIR$/src/AST/Expression/PrefixOperation/PrefixNot.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/PrefixOperation/PrefixPlus.java" afterPath="$PROJECT_DIR$/src/AST/Expression/PrefixOperation/PrefixPlus.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/PrefixOperation/PrefixReverse.java" afterPath="$PROJECT_DIR$/src/AST/Expression/PrefixOperation/PrefixReverse.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/SuffixOperation/SuffixDecrement.java" afterPath="$PROJECT_DIR$/src/AST/Expression/SuffixOperation/SuffixDecrement.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/SuffixOperation/SuffixIncrement.java" afterPath="$PROJECT_DIR$/src/AST/Expression/SuffixOperation/SuffixIncrement.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/ProgramAST.java" afterPath="$PROJECT_DIR$/src/AST/ProgramAST.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Statement/BlockStatement.java" afterPath="$PROJECT_DIR$/src/AST/Statement/BlockStatement.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Statement/BreakStatement.java" afterPath="$PROJECT_DIR$/src/AST/Statement/BreakStatement.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Statement/ContinueStatement.java" afterPath="$PROJECT_DIR$/src/AST/Statement/ContinueStatement.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Statement/ExpressionStatement.java" afterPath="$PROJECT_DIR$/src/AST/Statement/ExpressionStatement.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Statement/ForStatement.java" afterPath="$PROJECT_DIR$/src/AST/Statement/ForStatement.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Statement/IfStatement.java" afterPath="$PROJECT_DIR$/src/AST/Statement/IfStatement.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Statement/LoopStatement.java" afterPath="$PROJECT_DIR$/src/AST/Statement/LoopStatement.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Statement/ReturnStatement.java" afterPath="$PROJECT_DIR$/src/AST/Statement/ReturnStatement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FrontEnd/Parser/Meta.g4" afterPath="$PROJECT_DIR$/src/FrontEnd/Parser/Meta.g4" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Statement/Statement.java" afterPath="$PROJECT_DIR$/src/AST/Statement/Statement.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Statement/VariableDeclarationStatement.java" afterPath="$PROJECT_DIR$/src/AST/Statement/VariableDeclarationStatement.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Statement/WhileStatement.java" afterPath="$PROJECT_DIR$/src/AST/Statement/WhileStatement.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Type/FunctionTable.java" afterPath="$PROJECT_DIR$/src/AST/Type/FunctionTable.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Type/FunctionType.java" afterPath="$PROJECT_DIR$/src/AST/Type/FunctionType.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IR/Block.java" afterPath="$PROJECT_DIR$/src/IR/Block.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IR/FunctionIR.java" afterPath="$PROJECT_DIR$/src/IR/FunctionIR.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IR/ProgramIR.java" afterPath="$PROJECT_DIR$/src/IR/ProgramIR.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IR/RegisterManager.java" afterPath="$PROJECT_DIR$/src/IR/RegisterManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IR/VirtualRegister.java" afterPath="$PROJECT_DIR$/src/IR/VirtualRegister.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main.java" afterPath="$PROJECT_DIR$/src/Main.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,213 +137,108 @@
     <favorites_list name="Meta-Compiler" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.68590164">
+    <splitter split-orientation="horizontal" split-proportion="0.7220339">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="IdentifierExpression.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/AST/Expression/IdentifierExpression.java">
+          <file leaf-file-name="BinaryBitXor.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryBitXor.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="297">
-                  <caret line="19" column="43" lean-forward="false" selection-start-line="19" selection-start-column="43" selection-end-line="19" selection-end-column="59" />
+                <state relative-caret-position="189">
+                  <caret line="7" column="24" lean-forward="false" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="FunctionCallExpression.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/AST/Expression/FunctionCallExpression.java">
+          <file leaf-file-name="BinaryGreaterEqual.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryGreaterEqual.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="567">
-                  <caret line="29" column="13" lean-forward="false" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
+                <state relative-caret-position="108">
+                  <caret line="4" column="5" lean-forward="true" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="5" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="OtherDeclarationListener.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/FrontEnd/Listener/OtherDeclarationListener.java">
+          <file leaf-file-name="BinaryLeftShift.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryLeftShift.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1161">
-                  <caret line="52" column="16" lean-forward="false" selection-start-line="52" selection-start-column="16" selection-end-line="52" selection-end-column="16" />
+                <state relative-caret-position="185">
+                  <caret line="7" column="24" lean-forward="false" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="IfStatement.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/AST/Statement/IfStatement.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="615">
+                  <caret line="83" column="32" lean-forward="false" selection-start-line="83" selection-start-column="32" selection-end-line="83" selection-end-column="32" />
                   <folding>
                     <element signature="imports" expanded="true" />
-                    <marker date="1495026510000" expanded="true" signature="2710:3151" ph="{...}" />
-                    <marker date="1495026510000" expanded="true" signature="3243:3463" ph="{...}" />
-                    <marker date="1495026510000" expanded="false" signature="3540:3545" ph=" { " />
-                    <marker date="1495026510000" expanded="false" signature="3588:3591" ph=" }" />
-                    <marker date="1495026510000" expanded="false" signature="3662:3667" ph=" { " />
-                    <marker date="1495026510000" expanded="false" signature="3711:3714" ph=" }" />
-                    <marker date="1495026510000" expanded="false" signature="3789:3794" ph=" { " />
-                    <marker date="1495026510000" expanded="false" signature="3840:3843" ph=" }" />
-                    <marker date="1495026510000" expanded="false" signature="3914:3919" ph=" { " />
-                    <marker date="1495026510000" expanded="false" signature="3963:3966" ph=" }" />
-                    <marker date="1495026510000" expanded="true" signature="4040:4163" ph="{...}" />
-                    <marker date="1495026510000" expanded="true" signature="4237:4499" ph="{...}" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="ReturnStatement.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/AST/Statement/ReturnStatement.java">
+          <file leaf-file-name="BinaryDivision.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryDivision.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="405">
-                  <caret line="28" column="13" lean-forward="false" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
+                <state relative-caret-position="162">
+                  <caret line="6" column="24" lean-forward="false" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="ClassType.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/AST/Type/ClassType.java">
+          <file leaf-file-name="BinaryEqual.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryEqual.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="864">
-                  <caret line="47" column="16" lean-forward="false" selection-start-line="47" selection-start-column="16" selection-end-line="47" selection-end-column="16" />
+                <state relative-caret-position="189">
+                  <caret line="7" column="24" lean-forward="false" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="BaseListener.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/FrontEnd/Listener/BaseListener.java">
+          <file leaf-file-name="BinaryLessEqual.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryLessEqual.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="81">
-                  <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+                <state relative-caret-position="296">
+                  <caret line="11" column="24" lean-forward="false" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="CreationExpression.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/AST/Expression/CreationExpression.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="222">
+                  <caret line="83" column="58" lean-forward="false" selection-start-line="83" selection-start-column="58" selection-end-line="83" selection-end-column="58" />
                   <folding>
                     <element signature="imports" expanded="true" />
-                    <marker date="1495026510000" expanded="true" signature="401:506" ph="{...}" />
-                    <marker date="1495026510000" expanded="true" signature="574:679" ph="{...}" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="MetaBaseListener.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/FrontEnd/Parser/MetaBaseListener.java">
+          <file leaf-file-name="ArrayExpression.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/AST/Expression/ArrayExpression.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="27">
-                  <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-                  <folding>
-                    <marker date="1495026510000" expanded="true" signature="257:447" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="505:587" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="660:742" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="814:896" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="993:1075" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="1171:1253" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="1344:1426" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="1516:1598" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="1681:1763" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="1845:1927" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="2004:2086" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="2162:2244" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="2323:2405" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="2483:2565" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="2646:2728" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="2808:2890" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="2969:3051" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="3129:3211" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="3288:3370" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="3446:3528" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="3613:3695" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="3779:3861" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="3946:4028" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="4112:4194" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="4283:4365" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="4453:4535" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="4626:4708" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="4798:4880" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="4957:5039" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="5115:5197" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="5284:5366" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="5452:5534" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="5631:5713" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="5809:5891" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="5988:6070" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="6166:6248" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="6329:6411" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="6491:6573" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="6656:6738" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="6820:6902" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="6989:7071" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="7157:7239" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="7332:7414" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="7506:7588" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="7675:7757" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="7843:7925" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="8014:8096" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="8184:8266" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="8343:8425" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="8501:8583" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="8680:8762" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="8858:8940" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="9043:9125" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="9227:9309" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="9404:9486" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="9580:9662" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="9763:9845" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="9945:10027" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="10136:10218" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="10326:10408" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="10517:10599" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="10707:10789" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="10882:10964" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="11056:11138" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="11231:11313" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="11405:11487" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="11578:11660" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="11750:11832" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="11925:12007" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="12099:12181" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="12284:12366" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="12468:12550" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="12643:12725" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="12817:12899" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="12990:13072" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="13162:13244" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="13333:13415" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="13503:13585" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="13680:13762" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="13856:13938" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="14033:14115" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="14209:14291" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="14392:14474" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="14574:14656" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="14753:14835" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="14931:15013" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="15114:15196" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="15296:15378" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="15475:15557" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="15653:15735" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="15832:15914" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="16010:16092" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="16189:16271" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="16368:16450" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="16517:16599" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="16665:16747" ph="/**...*/" />
-                    <marker date="1495026510000" expanded="true" signature="16809:16891" ph="/**...*/" />
-                  </folding>
+                <state relative-caret-position="75">
+                  <caret line="3" column="24" lean-forward="false" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
+                  <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="ClassDeclarationListener.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/FrontEnd/Listener/ClassDeclarationListener.java">
+          <file leaf-file-name="BinaryBitAnd.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryBitAnd.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="81">
-                  <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                    <marker date="1495026510000" expanded="true" signature="265:475" ph="{...}" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="FunctionType.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/AST/Type/FunctionType.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="216">
-                  <caret line="15" column="30" lean-forward="false" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
+                <state relative-caret-position="189">
+                  <caret line="7" column="24" lean-forward="false" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
                   <folding />
                 </state>
               </provider>
@@ -248,7 +251,7 @@
           <file leaf-file-name="Meta.g4" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/FrontEnd/Parser/Meta.g4">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="27">
+                <state relative-caret-position="837">
                   <caret line="31" column="9" lean-forward="false" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="9" />
                   <folding />
                 </state>
@@ -258,8 +261,8 @@
           <file leaf-file-name="program.txt" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/program.txt">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="523">
-                  <caret line="70" column="0" lean-forward="true" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+                <state relative-caret-position="27">
+                  <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -340,57 +343,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryGreater.java" />
-        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryGreaterEqual.java" />
-        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryLeftShift.java" />
-        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryLess.java" />
-        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryLessEqual.java" />
-        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryLogicalAnd.java" />
-        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryLogicalOr.java" />
-        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryMinus.java" />
-        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryModulo.java" />
-        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryMultiplication.java" />
-        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryNotEqual.java" />
-        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryPlus.java" />
-        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryRightShift.java" />
-        <option value="$PROJECT_DIR$/src/AST/Type/ClassTable.java" />
-        <option value="$PROJECT_DIR$/src/IR/FunctionCallInstruction.java" />
-        <option value="$PROJECT_DIR$/src/Main.java" />
-        <option value="$PROJECT_DIR$/src/IR/AllocateInstruction.java" />
-        <option value="$PROJECT_DIR$/src/AST/Type/ArrayType.java" />
-        <option value="$PROJECT_DIR$/src/IR/ProgramIR.java" />
-        <option value="$PROJECT_DIR$/src/IR/Address.java" />
-        <option value="$PROJECT_DIR$/src/AST/Statement/VariableDeclarationStatement.java" />
-        <option value="$PROJECT_DIR$/src/AST/Type/ClassType.java" />
-        <option value="$PROJECT_DIR$/src/AST/Type/FunctionTable.java" />
-        <option value="$PROJECT_DIR$/src/AST/Expression/CreationExpression.java" />
-        <option value="$PROJECT_DIR$/src/AST/Expression/ThisExpression.java" />
-        <option value="$PROJECT_DIR$/src/IR/FunctionIR.java" />
-        <option value="$PROJECT_DIR$/src/IR/StoreInstruction.java" />
-        <option value="$PROJECT_DIR$/src/IR/LoadInstruction.java" />
         <option value="$PROJECT_DIR$/src/AST/ProgramAST.java" />
-        <option value="$PROJECT_DIR$/src/AST/Expression/AssignmentExpression.java" />
-        <option value="$PROJECT_DIR$/src/IR/MoveInstruction.java" />
-        <option value="$PROJECT_DIR$/src/AST/Expression/MemberExpression.java" />
-        <option value="$PROJECT_DIR$/src/AST/Expression/ArrayExpression.java" />
-        <option value="$PROJECT_DIR$/src/AST/Type/FunctionType.java" />
-        <option value="$PROJECT_DIR$/src/AST/Expression/SuffixOperation/SuffixDecrement.java" />
-        <option value="$PROJECT_DIR$/src/AST/Expression/SuffixOperation/SuffixIncrement.java" />
-        <option value="$PROJECT_DIR$/src/AST/Expression/PrefixOperation/PrefixDecrement.java" />
-        <option value="$PROJECT_DIR$/src/AST/Expression/PrefixOperation/PrefixIncrement.java" />
-        <option value="$PROJECT_DIR$/src/AST/Expression/PrefixOperation/PrefixMinus.java" />
-        <option value="$PROJECT_DIR$/src/AST/Expression/PrefixOperation/PrefixNot.java" />
-        <option value="$PROJECT_DIR$/src/AST/Expression/PrefixOperation/PrefixReverse.java" />
-        <option value="$PROJECT_DIR$/src/AST/Expression/FunctionCallExpression.java" />
-        <option value="$PROJECT_DIR$/src/FrontEnd/Parser/Meta.g4" />
-        <option value="$PROJECT_DIR$/src/FrontEnd/Parser/MetaBaseListener.java" />
-        <option value="$PROJECT_DIR$/src/FrontEnd/Parser/MetaLexer.java" />
-        <option value="$PROJECT_DIR$/src/FrontEnd/Listener/BaseListener.java" />
-        <option value="$PROJECT_DIR$/src/FrontEnd/Listener/ClassDeclarationListener.java" />
-        <option value="$PROJECT_DIR$/src/FrontEnd/Listener/ASTreeListener.java" />
-        <option value="$PROJECT_DIR$/src/FrontEnd/Listener/OtherDeclarationListener.java" />
-        <option value="$PROJECT_DIR$/src/AST/Statement/ReturnStatement.java" />
+        <option value="$PROJECT_DIR$/src/Utility/Translator.java" />
+        <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$PROJECT_DIR$/src/IR/ProgramIR.java" />
         <option value="$PROJECT_DIR$/program.txt" />
+        <option value="$PROJECT_DIR$/src/Translation/Translator.java" />
+        <option value="$PROJECT_DIR$/src/IR/RegisterManager.java" />
+        <option value="$PROJECT_DIR$/src/IR/VirtualRegister.java" />
+        <option value="$PROJECT_DIR$/src/IR/Block.java" />
+        <option value="$PROJECT_DIR$/src/IR/Instruction.java" />
+        <option value="$PROJECT_DIR$/src/IR/BinaryInstruction.java" />
+        <option value="$PROJECT_DIR$/src/IR/CjumpInstruction.java" />
+        <option value="$PROJECT_DIR$/src/IR/CompareInstruction.java" />
+        <option value="$PROJECT_DIR$/src/IR/CsetInstruction.java" />
+        <option value="$PROJECT_DIR$/src/IR/FunctionCallInstruction.java" />
+        <option value="$PROJECT_DIR$/src/IR/JumpInstruction.java" />
+        <option value="$PROJECT_DIR$/src/IR/LabelInstruction.java" />
+        <option value="$PROJECT_DIR$/src/IR/MoveInstruction.java" />
+        <option value="$PROJECT_DIR$/src/IR/UnaryInstruction.java" />
+        <option value="$PROJECT_DIR$/src/IR/AllocateInstruction.java" />
+        <option value="$PROJECT_DIR$/src/IR/Instruction/LabelInstruction.java" />
+        <option value="$PROJECT_DIR$/src/IR/Instruction/UnaryInstruction.java" />
+        <option value="$PROJECT_DIR$/src/AST/Type/FunctionType.java" />
+        <option value="$PROJECT_DIR$/src/IR/FunctionIR.java" />
+        <option value="$PROJECT_DIR$/src/AST/Statement/LoopStatement.java" />
+        <option value="$PROJECT_DIR$/src/AST/Statement/ContinueStatement.java" />
+        <option value="$PROJECT_DIR$/src/AST/Statement/BreakStatement.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryLogicalOr.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryModulo.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryNotEqual.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryGreater.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryRightShift.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryLess.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryMinus.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryMultiplication.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryBitOr.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryLogicalAnd.java" />
+        <option value="$PROJECT_DIR$/src/AST/Statement/ForStatement.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/FunctionCallExpression.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryPlus.java" />
+        <option value="$PROJECT_DIR$/src/AST/Statement/WhileStatement.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryBitXor.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryLeftShift.java" />
+        <option value="$PROJECT_DIR$/src/AST/Statement/IfStatement.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryDivision.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryEqual.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/CreationExpression.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/ArrayExpression.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryBitAnd.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryLessEqual.java" />
+        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryGreaterEqual.java" />
       </list>
     </option>
   </component>
@@ -533,8 +536,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -575,6 +577,64 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="Translation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Meta-Compiler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Meta-Compiler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IR" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Meta-Compiler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Meta-Compiler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IR" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Instruction" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Meta-Compiler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Meta-Compiler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="AST" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -597,13 +657,36 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Statement" />
+              <option name="myItemId" value="Symbol" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Meta-Compiler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Meta-Compiler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AST" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Expression" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -985,10 +1068,10 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3725286" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3798127" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1579238" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1871894" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1018,474 +1101,435 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/IR/StoreInstruction.java" />
-    <entry file="file://$PROJECT_DIR$/src/IR/FunctionIR.java">
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/SuffixOperation/SuffixIncrement.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="13" column="11" lean-forward="false" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
+        <state relative-caret-position="326">
+          <caret line="43" column="81" lean-forward="false" selection-start-line="43" selection-start-column="81" selection-end-line="43" selection-end-column="81" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/IR/LoadInstruction.java" />
-    <entry file="file://$PROJECT_DIR$/src/IR/MoveInstruction.java">
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/PrefixOperation/PrefixDecrement.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="11" column="9" lean-forward="true" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
+        <state relative-caret-position="729">
+          <caret line="34" column="43" lean-forward="false" selection-start-line="34" selection-start-column="43" selection-end-line="34" selection-end-column="43" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryLogicalAnd.java">
+    <entry file="file://$PROJECT_DIR$/src/AST/ProgramAST.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-168">
-          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        <state relative-caret-position="5103">
+          <caret line="195" column="8" lean-forward="false" selection-start-line="195" selection-start-column="8" selection-end-line="195" selection-end-column="8" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryDivision.java">
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-262">
-          <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        <state relative-caret-position="918">
+          <caret line="42" column="30" lean-forward="false" selection-start-line="42" selection-start-column="30" selection-end-line="42" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryBitXor.java">
+    <entry file="file://$PROJECT_DIR$/program.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        <state relative-caret-position="27">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryBitOr.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/AssignmentExpression.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="372">
-          <caret line="34" column="43" lean-forward="true" selection-start-line="34" selection-start-column="43" selection-end-line="34" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/CreationExpression.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="453">
-          <caret line="120" column="46" lean-forward="true" selection-start-line="120" selection-start-column="46" selection-end-line="120" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/ArrayExpression.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="569">
-          <caret line="42" column="31" lean-forward="false" selection-start-line="42" selection-start-column="31" selection-end-line="42" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryBitAnd.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-262">
-          <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/MemberExpression.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="507">
-          <caret line="84" column="56" lean-forward="false" selection-start-line="84" selection-start-column="56" selection-end-line="84" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Statement/WhileStatement.java">
+    <entry file="file://$PROJECT_DIR$/src/AST/Symbol/Symbol.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
-          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IR/VirtualRegister.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="9" column="25" lean-forward="false" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Translation/Translator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="13" column="42" lean-forward="false" selection-start-line="13" selection-start-column="42" selection-end-line="13" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IR/Block.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="10" column="10" lean-forward="false" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="10" />
+          <folding>
+            <element signature="e#502#503#0" expanded="true" />
+            <element signature="e#541#542#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IR/ProgramIR.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="40" column="9" lean-forward="true" selection-start-line="38" selection-start-column="8" selection-end-line="40" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IR/RegisterManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="15" column="20" lean-forward="false" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IR/Instruction/AllocateInstruction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IR/Instruction/BinaryInstruction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-12">
+          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IR/Instruction/CjumpInstruction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-12">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IR/Instruction/CsetInstruction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-12">
+          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IR/Instruction/FunctionCallInstruction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-12">
+          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IR/Instruction/JumpInstruction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-12">
+          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IR/Instruction/LabelInstruction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IR/Instruction/Instruction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="3" column="22" lean-forward="false" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IR/Instruction/MoveInstruction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IR/Instruction/UnaryInstruction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="13" column="26" lean-forward="true" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AST/Type/FunctionType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="15" column="39" lean-forward="false" selection-start-line="15" selection-start-column="39" selection-end-line="15" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IR/FunctionIR.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1188">
+          <caret line="46" column="42" lean-forward="false" selection-start-line="46" selection-start-column="42" selection-end-line="46" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AST/Statement/LoopStatement.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="5" column="22" lean-forward="false" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Statement/IfStatement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-964">
-          <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Statement/ForStatement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1828">
-          <caret line="15" column="16" lean-forward="false" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
+        <state relative-caret-position="81">
+          <caret line="3" column="21" lean-forward="false" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AST/Statement/ContinueStatement.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        <state relative-caret-position="-60">
+          <caret line="4" column="21" lean-forward="false" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AST/Statement/BreakStatement.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <caret line="4" column="21" lean-forward="false" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Statement/BlockStatement.java">
+    <entry file="file://$PROJECT_DIR$/src/IR/Instruction/CompareInstruction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        <state relative-caret-position="135">
+          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Statement/VariableDeclarationStatement.java">
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryLogicalOr.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="56" column="13" lean-forward="false" selection-start-line="56" selection-start-column="13" selection-end-line="56" selection-end-column="13" />
+        <state relative-caret-position="-1329">
+          <caret line="10" column="38" lean-forward="false" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Statement/ExpressionStatement.java">
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryModulo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+        <state relative-caret-position="189">
+          <caret line="7" column="24" lean-forward="false" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/IR/Address.java">
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryNotEqual.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="12" column="44" lean-forward="false" selection-start-line="12" selection-start-column="44" selection-end-line="12" selection-end-column="44" />
+        <state relative-caret-position="189">
+          <caret line="7" column="24" lean-forward="false" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/IR/UnaryInstruction.java">
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryGreater.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="10" column="71" lean-forward="false" selection-start-line="10" selection-start-column="71" selection-end-line="10" selection-end-column="78" />
+        <state relative-caret-position="295">
+          <caret line="11" column="24" lean-forward="false" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/SuffixOperation/SuffixDecrement.java">
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryRightShift.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="473">
-          <caret line="47" column="5" lean-forward="true" selection-start-line="36" selection-start-column="8" selection-end-line="47" selection-end-column="5" />
+        <state relative-caret-position="188">
+          <caret line="7" column="24" lean-forward="false" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/PrefixOperation/PrefixDecrement.java">
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryLess.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="38" column="72" lean-forward="true" selection-start-line="38" selection-start-column="72" selection-end-line="47" selection-end-column="98" />
+        <state relative-caret-position="297">
+          <caret line="11" column="24" lean-forward="false" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/SuffixOperation/SuffixIncrement.java">
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryMinus.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="46" column="90" lean-forward="true" selection-start-line="35" selection-start-column="72" selection-end-line="46" selection-end-column="90" />
+        <state relative-caret-position="189">
+          <caret line="7" column="24" lean-forward="false" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/PrefixOperation/PrefixIncrement.java">
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryMultiplication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="446">
-          <caret line="44" column="77" lean-forward="false" selection-start-line="44" selection-start-column="77" selection-end-line="44" selection-end-column="77" />
+        <state relative-caret-position="188">
+          <caret line="7" column="24" lean-forward="false" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/PrefixOperation/PrefixMinus.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="446">
-          <caret line="42" column="77" lean-forward="false" selection-start-line="42" selection-start-column="77" selection-end-line="42" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/PrefixOperation/PrefixNot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="446">
-          <caret line="41" column="82" lean-forward="false" selection-start-line="41" selection-start-column="82" selection-end-line="41" selection-end-column="82" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/PrefixOperation/PrefixPlus.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-256">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/PrefixOperation/PrefixReverse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="30" column="5" lean-forward="true" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/ProgramAST.java">
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryBitOr.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
-          <caret line="10" column="25" lean-forward="false" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
+          <caret line="6" column="24" lean-forward="false" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Symbol/SymbolTable.java">
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryLogicalAnd.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="7" column="24" lean-forward="false" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AST/Statement/ForStatement.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
-          <caret line="14" column="25" lean-forward="false" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/ThisExpression.java" />
-    <entry file="file://$PROJECT_DIR$/src/AST/Type/FunctionType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="15" column="30" lean-forward="false" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
+          <caret line="6" column="23" lean-forward="false" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AST/Expression/FunctionCallExpression.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="567">
-          <caret line="29" column="13" lean-forward="false" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
+        <state relative-caret-position="135">
+          <caret line="5" column="23" lean-forward="false" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/FrontEnd/Parser/MetaListener.java">
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryPlus.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="10" column="24" lean-forward="false" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AST/Statement/WhileStatement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="158">
+          <caret line="6" column="23" lean-forward="false" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryBitXor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
-          <caret line="7" column="17" lean-forward="false" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+          <caret line="7" column="24" lean-forward="false" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/FrontEnd/Parser/MetaLexer.tokens">
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryLeftShift.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="185">
+          <caret line="7" column="24" lean-forward="false" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/FrontEnd/Parser/MetaParser.java">
+    <entry file="file://$PROJECT_DIR$/src/AST/Statement/IfStatement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="615">
+          <caret line="83" column="32" lean-forward="false" selection-start-line="83" selection-start-column="32" selection-end-line="83" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryDivision.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="6" column="24" lean-forward="false" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryEqual.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="7" column="24" lean-forward="false" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/CreationExpression.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="83" column="58" lean-forward="false" selection-start-line="83" selection-start-column="58" selection-end-line="83" selection-end-column="58" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/ArrayExpression.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="3" column="24" lean-forward="false" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryBitAnd.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="7" column="24" lean-forward="false" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryLessEqual.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="11" column="24" lean-forward="false" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryGreaterEqual.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
-          <caret line="11" column="69" lean-forward="false" selection-start-line="11" selection-start-column="69" selection-end-line="11" selection-end-column="69" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/FrontEnd/Parser/MetaLexer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="108" column="26" lean-forward="true" selection-start-line="108" selection-start-column="26" selection-end-line="108" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/FrontEnd/Parser/MetaBaseListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding>
-            <marker date="1495026510000" expanded="true" signature="257:447" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="505:587" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="660:742" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="814:896" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="993:1075" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="1171:1253" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="1344:1426" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="1516:1598" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="1681:1763" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="1845:1927" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="2004:2086" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="2162:2244" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="2323:2405" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="2483:2565" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="2646:2728" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="2808:2890" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="2969:3051" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="3129:3211" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="3288:3370" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="3446:3528" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="3613:3695" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="3779:3861" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="3946:4028" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="4112:4194" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="4283:4365" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="4453:4535" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="4626:4708" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="4798:4880" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="4957:5039" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="5115:5197" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="5284:5366" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="5452:5534" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="5631:5713" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="5809:5891" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="5988:6070" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="6166:6248" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="6329:6411" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="6491:6573" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="6656:6738" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="6820:6902" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="6989:7071" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="7157:7239" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="7332:7414" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="7506:7588" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="7675:7757" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="7843:7925" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="8014:8096" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="8184:8266" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="8343:8425" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="8501:8583" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="8680:8762" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="8858:8940" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="9043:9125" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="9227:9309" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="9404:9486" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="9580:9662" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="9763:9845" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="9945:10027" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="10136:10218" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="10326:10408" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="10517:10599" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="10707:10789" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="10882:10964" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="11056:11138" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="11231:11313" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="11405:11487" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="11578:11660" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="11750:11832" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="11925:12007" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="12099:12181" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="12284:12366" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="12468:12550" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="12643:12725" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="12817:12899" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="12990:13072" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="13162:13244" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="13333:13415" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="13503:13585" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="13680:13762" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="13856:13938" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="14033:14115" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="14209:14291" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="14392:14474" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="14574:14656" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="14753:14835" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="14931:15013" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="15114:15196" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="15296:15378" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="15475:15557" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="15653:15735" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="15832:15914" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="16010:16092" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="16189:16271" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="16368:16450" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="16517:16599" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="16665:16747" ph="/**...*/" />
-            <marker date="1495026510000" expanded="true" signature="16809:16891" ph="/**...*/" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/FrontEnd/Listener/BaseListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1495026510000" expanded="true" signature="401:506" ph="{...}" />
-            <marker date="1495026510000" expanded="true" signature="574:679" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/FrontEnd/Listener/ClassDeclarationListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1495026510000" expanded="true" signature="265:475" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/FrontEnd/Listener/ASTreeListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="12" column="25" lean-forward="false" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/IdentifierExpression.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="19" column="43" lean-forward="false" selection-start-line="19" selection-start-column="43" selection-end-line="19" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Type/ClassType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="864">
-          <caret line="47" column="16" lean-forward="false" selection-start-line="47" selection-start-column="16" selection-end-line="47" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/FrontEnd/Listener/OtherDeclarationListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1161">
-          <caret line="52" column="16" lean-forward="false" selection-start-line="52" selection-start-column="16" selection-end-line="52" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1495026510000" expanded="true" signature="2710:3151" ph="{...}" />
-            <marker date="1495026510000" expanded="true" signature="3243:3463" ph="{...}" />
-            <marker date="1495026510000" expanded="false" signature="3540:3545" ph=" { " />
-            <marker date="1495026510000" expanded="false" signature="3588:3591" ph=" }" />
-            <marker date="1495026510000" expanded="false" signature="3662:3667" ph=" { " />
-            <marker date="1495026510000" expanded="false" signature="3711:3714" ph=" }" />
-            <marker date="1495026510000" expanded="false" signature="3789:3794" ph=" { " />
-            <marker date="1495026510000" expanded="false" signature="3840:3843" ph=" }" />
-            <marker date="1495026510000" expanded="false" signature="3914:3919" ph=" { " />
-            <marker date="1495026510000" expanded="false" signature="3963:3966" ph=" }" />
-            <marker date="1495026510000" expanded="true" signature="4040:4163" ph="{...}" />
-            <marker date="1495026510000" expanded="true" signature="4237:4499" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AST/Statement/ReturnStatement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="28" column="13" lean-forward="false" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/FrontEnd/Parser/Meta.g4">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="31" column="9" lean-forward="false" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/program.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="523">
-          <caret line="70" column="0" lean-forward="true" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+          <caret line="4" column="5" lean-forward="true" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="5" />
           <folding />
         </state>
       </provider>

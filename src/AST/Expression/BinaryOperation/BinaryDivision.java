@@ -4,10 +4,7 @@ package AST.Expression.BinaryOperation;
 import AST.Constant.IntConstant;
 import AST.Expression.Expression;
 import AST.Type.*;
-import IR.BinaryInstruction;
-import IR.Instruction;
-import IR.RegisterManager;
-import IR.VirtualRegister;
+import IR.Instruction.*;
 import Utility.CompilationError;
 import Utility.Utility;
 
@@ -47,8 +44,8 @@ public class BinaryDivision extends Expression{
 	public void generateInstruction(List<Instruction> instructionList){
 		leftExpression.generateInstruction(instructionList);
 		rightExpression.generateInstruction(instructionList);
-		operand = RegisterManager.getTemporaryRegister();
-		Instruction instruction = new BinaryInstruction(BinaryInstruction.BinaryOp.DIV, (VirtualRegister) operand, leftExpression.operand, rightExpression.operand);
+		instructionList.add(new MoveInstruction(operand, leftExpression.operand));
+		Instruction instruction = new BinaryInstruction(BinaryInstruction.BinaryOp.DIV, operand, rightExpression.operand);
 		instructionList.add(instruction);
 	}
 }

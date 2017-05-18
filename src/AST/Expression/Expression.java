@@ -1,7 +1,7 @@
 package AST.Expression;
 
 import AST.Type.Type;
-import IR.Instruction;
+import IR.Instruction.Instruction;
 import IR.Operand;
 
 import java.util.List;

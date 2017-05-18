@@ -1,10 +1,9 @@
 package AST.Expression;
 
-import AST.ProgramAST;
 import AST.Symbol.*;
 import AST.Type.*;
-import FrontEnd.Listener.BaseListener;
 import IR.*;
+import IR.Instruction.*;
 import Utility.*;
 
 import java.util.ArrayList;
@@ -61,19 +60,16 @@ public class FunctionCallExpression extends Expression{
 	}
 	@Override
 	public void generateInstruction(List<Instruction> instructionList) {
-		if(!function.isBuiltin()){
-			List<Operand> parameterList = new ArrayList<>();
-			for(Expression exp: expressionList){
-				exp.generateInstruction(instructionList);
-				parameterList.add(exp.operand);
-			}
-			operand = null;
-			if(!(function.getReturnType() instanceof VoidType)){
-				operand = RegisterManager.getTemporaryRegister();
-			}
-			instructionList.add(new FunctionCallInstruction(function, (VirtualRegister) operand, parameterList));
-		}else{
-			//builtin function
+		List<Operand> parameterList = new ArrayList<>();
+		for(Expression exp: expressionList){
+			exp.generateInstruction(instructionList);
+			parameterList.add(exp.operand);
 		}
+		operand = null;
+		if(!(function.getReturnType() instanceof VoidType)){
+			operand = RegisterManager.getTemporaryRegister();
+			((VirtualRegister) operand).realRegister = "eax";
+		}
+		instructionList.add(new FunctionCallInstruction(function, (VirtualRegister) operand, parameterList));
 	}
 }

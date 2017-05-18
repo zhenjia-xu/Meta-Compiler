@@ -4,8 +4,8 @@ import AST.Expression.Expression;
 import AST.Symbol.Symbol;
 import AST.Type.ClassType;
 import AST.Type.Type;
-import IR.Instruction;
-import IR.MoveInstruction;
+import IR.Instruction.Instruction;
+import IR.Instruction.MoveInstruction;
 import Utility.*;
 
 import java.util.List;

@@ -2,13 +2,12 @@ package AST.Expression;
 
 import AST.ProgramAST;
 import AST.Statement.VariableDeclarationStatement;
-import FrontEnd.Listener.BaseListener;
 import IR.*;
+import IR.Instruction.Instruction;
+import IR.Instruction.MoveInstruction;
 import Utility.*;
 import AST.Type.*;
-import AST.Symbol.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MemberExpression extends Expression{

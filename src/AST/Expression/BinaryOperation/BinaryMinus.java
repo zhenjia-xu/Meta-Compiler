@@ -4,10 +4,8 @@ package AST.Expression.BinaryOperation;
 import AST.Constant.IntConstant;
 import AST.Expression.Expression;
 import AST.Type.*;
-import IR.BinaryInstruction;
-import IR.Instruction;
-import IR.RegisterManager;
-import IR.VirtualRegister;
+import IR.*;
+import IR.Instruction.*;
 import Utility.CompilationError;
 import Utility.Utility;
 
@@ -48,7 +46,8 @@ public class BinaryMinus extends Expression{
 		leftExpression.generateInstruction(instructionList);
 		rightExpression.generateInstruction(instructionList);
 		operand = RegisterManager.getTemporaryRegister();
-		Instruction instruction = new BinaryInstruction(BinaryInstruction.BinaryOp.SUB, (VirtualRegister) operand, leftExpression.operand, rightExpression.operand);
+		instructionList.add(new MoveInstruction(operand, leftExpression.operand));
+		Instruction instruction = new BinaryInstruction(BinaryInstruction.BinaryOp.SUB, operand, rightExpression.operand);
 		instructionList.add(instruction);
 	}
 }
