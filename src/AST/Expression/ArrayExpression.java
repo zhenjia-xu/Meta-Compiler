@@ -45,11 +45,7 @@ public class ArrayExpression extends Expression{
 		ArrayType arrayType = (ArrayType) arrayExpression.getType();
 		Type newType = arrayType.reduceDimension();
 		instructionList.add(new MoveInstruction(offset, subscriptExpression.operand));
-		if(newType instanceof ClassType) {
-			instructionList.add(new BinaryInstruction(BinaryInstruction.BinaryOp.MUL, offset, new ImmediateOperand(((ClassType) newType).getAllocateSize())));
-		}else{
-			instructionList.add(new BinaryInstruction(BinaryInstruction.BinaryOp.MUL, offset, new ImmediateOperand(4)));
-		}
+		instructionList.add(new BinaryInstruction(BinaryInstruction.BinaryOp.MUL, offset, new ImmediateOperand(8)));
 		VirtualRegister pos = RegisterManager.getTemporaryRegister();
 		instructionList.add(new MoveInstruction(pos, arrayExpression.operand));
 		instructionList.add(new BinaryInstruction(BinaryInstruction.BinaryOp.ADD, pos, offset));

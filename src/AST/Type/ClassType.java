@@ -42,7 +42,8 @@ public class ClassType extends Type implements Scope {
     }
     public void addMemberVariable(VariableDeclarationStatement variable){
         variable.offset = allocateSize;
-        allocateSize += 4;
+        variable.getSymbol().classScope = this;
+        allocateSize += 8;
         memberVariableTable.addVariable(variable);
     }
     public void addConstructFunction(FunctionType function){

@@ -3,6 +3,8 @@ package IR.Instruction;
 import IR.Operand;
 import IR.RegisterManager;
 import IR.VirtualRegister;
+import Translation.PhysicalOperand.PhysicalOperand;
+import Translation.Translator;
 
 public class AllocateInstruction extends Instruction {
 	private VirtualRegister target;
@@ -15,10 +17,20 @@ public class AllocateInstruction extends Instruction {
 
 	@Override
 	public void Prepare(){
-		RegisterManager.getID(target);
-		if(allocateSize instanceof VirtualRegister){
-			RegisterManager.getID((VirtualRegister) allocateSize);
-		}
+		RegisterManager.MemRegisterGetOffset(target);
+		RegisterManager.MemRegisterGetOffset(allocateSize);
+	}
+	@Override
+	public String getInstructionOfNASM(){
+		StringBuilder str = new StringBuilder();
+		PhysicalOperand physicalSize = PhysicalOperand.get(str, allocateSize);
+		str.append(Translator.saveRegister_Caller());
+		str.append(Translator.getInstruction("mov", "rdi", physicalSize.toString()));
+		str.append(Translator.getCall("malloc"));
+		str.append(Translator.restoreRegister_Caller());
+		PhysicalOperand physicalTarget = PhysicalOperand.get(str, target);
+		str.append(Translator.getInstruction("mov", physicalTarget.toString(), "rax"));
+		return str.toString();
 	}
 	@Override
 	public String toString(){

@@ -1,6 +1,7 @@
 package IR.Instruction;
 
 import IR.Block;
+import Utility.RuntimeError;
 
 public class LabelInstruction extends Instruction {
 	private String name;
@@ -15,6 +16,10 @@ public class LabelInstruction extends Instruction {
 
 	@Override
 	public void Prepare(){}
+	@Override
+	public String getInstructionOfNASM(){
+		throw new RuntimeError("Label instruction should not getInstructionOfNASM");
+	}
 	@Override
 	public String toString(){
 		return "%" + name;

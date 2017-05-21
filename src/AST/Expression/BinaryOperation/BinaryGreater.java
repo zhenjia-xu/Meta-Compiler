@@ -67,6 +67,7 @@ public class BinaryGreater extends Expression{
 	public void generateInstruction(List<Instruction> instructionList){
 		leftExpression.generateInstruction(instructionList);
 		rightExpression.generateInstruction(instructionList);
+		operand = RegisterManager.getTemporaryRegister();
 		Operand left = leftExpression.operand;
 		Operand right = rightExpression.operand;
 		if(left instanceof Address && right instanceof Address){

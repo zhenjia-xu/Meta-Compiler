@@ -3,9 +3,7 @@ package AST.Expression.PrefixOperation;
 import AST.Expression.Expression;
 import AST.Type.*;
 import IR.*;
-import IR.Instruction.Instruction;
-import IR.Instruction.MoveInstruction;
-import IR.Instruction.UnaryInstruction;
+import IR.Instruction.*;
 import Utility.*;
 
 import java.util.List;
@@ -35,8 +33,9 @@ public class PrefixNot extends Expression{
 	@Override
 	public void generateInstruction(List<Instruction> instructionList) {
 		expression.generateInstruction(instructionList);
-		VirtualRegister operand = RegisterManager.getTemporaryRegister();
+		operand = RegisterManager.getTemporaryRegister();
 		instructionList.add(new MoveInstruction(operand, expression.operand));
-		instructionList.add(new UnaryInstruction(UnaryInstruction.UnaryOp.NOT, operand));
+		instructionList.add(new CompareInstruction(operand, new ImmediateOperand(1)));
+		instructionList.add(new CsetInstruction(ProgramIR.ConditionOp.NEQ, operand));
 	}
 }

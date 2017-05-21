@@ -23,6 +23,9 @@ public class IdentifierExpression extends Expression{
 		}
 		Symbol symbol = ProgramAST.symbolTable.getSymbol(identifier);
 		Type type = symbol.getType();
+		if(symbol.classScope != null){
+			return MemberExpression.getExpression(IdentifierExpression.getExpression("this"), identifier);
+		}
 		if(type instanceof FunctionType) {
 			return new IdentifierExpression(symbol, false);
 		} else {

@@ -1,12 +1,11 @@
 package IR;
 
 public class ImmediateOperand extends Operand{
-	private int value;
+	public int value;
 
 	public ImmediateOperand(int value){
 		this.value = value;
 	}
-
 	@Override
 	public String toString(){
 		return String.valueOf(value);

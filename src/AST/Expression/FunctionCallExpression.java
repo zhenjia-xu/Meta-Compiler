@@ -68,7 +68,7 @@ public class FunctionCallExpression extends Expression{
 		operand = null;
 		if(!(function.getReturnType() instanceof VoidType)){
 			operand = RegisterManager.getTemporaryRegister();
-			((VirtualRegister) operand).realRegister = "eax";
+			((VirtualRegister) operand).realRegister = "rax";
 		}
 		instructionList.add(new FunctionCallInstruction(function, (VirtualRegister) operand, parameterList));
 	}

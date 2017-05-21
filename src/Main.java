@@ -31,15 +31,15 @@ public class Main{
 			walker.walk(new ClassDeclarationListener(), tree);
 			walker.walk(new OtherDeclarationListener(), tree);
 			walker.walk(new ASTreeListener(), tree);
-			ProgramAST.print();
+			//ProgramAST.print();
 		}catch(CompilationError ce){
 			System.out.println(ce.getMessage());
 			System.exit(1);
 		}
 	}
-	public static void getIR(){
+	public static void getIR() throws Exception{
 		ProgramIR.BuildProgramIR();
-		ProgramIR.print();
+		//ProgramIR.print();
 		Translator.IRtoNASM();
 	}
 }

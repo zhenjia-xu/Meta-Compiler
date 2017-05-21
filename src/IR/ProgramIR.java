@@ -3,20 +3,20 @@ package IR;
 import AST.ProgramAST;
 import AST.Type.ClassType;
 import AST.Type.FunctionType;
+import Translation.Translator;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Stack;
+import java.util.*;
 
 public class ProgramIR {
 	public enum ConditionOp {
 		EQ,  NEQ, GR,  GREQ, LE, LEEQ
 	}
 	public static Map<String, FunctionIR> functionMap;
-	public static VirtualRegister scopeRegister = new VirtualRegister("scope");
+	public static List<String> constStringList;
 
 	public static void BuildProgramIR(){
 		functionMap = new HashMap<>();
+		constStringList = new ArrayList<>();
 		for(FunctionType function: ProgramAST.globalFunctionTable.getFunctionMap().values()){
 			if(!function.isBuiltin()){
 				functionMap.put(function.getName(), new FunctionIR(function));

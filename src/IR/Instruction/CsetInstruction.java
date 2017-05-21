@@ -1,25 +1,44 @@
 package IR.Instruction;
 
 import IR.*;
+import Translation.PhysicalOperand.PhysicalOperand;
+import Translation.PhysicalOperand.PhysicalReg;
+import Translation.Translator;
 import Utility.RuntimeError;
+import jdk.internal.org.objectweb.asm.util.TraceAnnotationVisitor;
 
 public class CsetInstruction extends Instruction {
 	public ProgramIR.ConditionOp op;
-	public Operand target;
+	public VirtualRegister target;
 
 	public CsetInstruction(ProgramIR.ConditionOp op, Operand target){
 		this.op = op;
-		if(target instanceof ImmediateOperand){
-			throw new RuntimeError("target of set instruction should be reg or add");
+		if(!(target instanceof VirtualRegister)){
+			throw new RuntimeError("target of set instruction should be register");
 		}
-		this.target = target;
+		this.target = (VirtualRegister) target;
 	}
-
 	@Override
 	public void Prepare(){
-		if(target instanceof VirtualRegister){
-			RegisterManager.getID((VirtualRegister) target);
+		RegisterManager.MemRegisterGetOffset(target);
+	}
+	@Override
+	public String getInstructionOfNASM() {
+		StringBuilder str = new StringBuilder();
+		PhysicalOperand physicalTarget = PhysicalOperand.get(str, target);
+		if (target.id != 0) {
+			str.append(Translator.getInstruction("mov", "r15", physicalTarget.toString()));
+			str.append(Translator.getInstruction("mov", "r15", "0"));
+			str.append(Translator.getInstruction("set" + Translator.getNASMofCondition(op), "r15b"));
+			str.append(Translator.getInstruction("mov", physicalTarget.toString(), "r15"));
+		} else {
+			if(!(physicalTarget instanceof PhysicalReg)){
+				throw new RuntimeError("Cset getInstructionOfNASM ERROR");
+			}
+			str.append(Translator.getInstruction("mov", physicalTarget.toString(), "0"));
+			str.append(Translator.getInstruction("set" + Translator.getNASMofCondition(op), physicalTarget.toString() + "b"));
 		}
+		return str.toString();
 	}
 	@Override
 	public String toString(){

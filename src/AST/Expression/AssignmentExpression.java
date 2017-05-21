@@ -44,6 +44,8 @@ public class AssignmentExpression extends Expression{
 			VirtualRegister tmp = RegisterManager.getTemporaryRegister();
 			instructionList.add(new MoveInstruction(tmp, rightExpression.operand));
 			instructionList.add(new MoveInstruction(leftExpression.operand, tmp));
+		}else{
+			instructionList.add(new MoveInstruction(leftExpression.operand, rightExpression.operand));
 		}
 	}
 }

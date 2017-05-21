@@ -6,4 +6,5 @@ public abstract class Instruction {
 		return Utility.getIndent(indents) + this.toString() + "\n";
 	}
 	public abstract void Prepare();
+	public abstract String getInstructionOfNASM();
 }

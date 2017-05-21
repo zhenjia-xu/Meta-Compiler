@@ -81,7 +81,7 @@ public class MemberExpression extends Expression{
 			VirtualRegister base;
 			if(expression.operand instanceof Address){
 				base = RegisterManager.getTemporaryRegister();
-				instructionList.add(new MoveInstruction(expression.operand, base));
+				instructionList.add(new MoveInstruction(base, expression.operand));
 			}else{
 				base = (VirtualRegister) expression.operand;
 			}

@@ -58,10 +58,10 @@ public class BinaryLogicalOr extends Expression{
 				cjump EQ logical_true
 				jump logical_false
 			%logical_false:
+				(right_expression)
 				move operand right_expression.operand
 				jump logical_exit
 			%logical_true:
-				(right_expression)
 				move operand True
 				jump logical_exit
 			%logical_exit:
@@ -74,11 +74,11 @@ public class BinaryLogicalOr extends Expression{
 		instructionList.add(new JumpInstruction(falseLabel));
 
 		instructionList.add(falseLabel);
+		rightExpression.generateInstruction(instructionList);
 		instructionList.add(new MoveInstruction(operand, rightExpression.operand));
 		instructionList.add(new JumpInstruction(exitLabel));
 
 		instructionList.add(trueLabel);
-		rightExpression.generateInstruction(instructionList);
 		instructionList.add(new MoveInstruction(operand, new ImmediateOperand(1)));
 		instructionList.add(new JumpInstruction(exitLabel));
 

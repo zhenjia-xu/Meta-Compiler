@@ -54,8 +54,12 @@ public class CreationExpression extends Expression{
 		}else{
 			VirtualRegister allocateSize = RegisterManager.getTemporaryRegister();
 			instructionList.add(new MoveInstruction(allocateSize, list.get(0)));
-			instructionList.add(new BinaryInstruction(BinaryInstruction.BinaryOp.MUL, allocateSize, new ImmediateOperand(4)));
+			instructionList.add(new UnaryInstruction(UnaryInstruction.UnaryOp.INC, allocateSize));
+			instructionList.add(new BinaryInstruction(BinaryInstruction.BinaryOp.MUL, allocateSize, new ImmediateOperand(8)));
 			instructionList.add(new AllocateInstruction(base, allocateSize));
+			instructionList.add(new BinaryInstruction(BinaryInstruction.BinaryOp.SUB, allocateSize, new ImmediateOperand(8)));
+			instructionList.add(new MoveInstruction(new Address(base), allocateSize));
+			instructionList.add(new BinaryInstruction(BinaryInstruction.BinaryOp.ADD, base, new ImmediateOperand(8)));
 			Type newType = ((ArrayType)type).reduceDimension();
 			list.remove(0);
 
@@ -85,8 +89,11 @@ public class CreationExpression extends Expression{
 				instructionList.add(new JumpInstruction(conditionLabel));
 
 				instructionList.add(bodyLabel);
-				allocate(pos, newType, list, instructionList);
-				instructionList.add(new BinaryInstruction(BinaryInstruction.BinaryOp.ADD, pos, new ImmediateOperand(4)));
+				VirtualRegister tmp = RegisterManager.getTemporaryRegister();
+				instructionList.add(new MoveInstruction(tmp, new Address(pos)));
+				allocate(tmp, newType, list, instructionList);
+				instructionList.add(new MoveInstruction(new Address(pos), tmp));
+				instructionList.add(new BinaryInstruction(BinaryInstruction.BinaryOp.ADD, pos, new ImmediateOperand(8)));
 				instructionList.add(new JumpInstruction(conditionLabel));
 
 				instructionList.add(conditionLabel);

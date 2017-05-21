@@ -4,6 +4,9 @@ import AST.ProgramAST;
 import AST.Expression.Expression;
 import AST.Type.*;
 import IR.Instruction.Instruction;
+import IR.Instruction.JumpInstruction;
+import IR.Instruction.MoveInstruction;
+import IR.Instruction.ReturnInstruction;
 import Utility.CompilationError;
 import Utility.Utility;
 
@@ -58,6 +61,10 @@ public class ReturnStatement extends Statement{
 	}
 	@Override
 	public void generateInstruction(List<Instruction> instructionList){
-
+		if(returnExpression != null){
+			returnExpression.generateInstruction(instructionList);
+			instructionList.add(new ReturnInstruction(returnExpression.operand));
+		}
+		instructionList.add(new JumpInstruction(function.exitLabel));
 	}
 }

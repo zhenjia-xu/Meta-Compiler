@@ -8,7 +8,7 @@ public class VirtualRegister extends Operand{
 	public VirtualRegister(String name){
 		this.name = name;
 		this.realRegister = null;
-		this.id = -1;
+		this.id = 0;
 	}
 	public String getName(){
 		return name;

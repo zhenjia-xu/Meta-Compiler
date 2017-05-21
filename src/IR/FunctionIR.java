@@ -5,6 +5,7 @@ import AST.Type.FunctionType;
 import AST.Type.VoidType;
 import IR.Instruction.LabelInstruction;
 import IR.Instruction.Instruction;
+import Translation.Translator;
 import Utility.Utility;
 
 import java.util.ArrayList;
@@ -73,12 +74,48 @@ public class FunctionIR {
 	}
 	public String toNASM(){
 		StringBuilder str = new StringBuilder();
+		str.append(getName() + ":\n");
 		RegisterManager.initialize();
+		for(int i = 0; i < parameterList.size(); i++){
+			if(i < 6){
+				parameterList.get(i).realRegister = RegisterManager.parameterRegList.get(i);
+			}else{
+				parameterList.get(i).id = 2 - i;
+			}
+		}
 		for(Block block: blockList){
 			for(Instruction instruction: block.instructionList){
 				instruction.Prepare();
 			}
 		}
+
+		Translator.rsp_offset = 1;
+		//save register
+		str.append(Translator.getInstruction("push", "rbp"));
+		str.append(Translator.getInstruction("mov", "rbp", "rsp"));
+		str.append(Translator.getInstruction("push", "r14"));
+		str.append(Translator.getInstruction("push", "r15"));
+
+		//add temporary variable
+		str.append(Translator.getInstruction("sub", "rsp", String.valueOf(8 * RegisterManager.NumberOfRegInMem)));
+		Translator.rsp_offset += RegisterManager.NumberOfRegInMem;
+
+		//deal with each instruction
+		for(Block block: blockList){
+			str.append(block.getName() + ":\n");
+			for(Instruction instruction: block.instructionList){
+				str.append(instruction.getInstructionOfNASM());
+			}
+		}
+
+		//restore registers
+
+		str.append(Translator.getInstruction("add", "rsp", String.valueOf(8 * RegisterManager.NumberOfRegInMem)));
+		str.append(Translator.getInstruction("pop", "r15"));
+		str.append(Translator.getInstruction("pop", "r14"));
+		str.append(Translator.getInstruction("pop", "rbp"));
+
+		str.append(Translator.getInstruction("ret"));
 		return str.toString();
 	}
 }

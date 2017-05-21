@@ -1,6 +1,10 @@
 package IR.Instruction;
 
 import IR.*;
+import Translation.PhysicalOperand.PhysicalAdd;
+import Translation.PhysicalOperand.PhysicalOperand;
+import Translation.PhysicalOperand.PhysicalReg;
+import Translation.Translator;
 import Utility.RuntimeError;
 
 public class BinaryInstruction extends Instruction {
@@ -25,12 +29,33 @@ public class BinaryInstruction extends Instruction {
 
 	@Override
 	public void Prepare(){
-		if(target instanceof VirtualRegister){
-			RegisterManager.getID((VirtualRegister) target);
+		RegisterManager.MemRegisterGetOffset(target);
+		RegisterManager.MemRegisterGetOffset(operand);
+	}
+	@Override
+	public String getInstructionOfNASM(){
+		String opNASM = op.toString().toLowerCase();
+		StringBuilder str = new StringBuilder();
+		PhysicalOperand PhysicalSource = PhysicalOperand.get(str, operand);
+		PhysicalOperand PhysicalTarget = PhysicalOperand.get(str, target);
+
+		if(opNASM.equals("mul")) {
+			if (PhysicalTarget instanceof PhysicalReg) {
+				str.append(Translator.getInstruction("imul", PhysicalTarget.toString(), PhysicalSource.toString()));
+			} else {
+				str.append(Translator.getInstruction("mov", "r15", PhysicalTarget.toString()));
+				str.append(Translator.getInstruction("imul", "r15", PhysicalSource.toString()));
+				str.append(Translator.getInstruction("mov", PhysicalTarget.toString(), "r15"));
+			}
+			return str.toString();
 		}
-		if(operand instanceof VirtualRegister){
-			RegisterManager.getID((VirtualRegister) operand);
+		if(PhysicalSource instanceof PhysicalAdd && PhysicalTarget instanceof PhysicalAdd){
+			str.append(Translator.getInstruction("mov", "r15", PhysicalSource.toString()));
+			str.append(Translator.getInstruction(opNASM, PhysicalTarget.toString(), "r15"));
+		}else{
+			str.append(Translator.getInstruction(opNASM, PhysicalTarget.toString(), PhysicalSource.toString()));
 		}
+		return str.toString();
 	}
 	@Override
 	public String toString(){

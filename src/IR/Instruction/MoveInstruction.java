@@ -4,6 +4,9 @@ import IR.Address;
 import IR.Operand;
 import IR.RegisterManager;
 import IR.VirtualRegister;
+import Translation.PhysicalOperand.PhysicalAdd;
+import Translation.PhysicalOperand.PhysicalOperand;
+import Translation.Translator;
 import Utility.RuntimeError;
 
 public class MoveInstruction extends Instruction{
@@ -20,12 +23,22 @@ public class MoveInstruction extends Instruction{
 
 	@Override
 	public void Prepare(){
-		if(target instanceof VirtualRegister){
-			RegisterManager.getID((VirtualRegister) target);
+		RegisterManager.MemRegisterGetOffset(target);
+		RegisterManager.MemRegisterGetOffset(source);
+	}
+	@Override
+	public String getInstructionOfNASM(){
+		StringBuilder str = new StringBuilder();
+		PhysicalOperand PhysicalSource = PhysicalOperand.get(str, source);
+		PhysicalOperand PhysicalTarget = PhysicalOperand.get(str, target);
+
+		if(PhysicalSource instanceof PhysicalAdd && PhysicalTarget instanceof PhysicalAdd){
+			str.append(Translator.getInstruction("mov", "r15", PhysicalSource.toString()));
+			str.append(Translator.getInstruction("mov", PhysicalTarget.toString(), "r15"));
+		}else{
+			str.append(Translator.getInstruction("mov", PhysicalTarget.toString(), PhysicalSource.toString()));
 		}
-		if(source instanceof VirtualRegister){
-			RegisterManager.getID((VirtualRegister) source);
-		}
+		return str.toString();
 	}
 	@Override
 	public String toString(){

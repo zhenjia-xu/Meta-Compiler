@@ -35,7 +35,7 @@ public class PrefixMinus extends Expression{
 	@Override
 	public void generateInstruction(List<Instruction> instructionList) {
 		expression.generateInstruction(instructionList);
-		VirtualRegister operand = RegisterManager.getTemporaryRegister();
+		operand = RegisterManager.getTemporaryRegister();
 		instructionList.add(new MoveInstruction(operand, expression.operand));
 		instructionList.add(new UnaryInstruction(UnaryInstruction.UnaryOp.NEG, operand));
 	}

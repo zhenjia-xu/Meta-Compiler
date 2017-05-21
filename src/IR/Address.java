@@ -1,8 +1,10 @@
 package IR;
 
+import Utility.RuntimeError;
+
 public class Address extends Operand{
-	private VirtualRegister base;
-	private ImmediateOperand offset;
+	public VirtualRegister base;
+	public ImmediateOperand offset;
 
 	public Address(VirtualRegister base, ImmediateOperand offset){
 		this.base = base;
@@ -12,7 +14,6 @@ public class Address extends Operand{
 		this.base = base;
 		this.offset = new ImmediateOperand(0);
 	}
-
 	@Override
 	public String toString(){
 		return String.format("Address(%s + %s)",base, offset);

@@ -21,7 +21,9 @@ public class Block {
 	public void add(Instruction instruction){
 		instructionList.add(instruction);
 	}
-
+	public String getName(){
+		return String.format("%s.%d.%s", functionIR.getName(), id, blockName);
+	}
 	@Override
 	public String toString(){
 		return String.format("%s.%d.%s", functionIR.getName(), id, blockName);
