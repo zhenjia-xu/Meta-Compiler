@@ -90,7 +90,7 @@ public class Translator {
 		str.append("__toStringFormat:\n");
 		str.append(Translator.getInstruction("db","\"%ld\", 0"));
 		str.append("__parseIntFormat:\n");
-		str.append(Translator.getInstruction("db","\"%d\", 0"));
+		str.append(Translator.getInstruction("db","\"%ld\", 0"));
 		return str.toString();
 	}
 	public static String getGlobalVariable(){
@@ -102,12 +102,14 @@ public class Translator {
 		}
 		str.append("@getIntBuf:\n");
 		str.append(Translator.getInstruction("resq", "1"));
+		str.append("@parseIntBuf:\n");
+		str.append(Translator.getInstruction("resq", "1"));
 		return str.toString();
 	}
 	public static void IRtoNASM() throws Exception {
 		StringBuilder str = new StringBuilder();
 		str.append("global main\n");
-		str.append("extern printf, malloc, strcpy, scanf, strlen, sscanf, sprintf\n");
+		str.append("extern printf, malloc, strcpy, scanf, strlen, sscanf, sprintf, memcpy\n");
 		str.append("SECTION .text\n");
 		for(FunctionIR functionIR: ProgramIR.functionMap.values()){
 			str.append(functionIR.toNASM());
@@ -130,8 +132,12 @@ public class Translator {
 		str.append(Translator.getNASMstringLength());
 		//stringParseInt
 		str.append(Translator.getNASMstringParseInt());
+		//stringSubstring
+		str.append(Translator.getNASMstringSubstring());
+		//stringOrd
+		str.append(Translator.getNASMstringOrd());
 		//stringConnection
-		str.append(Translator.getNASMstringConnection());
+		//str.append(Translator.getNASMstringConnection());
 
 		//stringConst
 		str.append(Translator.getStringConst());
@@ -175,17 +181,19 @@ public class Translator {
 		StringBuilder str = new StringBuilder();
 		str.append("getString:\n");
 		rsp_offset = 1;
+		str.append(Translator.getInstruction("push", "r15"));
 		str.append(Translator.getInstruction("mov", "rdi", "300"));
 		str.append(Translator.getCall("malloc"));
-		str.append(Translator.getInstruction("mov", "rcx", "rax"));
-		str.append(Translator.getInstruction("add", "rcx", "8"));
+		str.append(Translator.getInstruction("mov", "r15", "rax"));
+		str.append(Translator.getInstruction("add", "r15", "8"));
 		str.append(Translator.getInstruction("mov", "rdi", "__getStringFormat"));
-		str.append(Translator.getInstruction("mov", "rsi", "rcx"));
+		str.append(Translator.getInstruction("mov", "rsi", "r15"));
 		str.append(Translator.getCall("scanf"));
-		str.append(Translator.getInstruction("mov", "rdi", "rcx"));
+		str.append(Translator.getInstruction("mov", "rdi", "r15"));
 		str.append(Translator.getCall("strlen"));
-		str.append(Translator.getInstruction("mov", "qword [rcx - 8]", "rax"));
-		str.append(Translator.getInstruction("mov", "rax", "rcx"));
+		str.append(Translator.getInstruction("mov", "qword [r15 - 8]", "rax"));
+		str.append(Translator.getInstruction("mov", "rax", "r15"));
+		str.append(Translator.getInstruction("pop", "r15"));
 		str.append(Translator.getInstruction("ret"));
 		return str.toString();
 	}
@@ -229,16 +237,53 @@ public class Translator {
 		StringBuilder str = new StringBuilder();
 		str.append("__string_parseInt:\n");
 		rsp_offset = 1;
-		str.append(Translator.getInstruction("mov", "rsi", "rdi"));
-		str.append(Translator.getInstruction("mov", "rdi", "__parseIntFormat"));
+		str.append(Translator.getInstruction("mov", "rsi", "__getIntFormat"));
 		str.append(Translator.getInstruction("mov", "rdx", "@parseIntBuf"));
 		str.append(Translator.getCall("sscanf"));
-		str.append(Translator.getInstruction("mov", "rax", "dword [@parseIntBuf]"));
+		str.append(Translator.getInstruction("mov", "rax", "qword [@parseIntBuf]"));
+		str.append(Translator.getInstruction("ret"));
+		return str.toString();
+	}
+	static public String getNASMstringSubstring(){
+		StringBuilder str = new StringBuilder();
+		str.append("__string_substring:\n");
+		rsp_offset = 1;
+		str.append(Translator.getInstruction("push", "r15"));
+		str.append(Translator.getInstruction("push", "r14"));
+		str.append(Translator.getInstruction("mov", "r15", "rdi"));
+		str.append(Translator.getInstruction("add", "r15", "rsi"));
+		str.append(Translator.getInstruction("mov", "r14", "rdx"));
+		str.append(Translator.getInstruction("sub", "r14", "rsi"));
+		str.append(Translator.getInstruction("add", "r14", "1"));
+		str.append(Translator.getInstruction("mov", "rdi", "r14"));
+		str.append(Translator.getInstruction("add", "rdi", "9"));
+		str.append(Translator.getCall("malloc"));
+		str.append(Translator.getInstruction("add", "rax", "8"));
+		str.append(Translator.getInstruction("mov", "rdi", "rax"));
+		str.append(Translator.getInstruction("mov", "rsi", "r15"));
+		str.append(Translator.getInstruction("mov", "rdx", "r14"));
+		str.append(Translator.getCall("memcpy"));
+		str.append(Translator.getInstruction("mov", "qword [rax - 8]", "r14"));
+		str.append(Translator.getInstruction("mov", "r15", "rax"));
+		str.append(Translator.getInstruction("add", "r15", "r14"));
+		str.append(Translator.getInstruction("mov", "r15", "0"));
+		str.append(Translator.getInstruction("pop", "r14"));
+		str.append(Translator.getInstruction("pop", "r15"));
+		str.append(Translator.getInstruction("ret"));
+		return str.toString();
+	}
+	static public String getNASMstringOrd(){
+		StringBuilder str = new StringBuilder();
+		str.append("__string_ord:\n");
+		rsp_offset = 1;
+		str.append(Translator.getInstruction("add", "rdi", "rsi"));
+		str.append(Translator.getInstruction("movsx", "rax", "byte [rdi]"));
 		str.append(Translator.getInstruction("ret"));
 		return str.toString();
 	}
 	static public String getNASMstringConnection(){
 		StringBuilder str = new StringBuilder();
+
 		str.append(Translator.getInstruction("push", "r13"));
 		str.append(Translator.getInstruction("push", "r14"));
 		str.append(Translator.getInstruction("push", "r15"));

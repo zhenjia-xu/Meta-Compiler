@@ -38,7 +38,16 @@ public class BinaryInstruction extends Instruction {
 		StringBuilder str = new StringBuilder();
 		PhysicalOperand PhysicalSource = PhysicalOperand.get(str, operand);
 		PhysicalOperand PhysicalTarget = PhysicalOperand.get(str, target);
-
+		if(opNASM.equals("shl")){
+			str.append(Translator.getInstruction("mov", "rcx", PhysicalSource.toString()));
+			str.append(Translator.getInstruction("sal", PhysicalTarget.toString(), "cl"));
+			return str.toString();
+		}
+		if(opNASM.equals("shr")){
+			str.append(Translator.getInstruction("mov", "rcx", PhysicalSource.toString()));
+			str.append(Translator.getInstruction("sar", PhysicalTarget.toString(), "cl"));
+			return str.toString();
+		}
 		if(opNASM.equals("mul")) {
 			if (PhysicalTarget instanceof PhysicalReg) {
 				str.append(Translator.getInstruction("imul", PhysicalTarget.toString(), PhysicalSource.toString()));
