@@ -1,30 +1,9 @@
-/*
-class A{
-	int x;
-	int y;
-	void fun(){
-		printInt(x);
-	}
-	void funfun(){
-		fun();
-	}
-	void set(int x){
-		this.x = x;
-	}
-	int get(){
-		return x;
-	}
-}
 int main(){
-	int a = 2;
-	int b = 3;
-	int c = 4;
-	printInt(c ^ 12);
-}
-*/
-int main(){
-	string str1 = "abc";
-	string str2 = "def";
-	string str3 = str1 + str2;
-	printInt(str3.length());
+	string s1 = "12345";
+	string s2 = "123dfsa";
+	string s3 = "drtvyu";
+	printInt(s1.parseInt());
+	printInt(s2.parseInt());
+	printInt(s3.parseInt());
+
 }

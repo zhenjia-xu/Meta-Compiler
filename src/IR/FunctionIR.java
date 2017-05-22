@@ -93,6 +93,9 @@ public class FunctionIR {
 		//save register
 		str.append(Translator.getInstruction("push", "rbp"));
 		str.append(Translator.getInstruction("mov", "rbp", "rsp"));
+		if(getName().equals("main")){
+			str.append(Translator.getInstruction("call", "@GlobalDeclaration"));
+		}
 		str.append(Translator.getInstruction("push", "r14"));
 		str.append(Translator.getInstruction("push", "r15"));
 

@@ -49,6 +49,18 @@ public class BinaryInstruction extends Instruction {
 			}
 			return str.toString();
 		}
+		if(opNASM.equals("div") || opNASM.equals("mod")){
+			str.append(Translator.getInstruction("mov", "rax", PhysicalTarget.toString()));
+			str.append(Translator.getInstruction("mov", "rdx", "0"));
+			str.append(Translator.getInstruction("cqo"));
+			str.append(Translator.getInstruction("idiv", PhysicalSource.toString()));
+			if(opNASM.equals("div")){
+				str.append(Translator.getInstruction("mov", PhysicalTarget.toString(), "rax"));
+			}else{
+				str.append(Translator.getInstruction("mov", PhysicalTarget.toString(), "rdx"));
+			}
+			return str.toString();
+		}
 		if(PhysicalSource instanceof PhysicalAdd && PhysicalTarget instanceof PhysicalAdd){
 			str.append(Translator.getInstruction("mov", "r15", PhysicalSource.toString()));
 			str.append(Translator.getInstruction(opNASM, PhysicalTarget.toString(), "r15"));

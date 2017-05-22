@@ -4,9 +4,14 @@ import AST.Expression.Expression;
 import AST.Symbol.Symbol;
 import AST.Type.ClassType;
 import AST.Type.Type;
+import IR.Address;
 import IR.Instruction.Instruction;
 import IR.Instruction.MoveInstruction;
+import IR.Operand;
+import IR.RegisterManager;
+import IR.VirtualRegister;
 import Utility.*;
+import com.sun.org.apache.regexp.internal.RE;
 
 import java.util.List;
 
@@ -68,7 +73,22 @@ public class VariableDeclarationStatement extends Statement {
 	public void generateInstruction(List<Instruction> instructionList){
 		if(expression != null){
 			expression.generateInstruction(instructionList);
-			instructionList.add(new MoveInstruction(symbol.virtualRegister, expression.operand));
+			Operand source = expression.operand;
+			Operand target;
+			if(symbol.global){
+				VirtualRegister tmp = new VirtualRegister(symbol.getName());
+				tmp.realRegister = "@" + symbol.getName();
+				target = new Address(tmp);
+			}else {
+				target = symbol.virtualRegister;
+			}
+			if(target instanceof Address && source instanceof Address){
+				VirtualRegister x = RegisterManager.getTemporaryRegister();
+				instructionList.add(new MoveInstruction(x, source));
+				instructionList.add(new MoveInstruction(target, x));
+			} else{
+				instructionList.add(new MoveInstruction(target, source));
+			}
 		}
 	}
 }

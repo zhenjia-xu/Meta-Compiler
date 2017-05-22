@@ -1,7 +1,9 @@
 package AST;
 
+import AST.Statement.VariableDeclarationStatement;
 import AST.Symbol.*;
 import AST.Type.*;
+import Utility.Utility;
 import com.sun.org.apache.xpath.internal.operations.Bool;
 import jdk.nashorn.internal.codegen.types.BooleanType;
 
@@ -12,8 +14,8 @@ public class ProgramAST {
     public static ClassTable classTable;
     public static SymbolTable symbolTable;
     public static FunctionTable globalFunctionTable;
-    public static VariableTable globalVariableTable;
-
+    //public static VariableTable globalVariableTable;
+    public static List<VariableDeclarationStatement> globalDeclarationList;
     private static void addBuiltinFunction(){
         globalFunctionTable.addFunction(function_printInt());
         globalFunctionTable.addFunction(function_print());
@@ -38,13 +40,20 @@ public class ProgramAST {
         classTable = new ClassTable();
         symbolTable = new SymbolTable();
         globalFunctionTable = new FunctionTable();
-        globalVariableTable = new VariableTable();
+        //globalVariableTable = new VariableTable();
+        globalDeclarationList = new ArrayList<>();
         addBuiltinFunction();
     }
     static public void print(){
         System.out.println(classTable.toString(0));
         System.out.println(globalFunctionTable.toString(0));
-        System.out.print(globalVariableTable.toString(0));
+        //System.out.print(globalVariableTable.toString(0));
+        StringBuilder str = new StringBuilder();
+        str.append("[global variable]\n");
+        for(VariableDeclarationStatement variable: globalDeclarationList){
+            str.append(variable.toString(1));
+        }
+        System.out.println(str.toString());
     }
     private static FunctionType function_printInt(){
         String functionName = "printInt";

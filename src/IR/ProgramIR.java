@@ -1,8 +1,11 @@
 package IR;
 
 import AST.ProgramAST;
+import AST.Statement.BlockStatement;
+import AST.Statement.VariableDeclarationStatement;
 import AST.Type.ClassType;
 import AST.Type.FunctionType;
+import AST.Type.VoidType;
 import Translation.Translator;
 
 import java.util.*;
@@ -32,6 +35,13 @@ public class ProgramIR {
 				functionMap.put(classType.getConstrustFunction().getName(), new FunctionIR(classType.getConstrustFunction()));
 			}
 		}
+		BlockStatement blockStatement = new BlockStatement();
+		for(VariableDeclarationStatement variableDeclaration: ProgramAST.globalDeclarationList){
+			blockStatement.addStatement(variableDeclaration);
+		}
+		FunctionType globalDeclaration = new FunctionType("@GlobalDeclaration", VoidType.getInstance(), new ArrayList<>());
+		globalDeclaration.addBlockStatement(blockStatement);
+		functionMap.put("@GlobalDeclaration", new FunctionIR(globalDeclaration));
 	}
 
 	public static String toString(int indents){

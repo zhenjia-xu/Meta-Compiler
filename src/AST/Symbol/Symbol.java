@@ -10,12 +10,17 @@ public class Symbol {
 	private Type type;
 	public VirtualRegister virtualRegister;
 	public ClassType classScope;
+	public boolean global;
 
 	public Symbol(String name, Type type){
 		this.name = name;
 		this.type = type;
 		this.virtualRegister = new VirtualRegister(name);
 		this.classScope = null;
+		this.global = false;
+	}
+	public void setGlobal(){
+		global = true;
 	}
 	public String getName(){
 		return name;

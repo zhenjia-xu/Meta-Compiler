@@ -34,7 +34,9 @@ public class OtherDeclarationListener extends BaseListener{
 		}
 		for(ParseTree x: ctx.variableDeclaration()){
 			VariableDeclarationStatement variable = (VariableDeclarationStatement) returnNode.get(x);
-			ProgramAST.globalVariableTable.addVariable(variable);
+			variable.getSymbol().setGlobal();
+			//ProgramAST.globalVariableTable.addVariable(variable);
+			ProgramAST.globalDeclarationList.add(variable);
 		}
 	}
 	@Override

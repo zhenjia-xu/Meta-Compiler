@@ -4,7 +4,9 @@ import AST.ProgramAST;
 import AST.Symbol.Symbol;
 import AST.Type.FunctionType;
 import AST.Type.Type;
+import IR.Address;
 import IR.Instruction.Instruction;
+import IR.VirtualRegister;
 import Utility.Utility;
 import Utility.CompilationError;
 
@@ -46,6 +48,12 @@ public class IdentifierExpression extends Expression{
 	}
 	@Override
 	public void generateInstruction(List<Instruction> instructionList) {
-		operand = symbol.virtualRegister;
+		if(symbol.global) {
+			VirtualRegister tmp = new VirtualRegister(symbol.getName());
+			tmp.realRegister = "@" + symbol.getName();
+			operand = new Address(tmp);
+		} else{
+			operand = symbol.virtualRegister;
+		}
 	}
 }
