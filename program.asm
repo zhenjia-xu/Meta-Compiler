@@ -1,5 +1,5 @@
 global main
-extern printf, malloc, strcpy, scanf, strlen, sscanf, sprintf, memcpy
+extern printf, malloc, strcpy, scanf, strlen, sscanf, sprintf, memcpy, strcmp
 SECTION .text
 @GlobalDeclaration:
     push                  rbp
@@ -14,181 +14,66 @@ SECTION .text
      pop                  r14
      pop                  rbp
      ret
-h:
-    push                  rbp
-     mov                  rbp,                  rsp
-    push                  r14
-    push                  r15
-     sub                  rsp,                   88
-h.0.enter:
-     cmp                  rdi,                    0
-     mov                  r15,     qword [rbp - 24]
-     mov                  r15,                    0
-    sete                 r15b
-     mov     qword [rbp - 24],                  r15
-     cmp     qword [rbp - 24],                    1
-      je     h.2.logical_true
-     jmp    h.1.logical_false
-h.1.logical_false:
-     cmp                  rdi,                    1
-     mov                  r15,     qword [rbp - 32]
-     mov                  r15,                    0
-    sete                 r15b
-     mov     qword [rbp - 32],                  r15
-     mov                  r15,     qword [rbp - 32]
-     mov     qword [rbp - 40],                  r15
-     jmp     h.3.logical_exit
-h.2.logical_true:
-     mov     qword [rbp - 40],                    1
-     jmp     h.3.logical_exit
-h.3.logical_exit:
-     cmp     qword [rbp - 40],                    1
-      je          h.4.if_true
-     jmp         h.5.if_false
-h.4.if_true:
-     mov                  rax,                    1
-     jmp            h.11.exit
-     jmp          h.6.if_exit
-h.5.if_false:
-     jmp          h.6.if_exit
-h.6.if_exit:
-     mov     qword [rbp - 48],                    0
-     mov     qword [rbp - 56],                    0
-     jmp   h.9.loop_condition
-h.7.loop_body:
-    push                  rdi
-    push                  rsi
-     mov                  rdi,     qword [rbp - 56]
-     sub                  rsp,                    8
-    call                    h
-     add                  rsp,                    8
-     pop                  rsi
-     pop                  rdi
-     mov     qword [rbp - 64],                  rdi
-     sub     qword [rbp - 64],                    1
-     mov                  r15,     qword [rbp - 64]
-     mov     qword [rbp - 72],                  r15
-     mov                  r15,     qword [rbp - 56]
-     sub     qword [rbp - 72],                  r15
-    push                  rdi
-    push                  rsi
-     mov                  rdi,     qword [rbp - 72]
-     sub                  rsp,                    8
-    call                    h
-     add                  rsp,                    8
-     pop                  rsi
-     pop                  rdi
-     mov     qword [rbp - 80],                  rax
-     mov                  r15,     qword [rbp - 80]
-    imul                  r15,                  rax
-     mov     qword [rbp - 80],                  r15
-     mov                  r15,     qword [rbp - 48]
-     mov     qword [rbp - 88],                  r15
-     mov                  r15,     qword [rbp - 80]
-     add     qword [rbp - 88],                  r15
-     mov                  r15,     qword [rbp - 88]
-     mov     qword [rbp - 48],                  r15
-     jmp   h.8.loop_increment
-h.8.loop_increment:
-     mov                  r15,     qword [rbp - 56]
-     mov     qword [rbp - 96],                  r15
-     add     qword [rbp - 56],                    1
-     jmp   h.9.loop_condition
-h.9.loop_condition:
-     cmp     qword [rbp - 56],                  rdi
-     mov                  r15,    qword [rbp - 104]
-     mov                  r15,                    0
-    setl                 r15b
-     mov    qword [rbp - 104],                  r15
-     cmp    qword [rbp - 104],                    1
-      je        h.7.loop_body
-     jmp       h.10.loop_exit
-h.10.loop_exit:
-     mov                  rax,     qword [rbp - 48]
-     jmp            h.11.exit
-h.11.exit:
-     add                  rsp,                   88
-     pop                  r15
-     pop                  r14
-     pop                  rbp
-     ret
 main:
     push                  rbp
      mov                  rbp,                  rsp
     call   @GlobalDeclaration
     push                  r14
     push                  r15
-     sub                  rsp,                    8
+     sub                  rsp,                   32
 main.0.enter:
-    push                  rdi
-    push                  rsi
-     sub                  rsp,                    8
-    call               getInt
-     add                  rsp,                    8
-     pop                  rsi
-     pop                  rdi
-     mov     qword [rbp - 24],                  rax
+     mov     qword [rbp - 24],      __string_const0
+     mov     qword [rbp - 32],      __string_const1
+     mov     qword [rbp - 40],                    0
     push                  rdi
     push                  rsi
      mov                  rdi,     qword [rbp - 24]
-     sub                  rsp,                    8
-    call                    h
-     add                  rsp,                    8
+     mov                  rsi,     qword [rbp - 32]
+    call         __string_NEQ
      pop                  rsi
      pop                  rdi
+     mov     qword [rbp - 48],                  rax
+     cmp     qword [rbp - 48],                    1
+      je       main.1.if_true
+     jmp      main.2.if_false
+main.1.if_true:
+     mov     qword [rbp - 40],                    1
+     jmp       main.3.if_exit
+main.2.if_false:
+     jmp       main.3.if_exit
+main.3.if_exit:
     push                  rdi
     push                  rsi
-     mov                  rdi,                  rax
-     sub                  rsp,                    8
-    call             toString
-     add                  rsp,                    8
+     mov                  rdi,     qword [rbp - 40]
+    call             printInt
      pop                  rsi
      pop                  rdi
-    push                  rdi
-    push                  rsi
-     mov                  rdi,                  rax
-     sub                  rsp,                    8
-    call              println
-     add                  rsp,                    8
-     pop                  rsi
-     pop                  rdi
-     mov                  rax,                    0
-     jmp          main.1.exit
-main.1.exit:
-     add                  rsp,                    8
+main.4.exit:
+     add                  rsp,                   32
      pop                  r15
      pop                  r14
      pop                  rbp
      ret
 printInt:
-    push                  rax
-    push                  rcx
      mov                  rsi,                  rdi
      mov                  rdi,     __printIntFormat
-     xor                  rax,                  rax
+     sub                  rsp,                    8
     call               printf
-     pop                  rcx
-     pop                  rax
+     add                  rsp,                    8
      ret
 print:
-    push                  rax
-    push                  rcx
      mov                  rsi,                  rdi
      mov                  rdi,        __printFormat
-     xor                  rax,                  rax
+     sub                  rsp,                    8
     call               printf
-     pop                  rcx
-     pop                  rax
+     add                  rsp,                    8
      ret
 println:
-    push                  rax
-    push                  rcx
      mov                  rsi,                  rdi
      mov                  rdi,      __printlnFormat
-     xor                  rax,                  rax
+     sub                  rsp,                    8
     call               printf
-     pop                  rcx
-     pop                  rax
+     add                  rsp,                    8
      ret
 getInt:
      mov                  rdi,       __getIntFormat
@@ -277,7 +162,89 @@ __string_ord:
      add                  rdi,                  rsi
    movsx                  rax,           byte [rdi]
      ret
+__string_connection:
+    push                  r15
+    push                  r14
+    push                  r13
+     mov                  r15,      qword [rdi - 8]
+     add                  r15,      qword [rsi - 8]
+     add                  r15,                    9
+     mov                  r14,                  rdi
+     mov                  r13,                  rsi
+     mov                  rdi,                  r15
+    call               malloc
+     sub                  r15,                    9
+     mov          qword [rax],                  r15
+     mov                  r15,                  rax
+     add                  r15,                    8
+     mov                  rdi,                  r15
+     mov                  rsi,                  r14
+    call               strcpy
+     add                  r15,      qword [r14 - 8]
+     mov                  r14,                  rax
+     mov                  rdi,                  r15
+     mov                  rsi,                  r13
+    call               strcpy
+     mov                  rax,                  r14
+     pop                  r13
+     pop                  r14
+     pop                  r15
+     ret
+__string_EQ:
+     sub                  rsp,                    8
+    call               strcmp
+     add                  rsp,                    8
+     cmp                  eax,                    0
+     mov                  rax,                    0
+    sete                   al
+     ret
+__string_NEQ:
+     sub                  rsp,                    8
+    call               strcmp
+     add                  rsp,                    8
+     cmp                  eax,                    0
+     mov                  rax,                    0
+   setne                   al
+     ret
+__string_GR:
+     sub                  rsp,                    8
+    call               strcmp
+     add                  rsp,                    8
+     cmp                  eax,                    0
+     mov                  rax,                    0
+    setg                   al
+     ret
+__string_GREQ:
+     sub                  rsp,                    8
+    call               strcmp
+     add                  rsp,                    8
+     cmp                  eax,                    0
+     mov                  rax,                    0
+   setge                   al
+     ret
+__string_LE:
+     sub                  rsp,                    8
+    call               strcmp
+     add                  rsp,                    8
+     cmp                  eax,                    0
+     mov                  rax,                    0
+    setl                   al
+     ret
+__string_LEEQ:
+     sub                  rsp,                    8
+    call               strcmp
+     add                  rsp,                    8
+     cmp                  eax,                    0
+     mov                  rax,                    0
+   setle                   al
+     ret
 SECTION .data
+      dq                    5
+__string_const0:
+      db           "12003", 0
+      dq                    5
+__string_const1:
+      db           "02304", 0
 __printIntFormat:
       db         "%ld", 10, 0
 __printFormat:

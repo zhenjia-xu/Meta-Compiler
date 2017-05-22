@@ -40,6 +40,7 @@ public class Main{
 	public static void getIR() throws Exception{
 		ProgramIR.BuildProgramIR();
 		//ProgramIR.print();
-		Translator.IRtoNASM();
+		String code = Translator.IRtoNASM();
+		System.out.println(code);
 	}
 }

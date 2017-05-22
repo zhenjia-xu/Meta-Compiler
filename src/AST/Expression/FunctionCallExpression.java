@@ -65,11 +65,15 @@ public class FunctionCallExpression extends Expression{
 			exp.generateInstruction(instructionList);
 			parameterList.add(exp.operand);
 		}
-		operand = null;
+		VirtualRegister tmp = null;
+		if(!(function.getReturnType() instanceof VoidType)){
+			tmp = RegisterManager.getTemporaryRegister();
+			tmp.realRegister = "rax";
+		}
+		instructionList.add(new FunctionCallInstruction(function, tmp, parameterList));
 		if(!(function.getReturnType() instanceof VoidType)){
 			operand = RegisterManager.getTemporaryRegister();
-			((VirtualRegister) operand).realRegister = "rax";
+			instructionList.add(new MoveInstruction(operand, tmp));
 		}
-		instructionList.add(new FunctionCallInstruction(function, (VirtualRegister) operand, parameterList));
 	}
 }

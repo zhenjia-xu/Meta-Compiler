@@ -5,7 +5,6 @@ import Translation.PhysicalOperand.PhysicalOperand;
 import Translation.PhysicalOperand.PhysicalReg;
 import Translation.Translator;
 import Utility.RuntimeError;
-import jdk.internal.org.objectweb.asm.util.TraceAnnotationVisitor;
 
 public class CsetInstruction extends Instruction {
 	public ProgramIR.ConditionOp op;
