@@ -5,6 +5,7 @@ import AST.Constant.IntConstant;
 import AST.Expression.Expression;
 import AST.Type.*;
 import IR.Instruction.*;
+import IR.RegisterManager;
 import Utility.CompilationError;
 import Utility.Utility;
 
@@ -44,6 +45,7 @@ public class BinaryBitOr extends Expression{
 	public void generateInstruction(List<Instruction> instructionList){
 		leftExpression.generateInstruction(instructionList);
 		rightExpression.generateInstruction(instructionList);
+		operand = RegisterManager.getTemporaryRegister();
 		instructionList.add(new MoveInstruction(operand, leftExpression.operand));
 		Instruction instruction = new BinaryInstruction(BinaryInstruction.BinaryOp.OR, operand, rightExpression.operand);
 		instructionList.add(instruction);
