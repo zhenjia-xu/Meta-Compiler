@@ -32,7 +32,7 @@ public class Main{
 			walker.walk(new ClassDeclarationListener(), tree);
 			walker.walk(new OtherDeclarationListener(), tree);
 			walker.walk(new ASTreeListener(), tree);
-			ProgramAST.print();
+			//ProgramAST.print();
 		}catch(CompilationError ce){
 			System.out.println(ce.getMessage());
 			System.exit(1);
@@ -49,8 +49,8 @@ public class Main{
 		String code = Translator.IRtoNASM();
 		File file = new File("program.asm");
 		PrintStream out = new PrintStream(new FileOutputStream(file));
-		out.print(code);
-		//System.out.println(code);
+		//out.print(code);
+		System.out.println(code);
 
 	}
 }
