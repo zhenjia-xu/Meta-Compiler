@@ -39,8 +39,9 @@ public class Main{
 	}
 	public static void getIR() throws Exception{
 		ProgramIR.BuildProgramIR();
-		//ProgramIR.print();
 		String code = Translator.IRtoNASM();
+
+		//ProgramIR.print();
 		System.out.println(code);
 	}
 }

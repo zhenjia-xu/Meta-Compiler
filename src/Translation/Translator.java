@@ -45,16 +45,20 @@ public class Translator {
 		}
 		return "ERROR";
 	}
+	public static List<String> phisicalRegisterList = new ArrayList<String>(){{
+		add("rcx");add("rdx");add("rbx");add("rsi");add("rdi");
+		//add("r8"); add("r9"); add("r10");add("r11");
+	}};
 	public static String saveRegister_Caller(){
 		StringBuilder str = new StringBuilder();
-		str.append(Translator.getInstruction("push", "rdi"));
-		str.append(Translator.getInstruction("push", "rsi"));
+		for(int i = 0; i <= phisicalRegisterList.size() - 1; i++)
+			str.append(Translator.getInstruction("push", phisicalRegisterList.get(i)));
 		return str.toString();
 	}
 	public static String restoreRegister_Caller(){
 		StringBuilder str = new StringBuilder();
-		str.append(Translator.getInstruction("pop", "rsi"));
-		str.append(Translator.getInstruction("pop", "rdi"));
+		for(int i = phisicalRegisterList.size() - 1; i >= 0; i--)
+			str.append(Translator.getInstruction("pop", phisicalRegisterList.get(i)));
 		return str.toString();
 	}
 	public static String getCall(String func){

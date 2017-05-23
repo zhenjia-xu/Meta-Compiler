@@ -59,9 +59,7 @@ public class FunctionCallInstruction extends Instruction {
 		if(numToMem > 0){
 			str.append(Translator.getInstruction("add", "rsp", String.valueOf(numToMem * 8)));
 		}
-
-		str.append(Translator.getInstruction("pop", "rsi"));
-		str.append(Translator.getInstruction("pop", "rdi"));
+		str.append(Translator.restoreRegister_Caller());
 		return str.toString();
 	}
 	@Override
