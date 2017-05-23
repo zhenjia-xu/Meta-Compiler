@@ -39,12 +39,7 @@ public class SuffixIncrement extends Expression{
 	public void generateInstruction(List<Instruction> instructionList) {
 		expression.generateInstruction(instructionList);
 		operand = RegisterManager.getTemporaryRegister();
-		VirtualRegister num;
-		if (expression.operand instanceof VirtualRegister) {
-			expression.generateInstruction(instructionList);
-			operand = RegisterManager.getTemporaryRegister();
-			instructionList.add(new MoveInstruction(operand, expression.operand));
-			instructionList.add(new UnaryInstruction(UnaryInstruction.UnaryOp.INC, expression.operand));
-		}
+		instructionList.add(new MoveInstruction(operand, expression.operand));
+		instructionList.add(new UnaryInstruction(UnaryInstruction.UnaryOp.INC, expression.operand));
 	}
 }
