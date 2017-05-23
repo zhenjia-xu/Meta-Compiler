@@ -6,10 +6,36 @@ SECTION .text
      mov                  rbp,                  rsp
     push                  r14
     push                  r15
-     sub                  rsp,                    0
+     sub                  rsp,                   16
 @GlobalDeclaration.0.enter:
+     mov     qword [rbp - 24],                    4
+     add     qword [rbp - 24],                    1
+     mov                  r15,     qword [rbp - 24]
+    imul                  r15,                    8
+     mov     qword [rbp - 24],                  r15
+    push                  rcx
+    push                  rdx
+    push                  rbx
+    push                  rsi
+    push                  rdi
+     mov                  rdi,     qword [rbp - 24]
+     sub                  rsp,                    8
+    call               malloc
+     add                  rsp,                    8
+     pop                  rdi
+     pop                  rsi
+     pop                  rbx
+     pop                  rdx
+     pop                  rcx
+     mov     qword [rbp - 32],                  rax
+     sub     qword [rbp - 24],                    8
+     mov                  r14,     qword [rbp - 32]
+     mov      qword [r14 - 0],                    4
+     add     qword [rbp - 32],                    8
+     mov                  r15,     qword [rbp - 32]
+     mov       qword [@a - 0],                  r15
 @GlobalDeclaration.1.exit:
-     add                  rsp,                    0
+     add                  rsp,                   16
      pop                  r15
      pop                  r14
      pop                  rbp
@@ -20,272 +46,445 @@ main:
     call   @GlobalDeclaration
     push                  r14
     push                  r15
-     sub                  rsp,                  264
+     sub                  rsp,                  456
 main.0.enter:
-     mov     qword [rbp - 24],                10000
-     mov     qword [rbp - 32],                    0
-     mov     qword [rbp - 40],                 2800
-     mov     qword [rbp - 48],                    0
-     mov     qword [rbp - 56],                    0
-     mov     qword [rbp - 64],                 2801
-     add     qword [rbp - 64],                    1
-     mov                  r15,     qword [rbp - 64]
+     mov     qword [rbp - 24],                    4
+     add     qword [rbp - 24],                    1
+     mov                  r15,     qword [rbp - 24]
     imul                  r15,                    8
-     mov     qword [rbp - 64],                  r15
+     mov     qword [rbp - 24],                  r15
     push                  rcx
     push                  rdx
     push                  rbx
     push                  rsi
     push                  rdi
-     mov                  rdi,     qword [rbp - 64]
+     mov                  rdi,     qword [rbp - 24]
     call               malloc
      pop                  rdi
      pop                  rsi
      pop                  rbx
      pop                  rdx
      pop                  rcx
-     mov     qword [rbp - 72],                  rax
-     sub     qword [rbp - 64],                    8
-     mov                  r14,     qword [rbp - 72]
+     mov     qword [rbp - 32],                  rax
+     sub     qword [rbp - 24],                    8
+     mov                  r14,     qword [rbp - 32]
+     mov      qword [r14 - 0],                    4
+     add     qword [rbp - 32],                    8
+     mov                  r15,     qword [rbp - 32]
+     mov     qword [rbp - 40],                  r15
+     mov     qword [rbp - 48],                    0
+     mov                  r15,     qword [rbp - 48]
+    imul                  r15,                    8
+     mov     qword [rbp - 48],                  r15
+     mov                  r15,     qword [rbp - 40]
+     mov     qword [rbp - 56],                  r15
+     mov                  r15,     qword [rbp - 48]
+     add     qword [rbp - 56],                  r15
+     mov                  r15,       qword [@a - 0]
+     mov     qword [rbp - 64],                  r15
+     mov                  r14,     qword [rbp - 56]
      mov                  r15,     qword [rbp - 64]
      mov      qword [r14 - 0],                  r15
-     add     qword [rbp - 72],                    8
+     mov     qword [rbp - 72],                    1
      mov                  r15,     qword [rbp - 72]
+    imul                  r15,                    8
+     mov     qword [rbp - 72],                  r15
+     mov                  r15,     qword [rbp - 40]
      mov     qword [rbp - 80],                  r15
-     mov     qword [rbp - 88],                    0
-     jmp main.3.loop_condition
-main.1.loop_body:
-     mov                  r15,     qword [rbp - 32]
-     mov     qword [rbp - 96],                  r15
-     add     qword [rbp - 32],                    1
-     mov                  r15,     qword [rbp - 96]
-     mov    qword [rbp - 104],                  r15
-     mov                  r15,    qword [rbp - 104]
-    imul                  r15,                    8
-     mov    qword [rbp - 104],                  r15
-     mov                  r15,     qword [rbp - 80]
-     mov    qword [rbp - 112],                  r15
-     mov                  r15,    qword [rbp - 104]
-     add    qword [rbp - 112],                  r15
-     mov                  r15,     qword [rbp - 24]
-     mov    qword [rbp - 120],                  r15
-     mov                  rax,    qword [rbp - 120]
-     mov                  r15,                    5
-     mov                  rdx,                    0
-     cqo
-    idiv                  r15
-     mov    qword [rbp - 120],                  rax
-     mov                  r14,    qword [rbp - 112]
-     mov                  r15,    qword [rbp - 120]
-     mov      qword [r14 - 0],                  r15
-     jmp main.2.loop_increment
-main.2.loop_increment:
-     jmp main.3.loop_condition
-main.3.loop_condition:
-     mov                  r15,     qword [rbp - 32]
-     mov    qword [rbp - 128],                  r15
-     mov                  r15,     qword [rbp - 40]
-     sub    qword [rbp - 128],                  r15
-     cmp    qword [rbp - 128],                    0
-     mov                  r15,    qword [rbp - 136]
-     mov                  r15,                    0
-   setne                 r15b
-     mov    qword [rbp - 136],                  r15
-     cmp    qword [rbp - 136],                    1
-      je     main.1.loop_body
-     jmp     main.4.loop_exit
-main.4.loop_exit:
-     jmp main.17.loop_condition
-main.5.loop_body:
-     mov     qword [rbp - 48],                    0
-     mov                  r15,     qword [rbp - 40]
-     mov    qword [rbp - 144],                  r15
-     mov                  r15,    qword [rbp - 144]
-    imul                  r15,                    2
-     mov    qword [rbp - 144],                  r15
-     mov                  r15,    qword [rbp - 144]
+     mov                  r15,     qword [rbp - 72]
+     add     qword [rbp - 80],                  r15
+     mov                  r15,       qword [@a - 0]
      mov     qword [rbp - 88],                  r15
-     cmp     qword [rbp - 88],                    0
-     mov                  r15,    qword [rbp - 152]
-     mov                  r15,                    0
-    sete                 r15b
-     mov    qword [rbp - 152],                  r15
-     cmp    qword [rbp - 152],                    1
-      je       main.6.if_true
-     jmp      main.7.if_false
-main.6.if_true:
-     jmp    main.18.loop_exit
-     jmp       main.8.if_exit
-main.7.if_false:
-     jmp       main.8.if_exit
-main.8.if_exit:
-     mov                  r15,     qword [rbp - 40]
-     mov     qword [rbp - 32],                  r15
-     jmp main.14.loop_condition
-main.9.loop_body:
-     mov                  r15,     qword [rbp - 32]
-     mov    qword [rbp - 160],                  r15
-     mov                  r15,    qword [rbp - 160]
-    imul                  r15,                    8
-     mov    qword [rbp - 160],                  r15
-     mov                  r15,     qword [rbp - 80]
-     mov    qword [rbp - 168],                  r15
-     mov                  r15,    qword [rbp - 160]
-     add    qword [rbp - 168],                  r15
-     mov                  r14,    qword [rbp - 168]
-     mov                  r15,      qword [r14 - 0]
-     mov    qword [rbp - 176],                  r15
-     mov                  r15,    qword [rbp - 176]
-    imul                  r15,     qword [rbp - 24]
-     mov    qword [rbp - 176],                  r15
-     mov                  r15,     qword [rbp - 48]
-     mov    qword [rbp - 184],                  r15
-     mov                  r15,    qword [rbp - 176]
-     add    qword [rbp - 184],                  r15
-     mov                  r15,    qword [rbp - 184]
-     mov     qword [rbp - 48],                  r15
-     mov                  r15,     qword [rbp - 32]
-     mov    qword [rbp - 192],                  r15
-     mov                  r15,    qword [rbp - 192]
-    imul                  r15,                    8
-     mov    qword [rbp - 192],                  r15
-     mov                  r15,     qword [rbp - 80]
-     mov    qword [rbp - 200],                  r15
-     mov                  r15,    qword [rbp - 192]
-     add    qword [rbp - 200],                  r15
-     sub     qword [rbp - 88],                    1
-     mov                  r15,     qword [rbp - 48]
-     mov    qword [rbp - 208],                  r15
-     mov                  rax,    qword [rbp - 208]
+     mov                  r14,     qword [rbp - 80]
      mov                  r15,     qword [rbp - 88]
-     mov                  rdx,                    0
-     cqo
-    idiv                  r15
-     mov    qword [rbp - 208],                  rdx
-     mov                  r14,    qword [rbp - 200]
-     mov                  r15,    qword [rbp - 208]
      mov      qword [r14 - 0],                  r15
-     mov                  r15,     qword [rbp - 88]
-     mov    qword [rbp - 216],                  r15
-     sub     qword [rbp - 88],                    1
-     mov                  r15,     qword [rbp - 48]
-     mov    qword [rbp - 224],                  r15
-     mov                  rax,    qword [rbp - 224]
-     mov                  r15,    qword [rbp - 216]
-     mov                  rdx,                    0
-     cqo
-    idiv                  r15
-     mov    qword [rbp - 224],                  rax
-     mov                  r15,    qword [rbp - 224]
-     mov     qword [rbp - 48],                  r15
-     sub     qword [rbp - 32],                    1
-     cmp     qword [rbp - 32],                    0
-     mov                  r15,    qword [rbp - 232]
-     mov                  r15,                    0
-    sete                 r15b
-     mov    qword [rbp - 232],                  r15
-     cmp    qword [rbp - 232],                    1
-      je      main.10.if_true
-     jmp     main.11.if_false
-main.10.if_true:
-     jmp    main.15.loop_exit
-     jmp      main.12.if_exit
-main.11.if_false:
-     jmp      main.12.if_exit
-main.12.if_exit:
-     jmp main.13.loop_increment
-main.13.loop_increment:
-     mov                  r15,     qword [rbp - 48]
-     mov    qword [rbp - 240],                  r15
-     mov                  r15,    qword [rbp - 240]
-    imul                  r15,     qword [rbp - 32]
-     mov    qword [rbp - 240],                  r15
-     mov                  r15,    qword [rbp - 240]
-     mov     qword [rbp - 48],                  r15
-     jmp main.14.loop_condition
-main.14.loop_condition:
-     mov                  r15,                    1
-     cmp                  r15,                    1
-      je     main.9.loop_body
-     jmp    main.15.loop_exit
-main.15.loop_exit:
+     mov     qword [rbp - 96],                    2
+     mov                  r15,     qword [rbp - 96]
+    imul                  r15,                    8
+     mov     qword [rbp - 96],                  r15
      mov                  r15,     qword [rbp - 40]
-     mov    qword [rbp - 248],                  r15
-     sub    qword [rbp - 248],                   14
-     mov                  r15,    qword [rbp - 248]
-     mov     qword [rbp - 40],                  r15
-     mov                  r15,     qword [rbp - 48]
-     mov    qword [rbp - 256],                  r15
-     mov                  rax,    qword [rbp - 256]
-     mov                  r15,     qword [rbp - 24]
-     mov                  rdx,                    0
-     cqo
-    idiv                  r15
-     mov    qword [rbp - 256],                  rax
-     mov                  r15,     qword [rbp - 56]
-     mov    qword [rbp - 264],                  r15
-     mov                  r15,    qword [rbp - 256]
-     add    qword [rbp - 264],                  r15
+     mov    qword [rbp - 104],                  r15
+     mov                  r15,     qword [rbp - 96]
+     add    qword [rbp - 104],                  r15
+     mov                  r15,       qword [@a - 0]
+     mov    qword [rbp - 112],                  r15
+     mov                  r14,    qword [rbp - 104]
+     mov                  r15,    qword [rbp - 112]
+     mov      qword [r14 - 0],                  r15
+     mov    qword [rbp - 120],                    3
+     mov                  r15,    qword [rbp - 120]
+    imul                  r15,                    8
+     mov    qword [rbp - 120],                  r15
+     mov                  r15,     qword [rbp - 40]
+     mov    qword [rbp - 128],                  r15
+     mov                  r15,    qword [rbp - 120]
+     add    qword [rbp - 128],                  r15
+     mov                  r15,       qword [@a - 0]
+     mov    qword [rbp - 136],                  r15
+     mov                  r14,    qword [rbp - 128]
+     mov                  r15,    qword [rbp - 136]
+     mov      qword [r14 - 0],                  r15
     push                  rcx
     push                  rdx
     push                  rbx
     push                  rsi
     push                  rdi
-     mov                  rdi,    qword [rbp - 264]
+     mov                  rdi,     qword [rbp - 40]
+    call         __array_size
+     pop                  rdi
+     pop                  rsi
+     pop                  rbx
+     pop                  rdx
+     pop                  rcx
+     mov    qword [rbp - 144],                  rax
+    push                  rcx
+    push                  rdx
+    push                  rbx
+    push                  rsi
+    push                  rdi
+     mov                  rdi,    qword [rbp - 144]
     call             toString
      pop                  rdi
      pop                  rsi
      pop                  rbx
      pop                  rdx
      pop                  rcx
-     mov    qword [rbp - 272],                  rax
+     mov    qword [rbp - 152],                  rax
     push                  rcx
     push                  rdx
     push                  rbx
     push                  rsi
     push                  rdi
-     mov                  rdi,    qword [rbp - 272]
+     mov                  rdi,    qword [rbp - 152]
+    call              println
+     pop                  rdi
+     pop                  rsi
+     pop                  rbx
+     pop                  rdx
+     pop                  rcx
+     mov    qword [rbp - 160],                    0
+     jmp main.3.loop_condition
+main.1.loop_body:
+     mov    qword [rbp - 168],                    0
+     mov                  r15,    qword [rbp - 168]
+    imul                  r15,                    8
+     mov    qword [rbp - 168],                  r15
+     mov                  r15,     qword [rbp - 40]
+     mov    qword [rbp - 176],                  r15
+     mov                  r15,    qword [rbp - 168]
+     add    qword [rbp - 176],                  r15
+     mov                  r15,    qword [rbp - 160]
+     mov    qword [rbp - 184],                  r15
+     mov                  r15,    qword [rbp - 184]
+    imul                  r15,                    8
+     mov    qword [rbp - 184],                  r15
+     mov                  r14,    qword [rbp - 176]
+     mov                  r15,      qword [r14 - 0]
+     mov    qword [rbp - 192],                  r15
+     mov                  r15,    qword [rbp - 184]
+     add    qword [rbp - 192],                  r15
+    push                  rcx
+    push                  rdx
+    push                  rbx
+    push                  rsi
+    push                  rdi
+    call               getInt
+     pop                  rdi
+     pop                  rsi
+     pop                  rbx
+     pop                  rdx
+     pop                  rcx
+     mov    qword [rbp - 200],                  rax
+     mov                  r14,    qword [rbp - 192]
+     mov                  r15,    qword [rbp - 200]
+     mov      qword [r14 - 0],                  r15
+     jmp main.2.loop_increment
+main.2.loop_increment:
+     mov                  r15,    qword [rbp - 160]
+     mov    qword [rbp - 208],                  r15
+     add    qword [rbp - 160],                    1
+     jmp main.3.loop_condition
+main.3.loop_condition:
+     mov    qword [rbp - 216],                    0
+     mov                  r15,    qword [rbp - 216]
+    imul                  r15,                    8
+     mov    qword [rbp - 216],                  r15
+     mov                  r15,     qword [rbp - 40]
+     mov    qword [rbp - 224],                  r15
+     mov                  r15,    qword [rbp - 216]
+     add    qword [rbp - 224],                  r15
+    push                  rcx
+    push                  rdx
+    push                  rbx
+    push                  rsi
+    push                  rdi
+     mov                  r14,    qword [rbp - 224]
+     mov                  rdi,      qword [r14 - 0]
+    call         __array_size
+     pop                  rdi
+     pop                  rsi
+     pop                  rbx
+     pop                  rdx
+     pop                  rcx
+     mov    qword [rbp - 232],                  rax
+     mov                  r15,    qword [rbp - 160]
+     cmp                  r15,    qword [rbp - 232]
+     mov                  r15,    qword [rbp - 240]
+     mov                  r15,                    0
+    setl                 r15b
+     mov    qword [rbp - 240],                  r15
+     cmp    qword [rbp - 240],                    1
+      je     main.1.loop_body
+     jmp     main.4.loop_exit
+main.4.loop_exit:
+     mov    qword [rbp - 160],                    0
+     jmp main.7.loop_condition
+main.5.loop_body:
+     mov    qword [rbp - 248],                    1
+     mov                  r15,    qword [rbp - 248]
+    imul                  r15,                    8
+     mov    qword [rbp - 248],                  r15
+     mov                  r15,     qword [rbp - 40]
+     mov    qword [rbp - 256],                  r15
+     mov                  r15,    qword [rbp - 248]
+     add    qword [rbp - 256],                  r15
+     mov                  r15,    qword [rbp - 160]
+     mov    qword [rbp - 264],                  r15
+     mov                  r15,    qword [rbp - 264]
+    imul                  r15,                    8
+     mov    qword [rbp - 264],                  r15
+     mov                  r14,    qword [rbp - 256]
+     mov                  r15,      qword [r14 - 0]
+     mov    qword [rbp - 272],                  r15
+     mov                  r15,    qword [rbp - 264]
+     add    qword [rbp - 272],                  r15
+    push                  rcx
+    push                  rdx
+    push                  rbx
+    push                  rsi
+    push                  rdi
+     mov                  r14,    qword [rbp - 272]
+     mov                  rdi,      qword [r14 - 0]
+    call             toString
+     pop                  rdi
+     pop                  rsi
+     pop                  rbx
+     pop                  rdx
+     pop                  rcx
+     mov    qword [rbp - 280],                  rax
+    push                  rcx
+    push                  rdx
+    push                  rbx
+    push                  rsi
+    push                  rdi
+     mov                  rdi,    qword [rbp - 280]
     call                print
      pop                  rdi
      pop                  rsi
      pop                  rbx
      pop                  rdx
      pop                  rcx
-     jmp main.16.loop_increment
-main.16.loop_increment:
-     mov                  r15,     qword [rbp - 48]
-     mov    qword [rbp - 280],                  r15
-     mov                  rax,    qword [rbp - 280]
-     mov                  r15,     qword [rbp - 24]
-     mov                  rdx,                    0
-     cqo
-    idiv                  r15
-     mov    qword [rbp - 280],                  rdx
-     mov                  r15,    qword [rbp - 280]
-     mov     qword [rbp - 56],                  r15
-     jmp main.17.loop_condition
-main.17.loop_condition:
-     mov                  r15,                    1
-     cmp                  r15,                    1
+     jmp main.6.loop_increment
+main.6.loop_increment:
+     mov                  r15,    qword [rbp - 160]
+     mov    qword [rbp - 288],                  r15
+     add    qword [rbp - 160],                    1
+     jmp main.7.loop_condition
+main.7.loop_condition:
+     mov    qword [rbp - 296],                    1
+     mov                  r15,    qword [rbp - 296]
+    imul                  r15,                    8
+     mov    qword [rbp - 296],                  r15
+     mov                  r15,     qword [rbp - 40]
+     mov    qword [rbp - 304],                  r15
+     mov                  r15,    qword [rbp - 296]
+     add    qword [rbp - 304],                  r15
+    push                  rcx
+    push                  rdx
+    push                  rbx
+    push                  rsi
+    push                  rdi
+     mov                  r14,    qword [rbp - 304]
+     mov                  rdi,      qword [r14 - 0]
+    call         __array_size
+     pop                  rdi
+     pop                  rsi
+     pop                  rbx
+     pop                  rdx
+     pop                  rcx
+     mov    qword [rbp - 312],                  rax
+     mov                  r15,    qword [rbp - 160]
+     cmp                  r15,    qword [rbp - 312]
+     mov                  r15,    qword [rbp - 320]
+     mov                  r15,                    0
+    setl                 r15b
+     mov    qword [rbp - 320],                  r15
+     cmp    qword [rbp - 320],                    1
       je     main.5.loop_body
-     jmp    main.18.loop_exit
-main.18.loop_exit:
+     jmp     main.8.loop_exit
+main.8.loop_exit:
     push                  rcx
     push                  rdx
     push                  rbx
     push                  rsi
     push                  rdi
      mov                  rdi,      __string_const0
+    call              println
+     pop                  rdi
+     pop                  rsi
+     pop                  rbx
+     pop                  rdx
+     pop                  rcx
+     mov    qword [rbp - 160],                    0
+     jmp main.11.loop_condition
+main.9.loop_body:
+     mov    qword [rbp - 328],                    2
+     mov                  r15,    qword [rbp - 328]
+    imul                  r15,                    8
+     mov    qword [rbp - 328],                  r15
+     mov                  r15,     qword [rbp - 40]
+     mov    qword [rbp - 336],                  r15
+     mov                  r15,    qword [rbp - 328]
+     add    qword [rbp - 336],                  r15
+     mov                  r15,    qword [rbp - 160]
+     mov    qword [rbp - 344],                  r15
+     mov                  r15,    qword [rbp - 344]
+    imul                  r15,                    8
+     mov    qword [rbp - 344],                  r15
+     mov                  r14,    qword [rbp - 336]
+     mov                  r15,      qword [r14 - 0]
+     mov    qword [rbp - 352],                  r15
+     mov                  r15,    qword [rbp - 344]
+     add    qword [rbp - 352],                  r15
+     mov                  r14,    qword [rbp - 352]
+     mov      qword [r14 - 0],                    0
+     jmp main.10.loop_increment
+main.10.loop_increment:
+     mov                  r15,    qword [rbp - 160]
+     mov    qword [rbp - 360],                  r15
+     add    qword [rbp - 160],                    1
+     jmp main.11.loop_condition
+main.11.loop_condition:
+     mov    qword [rbp - 368],                    2
+     mov                  r15,    qword [rbp - 368]
+    imul                  r15,                    8
+     mov    qword [rbp - 368],                  r15
+     mov                  r15,     qword [rbp - 40]
+     mov    qword [rbp - 376],                  r15
+     mov                  r15,    qword [rbp - 368]
+     add    qword [rbp - 376],                  r15
+    push                  rcx
+    push                  rdx
+    push                  rbx
+    push                  rsi
+    push                  rdi
+     mov                  r14,    qword [rbp - 376]
+     mov                  rdi,      qword [r14 - 0]
+    call         __array_size
+     pop                  rdi
+     pop                  rsi
+     pop                  rbx
+     pop                  rdx
+     pop                  rcx
+     mov    qword [rbp - 384],                  rax
+     mov                  r15,    qword [rbp - 160]
+     cmp                  r15,    qword [rbp - 384]
+     mov                  r15,    qword [rbp - 392]
+     mov                  r15,                    0
+    setl                 r15b
+     mov    qword [rbp - 392],                  r15
+     cmp    qword [rbp - 392],                    1
+      je     main.9.loop_body
+     jmp    main.12.loop_exit
+main.12.loop_exit:
+     mov    qword [rbp - 160],                    0
+     jmp main.15.loop_condition
+main.13.loop_body:
+     mov    qword [rbp - 400],                    3
+     mov                  r15,    qword [rbp - 400]
+    imul                  r15,                    8
+     mov    qword [rbp - 400],                  r15
+     mov                  r15,     qword [rbp - 40]
+     mov    qword [rbp - 408],                  r15
+     mov                  r15,    qword [rbp - 400]
+     add    qword [rbp - 408],                  r15
+     mov                  r15,    qword [rbp - 160]
+     mov    qword [rbp - 416],                  r15
+     mov                  r15,    qword [rbp - 416]
+    imul                  r15,                    8
+     mov    qword [rbp - 416],                  r15
+     mov                  r14,    qword [rbp - 408]
+     mov                  r15,      qword [r14 - 0]
+     mov    qword [rbp - 424],                  r15
+     mov                  r15,    qword [rbp - 416]
+     add    qword [rbp - 424],                  r15
+    push                  rcx
+    push                  rdx
+    push                  rbx
+    push                  rsi
+    push                  rdi
+     mov                  r14,    qword [rbp - 424]
+     mov                  rdi,      qword [r14 - 0]
+    call             toString
+     pop                  rdi
+     pop                  rsi
+     pop                  rbx
+     pop                  rdx
+     pop                  rcx
+     mov    qword [rbp - 432],                  rax
+    push                  rcx
+    push                  rdx
+    push                  rbx
+    push                  rsi
+    push                  rdi
+     mov                  rdi,    qword [rbp - 432]
     call                print
      pop                  rdi
      pop                  rsi
      pop                  rbx
      pop                  rdx
      pop                  rcx
-     mov                  rax,                    0
-     jmp         main.19.exit
-main.19.exit:
-     add                  rsp,                  264
+     jmp main.14.loop_increment
+main.14.loop_increment:
+     mov                  r15,    qword [rbp - 160]
+     mov    qword [rbp - 440],                  r15
+     add    qword [rbp - 160],                    1
+     jmp main.15.loop_condition
+main.15.loop_condition:
+     mov    qword [rbp - 448],                    3
+     mov                  r15,    qword [rbp - 448]
+    imul                  r15,                    8
+     mov    qword [rbp - 448],                  r15
+     mov                  r15,     qword [rbp - 40]
+     mov    qword [rbp - 456],                  r15
+     mov                  r15,    qword [rbp - 448]
+     add    qword [rbp - 456],                  r15
+    push                  rcx
+    push                  rdx
+    push                  rbx
+    push                  rsi
+    push                  rdi
+     mov                  r14,    qword [rbp - 456]
+     mov                  rdi,      qword [r14 - 0]
+    call         __array_size
+     pop                  rdi
+     pop                  rsi
+     pop                  rbx
+     pop                  rdx
+     pop                  rcx
+     mov    qword [rbp - 464],                  rax
+     mov                  r15,    qword [rbp - 160]
+     cmp                  r15,    qword [rbp - 464]
+     mov                  r15,    qword [rbp - 472]
+     mov                  r15,                    0
+    setl                 r15b
+     mov    qword [rbp - 472],                  r15
+     cmp    qword [rbp - 472],                    1
+      je    main.13.loop_body
+     jmp    main.16.loop_exit
+main.16.loop_exit:
+main.17.exit:
+     add                  rsp,                  456
      pop                  r15
      pop                  r14
      pop                  rbp
@@ -475,9 +674,9 @@ __string_LEEQ:
    setle                   al
      ret
 SECTION .data
-      dq                    6
+      dq                    0
 __string_const0:
-      db "", 34, "", 92, "", 10, "", 0
+      db                "", 0
 __printIntFormat:
       db         "%ld", 10, 0
 __printFormat:
@@ -493,6 +692,8 @@ __toStringFormat:
 __parseIntFormat:
       db             "%ld", 0
 SECTION .bss
+@a:
+    resq                    1
 @getIntBuf:
     resq                    1
 @parseIntBuf:
