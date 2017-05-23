@@ -5,6 +5,7 @@ import AST.Type.FunctionType;
 import AST.Type.VoidType;
 import IR.Instruction.LabelInstruction;
 import IR.Instruction.Instruction;
+import IR.Instruction.MoveInstruction;
 import Translation.Translator;
 import Utility.Utility;
 
@@ -36,6 +37,15 @@ public class FunctionIR {
 
 		List<Instruction> instructionList = new ArrayList<>();
 		instructionList.add(enterBlock);
+		for(int i = 0; i < parameterList.size(); i++){
+			if(i < 6){
+				VirtualRegister tmp = RegisterManager.getTemporaryRegister();
+				tmp.realRegister = RegisterManager.parameterRegList.get(i);
+				instructionList.add(new MoveInstruction(parameterList.get(i), tmp));
+			}else{
+				parameterList.get(i).id = 2 - i;
+			}
+		}
 		function.getBlockStatement().generateInstruction(instructionList);
 		instructionList.add(exitBlock);
 
@@ -76,13 +86,6 @@ public class FunctionIR {
 		StringBuilder str = new StringBuilder();
 		str.append(getName() + ":\n");
 		RegisterManager.initialize();
-		for(int i = 0; i < parameterList.size(); i++){
-			if(i < 6){
-				parameterList.get(i).realRegister = RegisterManager.parameterRegList.get(i);
-			}else{
-				parameterList.get(i).id = 2 - i;
-			}
-		}
 		for(Block block: blockList){
 			for(Instruction instruction: block.instructionList){
 				instruction.Prepare();
