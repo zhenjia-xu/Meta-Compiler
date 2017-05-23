@@ -99,8 +99,8 @@ public class FunctionIR {
 		if(getName().equals("main")){
 			str.append(Translator.getInstruction("call", "@GlobalDeclaration"));
 		}
-		str.append(Translator.getInstruction("push", "r14"));
-		str.append(Translator.getInstruction("push", "r15"));
+		//str.append(Translator.getInstruction("push", "r14"));
+		//str.append(Translator.getInstruction("push", "r15"));
 
 		//add temporary variable
 		str.append(Translator.getInstruction("sub", "rsp", String.valueOf(8 * RegisterManager.NumberOfRegInMem)));
@@ -117,8 +117,8 @@ public class FunctionIR {
 		//restore registers
 
 		str.append(Translator.getInstruction("add", "rsp", String.valueOf(8 * RegisterManager.NumberOfRegInMem)));
-		str.append(Translator.getInstruction("pop", "r15"));
-		str.append(Translator.getInstruction("pop", "r14"));
+		//str.append(Translator.getInstruction("pop", "r15"));
+		//str.append(Translator.getInstruction("pop", "r14"));
 		str.append(Translator.getInstruction("pop", "rbp"));
 
 		str.append(Translator.getInstruction("ret"));

@@ -23,6 +23,9 @@ public class BinaryInstruction extends Instruction {
 		if(target instanceof Address && operand instanceof Address){
 			throw new RuntimeError("binary instruction can't handle two address");
 		}
+		if(target instanceof Address && (op == BinaryOp.DIV || op == BinaryOp.MOD || op == BinaryOp.SHL || op == BinaryOp.SHR)){
+			throw new RuntimeError("target of div,mod,shl,shr can't be address");
+		}
 		this.target = target;
 		this.operand = operand;
 	}
@@ -52,18 +55,18 @@ public class BinaryInstruction extends Instruction {
 			if (PhysicalTarget instanceof PhysicalReg) {
 				str.append(Translator.getInstruction("imul", PhysicalTarget.toString(), PhysicalSource.toString()));
 			} else {
-				str.append(Translator.getInstruction("mov", "r15", PhysicalTarget.toString()));
-				str.append(Translator.getInstruction("imul", "r15", PhysicalSource.toString()));
-				str.append(Translator.getInstruction("mov", PhysicalTarget.toString(), "r15"));
+				str.append(Translator.getInstruction("mov", "rax", PhysicalTarget.toString()));
+				str.append(Translator.getInstruction("imul", "rax", PhysicalSource.toString()));
+				str.append(Translator.getInstruction("mov", PhysicalTarget.toString(), "rax"));
 			}
 			return str.toString();
 		}
 		if(opNASM.equals("div") || opNASM.equals("mod")){
 			str.append(Translator.getInstruction("mov", "rax", PhysicalTarget.toString()));
-			str.append(Translator.getInstruction("mov", "r15", PhysicalSource.toString()));
+			str.append(Translator.getInstruction("mov", "rcx", PhysicalSource.toString()));
 			str.append(Translator.getInstruction("mov", "rdx", "0"));
 			str.append(Translator.getInstruction("cqo"));
-			str.append(Translator.getInstruction("idiv", "r15"));
+			str.append(Translator.getInstruction("idiv", "rcx"));
 			if(opNASM.equals("div")){
 				str.append(Translator.getInstruction("mov", PhysicalTarget.toString(), "rax"));
 			}else{
@@ -72,8 +75,8 @@ public class BinaryInstruction extends Instruction {
 			return str.toString();
 		}
 		if(PhysicalSource instanceof PhysicalAdd && PhysicalTarget instanceof PhysicalAdd){
-			str.append(Translator.getInstruction("mov", "r15", PhysicalSource.toString()));
-			str.append(Translator.getInstruction(opNASM, PhysicalTarget.toString(), "r15"));
+			str.append(Translator.getInstruction("mov", "rax", PhysicalSource.toString()));
+			str.append(Translator.getInstruction(opNASM, PhysicalTarget.toString(), "rax"));
 		}else{
 			str.append(Translator.getInstruction(opNASM, PhysicalTarget.toString(), PhysicalSource.toString()));
 		}

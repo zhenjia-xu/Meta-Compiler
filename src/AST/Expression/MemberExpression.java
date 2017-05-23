@@ -15,7 +15,7 @@ public class MemberExpression extends Expression{
 	private String identifier;
 
 	private MemberExpression(Type type, Expression expression, String identifier){
-		super(type, expression.getLeftValue());
+		super(type, !(type instanceof FunctionType));
 		this.expression = expression;
 		this.identifier = identifier;
 	}
@@ -71,7 +71,7 @@ public class MemberExpression extends Expression{
 	public String toString(int indents){
 		return Utility.getIndent(indents) + "[member call]\n" +
 				expression.toString(indents + 1)
-				+ Utility.getIndent(indents + 1) + "member: " + identifier + "\n";
+				+ Utility.getIndent(indents + 1) + "member: " + identifier + " " + this.getLeftValue() + "\n";
 	}
 	@Override
 	public void generateInstruction(List<Instruction> instructionList) {

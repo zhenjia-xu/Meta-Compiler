@@ -46,7 +46,7 @@ public class Translator {
 		return "ERROR";
 	}
 	public static List<String> phisicalRegisterList = new ArrayList<String>(){{
-		add("rcx");add("rdx");add("rbx");add("rsi");add("rdi");
+		//add("rcx");add("rdx");add("rbx");add("rsi");add("rdi");
 		//add("r8"); add("r9"); add("r10");add("r11");
 	}};
 	public static String saveRegister_Caller(){
@@ -72,7 +72,28 @@ public class Translator {
 		}
 		return str.toString();
 	}
-	public static String getDataSection(){
+	public static String IRtoNASM() throws Exception {
+		StringBuilder str = new StringBuilder();
+		str.append("global main\nextern printf, malloc, strcpy, scanf, strlen, sscanf, sprintf, memcpy, strcmp\n");
+
+		//Section .text
+		str.append(Translator.getTextSection());
+		//Section .data
+		str.append(Translator.getDataSection());
+		//Section .bss
+		str.append(Translator.getBssSection());
+		return str.toString();
+	}
+	static private String getTextSection(){
+		StringBuilder str = new StringBuilder();
+		str.append("SECTION .text\n");
+		for(FunctionIR functionIR: ProgramIR.functionMap.values()){
+			str.append(functionIR.toNASM());
+		}
+		str.append(Translator.getBuiltinFunction());
+		return str.toString();
+	}
+	static private String getDataSection(){
 		StringBuilder str = new StringBuilder();
 		str.append("SECTION .data\n");
 		for(int i = 0; i < ProgramIR.constStringList.size(); i++){
@@ -97,7 +118,7 @@ public class Translator {
 		str.append(Translator.getInstruction("db","\"%ld\", 0"));
 		return str.toString();
 	}
-	public static String getBssSection(){
+	static private String getBssSection(){
 		StringBuilder str = new StringBuilder();
 		str.append("SECTION .bss\n");
 		for(VariableDeclarationStatement variable: ProgramAST.globalDeclarationList){
@@ -110,14 +131,29 @@ public class Translator {
 		str.append(Translator.getInstruction("resq", "1"));
 		return str.toString();
 	}
-	public static String IRtoNASM() throws Exception {
+	static private String getStringConst(String s){
 		StringBuilder str = new StringBuilder();
-		str.append("global main\n");
-		str.append("extern printf, malloc, strcpy, scanf, strlen, sscanf, sprintf, memcpy, strcmp\n");
-		str.append("SECTION .text\n");
-		for(FunctionIR functionIR: ProgramIR.functionMap.values()){
-			str.append(functionIR.toNASM());
+		str.append('\"');
+		for(int i = 0; i < s.length(); i++){
+			if(s.charAt(i) == '\\'){
+				str.append("\", ");
+				if(s.charAt(i + 1) == 'n')
+					str.append("10");
+				if(s.charAt(i + 1) == '\"')
+					str.append("34");
+				if(s.charAt(i + 1) == '\\')
+					str.append("92");
+				str.append(", \"");
+				i++;
+			}else{
+				str.append(s.charAt(i));
+			}
 		}
+		str.append("\", 0");
+		return str.toString();
+	}
+	static private String getBuiltinFunction(){
+		StringBuilder str = new StringBuilder();
 		//printInt
 		str.append(Translator.getNASMprint("printInt"));
 		//print
@@ -149,38 +185,9 @@ public class Translator {
 		str.append(Translator.getNASMstringCompare(ProgramIR.ConditionOp.GREQ));
 		str.append(Translator.getNASMstringCompare(ProgramIR.ConditionOp.LE));
 		str.append(Translator.getNASMstringCompare(ProgramIR.ConditionOp.LEEQ));
-
-		//stringConst
-		str.append(Translator.getDataSection());
-		//globalVariable
-		str.append(Translator.getBssSection());
-		File file = new File("program.asm");
-		PrintStream out = new PrintStream(new FileOutputStream(file));
-		out.print(str.toString());
 		return str.toString();
 	}
-	static private String getStringConst(String s){
-		StringBuilder str = new StringBuilder();
-		str.append('\"');
-		for(int i = 0; i < s.length(); i++){
-			if(s.charAt(i) == '\\'){
-				str.append("\", ");
-				if(s.charAt(i + 1) == 'n')
-					str.append("10");
-				if(s.charAt(i + 1) == '\"')
-					str.append("34");
-				if(s.charAt(i + 1) == '\\')
-					str.append("92");
-				str.append(", \"");
-				i++;
-			}else{
-				str.append(s.charAt(i));
-			}
-		}
-		str.append("\", 0");
-		return str.toString();
-	}
-	static public String getNASMprint(String Format){
+	static private String getNASMprint(String Format){
 		StringBuilder str = new StringBuilder();
 		str.append(Format + ":\n");
 		rsp_offset = 1;
@@ -191,7 +198,7 @@ public class Translator {
 
 		return str.toString();
 	}
-	static public String getNASMgetInt(){
+	static private String getNASMgetInt(){
 		StringBuilder str = new StringBuilder();
 		str.append("getInt:\n");
 		rsp_offset = 1;
@@ -202,7 +209,7 @@ public class Translator {
 		str.append(Translator.getInstruction("ret"));
 		return str.toString();
 	}
-	static public String getNASMgetString(){
+	static private String getNASMgetString(){
 		StringBuilder str = new StringBuilder();
 		str.append("getString:\n");
 		rsp_offset = 1;
@@ -222,7 +229,7 @@ public class Translator {
 		str.append(Translator.getInstruction("ret"));
 		return str.toString();
 	}
-	static public String getNASMtoString(){
+	static private String getNASMtoString(){
 		StringBuilder str = new StringBuilder();
 		str.append("toString:\n");
 		rsp_offset = 1;
@@ -244,21 +251,21 @@ public class Translator {
 		str.append(Translator.getInstruction("ret"));
 		return str.toString();
 	}
-	static public String getNASMarraySize(){
+	static private String getNASMarraySize(){
 		StringBuilder str = new StringBuilder();
 		str.append("__array_size:\n");
 		str.append(Translator.getInstruction("mov", "rax", "qword [rdi - 8]"));
 		str.append(Translator.getInstruction("ret"));
 		return str.toString();
 	}
-	static public String getNASMstringLength(){
+	static private String getNASMstringLength(){
 		StringBuilder str = new StringBuilder();
 		str.append("__string_length:\n");
 		str.append(Translator.getInstruction("mov", "rax", "qword [rdi - 8]"));
 		str.append(Translator.getInstruction("ret"));
 		return str.toString();
 	}
-	static public String getNASMstringParseInt(){
+	static private String getNASMstringParseInt(){
 		StringBuilder str = new StringBuilder();
 		str.append("__string_parseInt:\n");
 		rsp_offset = 1;
@@ -269,7 +276,7 @@ public class Translator {
 		str.append(Translator.getInstruction("ret"));
 		return str.toString();
 	}
-	static public String getNASMstringSubstring(){
+	static private String getNASMstringSubstring(){
 		StringBuilder str = new StringBuilder();
 		str.append("__string_substring:\n");
 		rsp_offset = 1;
@@ -297,7 +304,7 @@ public class Translator {
 		str.append(Translator.getInstruction("ret"));
 		return str.toString();
 	}
-	static public String getNASMstringOrd(){
+	static private String getNASMstringOrd(){
 		StringBuilder str = new StringBuilder();
 		str.append("__string_ord:\n");
 		rsp_offset = 1;
@@ -306,7 +313,7 @@ public class Translator {
 		str.append(Translator.getInstruction("ret"));
 		return str.toString();
 	}
-	static public String getNASMstringConnection(){
+	static private String getNASMstringConnection(){
 		StringBuilder str = new StringBuilder();
 		str.append("__string_connection:\n");
 		rsp_offset = 1;
@@ -339,7 +346,7 @@ public class Translator {
 		str.append(Translator.getInstruction("ret"));
 		return str.toString();
 	}
-	static public String getNASMstringCompare(ProgramIR.ConditionOp op){
+	static private String getNASMstringCompare(ProgramIR.ConditionOp op){
 		StringBuilder str = new StringBuilder();
 		str.append("__string_" + op + ":\n");
 		rsp_offset = 1;

@@ -9,12 +9,13 @@ import FrontEnd.Listener.*;
 import Translation.Translator;
 
 public class Main{
-
 	public static void main(String[] args) throws Exception {
 		File file = new File("program.txt");
 		InputStream in = new FileInputStream(file);
 		getAST(in);
 		getIR();
+		Optimize();
+		Translate();
 	}
 	public static void getAST(InputStream in)throws Exception{
 		ANTLRInputStream input = new ANTLRInputStream(in);
@@ -31,17 +32,25 @@ public class Main{
 			walker.walk(new ClassDeclarationListener(), tree);
 			walker.walk(new OtherDeclarationListener(), tree);
 			walker.walk(new ASTreeListener(), tree);
-			//ProgramAST.print();
+			ProgramAST.print();
 		}catch(CompilationError ce){
 			System.out.println(ce.getMessage());
 			System.exit(1);
 		}
 	}
-	public static void getIR() throws Exception{
+	public static void getIR(){
 		ProgramIR.BuildProgramIR();
-		String code = Translator.IRtoNASM();
-
 		//ProgramIR.print();
-		System.out.println(code);
+	}
+	public static void Optimize(){
+
+	}
+	public static void Translate() throws Exception{
+		String code = Translator.IRtoNASM();
+		File file = new File("program.asm");
+		PrintStream out = new PrintStream(new FileOutputStream(file));
+		out.print(code);
+		//System.out.println(code);
+
 	}
 }

@@ -32,8 +32,8 @@ public class CompareInstruction extends Instruction {
 
 		if((PhysicalLeft instanceof PhysicalAdd && PhysicalRight instanceof PhysicalAdd) ||
 				(PhysicalLeft instanceof PhysicalImm)){
-			str.append(Translator.getInstruction("mov", "r15", PhysicalLeft.toString()));
-			str.append(Translator.getInstruction("cmp", "r15", PhysicalRight.toString()));
+			str.append(Translator.getInstruction("mov", "rax", PhysicalLeft.toString()));
+			str.append(Translator.getInstruction("cmp", "rax", PhysicalRight.toString()));
 		}else{
 			str.append(Translator.getInstruction("cmp", PhysicalLeft.toString(), PhysicalRight.toString()));
 		}

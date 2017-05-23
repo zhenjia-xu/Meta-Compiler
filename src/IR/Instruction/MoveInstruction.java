@@ -33,8 +33,8 @@ public class MoveInstruction extends Instruction{
 		PhysicalOperand PhysicalTarget = PhysicalOperand.get(str, target);
 
 		if(PhysicalSource instanceof PhysicalAdd && PhysicalTarget instanceof PhysicalAdd){
-			str.append(Translator.getInstruction("mov", "r15", PhysicalSource.toString()));
-			str.append(Translator.getInstruction("mov", PhysicalTarget.toString(), "r15"));
+			str.append(Translator.getInstruction("mov", "rax", PhysicalSource.toString()));
+			str.append(Translator.getInstruction("mov", PhysicalTarget.toString(), "rax"));
 		}else{
 			str.append(Translator.getInstruction("mov", PhysicalTarget.toString(), PhysicalSource.toString()));
 		}

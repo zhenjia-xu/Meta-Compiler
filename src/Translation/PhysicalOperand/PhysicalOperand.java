@@ -26,8 +26,8 @@ public abstract class PhysicalOperand {
 				return new PhysicalAdd(xx.base.realRegister, xx.offset.value);
 			}else{
 				PhysicalAdd newBase = new PhysicalAdd("rbp", -(xx.base.id + 2) * 8);
-				str.append(Translator.getInstruction("mov", "r14", newBase.toString()));
-				return new PhysicalAdd("r14", xx.offset.value);
+				str.append(Translator.getInstruction("mov", "rcx", newBase.toString()));
+				return new PhysicalAdd("rcx", xx.offset.value);
 			}
 		}
 		throw new RuntimeError("get physical operand ERROR");
