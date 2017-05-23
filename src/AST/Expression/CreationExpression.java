@@ -58,7 +58,13 @@ public class CreationExpression extends Expression{
 			instructionList.add(new BinaryInstruction(BinaryInstruction.BinaryOp.MUL, allocateSize, new ImmediateOperand(8)));
 			instructionList.add(new AllocateInstruction(base, allocateSize));
 			instructionList.add(new BinaryInstruction(BinaryInstruction.BinaryOp.SUB, allocateSize, new ImmediateOperand(8)));
-			instructionList.add(new MoveInstruction(new Address(base), list.get(0)));
+			if(list.get(0) instanceof Address) {
+				VirtualRegister tmp = RegisterManager.getTemporaryRegister();
+				instructionList.add(new MoveInstruction(tmp, list.get(0)));
+				instructionList.add(new MoveInstruction(new Address(base), tmp));
+			}else{
+				instructionList.add(new MoveInstruction(new Address(base), list.get(0)));
+			}
 			instructionList.add(new BinaryInstruction(BinaryInstruction.BinaryOp.ADD, base, new ImmediateOperand(8)));
 			Type newType = ((ArrayType)type).reduceDimension();
 			list.remove(0);
