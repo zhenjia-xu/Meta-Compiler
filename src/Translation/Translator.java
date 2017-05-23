@@ -72,14 +72,14 @@ public class Translator {
 		}
 		return str.toString();
 	}
-	public static String getStringConst(){
+	public static String getDataSection(){
 		StringBuilder str = new StringBuilder();
 		str.append("SECTION .data\n");
 		for(int i = 0; i < ProgramIR.constStringList.size(); i++){
 			String s = ProgramIR.constStringList.get(i);
 			str.append(Translator.getInstruction("dq", String.valueOf(s.length())));
 			str.append("__string_const" + String.valueOf(i) + ":\n");
-			str.append(Translator.getInstruction("db","\"" + s + "\", 0"));
+			str.append(Translator.getInstruction("db", Translator.getStringConst(s)));
 		}
 		str.append("__printIntFormat:\n");
 		str.append(Translator.getInstruction("db","\"%ld\", 10, 0"));
@@ -97,7 +97,7 @@ public class Translator {
 		str.append(Translator.getInstruction("db","\"%ld\", 0"));
 		return str.toString();
 	}
-	public static String getGlobalVariable(){
+	public static String getBssSection(){
 		StringBuilder str = new StringBuilder();
 		str.append("SECTION .bss\n");
 		for(VariableDeclarationStatement variable: ProgramAST.globalDeclarationList){
@@ -151,12 +151,33 @@ public class Translator {
 		str.append(Translator.getNASMstringCompare(ProgramIR.ConditionOp.LEEQ));
 
 		//stringConst
-		str.append(Translator.getStringConst());
+		str.append(Translator.getDataSection());
 		//globalVariable
-		str.append(Translator.getGlobalVariable());
+		str.append(Translator.getBssSection());
 		File file = new File("program.asm");
 		PrintStream out = new PrintStream(new FileOutputStream(file));
 		out.print(str.toString());
+		return str.toString();
+	}
+	static private String getStringConst(String s){
+		StringBuilder str = new StringBuilder();
+		str.append('\"');
+		for(int i = 0; i < s.length(); i++){
+			if(s.charAt(i) == '\\'){
+				str.append("\", ");
+				if(s.charAt(i + 1) == 'n')
+					str.append("10");
+				if(s.charAt(i + 1) == '\"')
+					str.append("34");
+				if(s.charAt(i + 1) == '\\')
+					str.append("92");
+				str.append(", \"");
+				i++;
+			}else{
+				str.append(s.charAt(i));
+			}
+		}
+		str.append("\", 0");
 		return str.toString();
 	}
 	static public String getNASMprint(String Format){
