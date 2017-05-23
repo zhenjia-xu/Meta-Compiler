@@ -41,7 +41,7 @@ public class Main{
 		ProgramIR.BuildProgramIR();
 		String code = Translator.IRtoNASM();
 
-		ProgramIR.print();
-		//System.out.println(code);
+		//ProgramIR.print();
+		System.out.println(code);
 	}
 }
