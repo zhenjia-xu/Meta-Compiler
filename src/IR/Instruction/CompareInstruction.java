@@ -2,6 +2,7 @@ package IR.Instruction;
 
 import IR.*;
 import Translation.PhysicalOperand.PhysicalAdd;
+import Translation.PhysicalOperand.PhysicalImm;
 import Translation.PhysicalOperand.PhysicalOperand;
 import Translation.Translator;
 import Utility.RuntimeError;
@@ -29,9 +30,10 @@ public class CompareInstruction extends Instruction {
 		PhysicalOperand PhysicalRight = PhysicalOperand.get(str, rightOperand);
 		PhysicalOperand PhysicalLeft = PhysicalOperand.get(str, leftOperand);
 
-		if(PhysicalLeft instanceof PhysicalAdd && PhysicalRight instanceof PhysicalAdd){
-			str.append(Translator.getInstruction("mov", "r15", PhysicalRight.toString()));
-			str.append(Translator.getInstruction("cmp", PhysicalLeft.toString(), "r15"));
+		if((PhysicalLeft instanceof PhysicalAdd && PhysicalRight instanceof PhysicalAdd) ||
+				(PhysicalLeft instanceof PhysicalImm && PhysicalRight instanceof PhysicalImm)){
+			str.append(Translator.getInstruction("mov", "r15", PhysicalLeft.toString()));
+			str.append(Translator.getInstruction("cmp", "r15", PhysicalRight.toString()));
 		}else{
 			str.append(Translator.getInstruction("cmp", PhysicalLeft.toString(), PhysicalRight.toString()));
 		}

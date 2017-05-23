@@ -1,53 +1,74 @@
-//Target: use loops to calculate calculator of 6!
-//@author yixi
+//考察点：section 8 语句，包括if,while,for,break,continue,return等
+//算法：线性筛法求欧拉函数
+//样例输入：10
+//样例输出：
+//1
+//2
+//2
+//4
+//2
+//6
+//4
+//6
+//4
 
 int N;
-int h = 99;
-int i = 100;
-int j = 101;
-int k = 102;
-int total = 0;
+int M = 0;
+bool[] check;
 
 int main() {
-  	int a;
-    int b;
-	int c;
-	int d;
-	int e;
-	int f;
-	N=getInt();
-	for ( a=1; a<=N; a++ )
-	for ( b=1; b<=N; b++ )
-	for ( c=1; c<=N; c++ )	
-	for ( d=1; d<=N; d++ )
-	for ( e=1; e<=N; e++ )
-	for ( f=1; f<=N; f++ )
-		if (a!=b && a!=c && a!=d && a!=e && a!=f && a!=h && a!=i && a!=j && a!=k
-              && b!=c && b!=d && b!=e && b!=f && b!=h && b!=i && b!=j && b!=k
-              && c!=d && c!=e && c!=f && c!=h && c!=i && c!=j && c!=k
-              && d!=e && d!=f && d!=h && d!=i && d!=j && d!=k
-              && e!=f && e!=h && e!=i && e!=j && e!=k
-              && f!=h && f!=i && f!=j && f!=k && i!=j && h!=k)
-		{
-			total++;
+    N = getInt();
+	check = new bool[N+5];
+	int i = 0;
+	while ( i <= N ) check[i++] = true;
+	int[] phi = new int[N+5];
+	int[] P = new int[N+5];
+	phi[1] = 1;
+	for (i = 2; ; ++i ) {
+		if ( i > N ) break;
+		if ( check[i] ) {
+			P[++M] = i;
+			phi[i] = i - 1;
 		}
-	
-	println(toString(total));
-	return 0;
+		int k = i;
+		int i;
+		for (i = 1; i <= M && (k * P[i] <= N); i++) {
+			int tmp = k * P[i];
+			if ( tmp > N ) continue;
+			check[tmp] = false;
+			if ( k % P[i] == 0) {
+				phi[tmp] = phi[k] * P[i];
+				break;
+			}
+			else {
+				phi[k * P[i]] = phi[k] * (P[i] - 1);
+			}
+		}
+		println(toString(phi[k]));
+	}
+    return 0;
 }
 
 
 /*!! metadata:
 === comment ===
-superloop-5090379042-jiaxiao.mx
+statement_test-huyuncong.mx
 === input ===
-6
+10
 === assert ===
 output
 === timeout ===
 0.1
 === output ===
-720
+1
+2
+2
+4
+2
+6
+4
+6
+4
 === phase ===
 codegen pretest
 === is_public ===
