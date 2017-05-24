@@ -43,7 +43,8 @@ public class FunctionIR {
 				tmp.realRegister = RegisterManager.parameterRegList.get(i);
 				instructionList.add(new MoveInstruction(parameterList.get(i), tmp));
 			}else{
-				parameterList.get(i).id = 2 - i;
+				parameterList.get(i).id = 4 - i;
+				//need to change
 			}
 		}
 		function.getBlockStatement().generateInstruction(instructionList);
