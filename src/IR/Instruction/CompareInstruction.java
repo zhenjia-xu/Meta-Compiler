@@ -18,6 +18,12 @@ public class CompareInstruction extends Instruction {
 		}
 		this.leftOperand = leftOperand;
 		this.rightOperand = rightOperand;
+		if(leftOperand instanceof VirtualRegister){
+			useSet.add((VirtualRegister) leftOperand);
+		}
+		if(rightOperand instanceof VirtualRegister){
+			useSet.add((VirtualRegister) rightOperand);
+		}
 	}
 	@Override
 	public void Prepare(){

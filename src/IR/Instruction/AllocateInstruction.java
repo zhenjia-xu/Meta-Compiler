@@ -13,6 +13,10 @@ public class AllocateInstruction extends Instruction {
 	public AllocateInstruction(VirtualRegister target, Operand allocateSize){
 		this.target = target;
 		this.allocateSize = allocateSize;
+		killSet.add(target);
+		if(allocateSize instanceof VirtualRegister){
+			useSet.add((VirtualRegister) allocateSize);
+		}
 	}
 
 	@Override

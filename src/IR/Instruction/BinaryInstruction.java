@@ -28,6 +28,12 @@ public class BinaryInstruction extends Instruction {
 		}
 		this.target = target;
 		this.operand = operand;
+		if(target instanceof VirtualRegister){
+			killSet.add((VirtualRegister) target);
+		}
+		if(operand instanceof VirtualRegister){
+			useSet.add((VirtualRegister) operand);
+		}
 	}
 
 	@Override

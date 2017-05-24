@@ -21,6 +21,10 @@ public class UnaryInstruction extends Instruction{
 		}
 		this.op = op;
 		this.target = target;
+		if(target instanceof VirtualRegister){
+			killSet.add((VirtualRegister) target);
+			useSet.add((VirtualRegister) target);
+		}
 	}
 
 	@Override

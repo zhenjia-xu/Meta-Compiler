@@ -19,6 +19,12 @@ public class MoveInstruction extends Instruction{
 		}
 		this.target = target;
 		this.source = source;
+		if(target instanceof VirtualRegister){
+			killSet.add((VirtualRegister) target);
+		}
+		if(source instanceof VirtualRegister){
+			useSet.add((VirtualRegister) source);
+		}
 	}
 
 	@Override

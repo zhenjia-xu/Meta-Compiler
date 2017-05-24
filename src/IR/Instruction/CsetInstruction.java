@@ -36,6 +36,7 @@ public class CsetInstruction extends Instruction {
 			throw new RuntimeError("target of set instruction should be register");
 		}
 		this.target = (VirtualRegister) target;
+		killSet.add((VirtualRegister) target);
 	}
 	@Override
 	public void Prepare(){

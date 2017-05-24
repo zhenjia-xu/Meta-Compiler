@@ -70,6 +70,10 @@ public class BinaryNotEqual extends Expression{
 		operand = RegisterManager.getTemporaryRegister();
 		Operand left = leftExpression.operand;
 		Operand right = rightExpression.operand;
+		if(left == right || (left instanceof ImmediateOperand && right instanceof ImmediateOperand && ((ImmediateOperand) left).value == ((ImmediateOperand) right).value)){
+			operand = new ImmediateOperand(0);
+			return;
+		}
 		if(left instanceof Address && right instanceof Address){
 			VirtualRegister tmp = RegisterManager.getTemporaryRegister();
 			instructionList.add(new MoveInstruction(tmp, left));

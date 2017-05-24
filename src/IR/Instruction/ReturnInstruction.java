@@ -11,6 +11,9 @@ public class ReturnInstruction extends Instruction {
 
 	public ReturnInstruction(Operand returnValue) {
 		this.returnValue = returnValue;
+		if(returnValue instanceof VirtualRegister){
+			useSet.add((VirtualRegister) returnValue);
+		}
 	}
 
 	@Override
