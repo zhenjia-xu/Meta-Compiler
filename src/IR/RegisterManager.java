@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Set;
 
 public class RegisterManager {
-	private static int temporaryId = 0;
+	public static int temporaryId = 0;
 	public static int NumberOfRegInMem;
 	public static List<String> parameterRegList = new ArrayList<String>(){{
 		add("rdi");
