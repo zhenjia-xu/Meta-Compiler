@@ -66,6 +66,16 @@ public class BinaryPlus extends Expression{
 	public void generateInstruction(List<Instruction> instructionList){
 		leftExpression.generateInstruction(instructionList);
 		rightExpression.generateInstruction(instructionList);
+		Operand left = leftExpression.operand;
+		Operand right = rightExpression.operand;
+		if(left instanceof ImmediateOperand && ((ImmediateOperand) left).value == 0){
+			operand = right;
+			return;
+		}
+		if(right instanceof ImmediateOperand && ((ImmediateOperand) right).value == 0){
+			operand = left;
+			return;
+		}
 		operand = RegisterManager.getTemporaryRegister();
 		instructionList.add(new MoveInstruction(operand, leftExpression.operand));
 		Instruction instruction = new BinaryInstruction(BinaryInstruction.BinaryOp.ADD, operand, rightExpression.operand);

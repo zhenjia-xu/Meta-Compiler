@@ -26,6 +26,9 @@ public class Translator {
 		return String.format("%8s %20s\n", type, operand);
 	}
 	public static String getInstruction(String type, String operand1, String operand2){
+		if(type.equals("mov") && operand1.equals(operand2)){
+			return "";
+		}
 		return String.format("%8s %20s, %20s\n", type, operand1, operand2);
 	}
 	public static String getNASMofCondition(ProgramIR.ConditionOp op){

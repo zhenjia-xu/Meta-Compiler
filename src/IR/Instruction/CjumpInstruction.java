@@ -5,7 +5,7 @@ import Translation.Translator;
 
 public class CjumpInstruction extends Instruction {
 	public ProgramIR.ConditionOp op;
-	private LabelInstruction target;
+	public LabelInstruction target;
 
 	public CjumpInstruction(ProgramIR.ConditionOp op, LabelInstruction target){
 		this.op = op;

@@ -12,8 +12,6 @@ a.0.enter:
      mov     qword [rbp - 32],                  rcx
      mov     qword [rbp - 40],                   r8
      mov     qword [rbp - 48],                   r9
-     mov                  rdi,     qword [rbp + 16]
-    call             printInt
      mov                  rax,      qword [rbp - 8]
      mov     qword [rbp - 56],                  rax
      mov                  rax,     qword [rbp - 16]
@@ -80,7 +78,6 @@ a.1.exit:
     push                  rbp
      mov                  rbp,                  rsp
      sub                  rsp,                    0
-@GlobalDeclaration.0.enter:
 @GlobalDeclaration.1.exit:
      add                  rsp,                    0
      pop                  rbp
@@ -116,8 +113,17 @@ main.0.enter:
      mov                  rdi,     qword [rbp - 16]
     call              println
      mov                  rax,                    0
-     jmp          main.1.exit
-main.1.exit:
+     jmp          main.7.exit
+     mov                  rax,                    1
+     cmp                  rax,                    1
+      je       main.3.if_exit
+     jmp       main.3.if_exit
+main.3.if_exit:
+     mov                  rax,                    1
+     cmp                  rax,                    1
+      je          main.7.exit
+     jmp          main.7.exit
+main.7.exit:
      add                  rsp,                   16
      pop                  rbp
      ret

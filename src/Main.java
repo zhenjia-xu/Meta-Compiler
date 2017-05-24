@@ -1,5 +1,6 @@
 import AST.ProgramAST;
 import IR.ProgramIR;
+import Optimization.Optimization;
 import Utility.CompilationError;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
@@ -43,7 +44,8 @@ public class Main{
 		//ProgramIR.print();
 	}
 	public static void Optimize(){
-
+		Optimization.Optimize();
+		//ProgramIR.print();
 	}
 	public static void Translate() throws Exception{
 		String code = Translator.IRtoNASM();

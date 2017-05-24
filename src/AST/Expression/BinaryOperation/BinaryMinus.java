@@ -45,6 +45,12 @@ public class BinaryMinus extends Expression{
 	public void generateInstruction(List<Instruction> instructionList){
 		leftExpression.generateInstruction(instructionList);
 		rightExpression.generateInstruction(instructionList);
+		Operand left = leftExpression.operand;
+		Operand right = rightExpression.operand;
+		if(left == right || (left instanceof ImmediateOperand && right instanceof ImmediateOperand && ((ImmediateOperand) left).value == ((ImmediateOperand) right).value)){
+			operand = new ImmediateOperand(0);
+			return;
+		}
 		operand = RegisterManager.getTemporaryRegister();
 		instructionList.add(new MoveInstruction(operand, leftExpression.operand));
 		Instruction instruction = new BinaryInstruction(BinaryInstruction.BinaryOp.SUB, operand, rightExpression.operand);

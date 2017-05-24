@@ -15,7 +15,7 @@ import java.util.List;
 public class FunctionIR {
 	private FunctionType function;
 	private List<VirtualRegister> parameterList;
-	private List<Block> blockList;
+	public List<Block> blockList;
 	public LabelInstruction enterBlock, exitBlock;
 
 	public FunctionIR(FunctionType function){
@@ -44,7 +44,6 @@ public class FunctionIR {
 				instructionList.add(new MoveInstruction(parameterList.get(i), tmp));
 			}else{
 				parameterList.get(i).id = 4 - i;
-				//need to change
 			}
 		}
 		function.getBlockStatement().generateInstruction(instructionList);
@@ -53,7 +52,7 @@ public class FunctionIR {
 		blockList = new ArrayList<>();
 		for(int i = 0, j; i < instructionList.size(); i = j){
 			LabelInstruction label = (LabelInstruction)instructionList.get(i);
-			Block block = new Block(this, label.getName(), blockList.size());
+			Block block = new Block(this, label.getName(), blockList.size(), label);
 			for(j = i + 1; j < instructionList.size(); j++){
 				Instruction instruction = instructionList.get(j);
 				if(instruction instanceof LabelInstruction) break;

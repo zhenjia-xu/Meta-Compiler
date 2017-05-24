@@ -4,19 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 import IR.Instruction.Instruction;
+import IR.Instruction.LabelInstruction;
 import Utility.Utility;
 
 public class Block {
 	private FunctionIR functionIR;
 	private String blockName;
 	private int id;
+	public LabelInstruction labelInstruction;
 	public List<Instruction> instructionList;
 
-	public Block(FunctionIR functionGraph, String blockName, int id){
+	public Block(FunctionIR functionGraph, String blockName, int id, LabelInstruction labelInstruction){
 		this.functionIR = functionGraph;
 		this.blockName = blockName;
 		this.id = id;
 		this.instructionList = new ArrayList<>();
+		this.labelInstruction = labelInstruction;
 	}
 	public void add(Instruction instruction){
 		instructionList.add(instruction);

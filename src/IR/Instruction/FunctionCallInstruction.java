@@ -27,7 +27,6 @@ public class FunctionCallInstruction extends Instruction {
 			RegisterManager.MemRegisterGetOffset(x);
 		}
 	}
-	//static List<String> parameterReg = new ArrayList<String>("rdi");
 	@Override
 	public String getInstructionOfNASM(){
 		StringBuilder str = new StringBuilder();
