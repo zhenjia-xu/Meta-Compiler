@@ -27,10 +27,10 @@ public class LivenessAnalysis {
 			for(Instruction instruction: block.instructionList){
 				for(VirtualRegister reg1: instruction.liveOut)
 					for(VirtualRegister reg2:instruction.liveOut)
-						if(reg1 != reg2 && !edgeMap.get(reg1).contains(reg2) && reg1.id == -1 && reg2.id == -1){
+						if(reg1 != reg2 && reg1.id == -1 && reg2.id == -1 && !edgeMap.get(reg1).contains(reg2)){
 							if(reg1.realRegister == null || reg2.realRegister == null) {
-								throw new RuntimeError("ERROR");
-								//System.out.println(reg1 + " " + reg2 + reg1.realRegister + reg2.realRegister);
+								//throw new RuntimeError("ERROR");
+								System.out.println(reg1 + " " + reg2 + reg1.realRegister + reg2.realRegister);
 							}
 						}
 			}
