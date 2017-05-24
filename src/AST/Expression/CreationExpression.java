@@ -49,7 +49,7 @@ public class CreationExpression extends Expression{
 				VirtualRegister bak = RegisterManager.getTemporaryRegister();
 				List<Operand> parameterList = new ArrayList<>();
 				parameterList.add(base);
-				instructionList.add(new FunctionCallInstruction(((ClassType) type).getConstrustFunction(), parameterList));
+				instructionList.add(new FunctionCallInstruction(((ClassType) type).getConstrustFunction(), null, parameterList));
 			}
 		}else{
 			VirtualRegister allocateSize = RegisterManager.getTemporaryRegister();

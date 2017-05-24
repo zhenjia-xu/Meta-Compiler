@@ -6,17 +6,23 @@ import IR.RegisterManager;
 import IR.VirtualRegister;
 import Translation.PhysicalOperand.PhysicalOperand;
 import Translation.Translator;
+import com.sun.org.apache.regexp.internal.RE;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class FunctionCallInstruction extends Instruction {
 	private FunctionType function;
+	private VirtualRegister returnValue;
 	private List<Operand> parameterList;
 
-	public FunctionCallInstruction(FunctionType function, List<Operand> parameterList){
+	public FunctionCallInstruction(FunctionType function, VirtualRegister returnValue, List<Operand> parameterList){
 		this.function = function;
+		this.returnValue = returnValue;
 		this.parameterList = parameterList;
+		if(returnValue != null){
+			killSet.add(returnValue);
+		}
 		for(Operand operand: parameterList){
 			if(operand instanceof VirtualRegister){
 				useSet.add((VirtualRegister) operand);
@@ -26,6 +32,7 @@ public class FunctionCallInstruction extends Instruction {
 
 	@Override
 	public void Prepare(){
+		RegisterManager.MemRegisterGetOffset(returnValue);
 		for(Operand x: parameterList){
 			RegisterManager.MemRegisterGetOffset(x);
 		}

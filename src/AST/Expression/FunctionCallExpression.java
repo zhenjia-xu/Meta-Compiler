@@ -70,7 +70,7 @@ public class FunctionCallExpression extends Expression{
 			tmp = RegisterManager.getTemporaryRegister();
 			tmp.realRegister = "rax";
 		}
-		instructionList.add(new FunctionCallInstruction(function, parameterList));
+		instructionList.add(new FunctionCallInstruction(function, tmp, parameterList));
 		if(!(function.getReturnType() instanceof VoidType)){
 			operand = RegisterManager.getTemporaryRegister();
 			instructionList.add(new MoveInstruction(operand, tmp));
