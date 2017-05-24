@@ -21,7 +21,6 @@ public class SuffixIncrement extends Expression{
 		if(!(expression.getType() instanceof IntType)){
 			throw new CompilationError("suffix increment needs int");
 		}
-		System.out.println(expression.toString(0));
 		if(expression.getLeftValue() == false){
 			throw new CompilationError("suffix increment needs a left-value");
 		}

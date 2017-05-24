@@ -49,8 +49,7 @@ public class Main{
 		String code = Translator.IRtoNASM();
 		File file = new File("program.asm");
 		PrintStream out = new PrintStream(new FileOutputStream(file));
-		//out.print(code);
+		out.print(code);
 		System.out.println(code);
-
 	}
 }

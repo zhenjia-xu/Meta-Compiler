@@ -17,7 +17,8 @@ public abstract class PhysicalOperand {
 			if(xx.realRegister != null){
 				return new PhysicalReg(xx.realRegister);
 			}else{
-				return new PhysicalAdd("rbp", -(xx.id + 2) * 8);
+				return new PhysicalAdd("rbp", -(xx.id) * 8);
+				//need to change******* + 2
 			}
 		}
 		if(x instanceof Address){
@@ -25,7 +26,8 @@ public abstract class PhysicalOperand {
 			if(xx.base.realRegister != null){
 				return new PhysicalAdd(xx.base.realRegister, xx.offset.value);
 			}else{
-				PhysicalAdd newBase = new PhysicalAdd("rbp", -(xx.base.id + 2) * 8);
+				PhysicalAdd newBase = new PhysicalAdd("rbp", -(xx.base.id) * 8);
+				//need to change*******
 				str.append(Translator.getInstruction("mov", "rcx", newBase.toString()));
 				return new PhysicalAdd("rcx", xx.offset.value);
 			}
