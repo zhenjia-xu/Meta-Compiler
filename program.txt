@@ -1,71 +1,29 @@
-class Node
+int a(int a1, int a2, int a3, int a4, int a5, int a6, int a7, int a8, int a9, int a10, int a11, int a12, int a13, int a14, int a15)
 {
-    int num;
-    Node()
-    {
-        num = 1;
-    }
-    Node work(int p)
-    {
-        int i = 10;
-        for (; i <= this.num; i++)
-        {
-            return this;
-        }
-		return this;
-    }
+	printInt(a7);
+    //return a1 + a2 + a3 + a4 + a5 + a6 + a7 + a8 + a9 + a10 + a11 + a12 + a13 + a14 + a15;
 }
-Node[] a = new Node[723];
-Node[] b = null;
-string str = "19asdojkhkj1";
-int [][] map = new int [153][144];
-void work()
-{
-    int i = 11;
-    int tmp1 = i;
-    a[tmp1].work(i);
-	return ;
-}
+
 int main()
 {
-    int i;
-    int n = 10213;
-    for (i = 0; i < n; i++)
-    {
-        int flag = n * i - 13;
-        if(flag < a[i].num)
-        {
-
-           //print("%d", (flag - a[i].num) * 14);
-        }
-        else if(false)
-        {
-            a[i - 1].work(flag);
-            break;
-        }
-        else
-        {
-            if(true)
-            {
-                a[i] = a[i + 1].work(flag);
-                work();
-                continue;
-            }
-        }
-
-    }
+    println(toString(a(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15)));
     return 0;
 }
 
 
-
 /*!! metadata:
 === comment ===
-noname-515030910626-kongbingyu.txt
+manyarguments-5100379110-daibo.mx
+=== input ===
+
 === assert ===
-success_compile
+output
+=== timeout ===
+0.1
+=== output ===
+120
 === phase ===
-semantic extended
+codegen pretest
 === is_public ===
 True
 
