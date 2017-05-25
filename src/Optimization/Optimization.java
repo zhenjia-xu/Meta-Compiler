@@ -11,7 +11,7 @@ public class Optimization {
 		}
 		for(FunctionIR functionIR: ProgramIR.functionMap.values()) {
 			LivenessAnalysis.analysis(functionIR);
-			//NaiveOptimize.Optimize(functionIR);
+			NaiveOptimize.Optimize(functionIR);
 		}
 	}
 }
