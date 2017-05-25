@@ -6,7 +6,7 @@ import IR.RegisterManager;
 
 public class Optimization {
 	public static void Optimize(){
-		if(RegisterManager.temporaryId > 2000){
+		if(RegisterManager.temporaryId > 700){
 			return;
 		}
 		for(FunctionIR functionIR: ProgramIR.functionMap.values()) {

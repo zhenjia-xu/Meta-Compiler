@@ -1,5 +1,6 @@
 import AST.ProgramAST;
 import IR.ProgramIR;
+import IR.RegisterManager;
 import Optimization.Optimization;
 import Utility.CompilationError;
 import org.antlr.v4.runtime.*;
@@ -8,6 +9,7 @@ import FrontEnd.Parser.*;
 import java.io.*;
 import FrontEnd.Listener.*;
 import Translation.Translator;
+import org.omg.Messaging.SYNC_WITH_TRANSPORT;
 
 public class Main{
 	public static void main(String[] args) throws Exception {
@@ -41,7 +43,7 @@ public class Main{
 	}
 	public static void getIR(){
 		ProgramIR.BuildProgramIR();
-		ProgramIR.print();
+		//ProgramIR.print();
 	}
 	public static void Optimize(){
 		Optimization.Optimize();

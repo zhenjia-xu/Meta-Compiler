@@ -1,55 +1,30 @@
-//Target: use loops to calculate calculator of 6!
-//@author yixi
+//This file use massive recursive expression to test: Common Expression substitution.
+//For my optimized version: 	All:	1397	Load:	86	Store:	55	Jumped:	23
+//For my unoptimized version:	All:	24519	Load:	12183	Store:	55	Jumped:	23
+//A better result is welcomed.           ------ From JinTianxing.
 
-int N;
-int h = 99;
-int i = 100;
-int j = 101;
-int k = 102;
-int total = 0;
+int A = 1;
+int B = 1;
+int C = 1;
 
-int main() {
-  	int a;
-    int b;
-	int c;
-	int d;
-	int e;
-	int f;
-	N=getInt();
-	for ( a=1; a<=N; a++ )
-	for ( b=1; b<=N; b++ )
-	for ( c=1; c<=N; c++ )	
-	for ( d=1; d<=N; d++ )
-	for ( e=1; e<=N; e++ )
-	for ( f=1; f<=N; f++ )
-		if (a!=b && a!=c && a!=d && a!=e && a!=f && a!=h && a!=i && a!=j && a!=k
-              && b!=c && b!=d && b!=e && b!=f && b!=h && b!=i && b!=j && b!=k
-              && c!=d && c!=e && c!=f && c!=h && c!=i && c!=j && c!=k
-              && d!=e && d!=f && d!=h && d!=i && d!=j && d!=k
-              && e!=f && e!=h && e!=i && e!=j && e!=k
-              && f!=h && f!=i && f!=j && f!=k && i!=j && h!=k)
-		{
-			total++;
-		}
-	
-	println(toString(total));
+int main(){
+	while (C < (1 << 29) && C > -(1 << 29)){
+		A = ((((((((C - A + B) - (A + B)) + ((C - A + B) - (A + B))) + (((C - A + B) - (A + B)) + (C - A + B))) - ((((A + B) + (C - A + B)) - (A + B)) + (((C - A + B) - (A + B)) + (C - A + B)))) - (((((A + B) + (C - A + B)) - ((A + B) + (C - A + B))) - (((A + B) + (C - A + B)) - (A + B))) + ((((C - A + B) - (A + B)) + (C - A + B)) - (((A + B) + (C - A + B)) - (A + B))))) + ((((((C - A + B) - (A + B)) + ((C - A + B) - (A + B))) + (((C - A + B) - (A + B)) + (C - A + B))) - ((((A + B) + (C - A + B)) - (A + B)) + (((C - A + B) - (A + B)) + (C - A + B)))) - (((((A + B) + (C - A + B)) - (A + B)) + (((C - A + B) - (A + B)) + (C - A + B))) - ((((A + B) + (C - A + B)) - (A + B)) + (((C - A + B) - (A + B)) + (C - A + B)))))) - (((((((A + B) + (C - A + B)) - ((A + B) + (C - A + B))) - (((A + B) + (C - A + B)) - (A + B))) + ((((C - A + B) - (A + B)) + (C - A + B)) - (((A + B) + (C - A + B)) - (A + B)))) + (((((C - A + B) - (A + B)) + (C - A + B)) - (((A + B) + (C - A + B)) - (A + B))) + ((((C - A + B) - (A + B)) + (C - A + B)) - (((A + B) + (C - A + B)) - (A + B))))) + ((((((C - A + B) - (A + B)) + ((C - A + B) - (A + B))) + (((C - A + B) - (A + B)) + (C - A + B))) - ((((A + B) + (C - A + B)) - (A + B)) + (((C - A + B) - (A + B)) + (C - A + B)))) - (((((A + B) + (C - A + B)) - (A + B)) + (((C - A + B) - (A + B)) + (C - A + B))) - ((((A + B) + (C - A + B)) - (A + B)) + (((C - A + B) - (A + B)) + (C - A + B)))))));
+		B = ((((((((C - A + B) - (A + B)) + ((C - A + B) - (A + B))) + (((C - A + B) - (A + B)) + (C - A + B))) - ((((A + B) + (C - A + B)) - (A + B)) + (((C - A + B) - (A + B)) + (C - A + B)))) - (((((A + B) + (C - A + B)) - ((A + B) + (C - A + B))) - (((A + B) + (C - A + B)) - (A + B))) + ((((C - A + B) - (A + B)) + (C - A + B)) - (((A + B) + (C - A + B)) - (A + B))))) + ((((((C - A + B) - (A + B)) + ((C - A + B) - (A + B))) + (((C - A + B) - (A + B)) + (C - A + B))) - ((((A + B) + (C - A + B)) - (A + B)) + (((C - A + B) - (A + B)) + (C - A + B)))) - (((((A + B) + (C - A + B)) - (A + B)) + (((C - A + B) - (A + B)) + (C - A + B))) - ((((A + B) + (C - A + B)) - (A + B)) + (((C - A + B) - (A + B)) + (C - A + B)))))) - (((((((A + B) + (C - A + B)) - ((A + B) + (C - A + B))) - (((A + B) + (C - A + B)) - (A + B))) + ((((C - A + B) - (A + B)) + (C - A + B)) - (((A + B) + (C - A + B)) - (A + B)))) + (((((C - A + B) - (A + B)) + (C - A + B)) - (((A + B) + (C - A + B)) - (A + B))) + ((((C - A + B) - (A + B)) + (C - A + B)) - (((A + B) + (C - A + B)) - (A + B))))) + ((((((C - A + B) - (A + B)) + ((C - A + B) - (A + B))) + (((C - A + B) - (A + B)) + (C - A + B))) - ((((A + B) + (C - A + B)) - (A + B)) + (((C - A + B) - (A + B)) + (C - A + B)))) - (((((A + B) + (C - A + B)) - (A + B)) + (((C - A + B) - (A + B)) + (C - A + B))) - ((((A + B) + (C - A + B)) - (A + B)) + (((C - A + B) - (A + B)) + (C - A + B)))))));
+		C = ((((((((C - A + B) - (A + B)) + ((C - A + B) - (A + B))) + (((C - A + B) - (A + B)) + (C - A + B))) - ((((A + B) + (C - A + B)) - (A + B)) + (((C - A + B) - (A + B)) + (C - A + B)))) - (((((A + B) + (C - A + B)) - ((A + B) + (C - A + B))) - (((A + B) + (C - A + B)) - (A + B))) + ((((C - A + B) - (A + B)) + (C - A + B)) - (((A + B) + (C - A + B)) - (A + B))))) + ((((((C - A + B) - (A + B)) + ((C - A + B) - (A + B))) + (((C - A + B) - (A + B)) + (C - A + B))) - ((((A + B) + (C - A + B)) - (A + B)) + (((C - A + B) - (A + B)) + (C - A + B)))) - (((((A + B) + (C - A + B)) - (A + B)) + (((C - A + B) - (A + B)) + (C - A + B))) - ((((A + B) + (C - A + B)) - (A + B)) + (((C - A + B) - (A + B)) + (C - A + B)))))) - (((((((A + B) + (C - A + B)) - ((A + B) + (C - A + B))) - (((A + B) + (C - A + B)) - (A + B))) + ((((C - A + B) - (A + B)) + (C - A + B)) - (((A + B) + (C - A + B)) - (A + B)))) + (((((C - A + B) - (A + B)) + (C - A + B)) - (((A + B) + (C - A + B)) - (A + B))) + ((((C - A + B) - (A + B)) + (C - A + B)) - (((A + B) + (C - A + B)) - (A + B))))) + ((((((C - A + B) - (A + B)) + ((C - A + B) - (A + B))) + (((C - A + B) - (A + B)) + (C - A + B))) - ((((A + B) + (C - A + B)) - (A + B)) + (((C - A + B) - (A + B)) + (C - A + B)))) - (((((A + B) + (C - A + B)) - (A + B)) + (((C - A + B) - (A + B)) + (C - A + B))) - ((((A + B) + (C - A + B)) - (A + B)) + (((C - A + B) - (A + B)) + (C - A + B)))))));
+	}
+	println(toString(A) + " " + toString(B) + " " + toString(C));
 	return 0;
 }
 
 
 /*!! metadata:
 === comment ===
-superloop-5090379042-jiaxiao.mx
-=== input ===
-6
+expr-5110309085-jintianxing.mx
 === assert ===
-output
-=== timeout ===
-0.1
-=== output ===
-720
+success_compile
 === phase ===
-codegen pretest
+semantic pretest
 === is_public ===
 True
 
