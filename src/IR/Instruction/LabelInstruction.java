@@ -1,6 +1,7 @@
 package IR.Instruction;
 
 import IR.Block;
+import IR.VirtualRegister;
 import Utility.RuntimeError;
 
 public class LabelInstruction extends Instruction {
@@ -18,6 +19,9 @@ public class LabelInstruction extends Instruction {
 	@Override
 	public void Prepare() {
 	}
+
+	@Override
+	public void merge(VirtualRegister x, VirtualRegister y){}
 
 	@Override
 	public String getInstructionOfNASM() {

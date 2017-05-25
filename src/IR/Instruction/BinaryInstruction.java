@@ -51,6 +51,22 @@ public class BinaryInstruction extends Instruction {
 	}
 
 	@Override
+	public void merge(VirtualRegister x, VirtualRegister y){
+		if(target instanceof VirtualRegister && target == x){
+			target = y;
+		}
+		if(target instanceof Address && ((Address) target).base == x){
+			((Address) target).base = y;
+		}
+		if(operand instanceof VirtualRegister && operand == x){
+			operand = y;
+		}
+		if(operand instanceof Address && ((Address) operand).base == x){
+			((Address) operand).base = y;
+		}
+	}
+
+	@Override
 	public String getInstructionOfNASM() {
 		String opNASM = op.toString().toLowerCase();
 		StringBuilder str = new StringBuilder();

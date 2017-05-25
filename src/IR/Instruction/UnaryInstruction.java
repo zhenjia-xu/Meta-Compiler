@@ -34,6 +34,16 @@ public class UnaryInstruction extends Instruction {
 	}
 
 	@Override
+	public void merge(VirtualRegister x, VirtualRegister y){
+		if(target instanceof VirtualRegister && target == x){
+			target = y;
+		}
+		if(target instanceof Address && ((Address) target).base == x){
+			((Address) target).base = y;
+		}
+	}
+
+	@Override
 	public String getInstructionOfNASM() {
 		StringBuilder str = new StringBuilder();
 		PhysicalOperand physicalTarget = PhysicalOperand.get(str, target);

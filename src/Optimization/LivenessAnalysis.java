@@ -16,8 +16,8 @@ import java.util.Map;
 import java.util.Set;
 
 public class LivenessAnalysis {
-	static private Map<VirtualRegister, Set<VirtualRegister>> edgeMap;
-	static private Map<VirtualRegister, Integer> virtualRegisterMap;
+	static public Map<VirtualRegister, Set<VirtualRegister>> edgeMap;
+	static public Map<VirtualRegister, Integer> virtualRegisterMap;
 
 	static public void analysis(FunctionIR functionIR) {
 		edgeMap = new HashMap<>();
@@ -25,7 +25,6 @@ public class LivenessAnalysis {
 		prepare(functionIR);
 		calculateBlock(functionIR);
 		calculateInstruction(functionIR);
-		RegisterAllocator.allocate(virtualRegisterMap, edgeMap);
 	}
 
 	static private void calculateInstruction(FunctionIR functionIR) {

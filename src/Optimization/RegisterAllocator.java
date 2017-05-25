@@ -41,7 +41,7 @@ public class RegisterAllocator {
 				return 0;
 			}
 		});
-		if(list.size() < 500) {
+		if(list.size() < 300) {
 			for (VirtualRegister reg : list) {
 				listAllocate.add(reg);
 				if (!coloring(listAllocate)) {

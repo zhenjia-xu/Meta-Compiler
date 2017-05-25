@@ -32,6 +32,19 @@ public class AllocateInstruction extends Instruction {
 	}
 
 	@Override
+	public void merge(VirtualRegister x, VirtualRegister y){
+		if(target == x){
+			target = y;
+		}
+		if(allocateSize instanceof VirtualRegister && allocateSize == x){
+			allocateSize = y;
+		}
+		if(allocateSize instanceof Address && ((Address) allocateSize).base == x){
+			((Address) allocateSize).base = y;
+		}
+	}
+
+	@Override
 	public String getInstructionOfNASM() {
 		StringBuilder str = new StringBuilder();
 		PhysicalOperand physicalSize = PhysicalOperand.get(str, allocateSize);

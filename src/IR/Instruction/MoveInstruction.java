@@ -40,6 +40,22 @@ public class MoveInstruction extends Instruction {
 	}
 
 	@Override
+	public void merge(VirtualRegister x, VirtualRegister y){
+		if(target instanceof VirtualRegister && target == x){
+			target = y;
+		}
+		if(target instanceof Address && ((Address) target).base == x){
+			((Address) target).base = y;
+		}
+		if(source instanceof VirtualRegister && source == x){
+			source = y;
+		}
+		if(source instanceof Address && ((Address) source).base == x){
+			((Address) source).base = y;
+		}
+	}
+
+	@Override
 	public String getInstructionOfNASM() {
 		StringBuilder str = new StringBuilder();
 		PhysicalOperand PhysicalSource = PhysicalOperand.get(str, source);

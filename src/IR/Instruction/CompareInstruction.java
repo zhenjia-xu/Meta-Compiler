@@ -10,7 +10,7 @@ import Utility.RuntimeError;
 import java.util.concurrent.TransferQueue;
 
 public class CompareInstruction extends Instruction {
-	Operand leftOperand, rightOperand;
+	public Operand leftOperand, rightOperand;
 
 	public CompareInstruction(Operand leftOperand, Operand rightOperand) {
 		if (leftOperand instanceof Address && rightOperand instanceof Address) {
@@ -36,6 +36,22 @@ public class CompareInstruction extends Instruction {
 	public void Prepare() {
 		RegisterManager.RegisterStatistics(leftOperand);
 		RegisterManager.RegisterStatistics(rightOperand);
+	}
+
+	@Override
+	public void merge(VirtualRegister x, VirtualRegister y){
+		if(leftOperand instanceof VirtualRegister && leftOperand == x){
+			leftOperand = y;
+		}
+		if(leftOperand instanceof Address && ((Address) leftOperand).base == x){
+			((Address) leftOperand).base = y;
+		}
+		if(rightOperand instanceof VirtualRegister && rightOperand == x){
+			rightOperand = y;
+		}
+		if(rightOperand instanceof Address && ((Address) rightOperand).base == x){
+			((Address) rightOperand).base = y;
+		}
 	}
 
 	@Override

@@ -1,5 +1,6 @@
 package IR.Instruction;
 
+import IR.VirtualRegister;
 import Translation.Translator;
 
 public class JumpInstruction extends Instruction {
@@ -12,6 +13,9 @@ public class JumpInstruction extends Instruction {
 	@Override
 	public void Prepare() {
 	}
+
+	@Override
+	public void merge(VirtualRegister x, VirtualRegister y){}
 
 	@Override
 	public String getInstructionOfNASM() {
