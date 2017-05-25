@@ -1,7 +1,23 @@
-void fun(int a1, int a2, int a3, int a4, int a5, int a6, int a7){
-	printInt(a6);
-	printInt(a7);
+int cd(int d, string a, string b, string c, int sum) {
+    if (d == 1) {
+        println("move " + a + " --> " + c);
+        sum++;
+    } else {
+        sum = cd(d - 1, a, c, b, sum);
+        println("move " + a + " --> " + c);
+        println(a);println(b);println(c);
+        sum = cd(d - 1, b, a, c, sum);
+        sum++;
+    }
+    return sum;
 }
-int main(){
-	fun(1,2,3,4,5,6,7);
+
+int main() {
+    string a = "A";
+	string b = "B";
+	string c = "C";
+    int d = getInt();
+    int sum = cd(d, a, b, c, 0);
+    println(toString(sum));
+    return 0;
 }

@@ -51,7 +51,8 @@ public class Translator {
 	public static List<String> phisicalRegisterList = new ArrayList<String>(){{
 		add("rcx");add("rdx");
 		add("rbx");add("rsi");add("rdi");
-		add("r8"); add("r9"); add("r10");add("r11");
+		add("r8"); add("r9");add("r10");add("r11");
+		add("r12");add("r13");
 	}};
 	public static String saveRegister_Caller(){
 		StringBuilder str = new StringBuilder();
