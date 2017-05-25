@@ -10,6 +10,7 @@ import java.util.Set;
 public class RegisterManager {
 	public static int temporaryId = 0;
 	public static int NumberOfRegInMem;
+	public static Set<String> usedRegister;
 	public static List<String> parameterRegList = new ArrayList<String>(){{
 		add("rdi");add("rsi");add("rdx");add("rcx");add("r8");add("r9");
 	}};
@@ -18,18 +19,26 @@ public class RegisterManager {
 	}
 	public static void initialize(){
 		NumberOfRegInMem = 0;
+		usedRegister = new HashSet<>();
 	}
-	public static void getID(VirtualRegister reg){
+	private static void getID(VirtualRegister reg){
 		if(reg.realRegister == null && reg.id == 0){
 			reg.id = ++NumberOfRegInMem;
 		}
 	}
-	public static void MemRegisterGetOffset(Operand operand){
+	private static void statictics(VirtualRegister reg){
+		if(reg.realRegister != null){
+			usedRegister.add(reg.realRegister);
+		}
+	}
+	public static void RegisterStatistics(Operand operand){
 		if(operand instanceof VirtualRegister){
-			RegisterManager.getID((VirtualRegister) operand);
+			getID((VirtualRegister) operand);
+			statictics((VirtualRegister) operand);
 		}
 		if(operand instanceof Address){
-			RegisterManager.getID(((Address)operand).base);
+			getID(((Address)operand).base);
+			statictics(((Address)operand).base);
 		}
 	}
 }

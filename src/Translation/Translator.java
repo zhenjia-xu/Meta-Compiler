@@ -48,22 +48,28 @@ public class Translator {
 		}
 		return "ERROR";
 	}
-	public static List<String> phisicalRegisterList = new ArrayList<String>(){{
-		add("rcx");add("rdx");
-		add("rbx");add("rsi");add("rdi");
-		add("r8"); add("r9");add("r10");add("r11");
-		add("r12");add("r13");
-	}};
 	public static String saveRegister_Caller(){
 		StringBuilder str = new StringBuilder();
-		for(int i = 0; i <= phisicalRegisterList.size() - 1; i++)
-			str.append(Translator.getInstruction("push", phisicalRegisterList.get(i)));
+		for(int i = 0; i <= FunctionIR.callerRegisterList.size() - 1; i++)
+			str.append(Translator.getInstruction("push", FunctionIR.callerRegisterList.get(i)));
 		return str.toString();
 	}
 	public static String restoreRegister_Caller(){
 		StringBuilder str = new StringBuilder();
-		for(int i = phisicalRegisterList.size() - 1; i >= 0; i--)
-			str.append(Translator.getInstruction("pop", phisicalRegisterList.get(i)));
+		for(int i = FunctionIR.callerRegisterList.size() - 1; i >= 0; i--)
+			str.append(Translator.getInstruction("pop", FunctionIR.callerRegisterList .get(i)));
+		return str.toString();
+	}
+	public static String saveRegister_Callee(){
+		StringBuilder str = new StringBuilder();
+		for(int i = 0; i <= FunctionIR.calleeRegisterList.size() - 1; i++)
+			str.append(Translator.getInstruction("push", FunctionIR.calleeRegisterList.get(i)));
+		return str.toString();
+	}
+	public static String restoreRegister_Callee(){
+		StringBuilder str = new StringBuilder();
+		for(int i = FunctionIR.calleeRegisterList.size() - 1; i >= 0; i--)
+			str.append(Translator.getInstruction("pop", FunctionIR.calleeRegisterList .get(i)));
 		return str.toString();
 	}
 	public static String getCall(String func){

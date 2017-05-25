@@ -17,6 +17,17 @@ public class FunctionIR {
 	private List<VirtualRegister> parameterList;
 	public List<Block> blockList;
 	public LabelInstruction enterBlock, exitBlock;
+	public static List<String> callerRegisterList;
+	public static List<String> calleeRegisterList;
+	public static List<String> callerAll = new ArrayList<String>(){{
+		//add("rcx");
+		add("rdx");
+		add("rsi");add("rdi");
+		add("r8"); add("r9");add("r10");add("r11");
+	}};
+	public static List<String> calleeAll = new ArrayList<String>(){{
+		add("rbx");add("r12");add("r13");add("r14");add("r15");
+	}};
 
 	public FunctionIR(FunctionType function){
 		this.function = function;
@@ -62,7 +73,58 @@ public class FunctionIR {
 			blockList.add(block);
 		}
 	}
+	public String toNASM(){
+		StringBuilder str = new StringBuilder();
+		str.append(getName() + ":\n");
+		RegisterManager.initialize();
+		for(Block block: blockList){
+			for(Instruction instruction: block.instructionList){
+				instruction.Prepare();
+			}
+		}
+		calculateSavingMessage();
 
+		Translator.rsp_offset = 1;
+		//save register
+		str.append(Translator.getInstruction("push", "rbp"));
+		str.append(Translator.getInstruction("mov", "rbp", "rsp"));
+		if(getName().equals("main")){
+			str.append(Translator.getInstruction("call", "@GlobalDeclaration"));
+		}
+		str.append(Translator.saveRegister_Callee());
+
+		//add temporary variable
+		str.append(Translator.getInstruction("sub", "rsp", String.valueOf(8 * RegisterManager.NumberOfRegInMem)));
+		Translator.rsp_offset += RegisterManager.NumberOfRegInMem;
+
+		//deal with each instruction
+		for(Block block: blockList){
+			str.append(block.getName() + ":\n");
+			for(Instruction instruction: block.instructionList){
+				str.append(instruction.getInstructionOfNASM());
+			}
+		}
+
+		//restore registers
+		str.append(Translator.restoreRegister_Callee());
+		str.append(Translator.getInstruction("add", "rsp", String.valueOf(8 * RegisterManager.NumberOfRegInMem)));
+		str.append(Translator.getInstruction("pop", "rbp"));
+
+		str.append(Translator.getInstruction("ret"));
+		return str.toString();
+	}
+	static private void calculateSavingMessage(){
+		calleeRegisterList = new ArrayList<>();
+		callerRegisterList = new ArrayList<>();
+		for(String reg: RegisterManager.usedRegister){
+			if(calleeAll.contains(reg)){
+				calleeRegisterList.add(reg);
+			}
+			if(callerAll.contains(reg)){
+				callerRegisterList.add(reg);
+			}
+		}
+	}
 	public String toString(int indents){
 		StringBuilder str = new StringBuilder();
 		str.append(Utility.getIndent(indents));
@@ -82,40 +144,5 @@ public class FunctionIR {
 		str.append("}\n");
 		return str.toString();
 	}
-	public String toNASM(){
-		StringBuilder str = new StringBuilder();
-		str.append(getName() + ":\n");
-		RegisterManager.initialize();
-		for(Block block: blockList){
-			for(Instruction instruction: block.instructionList){
-				instruction.Prepare();
-			}
-		}
 
-		Translator.rsp_offset = 1;
-		//save register
-		str.append(Translator.getInstruction("push", "rbp"));
-		str.append(Translator.getInstruction("mov", "rbp", "rsp"));
-		if(getName().equals("main")){
-			str.append(Translator.getInstruction("call", "@GlobalDeclaration"));
-		}
-		//add temporary variable
-		str.append(Translator.getInstruction("sub", "rsp", String.valueOf(8 * RegisterManager.NumberOfRegInMem)));
-		Translator.rsp_offset += RegisterManager.NumberOfRegInMem;
-
-		//deal with each instruction
-		for(Block block: blockList){
-			str.append(block.getName() + ":\n");
-			for(Instruction instruction: block.instructionList){
-				str.append(instruction.getInstructionOfNASM());
-			}
-		}
-
-		//restore registers
-		str.append(Translator.getInstruction("add", "rsp", String.valueOf(8 * RegisterManager.NumberOfRegInMem)));
-		str.append(Translator.getInstruction("pop", "rbp"));
-
-		str.append(Translator.getInstruction("ret"));
-		return str.toString();
-	}
 }

@@ -35,8 +35,8 @@ public class MoveInstruction extends Instruction{
 
 	@Override
 	public void Prepare(){
-		RegisterManager.MemRegisterGetOffset(target);
-		RegisterManager.MemRegisterGetOffset(source);
+		RegisterManager.RegisterStatistics(target);
+		RegisterManager.RegisterStatistics(source);
 	}
 	@Override
 	public String getInstructionOfNASM(){

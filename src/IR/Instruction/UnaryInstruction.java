@@ -29,7 +29,7 @@ public class UnaryInstruction extends Instruction{
 
 	@Override
 	public void Prepare(){
-		RegisterManager.MemRegisterGetOffset(target);
+		RegisterManager.RegisterStatistics(target);
 	}
 	@Override
 	public String getInstructionOfNASM(){

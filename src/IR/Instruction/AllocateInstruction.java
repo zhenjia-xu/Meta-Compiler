@@ -27,8 +27,8 @@ public class AllocateInstruction extends Instruction {
 
 	@Override
 	public void Prepare(){
-		RegisterManager.MemRegisterGetOffset(target);
-		RegisterManager.MemRegisterGetOffset(allocateSize);
+		RegisterManager.RegisterStatistics(target);
+		RegisterManager.RegisterStatistics(allocateSize);
 	}
 	@Override
 	public String getInstructionOfNASM(){

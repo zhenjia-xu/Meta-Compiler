@@ -40,7 +40,7 @@ public class CsetInstruction extends Instruction {
 	}
 	@Override
 	public void Prepare(){
-		RegisterManager.MemRegisterGetOffset(target);
+		RegisterManager.RegisterStatistics(target);
 	}
 	@Override
 	public String getInstructionOfNASM() {

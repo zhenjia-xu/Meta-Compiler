@@ -36,25 +36,15 @@ public class FunctionCallInstruction extends Instruction {
 
 	@Override
 	public void Prepare(){
-		RegisterManager.MemRegisterGetOffset(returnValue);
+		RegisterManager.RegisterStatistics(returnValue);
 		for(Operand x: parameterList){
-			RegisterManager.MemRegisterGetOffset(x);
+			RegisterManager.RegisterStatistics(x);
 		}
 	}
 	@Override
 	public String getInstructionOfNASM(){
 		StringBuilder str = new StringBuilder();
 		str.append(Translator.saveRegister_Caller());
-		/*
-		for(int i = 0; i < 6 && i < parameterList.size(); i++){
-			PhysicalOperand physicalParameter = PhysicalOperand.get(str, parameterList.get(i));
-			str.append(Translator.getInstruction("mov", RegisterManager.parameterRegList.get(i), physicalParameter.toString()));
-		}
-		int numToMem = 0;
-		if(parameterList.size() > 6){
-			numToMem = parameterList.size() - 6;
-		}
-		*/
 		int numToMem = parameterList.size();
 
 		boolean flag = false;

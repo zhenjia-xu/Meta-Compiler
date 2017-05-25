@@ -45,8 +45,8 @@ public class BinaryInstruction extends Instruction {
 
 	@Override
 	public void Prepare(){
-		RegisterManager.MemRegisterGetOffset(target);
-		RegisterManager.MemRegisterGetOffset(operand);
+		RegisterManager.RegisterStatistics(target);
+		RegisterManager.RegisterStatistics(operand);
 	}
 	@Override
 	public String getInstructionOfNASM(){

@@ -1,399 +1,6 @@
 global main
 extern printf, malloc, strcpy, scanf, strlen, sscanf, sprintf, memcpy, strcmp
 SECTION .text
-cd:
-    push                  rbp
-     mov                  rbp,                  rsp
-     sub                  rsp,                    0
-cd.0.enter:
-     mov                  r11,                  rdi
-     mov                  r10,                  rsi
-     mov                  r12,                  rdx
-     mov                   r9,                  rcx
-     mov                  rbx,                   r8
-     cmp                  r11,                    1
-     mov                  rsi,                    0
-    sete                  sil
-     cmp                  rsi,                    1
-      je         cd.1.if_true
-     jmp        cd.2.if_false
-cd.1.if_true:
-     mov                  rdi,      __string_const0
-     mov                  rsi,                  r10
-    push                  rcx
-    push                  rdx
-    push                  rbx
-    push                  rsi
-    push                  rdi
-    push                   r8
-    push                   r9
-    push                  r10
-    push                  r11
-    push                  r12
-    push                  r13
-     sub                  rsp,                    8
-    call  __string_connection
-     add                  rsp,                    8
-     pop                  r13
-     pop                  r12
-     pop                  r11
-     pop                  r10
-     pop                   r9
-     pop                   r8
-     pop                  rdi
-     pop                  rsi
-     pop                  rbx
-     pop                  rdx
-     pop                  rcx
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,      __string_const1
-    push                  rcx
-    push                  rdx
-    push                  rbx
-    push                  rsi
-    push                  rdi
-    push                   r8
-    push                   r9
-    push                  r10
-    push                  r11
-    push                  r12
-    push                  r13
-     sub                  rsp,                    8
-    call  __string_connection
-     add                  rsp,                    8
-     pop                  r13
-     pop                  r12
-     pop                  r11
-     pop                  r10
-     pop                   r9
-     pop                   r8
-     pop                  rdi
-     pop                  rsi
-     pop                  rbx
-     pop                  rdx
-     pop                  rcx
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,                   r9
-    push                  rcx
-    push                  rdx
-    push                  rbx
-    push                  rsi
-    push                  rdi
-    push                   r8
-    push                   r9
-    push                  r10
-    push                  r11
-    push                  r12
-    push                  r13
-     sub                  rsp,                    8
-    call  __string_connection
-     add                  rsp,                    8
-     pop                  r13
-     pop                  r12
-     pop                  r11
-     pop                  r10
-     pop                   r9
-     pop                   r8
-     pop                  rdi
-     pop                  rsi
-     pop                  rbx
-     pop                  rdx
-     pop                  rcx
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-    push                  rcx
-    push                  rdx
-    push                  rbx
-    push                  rsi
-    push                  rdi
-    push                   r8
-    push                   r9
-    push                  r10
-    push                  r11
-    push                  r12
-    push                  r13
-     sub                  rsp,                    8
-    call              println
-     add                  rsp,                    8
-     pop                  r13
-     pop                  r12
-     pop                  r11
-     pop                  r10
-     pop                   r9
-     pop                   r8
-     pop                  rdi
-     pop                  rsi
-     pop                  rbx
-     pop                  rdx
-     pop                  rcx
-     add                  rbx,                    1
-     jmp         cd.3.if_exit
-cd.2.if_false:
-     mov                  rsi,                  r11
-     sub                  rsi,                    1
-     mov                  rdi,                  rsi
-     mov                  rsi,                  r10
-     mov                  rdx,                   r9
-     mov                  rcx,                  r12
-     mov                   r8,                  rbx
-    push                  rcx
-    push                  rdx
-    push                  rbx
-    push                  rsi
-    push                  rdi
-    push                   r8
-    push                   r9
-    push                  r10
-    push                  r11
-    push                  r12
-    push                  r13
-     sub                  rsp,                    8
-    call                   cd
-     add                  rsp,                    8
-     pop                  r13
-     pop                  r12
-     pop                  r11
-     pop                  r10
-     pop                   r9
-     pop                   r8
-     pop                  rdi
-     pop                  rsi
-     pop                  rbx
-     pop                  rdx
-     pop                  rcx
-     mov                  rbx,                  rax
-     mov                  rdi,      __string_const2
-     mov                  rsi,                  r10
-    push                  rcx
-    push                  rdx
-    push                  rbx
-    push                  rsi
-    push                  rdi
-    push                   r8
-    push                   r9
-    push                  r10
-    push                  r11
-    push                  r12
-    push                  r13
-     sub                  rsp,                    8
-    call  __string_connection
-     add                  rsp,                    8
-     pop                  r13
-     pop                  r12
-     pop                  r11
-     pop                  r10
-     pop                   r9
-     pop                   r8
-     pop                  rdi
-     pop                  rsi
-     pop                  rbx
-     pop                  rdx
-     pop                  rcx
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,      __string_const3
-    push                  rcx
-    push                  rdx
-    push                  rbx
-    push                  rsi
-    push                  rdi
-    push                   r8
-    push                   r9
-    push                  r10
-    push                  r11
-    push                  r12
-    push                  r13
-     sub                  rsp,                    8
-    call  __string_connection
-     add                  rsp,                    8
-     pop                  r13
-     pop                  r12
-     pop                  r11
-     pop                  r10
-     pop                   r9
-     pop                   r8
-     pop                  rdi
-     pop                  rsi
-     pop                  rbx
-     pop                  rdx
-     pop                  rcx
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-     mov                  rsi,                   r9
-    push                  rcx
-    push                  rdx
-    push                  rbx
-    push                  rsi
-    push                  rdi
-    push                   r8
-    push                   r9
-    push                  r10
-    push                  r11
-    push                  r12
-    push                  r13
-     sub                  rsp,                    8
-    call  __string_connection
-     add                  rsp,                    8
-     pop                  r13
-     pop                  r12
-     pop                  r11
-     pop                  r10
-     pop                   r9
-     pop                   r8
-     pop                  rdi
-     pop                  rsi
-     pop                  rbx
-     pop                  rdx
-     pop                  rcx
-     mov                  rsi,                  rax
-     mov                  rdi,                  rsi
-    push                  rcx
-    push                  rdx
-    push                  rbx
-    push                  rsi
-    push                  rdi
-    push                   r8
-    push                   r9
-    push                  r10
-    push                  r11
-    push                  r12
-    push                  r13
-     sub                  rsp,                    8
-    call              println
-     add                  rsp,                    8
-     pop                  r13
-     pop                  r12
-     pop                  r11
-     pop                  r10
-     pop                   r9
-     pop                   r8
-     pop                  rdi
-     pop                  rsi
-     pop                  rbx
-     pop                  rdx
-     pop                  rcx
-     mov                  rdi,                  r10
-    push                  rcx
-    push                  rdx
-    push                  rbx
-    push                  rsi
-    push                  rdi
-    push                   r8
-    push                   r9
-    push                  r10
-    push                  r11
-    push                  r12
-    push                  r13
-     sub                  rsp,                    8
-    call              println
-     add                  rsp,                    8
-     pop                  r13
-     pop                  r12
-     pop                  r11
-     pop                  r10
-     pop                   r9
-     pop                   r8
-     pop                  rdi
-     pop                  rsi
-     pop                  rbx
-     pop                  rdx
-     pop                  rcx
-     mov                  rdi,                  r12
-    push                  rcx
-    push                  rdx
-    push                  rbx
-    push                  rsi
-    push                  rdi
-    push                   r8
-    push                   r9
-    push                  r10
-    push                  r11
-    push                  r12
-    push                  r13
-     sub                  rsp,                    8
-    call              println
-     add                  rsp,                    8
-     pop                  r13
-     pop                  r12
-     pop                  r11
-     pop                  r10
-     pop                   r9
-     pop                   r8
-     pop                  rdi
-     pop                  rsi
-     pop                  rbx
-     pop                  rdx
-     pop                  rcx
-     mov                  rdi,                   r9
-    push                  rcx
-    push                  rdx
-    push                  rbx
-    push                  rsi
-    push                  rdi
-    push                   r8
-    push                   r9
-    push                  r10
-    push                  r11
-    push                  r12
-    push                  r13
-     sub                  rsp,                    8
-    call              println
-     add                  rsp,                    8
-     pop                  r13
-     pop                  r12
-     pop                  r11
-     pop                  r10
-     pop                   r9
-     pop                   r8
-     pop                  rdi
-     pop                  rsi
-     pop                  rbx
-     pop                  rdx
-     pop                  rcx
-     mov                  rsi,                  r11
-     sub                  rsi,                    1
-     mov                  rdi,                  rsi
-     mov                  rsi,                  r12
-     mov                  rdx,                  r10
-     mov                  rcx,                   r9
-     mov                   r8,                  rbx
-    push                  rcx
-    push                  rdx
-    push                  rbx
-    push                  rsi
-    push                  rdi
-    push                   r8
-    push                   r9
-    push                  r10
-    push                  r11
-    push                  r12
-    push                  r13
-     sub                  rsp,                    8
-    call                   cd
-     add                  rsp,                    8
-     pop                  r13
-     pop                  r12
-     pop                  r11
-     pop                  r10
-     pop                   r9
-     pop                   r8
-     pop                  rdi
-     pop                  rsi
-     pop                  rbx
-     pop                  rdx
-     pop                  rcx
-     mov                  rbx,                  rax
-     add                  rbx,                    1
-     jmp         cd.3.if_exit
-cd.3.if_exit:
-     mov                  rax,                  rbx
-     jmp            cd.4.exit
-cd.4.exit:
-     add                  rsp,                    0
-     pop                  rbp
-     ret
 @GlobalDeclaration:
     push                  rbp
      mov                  rbp,                  rsp
@@ -407,122 +14,136 @@ main:
     push                  rbp
      mov                  rbp,                  rsp
     call   @GlobalDeclaration
+    push                  rbx
      sub                  rsp,                    0
 main.0.enter:
-     mov                  rsi,      __string_const4
-     mov                   r8,      __string_const5
-     mov                  rbx,      __string_const6
-    push                  rcx
-    push                  rdx
-    push                  rbx
-    push                  rsi
     push                  rdi
-    push                   r8
-    push                   r9
-    push                  r10
-    push                  r11
-    push                  r12
-    push                  r13
+    push                  rsi
      sub                  rsp,                    8
     call               getInt
      add                  rsp,                    8
-     pop                  r13
-     pop                  r12
-     pop                  r11
-     pop                  r10
-     pop                   r9
-     pop                   r8
-     pop                  rdi
      pop                  rsi
-     pop                  rbx
-     pop                  rdx
-     pop                  rcx
-     mov                  rdi,                  rax
-     mov                  rdx,                   r8
-     mov                  rcx,                  rbx
-     mov                   r8,                    0
-    push                  rcx
-    push                  rdx
-    push                  rbx
-    push                  rsi
-    push                  rdi
-    push                   r8
-    push                   r9
-    push                  r10
-    push                  r11
-    push                  r12
-    push                  r13
-     sub                  rsp,                    8
-    call                   cd
-     add                  rsp,                    8
-     pop                  r13
-     pop                  r12
-     pop                  r11
-     pop                  r10
-     pop                   r9
-     pop                   r8
      pop                  rdi
-     pop                  rsi
-     pop                  rbx
-     pop                  rdx
-     pop                  rcx
      mov                  rbx,                  rax
      mov                  rdi,                  rbx
-    push                  rcx
-    push                  rdx
-    push                  rbx
-    push                  rsi
     push                  rdi
-    push                   r8
-    push                   r9
-    push                  r10
-    push                  r11
-    push                  r12
-    push                  r13
+    push                  rsi
+     sub                  rsp,                    8
+    call                 fibo
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdi
+     mov                  rbx,                  rax
+     mov                  rdi,                  rbx
+    push                  rdi
+    push                  rsi
      sub                  rsp,                    8
     call             toString
      add                  rsp,                    8
-     pop                  r13
-     pop                  r12
-     pop                  r11
-     pop                  r10
-     pop                   r9
-     pop                   r8
-     pop                  rdi
      pop                  rsi
-     pop                  rbx
-     pop                  rdx
-     pop                  rcx
+     pop                  rdi
      mov                  rbx,                  rax
      mov                  rdi,                  rbx
-    push                  rcx
-    push                  rdx
-    push                  rbx
-    push                  rsi
     push                  rdi
-    push                   r8
-    push                   r9
-    push                  r10
-    push                  r11
-    push                  r12
-    push                  r13
+    push                  rsi
      sub                  rsp,                    8
     call              println
      add                  rsp,                    8
-     pop                  r13
-     pop                  r12
-     pop                  r11
-     pop                  r10
-     pop                   r9
-     pop                   r8
-     pop                  rdi
      pop                  rsi
-     pop                  rbx
-     pop                  rdx
-     pop                  rcx
+     pop                  rdi
+     mov                  rbx,                    0
+     jmp main.3.loop_condition
+main.1.loop_body:
+     mov                  rdi,                   30
+    push                  rdi
+    push                  rsi
+     sub                  rsp,                    8
+    call                 fibo
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdi
+     mov                  rsi,                  rax
+     mov                  rdi,                  rsi
+    push                  rdi
+    push                  rsi
+     sub                  rsp,                    8
+    call             toString
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdi
+     mov                  rsi,                  rax
+     mov                  rdi,                  rsi
+    push                  rdi
+    push                  rsi
+     sub                  rsp,                    8
+    call              println
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdi
+     jmp main.2.loop_increment
+main.2.loop_increment:
+     add                  rbx,                    1
+     jmp main.3.loop_condition
+main.3.loop_condition:
+     cmp                  rbx,                  100
+     mov                  rsi,                    0
+   setle                  sil
+     cmp                  rsi,                    1
+      je     main.1.loop_body
+     jmp     main.4.loop_exit
+main.4.loop_exit:
      mov                  rax,                    0
-     jmp          main.1.exit
-main.1.exit:
+     jmp          main.5.exit
+main.5.exit:
+     pop                  rbx
+     add                  rsp,                    0
+     pop                  rbp
+     ret
+fibo:
+    push                  rbp
+     mov                  rbp,                  rsp
+    push                  rbx
+     sub                  rsp,                    0
+fibo.0.enter:
+     mov                  rbx,                  rdi
+     cmp                  rbx,                    2
+     mov                  rsi,                    0
+    setl                  sil
+     cmp                  rsi,                    1
+      je       fibo.1.if_true
+     jmp      fibo.2.if_false
+fibo.1.if_true:
+     mov                  rax,                  rbx
+     jmp          fibo.4.exit
+fibo.2.if_false:
+     jmp       fibo.3.if_exit
+fibo.3.if_exit:
+     mov                  rsi,                  rbx
+     sub                  rsi,                    1
+     mov                  rdi,                  rsi
+    push                  rdi
+    push                  rsi
+     sub                  rsp,                    8
+    call                 fibo
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdi
+     mov                  rsi,                  rax
+     sub                  rbx,                    2
+     mov                  rdi,                  rbx
+    push                  rdi
+    push                  rsi
+     sub                  rsp,                    8
+    call                 fibo
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdi
+     mov                  rbx,                  rax
+     add                  rsi,                  rbx
+     mov                  rax,                  rsi
+     jmp          fibo.4.exit
+fibo.4.exit:
+     pop                  rbx
      add                  rsp,                    0
      pop                  rbp
      ret
@@ -711,27 +332,6 @@ __string_LEEQ:
    setle                   al
      ret
 SECTION .data
-      dq                    5
-__string_const0:
-      db           "move ", 0
-      dq                    5
-__string_const1:
-      db           " --> ", 0
-      dq                    5
-__string_const2:
-      db           "move ", 0
-      dq                    5
-__string_const3:
-      db           " --> ", 0
-      dq                    1
-__string_const4:
-      db               "A", 0
-      dq                    1
-__string_const5:
-      db               "B", 0
-      dq                    1
-__string_const6:
-      db               "C", 0
 __printIntFormat:
       db         "%ld", 10, 0
 __printFormat:

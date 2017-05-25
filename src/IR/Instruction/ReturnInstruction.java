@@ -22,7 +22,7 @@ public class ReturnInstruction extends Instruction {
 
 	@Override
 	public void Prepare() {
-		RegisterManager.MemRegisterGetOffset(returnValue);
+		RegisterManager.RegisterStatistics(returnValue);
 	}
 
 	@Override

@@ -33,8 +33,8 @@ public class CompareInstruction extends Instruction {
 	}
 	@Override
 	public void Prepare(){
-		RegisterManager.MemRegisterGetOffset(leftOperand);
-		RegisterManager.MemRegisterGetOffset(rightOperand);
+		RegisterManager.RegisterStatistics(leftOperand);
+		RegisterManager.RegisterStatistics(rightOperand);
 	}
 	@Override
 	public String getInstructionOfNASM(){
