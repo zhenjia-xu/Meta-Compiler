@@ -22,7 +22,10 @@ public class RegisterAllocator {
 		List<VirtualRegister> listAllocate = new ArrayList<>();
 		must = new ArrayList<>();
 		for(VirtualRegister reg: virtualRegisterIntegerMap.keySet()){
-			if(reg.realRegister != null || reg.id != 0) {
+			if(reg.id != 0){
+				continue;
+			}
+			if(reg.realRegister != null) {
 				must.add(reg);
 			}else{
 				list.add(reg);

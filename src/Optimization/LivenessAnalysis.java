@@ -25,13 +25,6 @@ public class LivenessAnalysis {
 		calculateBlock(functionIR);
 		calculateInstruction(functionIR);
 		RegisterAllocator.allocate(virtualRegisterMap, edgeMap);
-		/*
-		System.out.println(functionIR.getName());
-		for(VirtualRegister reg: edgeMap.keySet()){
-			System.out.println(reg);
-			System.out.println(edgeMap.get(reg));
-		}
-		*/
 	}
 	static private void calculateInstruction(FunctionIR functionIR){
 		for(Block block: functionIR.blockList){
@@ -60,8 +53,7 @@ public class LivenessAnalysis {
 				if(instruction instanceof MoveInstruction){
 					for(VirtualRegister reg1: instruction.killSet)
 						for(VirtualRegister reg2: instruction.liveOut){
-							//if(!instruction.useSet.contains(reg2))
-							{
+							if(!(((MoveInstruction) instruction).source instanceof VirtualRegister) || !instruction.useSet.contains(reg2)) {
 								addEdge(reg1, reg2);
 							}
 						}
