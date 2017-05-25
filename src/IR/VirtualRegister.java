@@ -15,6 +15,7 @@ public class VirtualRegister extends Operand{
 	}
 	@Override
 	public String toString(){
-		return "$" + name;
+		//return "$" + name;
+		return "$" + name + "(" + realRegister + ")";
 	}
 }

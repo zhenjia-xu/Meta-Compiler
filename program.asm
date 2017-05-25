@@ -1,78 +1,20 @@
 global main
 extern printf, malloc, strcpy, scanf, strlen, sscanf, sprintf, memcpy, strcmp
 SECTION .text
-a:
+point.null:
     push                  rbp
      mov                  rbp,                  rsp
-     sub                  rsp,                  160
-a.0.enter:
+     sub                  rsp,                    8
+point.null.0.enter:
      mov      qword [rbp - 8],                  rdi
-     mov     qword [rbp - 16],                  rsi
-     mov     qword [rbp - 24],                  rdx
-     mov     qword [rbp - 32],                  rcx
-     mov     qword [rbp - 40],                   r8
-     mov     qword [rbp - 48],                   r9
-     mov                  rdi,     qword [rbp + 16]
-    call             printInt
-     mov                  rax,      qword [rbp - 8]
-     mov     qword [rbp - 56],                  rax
-     mov                  rax,     qword [rbp - 16]
-     add     qword [rbp - 56],                  rax
-     mov                  rax,     qword [rbp - 56]
-     mov     qword [rbp - 64],                  rax
-     mov                  rax,     qword [rbp - 24]
-     add     qword [rbp - 64],                  rax
-     mov                  rax,     qword [rbp - 64]
-     mov     qword [rbp - 72],                  rax
-     mov                  rax,     qword [rbp - 32]
-     add     qword [rbp - 72],                  rax
-     mov                  rax,     qword [rbp - 72]
-     mov     qword [rbp - 80],                  rax
-     mov                  rax,     qword [rbp - 40]
-     add     qword [rbp - 80],                  rax
-     mov                  rax,     qword [rbp - 80]
-     mov     qword [rbp - 88],                  rax
-     mov                  rax,     qword [rbp - 48]
-     add     qword [rbp - 88],                  rax
-     mov                  rax,     qword [rbp - 88]
-     mov     qword [rbp - 96],                  rax
-     mov                  rax,     qword [rbp + 16]
-     add     qword [rbp - 96],                  rax
-     mov                  rax,     qword [rbp - 96]
-     mov    qword [rbp - 104],                  rax
-     mov                  rax,     qword [rbp + 24]
-     add    qword [rbp - 104],                  rax
-     mov                  rax,    qword [rbp - 104]
-     mov    qword [rbp - 112],                  rax
-     mov                  rax,     qword [rbp + 32]
-     add    qword [rbp - 112],                  rax
-     mov                  rax,    qword [rbp - 112]
-     mov    qword [rbp - 120],                  rax
-     mov                  rax,     qword [rbp + 40]
-     add    qword [rbp - 120],                  rax
-     mov                  rax,    qword [rbp - 120]
-     mov    qword [rbp - 128],                  rax
-     mov                  rax,     qword [rbp + 48]
-     add    qword [rbp - 128],                  rax
-     mov                  rax,    qword [rbp - 128]
-     mov    qword [rbp - 136],                  rax
-     mov                  rax,     qword [rbp + 56]
-     add    qword [rbp - 136],                  rax
-     mov                  rax,    qword [rbp - 136]
-     mov    qword [rbp - 144],                  rax
-     mov                  rax,     qword [rbp + 64]
-     add    qword [rbp - 144],                  rax
-     mov                  rax,    qword [rbp - 144]
-     mov    qword [rbp - 152],                  rax
-     mov                  rax,     qword [rbp + 72]
-     add    qword [rbp - 152],                  rax
-     mov                  rax,    qword [rbp - 152]
-     mov    qword [rbp - 160],                  rax
-     mov                  rax,     qword [rbp + 80]
-     add    qword [rbp - 160],                  rax
-     mov                  rax,    qword [rbp - 160]
-a.1.exit:
-     add                  rsp,                  160
+     mov                  rcx,      qword [rbp - 8]
+     mov      qword [rcx - 0],                    0
+     mov                  rcx,      qword [rbp - 8]
+     mov      qword [rcx + 8],                    0
+     mov                  rcx,      qword [rbp - 8]
+     mov     qword [rcx + 16],                    0
+point.null.1.exit:
+     add                  rsp,                    8
      pop                  rbp
      ret
 @GlobalDeclaration:
@@ -87,35 +29,25 @@ main:
     push                  rbp
      mov                  rbp,                  rsp
     call   @GlobalDeclaration
-     sub                  rsp,                   16
+     sub                  rsp,                   32
 main.0.enter:
-     mov                  rdi,                    1
-     mov                  rsi,                    2
-     mov                  rdx,                    3
-     mov                  rcx,                    4
-     mov                   r8,                    5
-     mov                   r9,                    6
-     sub                  rsp,                    8
-    push                   15
-    push                   14
-    push                   13
-    push                   12
-    push                   11
-    push                   10
-    push                    9
-    push                    8
-    push                    7
-    call                    a
-     add                  rsp,                   80
+     mov                  rdi,                   24
+    call               malloc
      mov      qword [rbp - 8],                  rax
      mov                  rdi,      qword [rbp - 8]
-    call             toString
+    call           point.null
+     mov                  rax,      qword [rbp - 8]
      mov     qword [rbp - 16],                  rax
-     mov                  rdi,     qword [rbp - 16]
-    call              println
+     mov                  rdi,                   24
+    call               malloc
+     mov     qword [rbp - 24],                  rax
+     mov                  rdi,     qword [rbp - 24]
+    call           point.null
+     mov                  rax,     qword [rbp - 24]
+     mov     qword [rbp - 32],                  rax
      mov                  rax,                    0
 main.1.exit:
-     add                  rsp,                   16
+     add                  rsp,                   32
      pop                  rbp
      ret
 printInt:

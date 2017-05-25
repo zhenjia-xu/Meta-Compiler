@@ -4,6 +4,7 @@ import AST.Type.*;
 import IR.*;
 import IR.Instruction.*;
 import Utility.*;
+import com.sun.org.apache.regexp.internal.RE;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,7 +49,9 @@ public class CreationExpression extends Expression{
 			if(((ClassType)type).getConstrustFunction() != null){
 				VirtualRegister bak = RegisterManager.getTemporaryRegister();
 				List<Operand> parameterList = new ArrayList<>();
-				parameterList.add(base);
+				VirtualRegister physical = RegisterManager.getTemporaryRegister();
+				physical.realRegister = RegisterManager.parameterRegList.get(0);
+				instructionList.add(new MoveInstruction(physical, base));
 				instructionList.add(new FunctionCallInstruction(((ClassType) type).getConstrustFunction(), null, parameterList));
 			}
 		}else{
