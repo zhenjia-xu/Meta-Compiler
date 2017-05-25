@@ -17,23 +17,19 @@ import java.util.Set;
 
 public class LivenessAnalysis {
 	static private Map<VirtualRegister, Set<VirtualRegister> > edgeMap;
+	static private Map<VirtualRegister, Integer> virtualRegisterMap;
 	static public void analysis(FunctionIR functionIR){
 		edgeMap = new HashMap<>();
+		virtualRegisterMap = new HashMap<>();
 		prepare(functionIR);
 		calculateBlock(functionIR);
 		calculateInstruction(functionIR);
-
-		for(Block block: functionIR.blockList)
-			for(Instruction instruction: block.instructionList){
-				for(VirtualRegister reg1: instruction.liveOut)
-					for(VirtualRegister reg2:instruction.liveOut)
-						if(reg1 != reg2 && reg1.id == -1 && reg2.id == -1 && !edgeMap.get(reg1).contains(reg2)){
-							if(reg1.realRegister == null || reg2.realRegister == null) {
-								//throw new RuntimeError("ERROR");
-								System.out.println(reg1 + " " + reg2 + reg1.realRegister + reg2.realRegister);
-							}
-						}
-			}
+		RegisterAllocator.allocate(virtualRegisterMap, edgeMap);
+		System.out.println(functionIR.getName());
+		for(VirtualRegister reg: edgeMap.keySet()){
+			System.out.println(reg);
+			System.out.println(edgeMap.get(reg));
+		}
 	}
 	static private void calculateInstruction(FunctionIR functionIR){
 		for(Block block: functionIR.blockList){
@@ -64,14 +60,12 @@ public class LivenessAnalysis {
 						for(VirtualRegister reg2: instruction.liveOut){
 							if(!instruction.useSet.contains(reg2)) {
 								addEdge(reg1, reg2);
-								addEdge(reg2, reg1);
 							}
 						}
 				}else{
 					for(VirtualRegister reg1: instruction.killSet)
 						for(VirtualRegister reg2: instruction.liveOut){
 							addEdge(reg1, reg2);
-							addEdge(reg2, reg1);
 						}
 				}
 			}
@@ -95,6 +89,8 @@ public class LivenessAnalysis {
 			for(Instruction instruction: block.instructionList){
 				Set<VirtualRegister> useSet = instruction.useSet;
 				Set<VirtualRegister> killSet = instruction.killSet;
+				mapUnion(virtualRegisterMap, useSet);
+				mapUnion(virtualRegisterMap, killSet);
 				for(VirtualRegister reg: useSet){
 					if(!assignedSet.contains(reg) && !block.useSet.contains(reg)){
 						block.useSet.add(reg);
@@ -131,23 +127,15 @@ public class LivenessAnalysis {
 		}
 	}
 	static private void addEdge(Block from, Block to){
-		if(!from.blockOut.contains(to)){
-			from.blockOut.add(to);
-		}
-		if(!to.blockIn.contains(from)){
-			to.blockIn.add(from);
-		}
+		from.blockOut.add(to);
+		to.blockIn.add(from);
 	}
 	static private void addEdge(VirtualRegister x, VirtualRegister y){
 		if(x == y) return;
-		if(!edgeMap.containsKey(x)){
-			edgeMap.put(x, new HashSet<>());
-		}
-		if(!edgeMap.get(x).contains(y)){
-			edgeMap.get(x).add(y);
-		}
+		edgeMap.get(x).add(y);
+		edgeMap.get(y).add(x);
 	}
-	//A = A + B
+	//   A = A + B
 	static private boolean setUnion(Set<VirtualRegister> A, Set<VirtualRegister> B){
 		boolean flag = false;
 		for(VirtualRegister reg: B){
@@ -157,5 +145,15 @@ public class LivenessAnalysis {
 			}
 		}
 		return flag;
+	}
+	static private void mapUnion(Map<VirtualRegister, Integer> A, Set<VirtualRegister> B){
+		for(VirtualRegister reg: B){
+			if(!A.containsKey(reg)){
+				A.put(reg, new Integer(0));
+				edgeMap.put(reg, new HashSet<>());
+			}
+			int now = A.get(reg).intValue();
+			A.put(reg, new Integer(now + 1));
+		}
 	}
 }

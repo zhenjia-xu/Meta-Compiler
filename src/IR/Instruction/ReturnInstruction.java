@@ -1,5 +1,6 @@
 package IR.Instruction;
 
+import IR.Address;
 import IR.Operand;
 import IR.RegisterManager;
 import IR.VirtualRegister;
@@ -13,6 +14,9 @@ public class ReturnInstruction extends Instruction {
 		this.returnValue = returnValue;
 		if(returnValue instanceof VirtualRegister){
 			useSet.add((VirtualRegister) returnValue);
+		}
+		if(returnValue instanceof Address){
+			useSet.add(((Address) returnValue).base);
 		}
 	}
 

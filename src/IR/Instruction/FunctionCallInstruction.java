@@ -1,6 +1,7 @@
 package IR.Instruction;
 
 import AST.Type.FunctionType;
+import IR.Address;
 import IR.Operand;
 import IR.RegisterManager;
 import IR.VirtualRegister;
@@ -27,6 +28,9 @@ public class FunctionCallInstruction extends Instruction {
 			if(operand instanceof VirtualRegister){
 				useSet.add((VirtualRegister) operand);
 			}
+			if(operand instanceof Address){
+				useSet.add(((Address) operand).base);
+			}
 		}
 	}
 
@@ -41,6 +45,7 @@ public class FunctionCallInstruction extends Instruction {
 	public String getInstructionOfNASM(){
 		StringBuilder str = new StringBuilder();
 		str.append(Translator.saveRegister_Caller());
+		/*
 		for(int i = 0; i < 6 && i < parameterList.size(); i++){
 			PhysicalOperand physicalParameter = PhysicalOperand.get(str, parameterList.get(i));
 			str.append(Translator.getInstruction("mov", RegisterManager.parameterRegList.get(i), physicalParameter.toString()));
@@ -49,13 +54,16 @@ public class FunctionCallInstruction extends Instruction {
 		if(parameterList.size() > 6){
 			numToMem = parameterList.size() - 6;
 		}
+		*/
+		int numToMem = parameterList.size();
+
 		boolean flag = false;
 		if((Translator.rsp_offset + numToMem) % 2 == 1){
 			str.append(Translator.getInstruction("sub", "rsp", "8"));
 			Translator.rsp_offset++;
 			flag = true;
 		}
-		for(int i = parameterList.size() - 1; i >= 6; i--){
+		for(int i = parameterList.size() - 1; i >= 0; i--){
 			PhysicalOperand physicalParameter = PhysicalOperand.get(str, parameterList.get(i));
 			str.append(Translator.getInstruction("push", physicalParameter.toString()));
 		}

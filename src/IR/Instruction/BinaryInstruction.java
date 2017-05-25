@@ -30,9 +30,16 @@ public class BinaryInstruction extends Instruction {
 		this.operand = operand;
 		if(target instanceof VirtualRegister){
 			killSet.add((VirtualRegister) target);
+			useSet.add((VirtualRegister) target);
+		}
+		if(target instanceof Address){
+			useSet.add(((Address) target).base);
 		}
 		if(operand instanceof VirtualRegister){
 			useSet.add((VirtualRegister) operand);
+		}
+		if(operand instanceof Address){
+			useSet.add(((Address) operand).base);
 		}
 	}
 
@@ -70,7 +77,6 @@ public class BinaryInstruction extends Instruction {
 		if(opNASM.equals("div") || opNASM.equals("mod")){
 			str.append(Translator.getInstruction("mov", "rax", PhysicalTarget.toString()));
 			str.append(Translator.getInstruction("mov", "rcx", PhysicalSource.toString()));
-			str.append(Translator.getInstruction("mov", "rdx", "0"));
 			str.append(Translator.getInstruction("cqo"));
 			str.append(Translator.getInstruction("idiv", "rcx"));
 			if(opNASM.equals("div")){

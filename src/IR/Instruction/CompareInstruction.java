@@ -21,8 +21,14 @@ public class CompareInstruction extends Instruction {
 		if(leftOperand instanceof VirtualRegister){
 			useSet.add((VirtualRegister) leftOperand);
 		}
+		if(leftOperand instanceof Address){
+			useSet.add(((Address) leftOperand).base);
+		}
 		if(rightOperand instanceof VirtualRegister){
 			useSet.add((VirtualRegister) rightOperand);
+		}
+		if(rightOperand instanceof Address){
+			useSet.add(((Address) rightOperand).base);
 		}
 	}
 	@Override

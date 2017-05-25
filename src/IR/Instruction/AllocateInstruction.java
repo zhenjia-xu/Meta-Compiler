@@ -1,10 +1,13 @@
 package IR.Instruction;
 
+import IR.Address;
 import IR.Operand;
 import IR.RegisterManager;
 import IR.VirtualRegister;
 import Translation.PhysicalOperand.PhysicalOperand;
 import Translation.Translator;
+
+import java.nio.file.AccessDeniedException;
 
 public class AllocateInstruction extends Instruction {
 	private VirtualRegister target;
@@ -16,6 +19,9 @@ public class AllocateInstruction extends Instruction {
 		killSet.add(target);
 		if(allocateSize instanceof VirtualRegister){
 			useSet.add((VirtualRegister) allocateSize);
+		}
+		if(allocateSize instanceof Address){
+			useSet.add(((Address) allocateSize).base);
 		}
 	}
 

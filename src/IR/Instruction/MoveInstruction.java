@@ -22,8 +22,14 @@ public class MoveInstruction extends Instruction{
 		if(target instanceof VirtualRegister){
 			killSet.add((VirtualRegister) target);
 		}
+		if(target instanceof Address){
+			useSet.add(((Address) target).base);
+		}
 		if(source instanceof VirtualRegister){
 			useSet.add((VirtualRegister) source);
+		}
+		if(source instanceof Address){
+			useSet.add(((Address) source).base);
 		}
 	}
 

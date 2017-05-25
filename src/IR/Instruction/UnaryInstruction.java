@@ -1,9 +1,6 @@
 package IR.Instruction;
 
-import IR.ImmediateOperand;
-import IR.Operand;
-import IR.RegisterManager;
-import IR.VirtualRegister;
+import IR.*;
 import Translation.PhysicalOperand.PhysicalOperand;
 import Translation.Translator;
 import Utility.RuntimeError;
@@ -24,6 +21,9 @@ public class UnaryInstruction extends Instruction{
 		if(target instanceof VirtualRegister){
 			killSet.add((VirtualRegister) target);
 			useSet.add((VirtualRegister) target);
+		}
+		if(target instanceof Address){
+			useSet.add(((Address) target).base);
 		}
 	}
 

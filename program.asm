@@ -4,7 +4,7 @@ SECTION .text
 a:
     push                  rbp
      mov                  rbp,                  rsp
-     sub                  rsp,                   48
+     sub                  rsp,                  160
 a.0.enter:
      mov      qword [rbp - 8],                  rdi
      mov     qword [rbp - 16],                  rsi
@@ -14,15 +14,71 @@ a.0.enter:
      mov     qword [rbp - 48],                   r9
      mov                  rdi,     qword [rbp + 16]
     call             printInt
+     mov                  rax,      qword [rbp - 8]
+     mov     qword [rbp - 56],                  rax
+     mov                  rax,     qword [rbp - 16]
+     add     qword [rbp - 56],                  rax
+     mov                  rax,     qword [rbp - 56]
+     mov     qword [rbp - 64],                  rax
+     mov                  rax,     qword [rbp - 24]
+     add     qword [rbp - 64],                  rax
+     mov                  rax,     qword [rbp - 64]
+     mov     qword [rbp - 72],                  rax
+     mov                  rax,     qword [rbp - 32]
+     add     qword [rbp - 72],                  rax
+     mov                  rax,     qword [rbp - 72]
+     mov     qword [rbp - 80],                  rax
+     mov                  rax,     qword [rbp - 40]
+     add     qword [rbp - 80],                  rax
+     mov                  rax,     qword [rbp - 80]
+     mov     qword [rbp - 88],                  rax
+     mov                  rax,     qword [rbp - 48]
+     add     qword [rbp - 88],                  rax
+     mov                  rax,     qword [rbp - 88]
+     mov     qword [rbp - 96],                  rax
+     mov                  rax,     qword [rbp + 16]
+     add     qword [rbp - 96],                  rax
+     mov                  rax,     qword [rbp - 96]
+     mov    qword [rbp - 104],                  rax
+     mov                  rax,     qword [rbp + 24]
+     add    qword [rbp - 104],                  rax
+     mov                  rax,    qword [rbp - 104]
+     mov    qword [rbp - 112],                  rax
+     mov                  rax,     qword [rbp + 32]
+     add    qword [rbp - 112],                  rax
+     mov                  rax,    qword [rbp - 112]
+     mov    qword [rbp - 120],                  rax
+     mov                  rax,     qword [rbp + 40]
+     add    qword [rbp - 120],                  rax
+     mov                  rax,    qword [rbp - 120]
+     mov    qword [rbp - 128],                  rax
+     mov                  rax,     qword [rbp + 48]
+     add    qword [rbp - 128],                  rax
+     mov                  rax,    qword [rbp - 128]
+     mov    qword [rbp - 136],                  rax
+     mov                  rax,     qword [rbp + 56]
+     add    qword [rbp - 136],                  rax
+     mov                  rax,    qword [rbp - 136]
+     mov    qword [rbp - 144],                  rax
+     mov                  rax,     qword [rbp + 64]
+     add    qword [rbp - 144],                  rax
+     mov                  rax,    qword [rbp - 144]
+     mov    qword [rbp - 152],                  rax
+     mov                  rax,     qword [rbp + 72]
+     add    qword [rbp - 152],                  rax
+     mov                  rax,    qword [rbp - 152]
+     mov    qword [rbp - 160],                  rax
+     mov                  rax,     qword [rbp + 80]
+     add    qword [rbp - 160],                  rax
+     mov                  rax,    qword [rbp - 160]
 a.1.exit:
-     add                  rsp,                   48
+     add                  rsp,                  160
      pop                  rbp
      ret
 @GlobalDeclaration:
     push                  rbp
      mov                  rbp,                  rsp
      sub                  rsp,                    0
-@GlobalDeclaration.0.enter:
 @GlobalDeclaration.1.exit:
      add                  rsp,                    0
      pop                  rbp
@@ -58,7 +114,6 @@ main.0.enter:
      mov                  rdi,     qword [rbp - 16]
     call              println
      mov                  rax,                    0
-     jmp          main.1.exit
 main.1.exit:
      add                  rsp,                   16
      pop                  rbp
