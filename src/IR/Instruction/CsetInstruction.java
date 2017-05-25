@@ -17,10 +17,10 @@ public class CsetInstruction extends Instruction {
 		put("rcx", "cl");
 		put("rdx", "dl");
 		put("rbx", "bl");
-		put("rsp", "sp");
-		put("rbp", "bp");
-		put("rsi", "si");
-		put("rdi", "di");
+		put("rsp", "spl");
+		put("rbp", "bpl");
+		put("rsi", "sil");
+		put("rdi", "dil");
 		put("r8", "r8b");
 		put("r9", "r9b");
 		put("r10", "r10b");

@@ -13,6 +13,8 @@ public class RegisterAllocator {
 	static private List<String> physicalRegister = new ArrayList<String>(){{
 		add("rbx");
 		add("rsi");add("rdi");
+		add("r8");add("r9");add("r10");add("r11");
+		add("r12");add("r13");add("r14");add("r15");
 	}};
 	static public void allocate(Map<VirtualRegister, Integer> virtualRegisterIntegerMap, Map<VirtualRegister, Set<VirtualRegister>> edgeMap){
 		RegisterAllocator.edgeMap = edgeMap;
@@ -42,6 +44,10 @@ public class RegisterAllocator {
 				listAllocate.remove(listAllocate.size() - 1);
 			}
 		}
+		coloring(listAllocate);
+		for(VirtualRegister reg: mapping.keySet()){
+			reg.realRegister = mapping.get(reg);
+		}
 	}
 	static private boolean coloring(List<VirtualRegister> list_in){
 		List<VirtualRegister> list = new ArrayList<>(list_in);
@@ -62,7 +68,16 @@ public class RegisterAllocator {
 			}
 		});
 		for(VirtualRegister reg: list){
-
+			boolean flag = false;
+			for(String name: physicalRegister){
+				if(tryColor(reg, name)){
+					flag = true;
+					break;
+				}
+			}
+			if(!flag){
+				return false;
+			}
 		}
 		return true;
 	}

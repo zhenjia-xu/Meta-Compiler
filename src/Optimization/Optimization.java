@@ -10,8 +10,8 @@ public class Optimization {
 			return;
 		}
 		for(FunctionIR functionIR: ProgramIR.functionMap.values()) {
-			//LivenessAnalysis.analysis(functionIR);
-			NaiveOptimize.Optimize(functionIR);
+			LivenessAnalysis.analysis(functionIR);
+			//NaiveOptimize.Optimize(functionIR);
 		}
 	}
 }

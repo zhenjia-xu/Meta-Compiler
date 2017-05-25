@@ -25,11 +25,13 @@ public class LivenessAnalysis {
 		calculateBlock(functionIR);
 		calculateInstruction(functionIR);
 		RegisterAllocator.allocate(virtualRegisterMap, edgeMap);
+		/*
 		System.out.println(functionIR.getName());
 		for(VirtualRegister reg: edgeMap.keySet()){
 			System.out.println(reg);
 			System.out.println(edgeMap.get(reg));
 		}
+		*/
 	}
 	static private void calculateInstruction(FunctionIR functionIR){
 		for(Block block: functionIR.blockList){
