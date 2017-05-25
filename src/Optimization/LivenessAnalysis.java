@@ -60,7 +60,8 @@ public class LivenessAnalysis {
 				if(instruction instanceof MoveInstruction){
 					for(VirtualRegister reg1: instruction.killSet)
 						for(VirtualRegister reg2: instruction.liveOut){
-							if(!instruction.useSet.contains(reg2)) {
+							//if(!instruction.useSet.contains(reg2))
+							{
 								addEdge(reg1, reg2);
 							}
 						}
