@@ -5,12 +5,6 @@ SECTION .text
     push                  rbp
      mov                  rbp,                  rsp
      sub                  rsp,                    0
-@GlobalDeclaration.0.enter:
-     mov       qword [@h - 0],                   99
-     mov       qword [@i - 0],                  100
-     mov       qword [@j - 0],                  101
-     mov       qword [@k - 0],                  102
-     mov   qword [@total - 0],                    0
 @GlobalDeclaration.1.exit:
      add                  rsp,                    0
      pop                  rbp
@@ -20,488 +14,1317 @@ main:
      mov                  rbp,                  rsp
     call   @GlobalDeclaration
     push                  rbx
+    push                  r12
+    push                  r13
      sub                  rsp,                    0
 main.0.enter:
-     mov       qword [@N - 0],                   17
-     mov                  rbx,                    1
-     jmp main.146.loop_condition
+     mov                  rbx,                    0
+     jmp main.12.loop_condition
 main.1.loop_body:
-     mov                  rsi,                    1
-     jmp main.143.loop_condition
-main.2.loop_body:
-     mov                  rdi,                    1
-     jmp main.140.loop_condition
-main.3.loop_body:
-     mov                   r8,                    1
-     jmp main.137.loop_condition
-main.4.loop_body:
-     mov                   r9,                    1
-     jmp main.134.loop_condition
-main.5.loop_body:
-     mov                  r10,                    1
-     jmp main.131.loop_condition
-main.6.loop_body:
-     cmp                  rbx,                  rsi
-     mov                  r11,                    0
-   setne                 r11b
-     cmp                  r11,                    1
-      je  main.8.logical_true
-main.7.logical_false:
-     mov                  r11,                    0
-     jmp  main.9.logical_exit
-main.8.logical_true:
-     cmp                  rbx,                  rdi
-     mov                  r11,                    0
-   setne                 r11b
-main.9.logical_exit:
-     cmp                  r11,                    1
-      je main.11.logical_true
-main.10.logical_false:
-     mov                  r11,                    0
-     jmp main.12.logical_exit
-main.11.logical_true:
-     cmp                  rbx,                   r8
-     mov                  r11,                    0
-   setne                 r11b
-main.12.logical_exit:
-     cmp                  r11,                    1
-      je main.14.logical_true
-main.13.logical_false:
-     mov                  r11,                    0
-     jmp main.15.logical_exit
-main.14.logical_true:
-     cmp                  rbx,                   r9
-     mov                  r11,                    0
-   setne                 r11b
-main.15.logical_exit:
-     cmp                  r11,                    1
-      je main.17.logical_true
-main.16.logical_false:
-     mov                  r11,                    0
-     jmp main.18.logical_exit
-main.17.logical_true:
-     cmp                  rbx,                  r10
-     mov                  r11,                    0
-   setne                 r11b
-main.18.logical_exit:
-     cmp                  r11,                    1
-      je main.20.logical_true
-main.19.logical_false:
-     mov                  r11,                    0
-     jmp main.21.logical_exit
-main.20.logical_true:
-     cmp                  rbx,       qword [@h - 0]
-     mov                  r11,                    0
-   setne                 r11b
-main.21.logical_exit:
-     cmp                  r11,                    1
-      je main.23.logical_true
-main.22.logical_false:
-     mov                  r11,                    0
-     jmp main.24.logical_exit
-main.23.logical_true:
-     cmp                  rbx,       qword [@i - 0]
-     mov                  r11,                    0
-   setne                 r11b
-main.24.logical_exit:
-     cmp                  r11,                    1
-      je main.26.logical_true
-main.25.logical_false:
-     mov                  r11,                    0
-     jmp main.27.logical_exit
-main.26.logical_true:
-     cmp                  rbx,       qword [@j - 0]
-     mov                  r11,                    0
-   setne                 r11b
-main.27.logical_exit:
-     cmp                  r11,                    1
-      je main.29.logical_true
-main.28.logical_false:
-     mov                  r11,                    0
-     jmp main.30.logical_exit
-main.29.logical_true:
-     cmp                  rbx,       qword [@k - 0]
-     mov                  r11,                    0
-   setne                 r11b
-main.30.logical_exit:
-     cmp                  r11,                    1
-      je main.32.logical_true
-main.31.logical_false:
-     mov                  r11,                    0
-     jmp main.33.logical_exit
-main.32.logical_true:
-     cmp                  rsi,                  rdi
-     mov                  r11,                    0
-   setne                 r11b
-main.33.logical_exit:
-     cmp                  r11,                    1
-      je main.35.logical_true
-main.34.logical_false:
-     mov                  r11,                    0
-     jmp main.36.logical_exit
-main.35.logical_true:
-     cmp                  rsi,                   r8
-     mov                  r11,                    0
-   setne                 r11b
-main.36.logical_exit:
-     cmp                  r11,                    1
-      je main.38.logical_true
-main.37.logical_false:
-     mov                  r11,                    0
-     jmp main.39.logical_exit
-main.38.logical_true:
-     cmp                  rsi,                   r9
-     mov                  r11,                    0
-   setne                 r11b
-main.39.logical_exit:
-     cmp                  r11,                    1
-      je main.41.logical_true
-main.40.logical_false:
-     mov                  r11,                    0
-     jmp main.42.logical_exit
-main.41.logical_true:
-     cmp                  rsi,                  r10
-     mov                  r11,                    0
-   setne                 r11b
-main.42.logical_exit:
-     cmp                  r11,                    1
-      je main.44.logical_true
-main.43.logical_false:
-     mov                  r11,                    0
-     jmp main.45.logical_exit
-main.44.logical_true:
-     cmp                  rsi,       qword [@h - 0]
-     mov                  r11,                    0
-   setne                 r11b
-main.45.logical_exit:
-     cmp                  r11,                    1
-      je main.47.logical_true
-main.46.logical_false:
-     mov                  r11,                    0
-     jmp main.48.logical_exit
-main.47.logical_true:
-     cmp                  rsi,       qword [@i - 0]
-     mov                  r11,                    0
-   setne                 r11b
-main.48.logical_exit:
-     cmp                  r11,                    1
-      je main.50.logical_true
-main.49.logical_false:
-     mov                  r11,                    0
-     jmp main.51.logical_exit
-main.50.logical_true:
-     cmp                  rsi,       qword [@j - 0]
-     mov                  r11,                    0
-   setne                 r11b
-main.51.logical_exit:
-     cmp                  r11,                    1
-      je main.53.logical_true
-main.52.logical_false:
-     mov                  r11,                    0
-     jmp main.54.logical_exit
-main.53.logical_true:
-     cmp                  rsi,       qword [@k - 0]
-     mov                  r11,                    0
-   setne                 r11b
-main.54.logical_exit:
-     cmp                  r11,                    1
-      je main.56.logical_true
-main.55.logical_false:
-     mov                  r11,                    0
-     jmp main.57.logical_exit
-main.56.logical_true:
-     cmp                  rdi,                   r8
-     mov                  r11,                    0
-   setne                 r11b
-main.57.logical_exit:
-     cmp                  r11,                    1
-      je main.59.logical_true
-main.58.logical_false:
-     mov                  r11,                    0
-     jmp main.60.logical_exit
-main.59.logical_true:
-     cmp                  rdi,                   r9
-     mov                  r11,                    0
-   setne                 r11b
-main.60.logical_exit:
-     cmp                  r11,                    1
-      je main.62.logical_true
-main.61.logical_false:
-     mov                  r11,                    0
-     jmp main.63.logical_exit
-main.62.logical_true:
-     cmp                  rdi,                  r10
-     mov                  r11,                    0
-   setne                 r11b
-main.63.logical_exit:
-     cmp                  r11,                    1
-      je main.65.logical_true
-main.64.logical_false:
-     mov                  r11,                    0
-     jmp main.66.logical_exit
-main.65.logical_true:
-     cmp                  rdi,       qword [@h - 0]
-     mov                  r11,                    0
-   setne                 r11b
-main.66.logical_exit:
-     cmp                  r11,                    1
-      je main.68.logical_true
-main.67.logical_false:
-     mov                  r11,                    0
-     jmp main.69.logical_exit
-main.68.logical_true:
-     cmp                  rdi,       qword [@i - 0]
-     mov                  r11,                    0
-   setne                 r11b
-main.69.logical_exit:
-     cmp                  r11,                    1
-      je main.71.logical_true
-main.70.logical_false:
-     mov                  r11,                    0
-     jmp main.72.logical_exit
-main.71.logical_true:
-     cmp                  rdi,       qword [@j - 0]
-     mov                  r11,                    0
-   setne                 r11b
-main.72.logical_exit:
-     cmp                  r11,                    1
-      je main.74.logical_true
-main.73.logical_false:
-     mov                  r11,                    0
-     jmp main.75.logical_exit
-main.74.logical_true:
-     cmp                  rdi,       qword [@k - 0]
-     mov                  r11,                    0
-   setne                 r11b
-main.75.logical_exit:
-     cmp                  r11,                    1
-      je main.77.logical_true
-main.76.logical_false:
-     mov                  r11,                    0
-     jmp main.78.logical_exit
-main.77.logical_true:
-     cmp                   r8,                   r9
-     mov                  r11,                    0
-   setne                 r11b
-main.78.logical_exit:
-     cmp                  r11,                    1
-      je main.80.logical_true
-main.79.logical_false:
-     mov                  r11,                    0
-     jmp main.81.logical_exit
-main.80.logical_true:
-     cmp                   r8,                  r10
-     mov                  r11,                    0
-   setne                 r11b
-main.81.logical_exit:
-     cmp                  r11,                    1
-      je main.83.logical_true
-main.82.logical_false:
-     mov                  r11,                    0
-     jmp main.84.logical_exit
-main.83.logical_true:
-     cmp                   r8,       qword [@h - 0]
-     mov                  r11,                    0
-   setne                 r11b
-main.84.logical_exit:
-     cmp                  r11,                    1
-      je main.86.logical_true
-main.85.logical_false:
-     mov                  r11,                    0
-     jmp main.87.logical_exit
-main.86.logical_true:
-     cmp                   r8,       qword [@i - 0]
-     mov                  r11,                    0
-   setne                 r11b
-main.87.logical_exit:
-     cmp                  r11,                    1
-      je main.89.logical_true
-main.88.logical_false:
-     mov                  r11,                    0
-     jmp main.90.logical_exit
-main.89.logical_true:
-     cmp                   r8,       qword [@j - 0]
-     mov                  r11,                    0
-   setne                 r11b
-main.90.logical_exit:
-     cmp                  r11,                    1
-      je main.92.logical_true
-main.91.logical_false:
-     mov                  r11,                    0
-     jmp main.93.logical_exit
-main.92.logical_true:
-     cmp                   r8,       qword [@k - 0]
-     mov                  r11,                    0
-   setne                 r11b
-main.93.logical_exit:
-     cmp                  r11,                    1
-      je main.95.logical_true
-main.94.logical_false:
-     mov                  r11,                    0
-     jmp main.96.logical_exit
-main.95.logical_true:
-     cmp                   r9,                  r10
-     mov                  r11,                    0
-   setne                 r11b
-main.96.logical_exit:
-     cmp                  r11,                    1
-      je main.98.logical_true
-main.97.logical_false:
-     mov                  r11,                    0
-     jmp main.99.logical_exit
-main.98.logical_true:
-     cmp                   r9,       qword [@h - 0]
-     mov                  r11,                    0
-   setne                 r11b
-main.99.logical_exit:
-     cmp                  r11,                    1
-      je main.101.logical_true
-main.100.logical_false:
-     mov                  r11,                    0
-     jmp main.102.logical_exit
-main.101.logical_true:
-     cmp                   r9,       qword [@i - 0]
-     mov                  r11,                    0
-   setne                 r11b
-main.102.logical_exit:
-     cmp                  r11,                    1
-      je main.104.logical_true
-main.103.logical_false:
-     mov                  r11,                    0
-     jmp main.105.logical_exit
-main.104.logical_true:
-     cmp                   r9,       qword [@j - 0]
-     mov                  r11,                    0
-   setne                 r11b
-main.105.logical_exit:
-     cmp                  r11,                    1
-      je main.107.logical_true
-main.106.logical_false:
-     mov                  r11,                    0
-     jmp main.108.logical_exit
-main.107.logical_true:
-     cmp                   r9,       qword [@k - 0]
-     mov                  r11,                    0
-   setne                 r11b
-main.108.logical_exit:
-     cmp                  r11,                    1
-      je main.110.logical_true
-main.109.logical_false:
-     mov                  r11,                    0
-     jmp main.111.logical_exit
-main.110.logical_true:
-     cmp                  r10,       qword [@h - 0]
-     mov                  r11,                    0
-   setne                 r11b
-main.111.logical_exit:
-     cmp                  r11,                    1
-      je main.113.logical_true
-main.112.logical_false:
-     mov                  r11,                    0
-     jmp main.114.logical_exit
-main.113.logical_true:
-     cmp                  r10,       qword [@i - 0]
-     mov                  r11,                    0
-   setne                 r11b
-main.114.logical_exit:
-     cmp                  r11,                    1
-      je main.116.logical_true
-main.115.logical_false:
-     mov                  r11,                    0
-     jmp main.117.logical_exit
-main.116.logical_true:
-     cmp                  r10,       qword [@j - 0]
-     mov                  r11,                    0
-   setne                 r11b
-main.117.logical_exit:
-     cmp                  r11,                    1
-      je main.119.logical_true
-main.118.logical_false:
-     mov                  r11,                    0
-     jmp main.120.logical_exit
-main.119.logical_true:
-     cmp                  r10,       qword [@k - 0]
-     mov                  r11,                    0
-   setne                 r11b
-main.120.logical_exit:
-     cmp                  r11,                    1
-      je main.122.logical_true
-main.121.logical_false:
-     mov                  r11,                    0
-     jmp main.123.logical_exit
-main.122.logical_true:
-     mov                  r11,       qword [@i - 0]
-     cmp                  r11,       qword [@j - 0]
-     mov                  r11,                    0
-   setne                 r11b
-main.123.logical_exit:
-     cmp                  r11,                    1
-      je main.125.logical_true
-main.124.logical_false:
-     mov                  r11,                    0
-     jmp main.126.logical_exit
-main.125.logical_true:
-     mov                  r11,       qword [@h - 0]
-     cmp                  r11,       qword [@k - 0]
-     mov                  r11,                    0
-   setne                 r11b
-main.126.logical_exit:
-     cmp                  r11,                    1
-      je     main.127.if_true
-     jmp main.130.loop_increment
-main.127.if_true:
-     mov                  r11,   qword [@total - 0]
-     add   qword [@total - 0],                    1
-main.130.loop_increment:
-     add                  r10,                    1
-main.131.loop_condition:
-     cmp                  r10,       qword [@N - 0]
-     mov                  r11,                    0
-   setle                 r11b
-     cmp                  r11,                    1
-      je     main.6.loop_body
-main.133.loop_increment:
-     add                   r9,                    1
-main.134.loop_condition:
-     cmp                   r9,       qword [@N - 0]
-     mov                  r10,                    0
-   setle                 r10b
-     cmp                  r10,                    1
-      je     main.5.loop_body
-main.136.loop_increment:
-     add                   r8,                    1
-main.137.loop_condition:
-     cmp                   r8,       qword [@N - 0]
-     mov                   r9,                    0
-   setle                  r9b
-     cmp                   r9,                    1
-      je     main.4.loop_body
-main.139.loop_increment:
-     add                  rdi,                    1
-main.140.loop_condition:
-     cmp                  rdi,       qword [@N - 0]
-     mov                   r8,                    0
-   setle                  r8b
-     cmp                   r8,                    1
-      je     main.3.loop_body
-main.142.loop_increment:
+     mov                  rsi,                  rbx
      add                  rsi,                    1
-main.143.loop_condition:
-     cmp                  rsi,       qword [@N - 0]
-     mov                  rdi,                    0
-   setle                  dil
-     cmp                  rdi,                    1
-      je     main.2.loop_body
-main.145.loop_increment:
-     add                  rbx,                    1
-main.146.loop_condition:
-     cmp                  rbx,       qword [@N - 0]
+     mov       qword [@C - 0],                  rsi
+     mov                  rsi,       qword [@C - 0]
+     mov       qword [@B - 0],                  rsi
+     mov                  rsi,       qword [@B - 0]
+     mov       qword [@A - 0],                  rsi
+     jmp main.3.loop_condition
+main.2.loop_body:
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                  rdi,       qword [@A - 0]
+     add                  rdi,       qword [@B - 0]
+     sub                  rsi,                  rdi
+     mov                  rdi,       qword [@C - 0]
+     sub                  rdi,       qword [@A - 0]
+     mov                   r8,                  rdi
+     add                   r8,       qword [@B - 0]
+     mov                  rdi,       qword [@A - 0]
+     add                  rdi,       qword [@B - 0]
+     mov                   r9,                   r8
+     sub                   r9,                  rdi
+     mov                   r8,                  rsi
+     add                   r8,                   r9
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                  rdi,       qword [@A - 0]
+     add                  rdi,       qword [@B - 0]
+     sub                  rsi,                  rdi
+     mov                  rdi,       qword [@C - 0]
+     sub                  rdi,       qword [@A - 0]
+     add                  rdi,       qword [@B - 0]
+     add                  rsi,                  rdi
+     mov                  rdi,                   r8
+     add                  rdi,                  rsi
+     mov                   r9,       qword [@A - 0]
+     add                   r9,       qword [@B - 0]
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     mov                   r8,                  rsi
+     add                   r8,       qword [@B - 0]
+     mov                  rsi,                   r9
+     add                  rsi,                   r8
+     mov                   r8,       qword [@A - 0]
+     add                   r8,       qword [@B - 0]
+     mov                   r9,                  rsi
+     sub                   r9,                   r8
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                   r8,       qword [@A - 0]
+     add                   r8,       qword [@B - 0]
+     sub                  rsi,                   r8
+     mov                   r8,       qword [@C - 0]
+     sub                   r8,       qword [@A - 0]
+     mov                  r10,                   r8
+     add                  r10,       qword [@B - 0]
+     mov                   r8,                  rsi
+     add                   r8,                  r10
+     mov                  rsi,                   r9
+     add                  rsi,                   r8
+     mov                   r8,                  rdi
+     sub                   r8,                  rsi
+     mov                  rdi,       qword [@A - 0]
+     add                  rdi,       qword [@B - 0]
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                   r9,                  rdi
+     add                   r9,                  rsi
+     mov                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                  rdi,       qword [@C - 0]
+     sub                  rdi,       qword [@A - 0]
+     add                  rdi,       qword [@B - 0]
+     add                  rsi,                  rdi
+     mov                  r10,                   r9
+     sub                  r10,                  rsi
+     mov                  rdi,       qword [@A - 0]
+     add                  rdi,       qword [@B - 0]
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                   r9,                  rdi
+     add                   r9,                  rsi
+     mov                  rdi,       qword [@A - 0]
+     add                  rdi,       qword [@B - 0]
+     mov                  rsi,                   r9
+     sub                  rsi,                  rdi
+     mov                   r9,                  r10
+     sub                   r9,                  rsi
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     mov                  rdi,                  rsi
+     add                  rdi,       qword [@B - 0]
+     mov                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     sub                  rdi,                  rsi
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                  r10,                  rdi
+     add                  r10,                  rsi
+     mov                  rdi,       qword [@A - 0]
+     add                  rdi,       qword [@B - 0]
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                  r11,                  rdi
+     add                  r11,                  rsi
+     mov                  rdi,       qword [@A - 0]
+     add                  rdi,       qword [@B - 0]
+     mov                  rsi,                  r11
+     sub                  rsi,                  rdi
+     mov                  rdi,                  r10
+     sub                  rdi,                  rsi
+     mov                  rsi,                   r9
+     add                  rsi,                  rdi
+     mov                   r9,                   r8
+     sub                   r9,                  rsi
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                  rdi,       qword [@A - 0]
+     add                  rdi,       qword [@B - 0]
+     mov                   r8,                  rsi
+     sub                   r8,                  rdi
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                  rdi,       qword [@A - 0]
+     add                  rdi,       qword [@B - 0]
+     sub                  rsi,                  rdi
+     add                   r8,                  rsi
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                  rdi,       qword [@A - 0]
+     add                  rdi,       qword [@B - 0]
+     sub                  rsi,                  rdi
+     mov                  rdi,       qword [@C - 0]
+     sub                  rdi,       qword [@A - 0]
+     add                  rdi,       qword [@B - 0]
+     add                  rsi,                  rdi
+     mov                  r10,                   r8
+     add                  r10,                  rsi
+     mov                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                  rdi,       qword [@C - 0]
+     sub                  rdi,       qword [@A - 0]
+     mov                   r8,                  rdi
+     add                   r8,       qword [@B - 0]
+     mov                  rdi,                  rsi
+     add                  rdi,                   r8
+     mov                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                   r8,                  rdi
+     sub                   r8,                  rsi
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                  rdi,       qword [@A - 0]
+     add                  rdi,       qword [@B - 0]
+     sub                  rsi,                  rdi
+     mov                  rdi,       qword [@C - 0]
+     sub                  rdi,       qword [@A - 0]
+     add                  rdi,       qword [@B - 0]
+     add                  rsi,                  rdi
+     add                   r8,                  rsi
+     mov                  rdi,                  r10
+     sub                  rdi,                   r8
+     mov                  r10,       qword [@A - 0]
+     add                  r10,       qword [@B - 0]
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     mov                   r8,                  rsi
+     add                   r8,       qword [@B - 0]
+     mov                  rsi,                  r10
+     add                  rsi,                   r8
+     mov                   r8,       qword [@A - 0]
+     add                   r8,       qword [@B - 0]
+     mov                  r10,                  rsi
+     sub                  r10,                   r8
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                   r8,       qword [@A - 0]
+     add                   r8,       qword [@B - 0]
+     sub                  rsi,                   r8
+     mov                   r8,       qword [@C - 0]
+     sub                   r8,       qword [@A - 0]
+     add                   r8,       qword [@B - 0]
+     add                  rsi,                   r8
+     add                  r10,                  rsi
+     mov                   r8,       qword [@A - 0]
+     add                   r8,       qword [@B - 0]
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     add                   r8,                  rsi
+     mov                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                  r11,                   r8
+     sub                  r11,                  rsi
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                   r8,       qword [@A - 0]
+     add                   r8,       qword [@B - 0]
+     sub                  rsi,                   r8
+     mov                   r8,       qword [@C - 0]
+     sub                   r8,       qword [@A - 0]
+     add                   r8,       qword [@B - 0]
+     add                  rsi,                   r8
+     mov                   r8,                  r11
+     add                   r8,                  rsi
+     sub                  r10,                   r8
+     mov                  rsi,                  rdi
+     sub                  rsi,                  r10
+     mov                  r11,                   r9
+     add                  r11,                  rsi
+     mov                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                  rdi,       qword [@C - 0]
+     sub                  rdi,       qword [@A - 0]
+     add                  rdi,       qword [@B - 0]
+     mov                   r8,                  rsi
+     add                   r8,                  rdi
+     mov                  rdi,       qword [@A - 0]
+     add                  rdi,       qword [@B - 0]
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     add                  rdi,                  rsi
+     sub                   r8,                  rdi
+     mov                  rdi,       qword [@A - 0]
+     add                  rdi,       qword [@B - 0]
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     add                  rdi,                  rsi
+     mov                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     sub                  rdi,                  rsi
+     sub                   r8,                  rdi
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                   r9,       qword [@A - 0]
+     add                   r9,       qword [@B - 0]
+     mov                  rdi,                  rsi
+     sub                  rdi,                   r9
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     add                  rdi,                  rsi
+     mov                   r9,       qword [@A - 0]
+     add                   r9,       qword [@B - 0]
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                  r10,                   r9
+     add                  r10,                  rsi
+     mov                   r9,       qword [@A - 0]
+     add                   r9,       qword [@B - 0]
+     mov                  rsi,                  r10
+     sub                  rsi,                   r9
+     sub                  rdi,                  rsi
+     mov                  r10,                   r8
+     add                  r10,                  rdi
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                   r8,       qword [@A - 0]
+     add                   r8,       qword [@B - 0]
+     mov                  rdi,                  rsi
+     sub                  rdi,                   r8
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     add                  rdi,                  rsi
+     mov                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                   r8,       qword [@C - 0]
+     sub                   r8,       qword [@A - 0]
+     add                   r8,       qword [@B - 0]
+     add                  rsi,                   r8
+     mov                   r8,       qword [@A - 0]
+     add                   r8,       qword [@B - 0]
+     sub                  rsi,                   r8
+     sub                  rdi,                  rsi
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     mov                   r8,                  rsi
+     add                   r8,       qword [@B - 0]
+     mov                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     sub                   r8,                  rsi
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     add                   r8,                  rsi
+     mov                   r9,       qword [@A - 0]
+     add                   r9,       qword [@B - 0]
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     add                   r9,                  rsi
+     mov                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     sub                   r9,                  rsi
+     mov                  rsi,                   r8
+     sub                  rsi,                   r9
+     add                  rdi,                  rsi
+     mov                  r12,                  r10
+     add                  r12,                  rdi
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     mov                  rdi,                  rsi
+     add                  rdi,       qword [@B - 0]
+     mov                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                   r8,                  rdi
+     sub                   r8,                  rsi
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     mov                  rdi,                  rsi
+     add                  rdi,       qword [@B - 0]
+     mov                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     sub                  rdi,                  rsi
+     mov                  rsi,                   r8
+     add                  rsi,                  rdi
+     mov                  rdi,       qword [@C - 0]
+     sub                  rdi,       qword [@A - 0]
+     add                  rdi,       qword [@B - 0]
+     mov                   r8,       qword [@A - 0]
+     add                   r8,       qword [@B - 0]
+     mov                   r9,                  rdi
+     sub                   r9,                   r8
+     mov                  rdi,       qword [@C - 0]
+     sub                  rdi,       qword [@A - 0]
+     mov                   r8,                  rdi
+     add                   r8,       qword [@B - 0]
+     mov                  rdi,                   r9
+     add                  rdi,                   r8
+     mov                   r8,                  rsi
+     add                   r8,                  rdi
+     mov                  rdi,       qword [@A - 0]
+     add                  rdi,       qword [@B - 0]
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     mov                   r9,                  rsi
+     add                   r9,       qword [@B - 0]
+     mov                  rsi,                  rdi
+     add                  rsi,                   r9
+     mov                   r9,       qword [@A - 0]
+     add                   r9,       qword [@B - 0]
+     mov                  rdi,                  rsi
+     sub                  rdi,                   r9
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                   r9,       qword [@A - 0]
+     add                   r9,       qword [@B - 0]
+     sub                  rsi,                   r9
+     mov                   r9,       qword [@C - 0]
+     sub                   r9,       qword [@A - 0]
+     add                   r9,       qword [@B - 0]
+     add                  rsi,                   r9
+     add                  rdi,                  rsi
+     mov                  r10,                   r8
+     sub                  r10,                  rdi
+     mov                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                  rdi,       qword [@C - 0]
+     sub                  rdi,       qword [@A - 0]
+     add                  rdi,       qword [@B - 0]
+     add                  rsi,                  rdi
+     mov                  rdi,       qword [@A - 0]
+     add                  rdi,       qword [@B - 0]
+     mov                   r8,                  rsi
+     sub                   r8,                  rdi
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                  rdi,       qword [@A - 0]
+     add                  rdi,       qword [@B - 0]
+     sub                  rsi,                  rdi
+     mov                  rdi,       qword [@C - 0]
+     sub                  rdi,       qword [@A - 0]
+     add                  rdi,       qword [@B - 0]
+     add                  rsi,                  rdi
+     mov                   r9,                   r8
+     add                   r9,                  rsi
+     mov                   r8,       qword [@A - 0]
+     add                   r8,       qword [@B - 0]
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     mov                  rdi,                  rsi
+     add                  rdi,       qword [@B - 0]
+     mov                  rsi,                   r8
+     add                  rsi,                  rdi
+     mov                  rdi,       qword [@A - 0]
+     add                  rdi,       qword [@B - 0]
+     sub                  rsi,                  rdi
+     mov                  rdi,       qword [@C - 0]
+     sub                  rdi,       qword [@A - 0]
+     add                  rdi,       qword [@B - 0]
+     mov                   r8,       qword [@A - 0]
+     add                   r8,       qword [@B - 0]
+     sub                  rdi,                   r8
+     mov                   r8,       qword [@C - 0]
+     sub                   r8,       qword [@A - 0]
+     add                   r8,       qword [@B - 0]
+     add                  rdi,                   r8
+     mov                   r8,                  rsi
+     add                   r8,                  rdi
+     mov                  rsi,                   r9
+     sub                  rsi,                   r8
+     mov                  rdi,                  r10
+     sub                  rdi,                  rsi
+     mov                  rsi,                  r12
+     add                  rsi,                  rdi
+     mov                  rdi,                  r11
+     sub                  rdi,                  rsi
+     mov       qword [@A - 0],                  rdi
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     mov                  rdi,                  rsi
+     add                  rdi,       qword [@B - 0]
+     mov                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     sub                  rdi,                  rsi
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                   r8,       qword [@A - 0]
+     add                   r8,       qword [@B - 0]
+     sub                  rsi,                   r8
+     add                  rdi,                  rsi
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     mov                   r8,                  rsi
+     add                   r8,       qword [@B - 0]
+     mov                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     sub                   r8,                  rsi
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     mov                   r9,                  rsi
+     add                   r9,       qword [@B - 0]
+     mov                  rsi,                   r8
+     add                  rsi,                   r9
+     mov                   r8,                  rdi
+     add                   r8,                  rsi
+     mov                  rdi,       qword [@A - 0]
+     add                  rdi,       qword [@B - 0]
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     add                  rdi,                  rsi
+     mov                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                   r9,                  rdi
+     sub                   r9,                  rsi
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     mov                  rdi,                  rsi
+     add                  rdi,       qword [@B - 0]
+     mov                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     sub                  rdi,                  rsi
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     add                  rdi,                  rsi
+     mov                  rsi,                   r9
+     add                  rsi,                  rdi
+     sub                   r8,                  rsi
+     mov                  rdi,       qword [@A - 0]
+     add                  rdi,       qword [@B - 0]
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                   r9,                  rdi
+     add                   r9,                  rsi
+     mov                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                  rdi,       qword [@C - 0]
+     sub                  rdi,       qword [@A - 0]
+     add                  rdi,       qword [@B - 0]
+     add                  rsi,                  rdi
+     sub                   r9,                  rsi
+     mov                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                  rdi,       qword [@C - 0]
+     sub                  rdi,       qword [@A - 0]
+     add                  rdi,       qword [@B - 0]
+     add                  rsi,                  rdi
+     mov                  rdi,       qword [@A - 0]
+     add                  rdi,       qword [@B - 0]
+     sub                  rsi,                  rdi
+     mov                  r10,                   r9
+     sub                  r10,                  rsi
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                  rdi,       qword [@A - 0]
+     add                  rdi,       qword [@B - 0]
+     mov                   r9,                  rsi
+     sub                   r9,                  rdi
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     add                   r9,                  rsi
+     mov                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                  rdi,       qword [@C - 0]
+     sub                  rdi,       qword [@A - 0]
+     add                  rdi,       qword [@B - 0]
+     add                  rsi,                  rdi
+     mov                  rdi,       qword [@A - 0]
+     add                  rdi,       qword [@B - 0]
+     sub                  rsi,                  rdi
+     mov                  rdi,                   r9
+     sub                  rdi,                  rsi
+     mov                  rsi,                  r10
+     add                  rsi,                  rdi
+     mov                  rdi,                   r8
+     sub                  rdi,                  rsi
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     mov                   r8,                  rsi
+     add                   r8,       qword [@B - 0]
+     mov                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                   r9,                   r8
+     sub                   r9,                  rsi
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     mov                   r8,                  rsi
+     add                   r8,       qword [@B - 0]
+     mov                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     sub                   r8,                  rsi
+     add                   r9,                   r8
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     mov                   r8,                  rsi
+     add                   r8,       qword [@B - 0]
+     mov                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     sub                   r8,                  rsi
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     add                   r8,                  rsi
+     mov                  r10,                   r9
+     add                  r10,                   r8
+     mov                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                   r8,       qword [@C - 0]
+     sub                   r8,       qword [@A - 0]
+     add                   r8,       qword [@B - 0]
+     mov                   r9,                  rsi
+     add                   r9,                   r8
+     mov                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                   r8,                   r9
+     sub                   r8,                  rsi
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                   r9,       qword [@A - 0]
+     add                   r9,       qword [@B - 0]
+     mov                  r11,                  rsi
+     sub                  r11,                   r9
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                   r9,                  r11
+     add                   r9,                  rsi
+     mov                  rsi,                   r8
+     add                  rsi,                   r9
+     mov                   r9,                  r10
+     sub                   r9,                  rsi
+     mov                   r8,       qword [@A - 0]
+     add                   r8,       qword [@B - 0]
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     add                   r8,                  rsi
+     mov                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                  r10,                   r8
+     sub                  r10,                  rsi
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     mov                   r8,                  rsi
+     add                   r8,       qword [@B - 0]
+     mov                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     sub                   r8,                  rsi
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     add                   r8,                  rsi
+     add                  r10,                   r8
+     mov                   r8,       qword [@A - 0]
+     add                   r8,       qword [@B - 0]
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     add                   r8,                  rsi
+     mov                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                  r11,                   r8
+     sub                  r11,                  rsi
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     mov                   r8,                  rsi
+     add                   r8,       qword [@B - 0]
+     mov                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     sub                   r8,                  rsi
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     add                   r8,                  rsi
+     mov                  rsi,                  r11
+     add                  rsi,                   r8
+     mov                   r8,                  r10
+     sub                   r8,                  rsi
+     mov                  rsi,                   r9
+     sub                  rsi,                   r8
+     mov                  r11,                  rdi
+     add                  r11,                  rsi
+     mov                  rdi,       qword [@A - 0]
+     add                  rdi,       qword [@B - 0]
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     add                  rdi,                  rsi
+     mov                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                   r8,       qword [@C - 0]
+     sub                   r8,       qword [@A - 0]
+     add                   r8,       qword [@B - 0]
+     add                  rsi,                   r8
+     sub                  rdi,                  rsi
+     mov                   r9,       qword [@A - 0]
+     add                   r9,       qword [@B - 0]
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     mov                   r8,                  rsi
+     add                   r8,       qword [@B - 0]
+     mov                  rsi,                   r9
+     add                  rsi,                   r8
+     mov                   r8,       qword [@A - 0]
+     add                   r8,       qword [@B - 0]
+     sub                  rsi,                   r8
+     mov                   r8,                  rdi
+     sub                   r8,                  rsi
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                  rdi,       qword [@A - 0]
+     add                  rdi,       qword [@B - 0]
+     sub                  rsi,                  rdi
+     mov                  rdi,       qword [@C - 0]
+     sub                  rdi,       qword [@A - 0]
+     mov                   r9,                  rdi
+     add                   r9,       qword [@B - 0]
+     mov                  rdi,                  rsi
+     add                  rdi,                   r9
+     mov                   r9,       qword [@A - 0]
+     add                   r9,       qword [@B - 0]
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     add                   r9,                  rsi
+     mov                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     sub                   r9,                  rsi
+     mov                  rsi,                  rdi
+     sub                  rsi,                   r9
+     add                   r8,                  rsi
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                  rdi,       qword [@A - 0]
+     add                  rdi,       qword [@B - 0]
+     mov                   r9,                  rsi
+     sub                   r9,                  rdi
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     add                   r9,                  rsi
+     mov                  rdi,       qword [@A - 0]
+     add                  rdi,       qword [@B - 0]
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     add                  rdi,                  rsi
+     mov                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     sub                  rdi,                  rsi
+     mov                  r10,                   r9
+     sub                  r10,                  rdi
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     mov                  rdi,                  rsi
+     add                  rdi,       qword [@B - 0]
+     mov                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                   r9,                  rdi
+     sub                   r9,                  rsi
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     mov                  rdi,                  rsi
+     add                  rdi,       qword [@B - 0]
+     mov                  rsi,                   r9
+     add                  rsi,                  rdi
+     mov                   r9,       qword [@A - 0]
+     add                   r9,       qword [@B - 0]
+     mov                  rdi,       qword [@C - 0]
+     sub                  rdi,       qword [@A - 0]
+     add                  rdi,       qword [@B - 0]
+     add                   r9,                  rdi
+     mov                  rdi,       qword [@A - 0]
+     add                  rdi,       qword [@B - 0]
+     sub                   r9,                  rdi
+     sub                  rsi,                   r9
+     mov                  rdi,                  r10
+     add                  rdi,                  rsi
+     add                   r8,                  rdi
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                   r9,       qword [@A - 0]
+     add                   r9,       qword [@B - 0]
+     mov                  rdi,                  rsi
+     sub                  rdi,                   r9
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                   r9,       qword [@A - 0]
+     add                   r9,       qword [@B - 0]
+     sub                  rsi,                   r9
+     mov                   r9,                  rdi
+     add                   r9,                  rsi
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     mov                  rdi,                  rsi
+     add                  rdi,       qword [@B - 0]
+     mov                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     sub                  rdi,                  rsi
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     mov                  r10,                  rsi
+     add                  r10,       qword [@B - 0]
+     mov                  rsi,                  rdi
+     add                  rsi,                  r10
+     add                   r9,                  rsi
+     mov                  r10,       qword [@A - 0]
+     add                  r10,       qword [@B - 0]
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     mov                  rdi,                  rsi
+     add                  rdi,       qword [@B - 0]
+     mov                  rsi,                  r10
+     add                  rsi,                  rdi
+     mov                  rdi,       qword [@A - 0]
+     add                  rdi,       qword [@B - 0]
+     mov                  r10,                  rsi
+     sub                  r10,                  rdi
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                  rdi,       qword [@A - 0]
+     add                  rdi,       qword [@B - 0]
+     sub                  rsi,                  rdi
+     mov                  rdi,       qword [@C - 0]
+     sub                  rdi,       qword [@A - 0]
+     add                  rdi,       qword [@B - 0]
+     add                  rsi,                  rdi
+     mov                  rdi,                  r10
+     add                  rdi,                  rsi
+     mov                  r10,                   r9
+     sub                  r10,                  rdi
+     mov                  rdi,       qword [@A - 0]
+     add                  rdi,       qword [@B - 0]
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     add                  rdi,                  rsi
+     mov                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                   r9,                  rdi
+     sub                   r9,                  rsi
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                  rdi,       qword [@A - 0]
+     add                  rdi,       qword [@B - 0]
+     sub                  rsi,                  rdi
+     mov                  rdi,       qword [@C - 0]
+     sub                  rdi,       qword [@A - 0]
+     add                  rdi,       qword [@B - 0]
+     add                  rsi,                  rdi
+     add                   r9,                  rsi
+     mov                  rdi,       qword [@A - 0]
+     add                  rdi,       qword [@B - 0]
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     add                  rdi,                  rsi
+     mov                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                  r13,                  rdi
+     sub                  r13,                  rsi
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                  rdi,       qword [@A - 0]
+     add                  rdi,       qword [@B - 0]
+     sub                  rsi,                  rdi
+     mov                  rdi,       qword [@C - 0]
+     sub                  rdi,       qword [@A - 0]
+     mov                  r12,                  rdi
+     add                  r12,       qword [@B - 0]
+     mov                  rdi,                  rsi
+     add                  rdi,                  r12
+     mov                  rsi,                  r13
+     add                  rsi,                  rdi
+     mov                  rdi,                   r9
+     sub                  rdi,                  rsi
+     mov                  rsi,                  r10
+     sub                  rsi,                  rdi
+     mov                  rdi,                   r8
+     add                  rdi,                  rsi
+     mov                  rsi,                  r11
+     sub                  rsi,                  rdi
+     mov       qword [@B - 0],                  rsi
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     mov                  rdi,                  rsi
+     add                  rdi,       qword [@B - 0]
+     mov                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                   r8,                  rdi
+     sub                   r8,                  rsi
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                  rdi,       qword [@A - 0]
+     add                  rdi,       qword [@B - 0]
+     sub                  rsi,                  rdi
+     add                   r8,                  rsi
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                  rdi,       qword [@A - 0]
+     add                  rdi,       qword [@B - 0]
+     sub                  rsi,                  rdi
+     mov                  rdi,       qword [@C - 0]
+     sub                  rdi,       qword [@A - 0]
+     add                  rdi,       qword [@B - 0]
+     add                  rsi,                  rdi
+     mov                  r10,                   r8
+     add                  r10,                  rsi
+     mov                   r8,       qword [@A - 0]
+     add                   r8,       qword [@B - 0]
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     mov                  rdi,                  rsi
+     add                  rdi,       qword [@B - 0]
+     mov                  rsi,                   r8
+     add                  rsi,                  rdi
+     mov                   r8,       qword [@A - 0]
+     add                   r8,       qword [@B - 0]
+     mov                  rdi,                  rsi
+     sub                  rdi,                   r8
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                   r8,       qword [@A - 0]
+     add                   r8,       qword [@B - 0]
+     sub                  rsi,                   r8
+     mov                   r8,       qword [@C - 0]
+     sub                   r8,       qword [@A - 0]
+     mov                   r9,                   r8
+     add                   r9,       qword [@B - 0]
+     mov                   r8,                  rsi
+     add                   r8,                   r9
+     mov                  rsi,                  rdi
+     add                  rsi,                   r8
+     mov                   r9,                  r10
+     sub                   r9,                  rsi
+     mov                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                  rdi,       qword [@C - 0]
+     sub                  rdi,       qword [@A - 0]
+     add                  rdi,       qword [@B - 0]
+     add                  rsi,                  rdi
+     mov                   r8,       qword [@A - 0]
+     add                   r8,       qword [@B - 0]
+     mov                  rdi,       qword [@C - 0]
+     sub                  rdi,       qword [@A - 0]
+     add                  rdi,       qword [@B - 0]
+     mov                  r10,                   r8
+     add                  r10,                  rdi
+     mov                   r8,                  rsi
+     sub                   r8,                  r10
+     mov                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                  rdi,       qword [@C - 0]
+     sub                  rdi,       qword [@A - 0]
+     add                  rdi,       qword [@B - 0]
+     add                  rsi,                  rdi
+     mov                  rdi,       qword [@A - 0]
+     add                  rdi,       qword [@B - 0]
+     sub                  rsi,                  rdi
+     mov                  rdi,                   r8
+     sub                  rdi,                  rsi
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     mov                   r8,                  rsi
+     add                   r8,       qword [@B - 0]
+     mov                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     sub                   r8,                  rsi
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                  r10,                   r8
+     add                  r10,                  rsi
+     mov                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                   r8,       qword [@C - 0]
+     sub                   r8,       qword [@A - 0]
+     add                   r8,       qword [@B - 0]
+     add                  rsi,                   r8
+     mov                   r8,       qword [@A - 0]
+     add                   r8,       qword [@B - 0]
+     sub                  rsi,                   r8
+     mov                   r8,                  r10
+     sub                   r8,                  rsi
+     mov                  rsi,                  rdi
+     add                  rsi,                   r8
+     mov                  r10,                   r9
+     sub                  r10,                  rsi
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     mov                  rdi,                  rsi
+     add                  rdi,       qword [@B - 0]
+     mov                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     sub                  rdi,                  rsi
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                   r8,       qword [@A - 0]
+     add                   r8,       qword [@B - 0]
+     sub                  rsi,                   r8
+     mov                   r8,                  rdi
+     add                   r8,                  rsi
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                  rdi,       qword [@A - 0]
+     add                  rdi,       qword [@B - 0]
+     sub                  rsi,                  rdi
+     mov                  rdi,       qword [@C - 0]
+     sub                  rdi,       qword [@A - 0]
+     add                  rdi,       qword [@B - 0]
+     add                  rsi,                  rdi
+     mov                  rdi,                   r8
+     add                  rdi,                  rsi
+     mov                   r8,       qword [@A - 0]
+     add                   r8,       qword [@B - 0]
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     add                   r8,                  rsi
+     mov                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     sub                   r8,                  rsi
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                   r9,       qword [@A - 0]
+     add                   r9,       qword [@B - 0]
+     sub                  rsi,                   r9
+     mov                   r9,       qword [@C - 0]
+     sub                   r9,       qword [@A - 0]
+     add                   r9,       qword [@B - 0]
+     add                  rsi,                   r9
+     mov                   r9,                   r8
+     add                   r9,                  rsi
+     mov                   r8,                  rdi
+     sub                   r8,                   r9
+     mov                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                  rdi,       qword [@C - 0]
+     sub                  rdi,       qword [@A - 0]
+     mov                   r9,                  rdi
+     add                   r9,       qword [@B - 0]
+     mov                  rdi,                  rsi
+     add                  rdi,                   r9
+     mov                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     sub                  rdi,                  rsi
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                  r11,       qword [@A - 0]
+     add                  r11,       qword [@B - 0]
+     mov                   r9,                  rsi
+     sub                   r9,                  r11
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     add                   r9,                  rsi
+     mov                  r11,                  rdi
+     add                  r11,                   r9
+     mov                  rdi,       qword [@A - 0]
+     add                  rdi,       qword [@B - 0]
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     add                  rdi,                  rsi
+     mov                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     sub                  rdi,                  rsi
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                   r9,       qword [@A - 0]
+     add                   r9,       qword [@B - 0]
+     mov                  r12,                  rsi
+     sub                  r12,                   r9
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                   r9,                  r12
+     add                   r9,                  rsi
+     mov                  rsi,                  rdi
+     add                  rsi,                   r9
+     mov                  rdi,                  r11
+     sub                  rdi,                  rsi
+     mov                  rsi,                   r8
+     sub                  rsi,                  rdi
+     mov                  rdi,                  r10
+     add                  rdi,                  rsi
+     mov                   r8,       qword [@A - 0]
+     add                   r8,       qword [@B - 0]
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                   r9,                   r8
+     add                   r9,                  rsi
+     mov                   r8,       qword [@A - 0]
+     add                   r8,       qword [@B - 0]
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     add                   r8,                  rsi
+     sub                   r9,                   r8
+     mov                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                   r8,       qword [@C - 0]
+     sub                   r8,       qword [@A - 0]
+     mov                  r10,                   r8
+     add                  r10,       qword [@B - 0]
+     mov                   r8,                  rsi
+     add                   r8,                  r10
+     mov                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                  r10,                   r8
+     sub                  r10,                  rsi
+     mov                   r8,                   r9
+     sub                   r8,                  r10
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                   r9,       qword [@A - 0]
+     add                   r9,       qword [@B - 0]
+     sub                  rsi,                   r9
+     mov                   r9,       qword [@C - 0]
+     sub                   r9,       qword [@A - 0]
+     mov                  r10,                   r9
+     add                  r10,       qword [@B - 0]
+     mov                   r9,                  rsi
+     add                   r9,                  r10
+     mov                  r10,       qword [@A - 0]
+     add                  r10,       qword [@B - 0]
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     mov                  r11,                  rsi
+     add                  r11,       qword [@B - 0]
+     mov                  rsi,                  r10
+     add                  rsi,                  r11
+     mov                  r10,       qword [@A - 0]
+     add                  r10,       qword [@B - 0]
+     sub                  rsi,                  r10
+     sub                   r9,                  rsi
+     mov                  rsi,                   r8
+     add                  rsi,                   r9
+     mov                   r8,       qword [@C - 0]
+     sub                   r8,       qword [@A - 0]
+     add                   r8,       qword [@B - 0]
+     mov                   r9,       qword [@A - 0]
+     add                   r9,       qword [@B - 0]
+     sub                   r8,                   r9
+     mov                   r9,       qword [@C - 0]
+     sub                   r9,       qword [@A - 0]
+     add                   r9,       qword [@B - 0]
+     mov                  r10,                   r8
+     add                  r10,                   r9
+     mov                   r9,       qword [@A - 0]
+     add                   r9,       qword [@B - 0]
+     mov                   r8,       qword [@C - 0]
+     sub                   r8,       qword [@A - 0]
+     mov                  r11,                   r8
+     add                  r11,       qword [@B - 0]
+     mov                   r8,                   r9
+     add                   r8,                  r11
+     mov                   r9,       qword [@A - 0]
+     add                   r9,       qword [@B - 0]
+     sub                   r8,                   r9
+     mov                  r11,                  r10
+     sub                  r11,                   r8
+     mov                   r8,       qword [@C - 0]
+     sub                   r8,       qword [@A - 0]
+     add                   r8,       qword [@B - 0]
+     mov                   r9,       qword [@A - 0]
+     add                   r9,       qword [@B - 0]
+     mov                  r10,                   r8
+     sub                  r10,                   r9
+     mov                   r8,       qword [@C - 0]
+     sub                   r8,       qword [@A - 0]
+     add                   r8,       qword [@B - 0]
+     add                  r10,                   r8
+     mov                   r8,       qword [@A - 0]
+     add                   r8,       qword [@B - 0]
+     mov                   r9,       qword [@C - 0]
+     sub                   r9,       qword [@A - 0]
+     add                   r9,       qword [@B - 0]
+     add                   r8,                   r9
+     mov                   r9,       qword [@A - 0]
+     add                   r9,       qword [@B - 0]
+     sub                   r8,                   r9
+     mov                   r9,                  r10
+     sub                   r9,                   r8
+     mov                   r8,                  r11
+     add                   r8,                   r9
+     mov                  r12,                  rsi
+     add                  r12,                   r8
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                   r8,       qword [@A - 0]
+     add                   r8,       qword [@B - 0]
+     mov                   r9,                  rsi
+     sub                   r9,                   r8
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                   r8,       qword [@A - 0]
+     add                   r8,       qword [@B - 0]
+     sub                  rsi,                   r8
+     mov                   r8,                   r9
+     add                   r8,                  rsi
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     mov                   r9,                  rsi
+     add                   r9,       qword [@B - 0]
+     mov                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     sub                   r9,                  rsi
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     add                   r9,                  rsi
+     mov                  r10,                   r8
+     add                  r10,                   r9
+     mov                   r8,       qword [@A - 0]
+     add                   r8,       qword [@B - 0]
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     add                   r8,                  rsi
+     mov                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     mov                   r9,                   r8
+     sub                   r9,                  rsi
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     mov                   r8,                  rsi
+     add                   r8,       qword [@B - 0]
+     mov                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     sub                   r8,                  rsi
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     mov                  r11,                  rsi
+     add                  r11,       qword [@B - 0]
+     mov                  rsi,                   r8
+     add                  rsi,                  r11
+     add                   r9,                  rsi
+     mov                   r8,                  r10
+     sub                   r8,                   r9
+     mov                   r9,       qword [@A - 0]
+     add                   r9,       qword [@B - 0]
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     add                   r9,                  rsi
+     mov                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     sub                   r9,                  rsi
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     mov                  r10,                  rsi
+     add                  r10,       qword [@B - 0]
+     mov                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     sub                  r10,                  rsi
+     mov                  rsi,       qword [@C - 0]
+     sub                  rsi,       qword [@A - 0]
+     add                  rsi,       qword [@B - 0]
+     add                  r10,                  rsi
+     mov                  rsi,                   r9
+     add                  rsi,                  r10
+     mov                  r11,       qword [@A - 0]
+     add                  r11,       qword [@B - 0]
+     mov                   r9,       qword [@C - 0]
+     sub                   r9,       qword [@A - 0]
+     mov                  r10,                   r9
+     add                  r10,       qword [@B - 0]
+     mov                   r9,                  r11
+     add                   r9,                  r10
+     mov                  r10,       qword [@A - 0]
+     add                  r10,       qword [@B - 0]
+     mov                  r11,                   r9
+     sub                  r11,                  r10
+     mov                   r9,       qword [@C - 0]
+     sub                   r9,       qword [@A - 0]
+     mov                  r10,                   r9
+     add                  r10,       qword [@B - 0]
+     mov                   r9,       qword [@A - 0]
+     add                   r9,       qword [@B - 0]
+     sub                  r10,                   r9
+     mov                   r9,       qword [@C - 0]
+     sub                   r9,       qword [@A - 0]
+     add                   r9,       qword [@B - 0]
+     add                  r10,                   r9
+     mov                   r9,                  r11
+     add                   r9,                  r10
+     sub                  rsi,                   r9
+     sub                   r8,                  rsi
+     mov                   r9,                  r12
+     add                   r9,                   r8
+     mov                  rsi,                  rdi
+     sub                  rsi,                   r9
+     mov       qword [@C - 0],                  rsi
+main.3.loop_condition:
+     cmp       qword [@C - 0],            536870912
      mov                  rsi,                    0
-   setle                  sil
+    setl                  sil
      cmp                  rsi,                    1
-      je     main.1.loop_body
-main.147.loop_exit:
-     mov                  rdi,   qword [@total - 0]
+      je  main.5.logical_true
+main.4.logical_false:
+     mov                  rsi,                    0
+     jmp  main.6.logical_exit
+main.5.logical_true:
+     mov                  rsi,            536870912
+     neg                  rsi
+     cmp       qword [@C - 0],                  rsi
+     mov                  rsi,                    0
+    setg                  sil
+main.6.logical_exit:
+     cmp                  rsi,                    1
+      je     main.2.loop_body
+main.7.loop_exit:
+     mov                  rsi,                  rbx
+     mov                  rax,                  rsi
+     mov                  rcx,                 1000
+     cqo
+    idiv                  rcx
+     mov                  rsi,                  rdx
+     cmp                  rsi,                    0
+     mov                  rsi,                    0
+    sete                  sil
+     cmp                  rsi,                    1
+      je       main.8.if_true
+     jmp main.11.loop_increment
+main.8.if_true:
+     mov                  rdi,       qword [@A - 0]
     push                   r8
     push                   r9
     push                  rsi
@@ -517,8 +1340,112 @@ main.147.loop_exit:
      pop                  rsi
      pop                   r9
      pop                   r8
-     mov                  rbx,                  rax
-     mov                  rdi,                  rbx
+     mov                  rsi,                  rax
+     mov                  rdi,                  rsi
+     mov                  rsi,      __string_const0
+    push                   r8
+    push                   r9
+    push                  rsi
+    push                  r10
+    push                  r11
+    push                  rdi
+     sub                  rsp,                    8
+    call  __string_connection
+     add                  rsp,                    8
+     pop                  rdi
+     pop                  r11
+     pop                  r10
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     mov                  rsi,                  rax
+     mov                  rdi,       qword [@B - 0]
+    push                   r8
+    push                   r9
+    push                  rsi
+    push                  r10
+    push                  r11
+    push                  rdi
+     sub                  rsp,                    8
+    call             toString
+     add                  rsp,                    8
+     pop                  rdi
+     pop                  r11
+     pop                  r10
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     mov                  rdi,                  rax
+     mov                  rdi,                  rsi
+     mov                  rsi,                  rdi
+    push                   r8
+    push                   r9
+    push                  rsi
+    push                  r10
+    push                  r11
+    push                  rdi
+     sub                  rsp,                    8
+    call  __string_connection
+     add                  rsp,                    8
+     pop                  rdi
+     pop                  r11
+     pop                  r10
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     mov                  rsi,                  rax
+     mov                  rdi,                  rsi
+     mov                  rsi,      __string_const1
+    push                   r8
+    push                   r9
+    push                  rsi
+    push                  r10
+    push                  r11
+    push                  rdi
+     sub                  rsp,                    8
+    call  __string_connection
+     add                  rsp,                    8
+     pop                  rdi
+     pop                  r11
+     pop                  r10
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     mov                  rdi,                  rax
+     mov                  rdi,       qword [@C - 0]
+    push                   r8
+    push                   r9
+    push                  rsi
+    push                  r10
+    push                  r11
+    push                  rdi
+     sub                  rsp,                    8
+    call             toString
+     add                  rsp,                    8
+     pop                  rdi
+     pop                  r11
+     pop                  r10
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     mov                  rsi,                  rax
+    push                   r8
+    push                   r9
+    push                  rsi
+    push                  r10
+    push                  r11
+    push                  rdi
+     sub                  rsp,                    8
+    call  __string_connection
+     add                  rsp,                    8
+     pop                  rdi
+     pop                  r11
+     pop                  r10
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     mov                  rsi,                  rax
+     mov                  rdi,                  rsi
     push                   r8
     push                   r9
     push                  rsi
@@ -534,8 +1461,19 @@ main.147.loop_exit:
      pop                  rsi
      pop                   r9
      pop                   r8
+main.11.loop_increment:
+     add                  rbx,                    1
+main.12.loop_condition:
+     cmp                  rbx,              1000000
+     mov                  rsi,                    0
+    setl                  sil
+     cmp                  rsi,                    1
+      je     main.1.loop_body
+main.13.loop_exit:
      mov                  rax,                    0
-main.148.exit:
+main.14.exit:
+     pop                  r13
+     pop                  r12
      pop                  rbx
      add                  rsp,                    0
      pop                  rbp
@@ -725,6 +1663,12 @@ __string_LEEQ:
    setle                   al
      ret
 SECTION .data
+      dq                    1
+__string_const0:
+      db               " ", 0
+      dq                    1
+__string_const1:
+      db               " ", 0
 __printIntFormat:
       db         "%ld", 10, 0
 __printFormat:
@@ -740,17 +1684,11 @@ __toStringFormat:
 __parseIntFormat:
       db             "%ld", 0
 SECTION .bss
-@N:
+@A:
     resq                    1
-@h:
+@B:
     resq                    1
-@i:
-    resq                    1
-@j:
-    resq                    1
-@k:
-    resq                    1
-@total:
+@C:
     resq                    1
 @getIntBuf:
     resq                    1

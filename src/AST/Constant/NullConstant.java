@@ -7,18 +7,21 @@ import Utility.Utility;
 
 import java.util.List;
 
-public class NullConstant extends Constant{
-	public NullConstant(){
+public class NullConstant extends Constant {
+	public NullConstant() {
 		super(NullType.getInstance());
 	}
+
 	@Override
-	public String toString(){
+	public String toString() {
 		return "null constant";
 	}
+
 	@Override
-	public String toString(int indents){
+	public String toString(int indents) {
 		return Utility.getIndent(indents) + "[null constant]\n";
 	}
+
 	@Override
 	public void generateInstruction(List<Instruction> instructionList) {
 		operand = new ImmediateOperand(0);

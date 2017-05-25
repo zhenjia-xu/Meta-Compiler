@@ -17,63 +17,65 @@ public class FunctionCallInstruction extends Instruction {
 	private VirtualRegister returnValue;
 	private List<Operand> parameterList;
 
-	public FunctionCallInstruction(FunctionType function, VirtualRegister returnValue, List<Operand> parameterList){
+	public FunctionCallInstruction(FunctionType function, VirtualRegister returnValue, List<Operand> parameterList) {
 		this.function = function;
 		this.returnValue = returnValue;
 		this.parameterList = parameterList;
-		if(returnValue != null){
+		if (returnValue != null) {
 			killSet.add(returnValue);
 		}
-		for(Operand operand: parameterList){
-			if(operand instanceof VirtualRegister){
+		for (Operand operand : parameterList) {
+			if (operand instanceof VirtualRegister) {
 				useSet.add((VirtualRegister) operand);
 			}
-			if(operand instanceof Address){
+			if (operand instanceof Address) {
 				useSet.add(((Address) operand).base);
 			}
 		}
 	}
 
 	@Override
-	public void Prepare(){
+	public void Prepare() {
 		RegisterManager.RegisterStatistics(returnValue);
-		for(Operand x: parameterList){
+		for (Operand x : parameterList) {
 			RegisterManager.RegisterStatistics(x);
 		}
 	}
+
 	@Override
-	public String getInstructionOfNASM(){
+	public String getInstructionOfNASM() {
 		StringBuilder str = new StringBuilder();
 		str.append(Translator.saveRegister_Caller());
 		int numToMem = parameterList.size();
 
 		boolean flag = false;
-		if((Translator.rsp_offset + numToMem) % 2 == 1){
+		if ((Translator.rsp_offset + numToMem) % 2 == 1) {
 			str.append(Translator.getInstruction("sub", "rsp", "8"));
 			Translator.rsp_offset++;
 			flag = true;
 		}
-		for(int i = parameterList.size() - 1; i >= 0; i--){
+		for (int i = parameterList.size() - 1; i >= 0; i--) {
 			PhysicalOperand physicalParameter = PhysicalOperand.get(str, parameterList.get(i));
 			str.append(Translator.getInstruction("push", physicalParameter.toString()));
 		}
 		str.append(Translator.getInstruction("call", function.getName()));
 
-		if(flag){
+		if (flag) {
 			numToMem++;
 		}
 		Translator.rsp_offset -= numToMem;
-		if(numToMem > 0){
+		if (numToMem > 0) {
 			str.append(Translator.getInstruction("add", "rsp", String.valueOf(numToMem * 8)));
 		}
 		str.append(Translator.restoreRegister_Caller());
 		return str.toString();
 	}
+
 	@Override
-	public String toString(){
+	public String toString() {
 		StringBuilder str = new StringBuilder();
 		str.append("call " + function.getName());
-		for(Operand x: parameterList){
+		for (Operand x : parameterList) {
 			str.append(" " + x);
 		}
 		return str.toString();

@@ -36,6 +36,7 @@ public class PrefixDecrement extends Expression {
 		return Utility.getIndent(indents) + "[prefix decrement]\n"
 				+ expression.toString(indents + 1);
 	}
+
 	@Override
 	public void generateInstruction(List<Instruction> instructionList) {
 		expression.generateInstruction(instructionList);

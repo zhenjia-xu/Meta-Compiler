@@ -13,25 +13,26 @@ public class AllocateInstruction extends Instruction {
 	private VirtualRegister target;
 	private Operand allocateSize;
 
-	public AllocateInstruction(VirtualRegister target, Operand allocateSize){
+	public AllocateInstruction(VirtualRegister target, Operand allocateSize) {
 		this.target = target;
 		this.allocateSize = allocateSize;
 		killSet.add(target);
-		if(allocateSize instanceof VirtualRegister){
+		if (allocateSize instanceof VirtualRegister) {
 			useSet.add((VirtualRegister) allocateSize);
 		}
-		if(allocateSize instanceof Address){
+		if (allocateSize instanceof Address) {
 			useSet.add(((Address) allocateSize).base);
 		}
 	}
 
 	@Override
-	public void Prepare(){
+	public void Prepare() {
 		RegisterManager.RegisterStatistics(target);
 		RegisterManager.RegisterStatistics(allocateSize);
 	}
+
 	@Override
-	public String getInstructionOfNASM(){
+	public String getInstructionOfNASM() {
 		StringBuilder str = new StringBuilder();
 		PhysicalOperand physicalSize = PhysicalOperand.get(str, allocateSize);
 		str.append(Translator.saveRegister_Caller());
@@ -42,8 +43,9 @@ public class AllocateInstruction extends Instruction {
 		str.append(Translator.getInstruction("mov", physicalTarget.toString(), "rax"));
 		return str.toString();
 	}
+
 	@Override
-	public String toString(){
+	public String toString() {
 		return String.format("allocate %s %s", target, allocateSize);
 	}
 }

@@ -20,7 +20,7 @@ public class Block {
 	public Set<Block> blockIn, blockOut;
 	private boolean haveJump;
 
-	public Block(FunctionIR functionGraph, String blockName, int id, LabelInstruction labelInstruction){
+	public Block(FunctionIR functionGraph, String blockName, int id, LabelInstruction labelInstruction) {
 		this.functionIR = functionGraph;
 		this.blockName = blockName;
 		this.id = id;
@@ -34,25 +34,29 @@ public class Block {
 		this.blockOut = new HashSet<>();
 		this.haveJump = false;
 	}
-	public void add(Instruction instruction){
-		if(haveJump){
+
+	public void add(Instruction instruction) {
+		if (haveJump) {
 			return;
 		}
 		instructionList.add(instruction);
-		if(instruction instanceof JumpInstruction){
+		if (instruction instanceof JumpInstruction) {
 			haveJump = true;
 		}
 	}
-	public String getName(){
+
+	public String getName() {
 		return String.format("%s.%d.%s", functionIR.getName(), id, blockName);
 	}
+
 	@Override
-	public String toString(){
+	public String toString() {
 		return String.format("%s.%d.%s", functionIR.getName(), id, blockName);
 	}
-	public String toString(int indents){
+
+	public String toString(int indents) {
 		StringBuilder str = new StringBuilder(Utility.getIndent(indents) + String.format("%s.%d.%s:\n", functionIR.getName(), id, blockName));
-		for(Instruction instruction: instructionList){
+		for (Instruction instruction : instructionList) {
 			str.append(instruction.toString(indents + 1));
 		}
 		return str.toString();

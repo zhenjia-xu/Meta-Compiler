@@ -10,74 +10,82 @@ import Utility.Utility;
 
 import java.util.List;
 
-public class ForStatement extends LoopStatement{
+public class ForStatement extends LoopStatement {
 	private Expression init, condition, increment;
 	private Statement statement;
 
-	public ForStatement(){
+	public ForStatement() {
 		this.init = null;
 		this.condition = new BoolConstant(true);
 		this.increment = null;
 		this.statement = null;
 	}
-	public void addInit(Expression init){
+
+	public void addInit(Expression init) {
 		this.init = init;
 	}
-	public void addCondition(Expression condition){
-		if(!(condition.getType() instanceof BoolType)){
+
+	public void addCondition(Expression condition) {
+		if (!(condition.getType() instanceof BoolType)) {
 			throw new CompilationError("The condition should be bool type");
 		}
 		this.condition = condition;
 	}
-	public void addIncrement(Expression increment){
+
+	public void addIncrement(Expression increment) {
 		this.increment = increment;
 	}
-	public void addStatement(Statement statement){
+
+	public void addStatement(Statement statement) {
 		this.statement = statement;
 	}
-	public Expression getInit(){
+
+	public Expression getInit() {
 		return init;
 	}
-	public Expression getCondition(){
+
+	public Expression getCondition() {
 		return condition;
 	}
-	public Expression getIncrement(){
+
+	public Expression getIncrement() {
 		return increment;
 	}
-	public Statement getStatement(){
+
+	public Statement getStatement() {
 		return statement;
 	}
+
 	@Override
-	public String toString(){
+	public String toString() {
 		return "for statement";
 	}
+
 	@Override
-	public String toString(int indents){
+	public String toString(int indents) {
 		StringBuilder str = new StringBuilder();
 		str.append(Utility.getIndent(indents) + "[for statement]\n");
-		if(init == null){
+		if (init == null) {
 			str.append(Utility.getIndent(indents + 1) + "no init\n");
-		}
-		else{
+		} else {
 			str.append(init.toString(indents + 1));
 		}
-		if(condition == null){
+		if (condition == null) {
 			str.append(Utility.getIndent(indents + 1) + "no condition\n");
-		}
-		else{
+		} else {
 			str.append(condition.toString(indents + 1));
 		}
-		if(increment == null){
+		if (increment == null) {
 			str.append(Utility.getIndent(indents + 1) + "no increment\n");
-		}
-		else{
+		} else {
 			str.append(increment.toString(indents + 1));
 		}
 		str.append(statement.toString(indents + 1));
 		return str.toString();
 	}
+
 	@Override
-	public void generateInstruction(List<Instruction> instructionList){
+	public void generateInstruction(List<Instruction> instructionList) {
 		conditionLabel = new LabelInstruction("loop_condition");
 		bodyLabel = new LabelInstruction("loop_body");
 		nextStepLabel = new LabelInstruction("loop_increment");
@@ -100,20 +108,20 @@ public class ForStatement extends LoopStatement{
 			%loop_exit:
 				...
 		*/
-		if(init != null){
+		if (init != null) {
 			init.generateInstruction(instructionList);
 		}
 		instructionList.add(new JumpInstruction(conditionLabel));
 
 
 		instructionList.add(bodyLabel);
-		if (statement != null){
+		if (statement != null) {
 			statement.generateInstruction(instructionList);
 		}
 		instructionList.add(new JumpInstruction(nextStepLabel));
 
 		instructionList.add(nextStepLabel);
-		if(increment != null){
+		if (increment != null) {
 			increment.generateInstruction(instructionList);
 		}
 		instructionList.add(new JumpInstruction(conditionLabel));

@@ -12,23 +12,27 @@ public class Symbol {
 	public ClassType classScope;
 	public boolean global;
 
-	public Symbol(String name, Type type){
+	public Symbol(String name, Type type) {
 		this.name = name;
 		this.type = type;
 		this.virtualRegister = new VirtualRegister(name);
 		this.classScope = null;
 		this.global = false;
 	}
-	public void setGlobal(){
+
+	public void setGlobal() {
 		global = true;
 	}
-	public String getName(){
+
+	public String getName() {
 		return name;
 	}
-	public Type getType(){
+
+	public Type getType() {
 		return type;
 	}
-	public String toString(int indents){
+
+	public String toString(int indents) {
 		return Utility.getIndent(indents) + "name: " + name + "  type: " + type + "\n";
 	}
 

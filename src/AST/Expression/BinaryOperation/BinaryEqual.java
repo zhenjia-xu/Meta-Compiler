@@ -12,37 +12,38 @@ import AST.Expression.Expression;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BinaryEqual extends Expression{
+public class BinaryEqual extends Expression {
 	private Expression leftExpression, rightExpression;
 
-	private BinaryEqual(Expression leftExpression, Expression rightExpression){
+	private BinaryEqual(Expression leftExpression, Expression rightExpression) {
 		super(BoolType.getInstance(), false);
 		this.leftExpression = leftExpression;
 		this.rightExpression = rightExpression;
 	}
-	public static Expression getExpression(Expression leftExpression, Expression rightExpression){
-		if(!(leftExpression.getType().compatibleWith(rightExpression.getType()))){
+
+	public static Expression getExpression(Expression leftExpression, Expression rightExpression) {
+		if (!(leftExpression.getType().compatibleWith(rightExpression.getType()))) {
 			throw new CompilationError("binary equal needs two compatible type");
 		}
-		if((leftExpression instanceof IntConstant) && (rightExpression instanceof IntConstant)){
+		if ((leftExpression instanceof IntConstant) && (rightExpression instanceof IntConstant)) {
 			int leftValue = ((IntConstant) leftExpression).getValue();
 			int rightValue = ((IntConstant) rightExpression).getValue();
 			return new BoolConstant(leftValue == rightValue);
 		}
-		if((leftExpression instanceof BoolConstant) && (rightExpression instanceof BoolConstant)){
+		if ((leftExpression instanceof BoolConstant) && (rightExpression instanceof BoolConstant)) {
 			boolean leftValue = ((BoolConstant) leftExpression).getValue();
 			boolean rightValue = ((BoolConstant) rightExpression).getValue();
 			return new BoolConstant(leftValue == rightValue);
 		}
-		if((leftExpression instanceof StringConstant) && (rightExpression instanceof StringConstant)){
+		if ((leftExpression instanceof StringConstant) && (rightExpression instanceof StringConstant)) {
 			String leftValue = ((StringConstant) leftExpression).getValue();
 			String rightValue = ((StringConstant) rightExpression).getValue();
 			return new BoolConstant(leftValue.equals(rightValue));
 		}
-		if((leftExpression instanceof NullConstant) && (rightExpression instanceof NullConstant)){
+		if ((leftExpression instanceof NullConstant) && (rightExpression instanceof NullConstant)) {
 			return new BoolConstant(true);
 		}
-		if(leftExpression.getType() instanceof StringType && rightExpression.getType() instanceof StringType){
+		if (leftExpression.getType() instanceof StringType && rightExpression.getType() instanceof StringType) {
 			List<Expression> expressionList = new ArrayList<>();
 			expressionList.add(leftExpression);
 			expressionList.add(rightExpression);
@@ -53,32 +54,35 @@ public class BinaryEqual extends Expression{
 		}
 		return new BinaryEqual(leftExpression, rightExpression);
 	}
+
 	@Override
-	public String toString(){
+	public String toString() {
 		return "binary equal";
 	}
+
 	@Override
-	public String toString(int indents){
+	public String toString(int indents) {
 		return Utility.getIndent(indents) + "[binary equal]\n"
 				+ leftExpression.toString(indents + 1)
 				+ rightExpression.toString(indents + 1);
 	}
+
 	@Override
-	public void generateInstruction(List<Instruction> instructionList){
+	public void generateInstruction(List<Instruction> instructionList) {
 		leftExpression.generateInstruction(instructionList);
 		rightExpression.generateInstruction(instructionList);
 		operand = RegisterManager.getTemporaryRegister();
 		Operand left = leftExpression.operand;
 		Operand right = rightExpression.operand;
-		if(left == right || (left instanceof ImmediateOperand && right instanceof ImmediateOperand && ((ImmediateOperand) left).value == ((ImmediateOperand) right).value)){
+		if (left == right || (left instanceof ImmediateOperand && right instanceof ImmediateOperand && ((ImmediateOperand) left).value == ((ImmediateOperand) right).value)) {
 			operand = new ImmediateOperand(1);
 			return;
 		}
-		if(left instanceof Address && right instanceof Address){
+		if (left instanceof Address && right instanceof Address) {
 			VirtualRegister tmp = RegisterManager.getTemporaryRegister();
 			instructionList.add(new MoveInstruction(tmp, left));
 			instructionList.add(new CompareInstruction(tmp, right));
-		}else{
+		} else {
 			instructionList.add(new CompareInstruction(left, right));
 		}
 		instructionList.add(new CsetInstruction(ProgramIR.ConditionOp.EQ, operand));

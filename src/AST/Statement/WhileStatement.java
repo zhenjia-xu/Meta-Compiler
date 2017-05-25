@@ -10,41 +10,48 @@ import Utility.Utility;
 
 import java.util.List;
 
-public class WhileStatement extends LoopStatement{
+public class WhileStatement extends LoopStatement {
 	private Expression condition;
 	private Statement statement;
 
-	public WhileStatement(){
+	public WhileStatement() {
 		this.condition = new BoolConstant(true);
 		this.statement = null;
 	}
-	public void addCondition(Expression condition){
-		if(!(condition.getType() instanceof BoolType)){
+
+	public void addCondition(Expression condition) {
+		if (!(condition.getType() instanceof BoolType)) {
 			throw new CompilationError("The condition should be bool type");
 		}
 		this.condition = condition;
 	}
-	public void addStatement(Statement statement){
+
+	public void addStatement(Statement statement) {
 		this.statement = statement;
 	}
-	public Expression getCondition(){
+
+	public Expression getCondition() {
 		return condition;
 	}
-	public Statement getStatement(){
+
+	public Statement getStatement() {
 		return statement;
 	}
+
 	@Override
-	public String toString(){
+	public String toString() {
 		return "while statement";
 	}
+
 	@Override
-	public String toString(int indents){
+	public String toString(int indents) {
 		return Utility.getIndent(indents) + "[while statement]\n"
 				+ condition.toString(indents + 1)
 				+ statement.toString(indents + 1);
 	}
+
 	@Override
-	public void generateInstruction(List<Instruction> instructionList){
+	public void generateInstruction(List<Instruction> instructionList) {
 		conditionLabel = new LabelInstruction("loop_condition");
 		nextStepLabel = conditionLabel;
 		bodyLabel = new LabelInstruction("loop_body");
@@ -66,7 +73,7 @@ public class WhileStatement extends LoopStatement{
 		instructionList.add(new JumpInstruction(conditionLabel));
 
 		instructionList.add(bodyLabel);
-		if(statement != null){
+		if (statement != null) {
 			statement.generateInstruction(instructionList);
 		}
 		instructionList.add(new JumpInstruction(conditionLabel));

@@ -11,43 +11,47 @@ import Utility.Utility;
 
 import java.util.List;
 
-public class BinaryMinus extends Expression{
+public class BinaryMinus extends Expression {
 	private Expression leftExpression, rightExpression;
 
-	private BinaryMinus(Expression leftExpression, Expression rightExpression){
+	private BinaryMinus(Expression leftExpression, Expression rightExpression) {
 		super(IntType.getInstance(), false);
 		this.leftExpression = leftExpression;
 		this.rightExpression = rightExpression;
 	}
-	public static Expression getExpression(Expression leftExpression, Expression rightExpression){
-		if(!(leftExpression.getType() instanceof IntType) ||
-				!(rightExpression.getType() instanceof IntType)){
+
+	public static Expression getExpression(Expression leftExpression, Expression rightExpression) {
+		if (!(leftExpression.getType() instanceof IntType) ||
+				!(rightExpression.getType() instanceof IntType)) {
 			throw new CompilationError("binary minus needs int");
 		}
-		if((leftExpression instanceof IntConstant) && (rightExpression instanceof IntConstant)){
+		if ((leftExpression instanceof IntConstant) && (rightExpression instanceof IntConstant)) {
 			int leftValue = ((IntConstant) leftExpression).getValue();
 			int rightValue = ((IntConstant) rightExpression).getValue();
 			return new IntConstant(leftValue - rightValue);
 		}
 		return new BinaryMinus(leftExpression, rightExpression);
 	}
+
 	@Override
-	public String toString(){
+	public String toString() {
 		return "binary minus";
 	}
+
 	@Override
-	public String toString(int indents){
+	public String toString(int indents) {
 		return Utility.getIndent(indents) + "[binary minus]\n"
 				+ leftExpression.toString(indents + 1)
 				+ rightExpression.toString(indents + 1);
 	}
+
 	@Override
-	public void generateInstruction(List<Instruction> instructionList){
+	public void generateInstruction(List<Instruction> instructionList) {
 		leftExpression.generateInstruction(instructionList);
 		rightExpression.generateInstruction(instructionList);
 		Operand left = leftExpression.operand;
 		Operand right = rightExpression.operand;
-		if(left == right || (left instanceof ImmediateOperand && right instanceof ImmediateOperand && ((ImmediateOperand) left).value == ((ImmediateOperand) right).value)){
+		if (left == right || (left instanceof ImmediateOperand && right instanceof ImmediateOperand && ((ImmediateOperand) left).value == ((ImmediateOperand) right).value)) {
 			operand = new ImmediateOperand(0);
 			return;
 		}

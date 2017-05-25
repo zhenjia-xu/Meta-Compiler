@@ -6,34 +6,39 @@ import Utility.Utility;
 import java.util.HashMap;
 import java.util.Map;
 
-public class FunctionTable{
+public class FunctionTable {
 	private Map<String, FunctionType> functionMap;
 
-	public FunctionTable(){
+	public FunctionTable() {
 		functionMap = new HashMap<>();
 	}
-	public Map<String, FunctionType> getFunctionMap(){
+
+	public Map<String, FunctionType> getFunctionMap() {
 		return functionMap;
 	}
-	public void addFunction(FunctionType functionType){
+
+	public void addFunction(FunctionType functionType) {
 		String functionName = functionType.getRawName();
-		if(functionMap.containsKey(functionName)){
-			throw new CompilationError("This scope can't have two functions named \"" + functionName +"\"");
+		if (functionMap.containsKey(functionName)) {
+			throw new CompilationError("This scope can't have two functions named \"" + functionName + "\"");
 		}
 		functionMap.put(functionName, functionType);
 	}
-	public FunctionType getFunctionType(String functionName){
+
+	public FunctionType getFunctionType(String functionName) {
 		return functionMap.get(functionName);
 	}
+
 	@Override
-	public String toString(){
+	public String toString() {
 		return "function table";
 	}
-	public String toString(int indents){
+
+	public String toString(int indents) {
 		StringBuilder str = new StringBuilder();
 		str.append(Utility.getIndent(indents) + "[function table]\n");
-		for(FunctionType function: functionMap.values()){
-			if(function.getBlockStatement() != null){
+		for (FunctionType function : functionMap.values()) {
+			if (function.getBlockStatement() != null) {
 				str.append(function.toString(indents + 1));
 			}
 		}

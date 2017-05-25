@@ -7,21 +7,25 @@ public class LabelInstruction extends Instruction {
 	private String name;
 	public Block block;
 
-	public LabelInstruction(String name){
+	public LabelInstruction(String name) {
 		this.name = name;
 	}
-	public String getName(){
+
+	public String getName() {
 		return name;
 	}
 
 	@Override
-	public void Prepare(){}
+	public void Prepare() {
+	}
+
 	@Override
-	public String getInstructionOfNASM(){
+	public String getInstructionOfNASM() {
 		throw new RuntimeError("Label instruction should not getInstructionOfNASM");
 	}
+
 	@Override
-	public String toString(){
+	public String toString() {
 		return "%" + name;
 	}
 }

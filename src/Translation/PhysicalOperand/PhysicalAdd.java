@@ -1,19 +1,19 @@
 package Translation.PhysicalOperand;
 
-public class PhysicalAdd extends PhysicalOperand{
+public class PhysicalAdd extends PhysicalOperand {
 	public String base;
 	public int offset;
 
-	public PhysicalAdd(String base, int offset){
+	public PhysicalAdd(String base, int offset) {
 		this.base = base;
 		this.offset = offset;
 	}
 
 	@Override
-	public String toString(){
-		if(offset > 0) {
+	public String toString() {
+		if (offset > 0) {
 			return String.format("qword [%s + %d]", base, offset);
-		}else{
+		} else {
 			return String.format("qword [%s - %d]", base, -offset);
 		}
 	}

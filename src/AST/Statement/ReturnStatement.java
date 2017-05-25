@@ -12,20 +12,20 @@ import Utility.Utility;
 
 import java.util.List;
 
-public class ReturnStatement extends Statement{
+public class ReturnStatement extends Statement {
 	private FunctionType function;
 	private Expression returnExpression;
 
-	public ReturnStatement(Expression returnExpression){
+	public ReturnStatement(Expression returnExpression) {
 		FunctionType function = ProgramAST.symbolTable.getCurrentFunction();
-		if(function == null){
+		if (function == null) {
 			throw new CompilationError("The return statement should be in a function");
 		}
-		if(function.getRawName() == null){
-			if(returnExpression != null){
+		if (function.getRawName() == null) {
+			if (returnExpression != null) {
 				throw new CompilationError("Construct function can't has return value");
 			}
-		}else {
+		} else {
 			boolean returnError = false;
 			if (returnExpression == null && function.getReturnType() != VoidType.getInstance()) {
 				returnError = true;
@@ -40,28 +40,33 @@ public class ReturnStatement extends Statement{
 		this.function = function;
 		this.returnExpression = returnExpression;
 	}
-	public FunctionType getFunction(){
+
+	public FunctionType getFunction() {
 		return function;
 	}
-	public Expression getReturnExpression(){
+
+	public Expression getReturnExpression() {
 		return returnExpression;
 	}
+
 	@Override
-	public String toString(){
+	public String toString() {
 		return "return statement";
 	}
+
 	@Override
-	public String toString(int indents){
+	public String toString(int indents) {
 		StringBuilder str = new StringBuilder();
 		str.append(Utility.getIndent(indents) + "[return statement] -> " + function.toString() + "\n");
-		if(returnExpression != null){
+		if (returnExpression != null) {
 			str.append(returnExpression.toString(indents + 1));
 		}
 		return str.toString();
 	}
+
 	@Override
-	public void generateInstruction(List<Instruction> instructionList){
-		if(returnExpression != null){
+	public void generateInstruction(List<Instruction> instructionList) {
+		if (returnExpression != null) {
 			returnExpression.generateInstruction(instructionList);
 			instructionList.add(new ReturnInstruction(returnExpression.operand));
 		}

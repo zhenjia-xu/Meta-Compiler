@@ -1,7 +1,7 @@
 package Utility;
 
-public class RuntimeError extends Error{
-	public RuntimeError(String Message){
+public class RuntimeError extends Error {
+	public RuntimeError(String Message) {
 		super("Runtime error: " + Message + "!");
 	}
 }

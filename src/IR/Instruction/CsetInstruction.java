@@ -12,7 +12,7 @@ import java.util.Map;
 public class CsetInstruction extends Instruction {
 	public ProgramIR.ConditionOp op;
 	public VirtualRegister target;
-	static private Map<String, String> lowest8Reg = new HashMap<String, String>(){{
+	static private Map<String, String> lowest8Reg = new HashMap<String, String>() {{
 		put("rax", "al");
 		put("rcx", "cl");
 		put("rdx", "dl");
@@ -30,18 +30,21 @@ public class CsetInstruction extends Instruction {
 		put("r14", "r14b");
 		put("r15", "r15b");
 	}};
-	public CsetInstruction(ProgramIR.ConditionOp op, Operand target){
+
+	public CsetInstruction(ProgramIR.ConditionOp op, Operand target) {
 		this.op = op;
-		if(!(target instanceof VirtualRegister)){
+		if (!(target instanceof VirtualRegister)) {
 			throw new RuntimeError("target of set instruction should be register");
 		}
 		this.target = (VirtualRegister) target;
 		killSet.add((VirtualRegister) target);
 	}
+
 	@Override
-	public void Prepare(){
+	public void Prepare() {
 		RegisterManager.RegisterStatistics(target);
 	}
+
 	@Override
 	public String getInstructionOfNASM() {
 		StringBuilder str = new StringBuilder();
@@ -52,7 +55,7 @@ public class CsetInstruction extends Instruction {
 			str.append(Translator.getInstruction("set" + Translator.getNASMofCondition(op), "al"));
 			str.append(Translator.getInstruction("mov", physicalTarget.toString(), "rax"));
 		} else {
-			if(!(physicalTarget instanceof PhysicalReg)){
+			if (!(physicalTarget instanceof PhysicalReg)) {
 				throw new RuntimeError("Cset getInstructionOfNASM ERROR");
 			}
 			str.append(Translator.getInstruction("mov", physicalTarget.toString(), "0"));
@@ -60,8 +63,9 @@ public class CsetInstruction extends Instruction {
 		}
 		return str.toString();
 	}
+
 	@Override
-	public String toString(){
+	public String toString() {
 		return String.format("set %s %s", op, target);
 	}
 }

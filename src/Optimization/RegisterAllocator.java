@@ -10,24 +10,24 @@ public class RegisterAllocator {
 	static private Map<VirtualRegister, String> mapping;
 	static private List<VirtualRegister> must;
 	static private Map<VirtualRegister, Set<VirtualRegister>> edgeMap;
-	static private List<String> physicalRegister = new ArrayList<String>(){{
-		add("rbx");
-		add("rsi");add("rdi");
+	static private List<String> physicalRegister = new ArrayList<String>() {{
+		add("rbx");add("rsi");add("rdi");
 		add("r8");add("r9");add("r10");add("r11");
 		add("r12");add("r13");add("r14");add("r15");
 	}};
-	static public void allocate(Map<VirtualRegister, Integer> virtualRegisterIntegerMap, Map<VirtualRegister, Set<VirtualRegister>> edgeMap){
+
+	static public void allocate(Map<VirtualRegister, Integer> virtualRegisterIntegerMap, Map<VirtualRegister, Set<VirtualRegister>> edgeMap) {
 		RegisterAllocator.edgeMap = edgeMap;
 		List<VirtualRegister> list = new ArrayList<>();
 		List<VirtualRegister> listAllocate = new ArrayList<>();
 		must = new ArrayList<>();
-		for(VirtualRegister reg: virtualRegisterIntegerMap.keySet()){
-			if(reg.id != 0){
+		for (VirtualRegister reg : virtualRegisterIntegerMap.keySet()) {
+			if (reg.id != 0) {
 				continue;
 			}
-			if(reg.realRegister != null) {
+			if (reg.realRegister != null) {
 				must.add(reg);
-			}else{
+			} else {
 				list.add(reg);
 			}
 		}
@@ -36,27 +36,40 @@ public class RegisterAllocator {
 			public int compare(VirtualRegister reg1, VirtualRegister reg2) {
 				int left = virtualRegisterIntegerMap.get(reg1).intValue();
 				int right = virtualRegisterIntegerMap.get(reg2).intValue();
-				if(left > right) return -1;
-				if(left < right) return 1;
+				if (left > right) return -1;
+				if (left < right) return 1;
 				return 0;
 			}
 		});
-		for(VirtualRegister reg: list){
-			listAllocate.add(reg);
-			if(!coloring(listAllocate)){
-				listAllocate.remove(listAllocate.size() - 1);
+		if(list.size() < 500) {
+			for (VirtualRegister reg : list) {
+				listAllocate.add(reg);
+				if (!coloring(listAllocate)) {
+					listAllocate.remove(listAllocate.size() - 1);
+				}
+			}
+			coloring(listAllocate);
+			for (VirtualRegister reg : mapping.keySet()) {
+				reg.realRegister = mapping.get(reg);
 			}
 		}
-		coloring(listAllocate);
-		for(VirtualRegister reg: mapping.keySet()){
-			reg.realRegister = mapping.get(reg);
+		else{
+			for(VirtualRegister reg: list){
+				for(String name: physicalRegister){
+					if(tryColor(reg, name)){
+						reg.realRegister = name;
+						break;
+					}
+				}
+			}
 		}
 	}
-	static private boolean coloring(List<VirtualRegister> list_in){
+
+	static private boolean coloring(List<VirtualRegister> list_in) {
 		List<VirtualRegister> list = new ArrayList<>(list_in);
 		mapping = new HashMap<>();
-		for(VirtualRegister reg: must){
-			if(!tryColor(reg, reg.realRegister)){
+		for (VirtualRegister reg : must) {
+			if (!tryColor(reg, reg.realRegister)) {
 				throw new RuntimeError("must_list is error");
 			}
 		}
@@ -65,28 +78,29 @@ public class RegisterAllocator {
 			public int compare(VirtualRegister reg1, VirtualRegister reg2) {
 				int left = edgeMap.get(reg1).size();
 				int right = edgeMap.get(reg2).size();
-				if(left > right) return -1;
-				if(left < right) return 1;
+				if (left > right) return -1;
+				if (left < right) return 1;
 				return 0;
 			}
 		});
-		for(VirtualRegister reg: list){
+		for (VirtualRegister reg : list) {
 			boolean flag = false;
-			for(String name: physicalRegister){
-				if(tryColor(reg, name)){
+			for (String name : physicalRegister) {
+				if (tryColor(reg, name)) {
 					flag = true;
 					break;
 				}
 			}
-			if(!flag){
+			if (!flag) {
 				return false;
 			}
 		}
 		return true;
 	}
-	static private boolean tryColor(VirtualRegister reg, String name){
-		for(VirtualRegister neighbour: edgeMap.get(reg)){
-			if(mapping.containsKey(neighbour) && mapping.get(neighbour).equals(name)){
+
+	static private boolean tryColor(VirtualRegister reg, String name) {
+		for (VirtualRegister neighbour : edgeMap.get(reg)) {
+			if (mapping.containsKey(neighbour) && mapping.get(neighbour).equals(name)) {
 				return false;
 			}
 		}

@@ -7,24 +7,28 @@ import Utility.Utility;
 
 import java.util.List;
 
-public class BoolConstant extends Constant{
+public class BoolConstant extends Constant {
 	private boolean value;
 
-	public BoolConstant(boolean value){
+	public BoolConstant(boolean value) {
 		super(BoolType.getInstance());
 		this.value = value;
 	}
-	public boolean getValue(){
+
+	public boolean getValue() {
 		return value;
 	}
+
 	@Override
-	public String toString(){
+	public String toString() {
 		return "bool constant";
 	}
+
 	@Override
-	public String toString(int indents){
+	public String toString(int indents) {
 		return Utility.getIndent(indents) + "[bool constant: " + value + "]\n";
 	}
+
 	@Override
 	public void generateInstruction(List<Instruction> instructionList) {
 		operand = new ImmediateOperand(value ? 1 : 0);

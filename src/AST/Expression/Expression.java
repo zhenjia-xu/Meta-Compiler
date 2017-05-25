@@ -11,16 +11,20 @@ public abstract class Expression {
 	private boolean leftValue;
 	public Operand operand;
 
-	public Expression(Type type, boolean leftValue){
+	public Expression(Type type, boolean leftValue) {
 		this.type = type;
 		this.leftValue = leftValue;
 	}
-	public Type getType(){
+
+	public Type getType() {
 		return type;
 	}
-	public boolean getLeftValue(){
+
+	public boolean getLeftValue() {
 		return leftValue;
 	}
+
 	public abstract String toString(int indents);
+
 	public abstract void generateInstruction(List<Instruction> instructionList);
 }

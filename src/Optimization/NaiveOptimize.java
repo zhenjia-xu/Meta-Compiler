@@ -9,11 +9,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class NaiveOptimize {
-	static public void Optimize(FunctionIR functionIR){
+	static public void Optimize(FunctionIR functionIR) {
 		RemoveEmptyBlock(functionIR);
 		RemoveUselessJump(functionIR);
 	}
-	static public void RemoveEmptyBlock(FunctionIR functionIR){
+
+	static public void RemoveEmptyBlock(FunctionIR functionIR) {
 		boolean flag = true;
 		while (flag) {
 			flag = false;
@@ -29,7 +30,7 @@ public class NaiveOptimize {
 					i--;
 					continue;
 				}
-				if(block.instructionList.isEmpty() && block.labelInstruction != functionIR.exitBlock){
+				if (block.instructionList.isEmpty() && block.labelInstruction != functionIR.exitBlock) {
 					LabelInstruction jumpTo = functionIR.blockList.get(i + 1).labelInstruction;
 					labelMap.put(block.labelInstruction, jumpTo);
 					functionIR.blockList.remove(i);
@@ -37,33 +38,35 @@ public class NaiveOptimize {
 					continue;
 				}
 			}
-			for(Block block: functionIR.blockList){
-				for(Instruction instruction: block.instructionList){
-					if(instruction instanceof JumpInstruction){
+			for (Block block : functionIR.blockList) {
+				for (Instruction instruction : block.instructionList) {
+					if (instruction instanceof JumpInstruction) {
 						((JumpInstruction) instruction).target = labelGetFa(labelMap, ((JumpInstruction) instruction).target);
 					}
-					if(instruction instanceof CjumpInstruction){
+					if (instruction instanceof CjumpInstruction) {
 						((CjumpInstruction) instruction).target = labelGetFa(labelMap, ((CjumpInstruction) instruction).target);
 					}
 				}
 			}
 		}
 	}
-	static public void RemoveUselessJump(FunctionIR functionIR){
-		for(int i = 0; i < functionIR.blockList.size() - 1; i++){
+
+	static public void RemoveUselessJump(FunctionIR functionIR) {
+		for (int i = 0; i < functionIR.blockList.size() - 1; i++) {
 			Block block = functionIR.blockList.get(i);
-			if(block.instructionList.isEmpty()){
+			if (block.instructionList.isEmpty()) {
 				continue;
 			}
 			int pos = block.instructionList.size() - 1;
 			Instruction instruction = block.instructionList.get(pos);
-			if(instruction instanceof JumpInstruction && ((JumpInstruction) instruction).target == functionIR.blockList.get(i + 1).labelInstruction){
+			if (instruction instanceof JumpInstruction && ((JumpInstruction) instruction).target == functionIR.blockList.get(i + 1).labelInstruction) {
 				block.instructionList.remove(pos);
 			}
 		}
 	}
-	private static LabelInstruction labelGetFa(Map<LabelInstruction, LabelInstruction> labelMap, LabelInstruction instruction){
-		while(labelMap.containsKey(instruction)){
+
+	private static LabelInstruction labelGetFa(Map<LabelInstruction, LabelInstruction> labelMap, LabelInstruction instruction) {
+		while (labelMap.containsKey(instruction)) {
 			instruction = labelMap.get(instruction);
 		}
 		return instruction;

@@ -5,23 +5,28 @@ import Utility.Utility;
 
 import java.util.Map;
 
-public class StringType extends Type implements Scope{
+public class StringType extends Type implements Scope {
 	private static final StringType instance = new StringType();
 
-	private StringType(){}
-	static public StringType getInstance(){
+	private StringType() {
+	}
+
+	static public StringType getInstance() {
 		return instance;
 	}
+
 	@Override
-	public boolean compatibleWith(Type other){
+	public boolean compatibleWith(Type other) {
 		return this == other;
 	}
+
 	@Override
-	public String toString(){
+	public String toString() {
 		return "string";
 	}
+
 	@Override
-	public String toString(int indents){
+	public String toString(int indents) {
 		return Utility.getIndent(indents) + "string";
 	}
 }

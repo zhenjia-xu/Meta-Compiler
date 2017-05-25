@@ -11,38 +11,42 @@ import Utility.Utility;
 
 import java.util.List;
 
-public class BinaryModulo extends Expression{
+public class BinaryModulo extends Expression {
 	private Expression leftExpression, rightExpression;
 
-	private BinaryModulo(Expression leftExpression, Expression rightExpression){
+	private BinaryModulo(Expression leftExpression, Expression rightExpression) {
 		super(IntType.getInstance(), false);
 		this.leftExpression = leftExpression;
 		this.rightExpression = rightExpression;
 	}
-	public static Expression getExpression(Expression leftExpression, Expression rightExpression){
-		if(!(leftExpression.getType() instanceof IntType) ||
-				!(rightExpression.getType() instanceof IntType)){
+
+	public static Expression getExpression(Expression leftExpression, Expression rightExpression) {
+		if (!(leftExpression.getType() instanceof IntType) ||
+				!(rightExpression.getType() instanceof IntType)) {
 			throw new CompilationError("binary modulo needs int");
 		}
-		if((leftExpression instanceof IntConstant) && (rightExpression instanceof IntConstant)){
+		if ((leftExpression instanceof IntConstant) && (rightExpression instanceof IntConstant)) {
 			int leftValue = ((IntConstant) leftExpression).getValue();
 			int rightValue = ((IntConstant) rightExpression).getValue();
 			return new IntConstant(leftValue % rightValue);
 		}
 		return new BinaryModulo(leftExpression, rightExpression);
 	}
+
 	@Override
-	public String toString(){
+	public String toString() {
 		return "binary modulo";
 	}
+
 	@Override
-	public String toString(int indents){
+	public String toString(int indents) {
 		return Utility.getIndent(indents) + "[binary modulo]\n"
 				+ leftExpression.toString(indents + 1)
 				+ rightExpression.toString(indents + 1);
 	}
+
 	@Override
-	public void generateInstruction(List<Instruction> instructionList){
+	public void generateInstruction(List<Instruction> instructionList) {
 		leftExpression.generateInstruction(instructionList);
 		rightExpression.generateInstruction(instructionList);
 		operand = RegisterManager.getTemporaryRegister();

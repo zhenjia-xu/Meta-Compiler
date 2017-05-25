@@ -10,31 +10,35 @@ import Utility.*;
 
 import java.util.List;
 
-public class SuffixIncrement extends Expression{
+public class SuffixIncrement extends Expression {
 	private Expression expression;
 
-	private SuffixIncrement(Expression expression){
+	private SuffixIncrement(Expression expression) {
 		super(expression.getType(), false);
 		this.expression = expression;
 	}
-	public static  Expression getExpression(Expression expression){
-		if(!(expression.getType() instanceof IntType)){
+
+	public static Expression getExpression(Expression expression) {
+		if (!(expression.getType() instanceof IntType)) {
 			throw new CompilationError("suffix increment needs int");
 		}
-		if(expression.getLeftValue() == false){
+		if (expression.getLeftValue() == false) {
 			throw new CompilationError("suffix increment needs a left-value");
 		}
 		return new SuffixIncrement(expression);
 	}
+
 	@Override
-	public String toString(){
+	public String toString() {
 		return "suffix increment";
 	}
+
 	@Override
-	public String toString(int indents){
+	public String toString(int indents) {
 		return Utility.getIndent(indents) + "[suffix increment]\n"
 				+ expression.toString(indents + 1);
 	}
+
 	@Override
 	public void generateInstruction(List<Instruction> instructionList) {
 		expression.generateInstruction(instructionList);

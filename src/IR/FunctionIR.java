@@ -19,28 +19,38 @@ public class FunctionIR {
 	public LabelInstruction enterBlock, exitBlock;
 	public static List<String> callerRegisterList;
 	public static List<String> calleeRegisterList;
-	public static List<String> callerAll = new ArrayList<String>(){{
+	public static List<String> callerAll = new ArrayList<String>() {{
 		//add("rcx");
 		add("rdx");
-		add("rsi");add("rdi");
-		add("r8"); add("r9");add("r10");add("r11");
+		add("rsi");
+		add("rdi");
+		add("r8");
+		add("r9");
+		add("r10");
+		add("r11");
 	}};
-	public static List<String> calleeAll = new ArrayList<String>(){{
-		add("rbx");add("r12");add("r13");add("r14");add("r15");
+	public static List<String> calleeAll = new ArrayList<String>() {{
+		add("rbx");
+		add("r12");
+		add("r13");
+		add("r14");
+		add("r15");
 	}};
 
-	public FunctionIR(FunctionType function){
+	public FunctionIR(FunctionType function) {
 		this.function = function;
 		parameterList = new ArrayList<>();
-		for(Symbol x: function.getParameterList()){
+		for (Symbol x : function.getParameterList()) {
 			parameterList.add(x.virtualRegister);
 		}
 		buildGraph();
 	}
-	public String getName(){
+
+	public String getName() {
 		return function.getName();
 	}
-	private void buildGraph(){
+
+	private void buildGraph() {
 		enterBlock = new LabelInstruction("enter");
 		exitBlock = new LabelInstruction("exit");
 		function.enterLabel = enterBlock;
@@ -48,12 +58,12 @@ public class FunctionIR {
 
 		List<Instruction> instructionList = new ArrayList<>();
 		instructionList.add(enterBlock);
-		for(int i = 0; i < parameterList.size(); i++){
-			if(i < 6){
+		for (int i = 0; i < parameterList.size(); i++) {
+			if (i < 6) {
 				VirtualRegister tmp = RegisterManager.getTemporaryRegister();
 				tmp.realRegister = RegisterManager.parameterRegList.get(i);
 				instructionList.add(new MoveInstruction(parameterList.get(i), tmp));
-			}else{
+			} else {
 				parameterList.get(i).id = 4 - i;
 			}
 		}
@@ -61,24 +71,25 @@ public class FunctionIR {
 		instructionList.add(exitBlock);
 
 		blockList = new ArrayList<>();
-		for(int i = 0, j; i < instructionList.size(); i = j){
-			LabelInstruction label = (LabelInstruction)instructionList.get(i);
+		for (int i = 0, j; i < instructionList.size(); i = j) {
+			LabelInstruction label = (LabelInstruction) instructionList.get(i);
 			Block block = new Block(this, label.getName(), blockList.size(), label);
-			for(j = i + 1; j < instructionList.size(); j++){
+			for (j = i + 1; j < instructionList.size(); j++) {
 				Instruction instruction = instructionList.get(j);
-				if(instruction instanceof LabelInstruction) break;
+				if (instruction instanceof LabelInstruction) break;
 				block.add(instruction);
 			}
 			label.block = block;
 			blockList.add(block);
 		}
 	}
-	public String toNASM(){
+
+	public String toNASM() {
 		StringBuilder str = new StringBuilder();
 		str.append(getName() + ":\n");
 		RegisterManager.initialize();
-		for(Block block: blockList){
-			for(Instruction instruction: block.instructionList){
+		for (Block block : blockList) {
+			for (Instruction instruction : block.instructionList) {
 				instruction.Prepare();
 			}
 		}
@@ -88,7 +99,7 @@ public class FunctionIR {
 		//save register
 		str.append(Translator.getInstruction("push", "rbp"));
 		str.append(Translator.getInstruction("mov", "rbp", "rsp"));
-		if(getName().equals("main")){
+		if (getName().equals("main")) {
 			str.append(Translator.getInstruction("call", "@GlobalDeclaration"));
 		}
 		str.append(Translator.saveRegister_Callee());
@@ -98,9 +109,9 @@ public class FunctionIR {
 		Translator.rsp_offset += RegisterManager.NumberOfRegInMem;
 
 		//deal with each instruction
-		for(Block block: blockList){
+		for (Block block : blockList) {
 			str.append(block.getName() + ":\n");
-			for(Instruction instruction: block.instructionList){
+			for (Instruction instruction : block.instructionList) {
 				str.append(instruction.getInstructionOfNASM());
 			}
 		}
@@ -113,32 +124,34 @@ public class FunctionIR {
 		str.append(Translator.getInstruction("ret"));
 		return str.toString();
 	}
-	static private void calculateSavingMessage(){
+
+	static private void calculateSavingMessage() {
 		calleeRegisterList = new ArrayList<>();
 		callerRegisterList = new ArrayList<>();
-		for(String reg: RegisterManager.usedRegister){
-			if(calleeAll.contains(reg)){
+		for (String reg : RegisterManager.usedRegister) {
+			if (calleeAll.contains(reg)) {
 				calleeRegisterList.add(reg);
 			}
-			if(callerAll.contains(reg)){
+			if (callerAll.contains(reg)) {
 				callerRegisterList.add(reg);
 			}
 		}
 	}
-	public String toString(int indents){
+
+	public String toString(int indents) {
 		StringBuilder str = new StringBuilder();
 		str.append(Utility.getIndent(indents));
-		if(function.getReturnType() instanceof VoidType){
+		if (function.getReturnType() instanceof VoidType) {
 			str.append("void ");
-		}else{
+		} else {
 			str.append("func ");
 		}
 		str.append(function.getName() + " ");
-		for(VirtualRegister parameter: parameterList){
+		for (VirtualRegister parameter : parameterList) {
 			str.append(parameter + " ");
 		}
 		str.append("{\n");
-		for(Block block: blockList){
+		for (Block block : blockList) {
 			str.append(block.toString(indents + 1));
 		}
 		str.append("}\n");

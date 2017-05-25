@@ -1,4 +1,4 @@
 package AST.Symbol;
 
-public class ProgramScope implements Scope{
+public class ProgramScope implements Scope {
 }

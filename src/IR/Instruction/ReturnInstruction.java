@@ -12,10 +12,10 @@ public class ReturnInstruction extends Instruction {
 
 	public ReturnInstruction(Operand returnValue) {
 		this.returnValue = returnValue;
-		if(returnValue instanceof VirtualRegister){
+		if (returnValue instanceof VirtualRegister) {
 			useSet.add((VirtualRegister) returnValue);
 		}
-		if(returnValue instanceof Address){
+		if (returnValue instanceof Address) {
 			useSet.add(((Address) returnValue).base);
 		}
 	}

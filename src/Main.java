@@ -6,12 +6,14 @@ import Utility.CompilationError;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
 import FrontEnd.Parser.*;
+
 import java.io.*;
+
 import FrontEnd.Listener.*;
 import Translation.Translator;
 import org.omg.Messaging.SYNC_WITH_TRANSPORT;
 
-public class Main{
+public class Main {
 	public static void main(String[] args) throws Exception {
 		File file = new File("program.txt");
 		InputStream in = new FileInputStream(file);
@@ -20,7 +22,8 @@ public class Main{
 		Optimize();
 		Translate();
 	}
-	public static void getAST(InputStream in)throws Exception{
+
+	public static void getAST(InputStream in) throws Exception {
 		ANTLRInputStream input = new ANTLRInputStream(in);
 		MetaLexer lexer = new MetaLexer(input);
 		CommonTokenStream tokens = new CommonTokenStream(lexer);
@@ -36,20 +39,23 @@ public class Main{
 			walker.walk(new OtherDeclarationListener(), tree);
 			walker.walk(new ASTreeListener(), tree);
 			//ProgramAST.print();
-		}catch(CompilationError ce){
+		} catch (CompilationError ce) {
 			System.out.println(ce.getMessage());
 			System.exit(1);
 		}
 	}
-	public static void getIR(){
+
+	public static void getIR() {
 		ProgramIR.BuildProgramIR();
 		//ProgramIR.print();
 	}
-	public static void Optimize(){
+
+	public static void Optimize() {
 		Optimization.Optimize();
 		//ProgramIR.print();
 	}
-	public static void Translate() throws Exception{
+
+	public static void Translate() throws Exception {
 		String code = Translator.IRtoNASM();
 		File file = new File("program.asm");
 		PrintStream out = new PrintStream(new FileOutputStream(file));

@@ -12,79 +12,83 @@ import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OtherDeclarationListener extends BaseListener{
+public class OtherDeclarationListener extends BaseListener {
 	@Override
 	public void exitProgram(MetaParser.ProgramContext ctx) {
 		boolean main_flag = false;
-		for(ParseTree x: ctx.functionDeclaration()){
+		for (ParseTree x : ctx.functionDeclaration()) {
 			FunctionType function = (FunctionType) returnNode.get(x);
-			if(function.getName().equals("main")) {
+			if (function.getName().equals("main")) {
 				if (!(function.getReturnType() instanceof IntType)) {
 					throw new CompilationError("The return type of main should be int");
 				}
-				if(function.getParameterList().size() != 0){
+				if (function.getParameterList().size() != 0) {
 					throw new CompilationError("The main function can't have parameters");
 				}
 				main_flag = true;
 			}
 			ProgramAST.globalFunctionTable.addFunction(function);
 		}
-		if(!main_flag){
+		if (!main_flag) {
 			throw new CompilationError("Can't find main function");
 		}
-		for(ParseTree x: ctx.variableDeclaration()){
+		for (ParseTree x : ctx.variableDeclaration()) {
 			VariableDeclarationStatement variable = (VariableDeclarationStatement) returnNode.get(x);
 			variable.getSymbol().setGlobal();
 			//ProgramAST.globalVariableTable.addVariable(variable);
 			ProgramAST.globalDeclarationList.add(variable);
 		}
 	}
+
 	@Override
 	public void enterClassDeclaration(MetaParser.ClassDeclarationContext ctx) {
-		ClassType classType = (ClassType)returnNode.get(ctx);
+		ClassType classType = (ClassType) returnNode.get(ctx);
 		ProgramAST.symbolTable.enterScope(classType);
 	}
+
 	@Override
 	public void exitClassDeclaration(MetaParser.ClassDeclarationContext ctx) {
-		ClassType classType = (ClassType)returnNode.get(ctx);
-		for(ParseTree x: ctx.functionDeclaration()){
+		ClassType classType = (ClassType) returnNode.get(ctx);
+		for (ParseTree x : ctx.functionDeclaration()) {
 			FunctionType function = (FunctionType) returnNode.get(x);
 			function.addClassScope(classType);
 			function.getParameterList().add(0, new Symbol("this", classType));
-			if(function.getRawName() == null) {
+			if (function.getRawName() == null) {
 				classType.addConstructFunction(function);
-			}else{
+			} else {
 				classType.addMemberFunction(function);
 			}
 		}
-		for(ParseTree x: ctx.variableDeclaration()){
+		for (ParseTree x : ctx.variableDeclaration()) {
 			VariableDeclarationStatement variable = (VariableDeclarationStatement) returnNode.get(x);
 			variable.addClassScope(classType);
 			classType.addMemberVariable(variable);
 		}
 		ProgramAST.symbolTable.exitScope();
 	}
+
 	@Override
 	public void exitFunctionDeclaration(MetaParser.FunctionDeclarationContext ctx) {
 		String functionName = null, name;
-		Type returnType = (Type)returnNode.get(ctx.getChild(0));
+		Type returnType = (Type) returnNode.get(ctx.getChild(0));
 		int typeStart = 1, identifierStart = 0;
-		if(returnType instanceof VoidType){
+		if (returnType instanceof VoidType) {
 			typeStart = 0;
 		}
-		if(ctx.Identifier().size() != ctx.type().size() - typeStart){
+		if (ctx.Identifier().size() != ctx.type().size() - typeStart) {
 			functionName = ctx.Identifier(0).getText();
 			identifierStart = 1;
 		}
 		List<Symbol> parameterList = new ArrayList<>();
-		for(int i = 0; i < ctx.type().size() - typeStart; i++){
-			Type parameterType = (Type)returnNode.get(ctx.type(i + typeStart));
+		for (int i = 0; i < ctx.type().size() - typeStart; i++) {
+			Type parameterType = (Type) returnNode.get(ctx.type(i + typeStart));
 			String parameterName = ctx.Identifier(i + identifierStart).getText();
 			parameterList.add(new Symbol(parameterName, parameterType));
 		}
 		FunctionType function = new FunctionType(functionName, returnType, parameterList);
 		returnNode.put(ctx, function);
 	}
+
 	@Override
 	public void exitVariableDeclaration(MetaParser.VariableDeclarationContext ctx) {
 		String name = ctx.Identifier().getText();
@@ -92,34 +96,39 @@ public class OtherDeclarationListener extends BaseListener{
 		VariableDeclarationStatement statement = new VariableDeclarationStatement(name, type);
 		returnNode.put(ctx, statement);
 	}
+
 	@Override
 	public void exitInteger_Type(MetaParser.Integer_TypeContext ctx) {
 		returnNode.put(ctx, IntType.getInstance());
 	}
+
 	@Override
 	public void exitBool_Type(MetaParser.Bool_TypeContext ctx) {
 		returnNode.put(ctx, BoolType.getInstance());
 	}
+
 	@Override
 	public void exitString_Type(MetaParser.String_TypeContext ctx) {
 		returnNode.put(ctx, StringType.getInstance());
 	}
+
 	@Override
 	public void exitVoid_type(MetaParser.Void_typeContext ctx) {
 		returnNode.put(ctx, VoidType.getInstance());
 	}
+
 	@Override
 	public void exitClass_Type(MetaParser.Class_TypeContext ctx) {
 		String className = ctx.Identifier().getText();
 		returnNode.put(ctx, ProgramAST.classTable.getClassType(className));
 	}
+
 	@Override
 	public void exitArray_Type(MetaParser.Array_TypeContext ctx) {
 		Type type = (Type) returnNode.get(ctx.type());
-		if(type instanceof ArrayType){
+		if (type instanceof ArrayType) {
 			returnNode.put(ctx, new ArrayType(((ArrayType) type).getBaseType(), ((ArrayType) type).getDimension() + 1));
-		}
-		else{
+		} else {
 			returnNode.put(ctx, new ArrayType(type, 1));
 		}
 	}

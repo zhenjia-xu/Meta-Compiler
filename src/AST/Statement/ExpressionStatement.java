@@ -6,31 +6,35 @@ import Utility.Utility;
 
 import java.util.List;
 
-public class ExpressionStatement extends Statement{
+public class ExpressionStatement extends Statement {
 	private Expression expression;
 
-	public ExpressionStatement(Expression expression){
+	public ExpressionStatement(Expression expression) {
 		this.expression = expression;
 	}
-	public Expression getExpression(){
+
+	public Expression getExpression() {
 		return expression;
 	}
+
 	@Override
-	public String toString(){
+	public String toString() {
 		return "expression statement";
 	}
+
 	@Override
-	public String toString(int indents){
+	public String toString(int indents) {
 		StringBuilder str = new StringBuilder();
 		str.append(Utility.getIndent(indents) + "[expression statement]\n");
-		if(expression != null){
+		if (expression != null) {
 			str.append(expression.toString(indents + 1));
 		}
 		return str.toString();
 	}
+
 	@Override
-	public void generateInstruction(List<Instruction> instructionList){
-		if(expression != null){
+	public void generateInstruction(List<Instruction> instructionList) {
+		if (expression != null) {
 			expression.generateInstruction(instructionList);
 		}
 	}
