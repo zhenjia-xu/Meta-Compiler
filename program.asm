@@ -106,17 +106,24 @@ main.23.logical_false:
      jne main.25.logical_false
 main.24.logical_true:
      cmp                  rbx,                    0
-     mov                  r14,                    0
-    setg                 r14b
+     mov                  rax,      qword [rbp - 8]
+     mov                  rax,                    0
+    setg                   al
+     mov      qword [rbp - 8],                  rax
+     mov                  rax,      qword [rbp - 8]
+     mov      qword [rbp - 8],                  rax
      jmp main.26.logical_exit
 main.25.logical_false:
-     mov                  r14,                    0
+     mov      qword [rbp - 8],                    0
 main.26.logical_exit:
+     mov                  rax,      qword [rbp - 8]
+     mov      qword [rbp - 8],                  rax
      jmp main.28.logical_exit
 main.27.logical_true:
-     mov                  r14,                    1
+     mov      qword [rbp - 8],                    1
 main.28.logical_exit:
-     mov      qword [rbp - 8],                  r14
+     mov                  rax,      qword [rbp - 8]
+     mov      qword [rbp - 8],                  rax
      cmp                  rdi,                   r9
      mov                  r14,                    0
     sete                 r14b
@@ -180,17 +187,24 @@ main.44.logical_false:
      jne main.46.logical_false
 main.45.logical_true:
      cmp                  rbx,                    0
-     mov                  r14,                    0
-    setg                 r14b
+     mov                  rax,     qword [rbp - 16]
+     mov                  rax,                    0
+    setg                   al
+     mov     qword [rbp - 16],                  rax
+     mov                  rax,     qword [rbp - 16]
+     mov     qword [rbp - 16],                  rax
      jmp main.47.logical_exit
 main.46.logical_false:
-     mov                  r14,                    0
+     mov     qword [rbp - 16],                    0
 main.47.logical_exit:
+     mov                  rax,     qword [rbp - 16]
+     mov     qword [rbp - 16],                  rax
      jmp main.49.logical_exit
 main.48.logical_true:
-     mov                  r14,                    1
+     mov     qword [rbp - 16],                    1
 main.49.logical_exit:
-     mov     qword [rbp - 16],                  r14
+     mov                  rax,     qword [rbp - 16]
+     mov     qword [rbp - 16],                  rax
      cmp                  rdi,                   r9
      mov                  r14,                    0
     sete                 r14b
@@ -254,17 +268,24 @@ main.65.logical_false:
      jne main.67.logical_false
 main.66.logical_true:
      cmp                  rbx,                    0
-     mov                  r14,                    0
-    setg                 r14b
+     mov                  rax,     qword [rbp - 24]
+     mov                  rax,                    0
+    setg                   al
+     mov     qword [rbp - 24],                  rax
+     mov                  rax,     qword [rbp - 24]
+     mov     qword [rbp - 24],                  rax
      jmp main.68.logical_exit
 main.67.logical_false:
-     mov                  r14,                    0
+     mov     qword [rbp - 24],                    0
 main.68.logical_exit:
+     mov                  rax,     qword [rbp - 24]
+     mov     qword [rbp - 24],                  rax
      jmp main.70.logical_exit
 main.69.logical_true:
-     mov                  r14,                    1
+     mov     qword [rbp - 24],                    1
 main.70.logical_exit:
-     mov     qword [rbp - 24],                  r14
+     mov                  rax,     qword [rbp - 24]
+     mov     qword [rbp - 24],                  rax
      cmp                  rdi,                   r9
      mov                  r14,                    0
     sete                 r14b
@@ -338,80 +359,87 @@ main.89.logical_exit:
 main.90.logical_true:
      mov                  r14,                    1
 main.91.logical_exit:
-     mov     qword [rbp - 32],                  r14
      cmp                  rdi,                   r9
-     mov                  r14,                    0
-    sete                 r14b
-     cmp                  r14,                    1
+     mov                  r15,                    0
+    sete                 r15b
+     cmp                  r15,                    1
      jne main.93.logical_false
 main.92.logical_true:
      cmp                  r10,                    0
-     mov                  r14,                    0
-    setg                 r14b
+     mov                  r15,                    0
+    setg                 r15b
      jmp main.94.logical_exit
 main.93.logical_false:
-     mov                  r14,                    0
+     mov                  r15,                    0
 main.94.logical_exit:
-     cmp                  r14,                    1
+     cmp                  r15,                    1
       je main.102.logical_true
 main.95.logical_false:
      cmp                  rsi,                  r11
-     mov                  r14,                    0
-    sete                 r14b
-     cmp                  r14,                    1
+     mov                  r15,                    0
+    sete                 r15b
+     cmp                  r15,                    1
      jne main.97.logical_false
 main.96.logical_true:
      cmp                  rbx,                    0
-     mov                  r14,                    0
-    setg                 r14b
+     mov                  r15,                    0
+    setg                 r15b
      jmp main.98.logical_exit
 main.97.logical_false:
-     mov                  r14,                    0
+     mov                  r15,                    0
 main.98.logical_exit:
-     cmp                  r14,                    1
+     cmp                  r15,                    1
      jne main.100.logical_false
 main.99.logical_true:
      cmp                   r8,                    0
-     mov                  r14,                    0
-    setg                 r14b
+     mov                  r15,                    0
+    setg                 r15b
      jmp main.101.logical_exit
 main.100.logical_false:
-     mov                  r14,                    0
+     mov                  r15,                    0
 main.101.logical_exit:
      jmp main.103.logical_exit
 main.102.logical_true:
-     mov                  r14,                    1
+     mov                  r15,                    1
 main.103.logical_exit:
-     cmp                  r14,                    1
+     cmp                  r15,                    1
       je main.105.logical_true
 main.104.logical_false:
      cmp                  rdi,                   r8
-     mov                  r14,                    0
-    sete                 r14b
+     mov                  r15,                    0
+    sete                 r15b
      jmp main.106.logical_exit
 main.105.logical_true:
-     mov                  r14,                    1
+     mov                  r15,                    1
 main.106.logical_exit:
-     cmp                  r14,                    1
+     cmp                  r15,                    1
       je main.111.logical_true
 main.107.logical_false:
      cmp                  rsi,                    0
-     mov                  r14,                    0
-    setg                 r14b
-     cmp                  r14,                    1
+     mov                  r15,                    0
+    setg                 r15b
+     cmp                  r15,                    1
      jne main.109.logical_false
 main.108.logical_true:
      cmp                  rbx,                    0
-     mov                  r14,                    0
-    setg                 r14b
+     mov                  rax,     qword [rbp - 32]
+     mov                  rax,                    0
+    setg                   al
+     mov     qword [rbp - 32],                  rax
+     mov                  rax,     qword [rbp - 32]
+     mov     qword [rbp - 32],                  rax
      jmp main.110.logical_exit
 main.109.logical_false:
-     mov                  r14,                    0
+     mov     qword [rbp - 32],                    0
 main.110.logical_exit:
+     mov                  rax,     qword [rbp - 32]
+     mov     qword [rbp - 32],                  rax
      jmp main.112.logical_exit
 main.111.logical_true:
-     mov                  r14,                    1
+     mov     qword [rbp - 32],                    1
 main.112.logical_exit:
+     mov                  rax,     qword [rbp - 32]
+     mov     qword [rbp - 32],                  rax
      cmp                  rdi,                   r9
      mov                  r15,                    0
     sete                 r15b
@@ -503,13 +531,13 @@ main.139.if_exit:
 main.140.if_true:
      add                  r13,                    1
 main.142.if_exit:
-     cmp     qword [rbp - 32],                    1
+     cmp                  r14,                    1
       je     main.143.if_true
      jmp     main.145.if_exit
 main.143.if_true:
      add                  r13,                    1
 main.145.if_exit:
-     cmp                  r14,                    1
+     cmp     qword [rbp - 32],                    1
       je     main.146.if_true
      jmp     main.148.if_exit
 main.146.if_true:

@@ -10,7 +10,7 @@ public class Optimization {
 		for (FunctionIR functionIR : ProgramIR.functionMap.values()) {
 			NaiveOptimize.LoopConditionImprovement(functionIR);
 			LivenessAnalysis.analysis(functionIR);
-			//NaiveOptimize.MoveMerge(functionIR);
+			NaiveOptimize.MoveMerge(functionIR);
 			RegisterAllocator.allocate(LivenessAnalysis.virtualRegisterMap, LivenessAnalysis.edgeMap);
 			NaiveOptimize.RemoveEmptyBlock(functionIR);
 			NaiveOptimize.RemoveUselessJump(functionIR);
