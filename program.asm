@@ -1375,9 +1375,9 @@ main.8.if_true:
      pop                  rsi
      pop                   r9
      pop                   r8
-     mov                  rdi,                  rax
+     mov                   r8,                  rax
      mov                  rdi,                  rsi
-     mov                  rsi,                  rdi
+     mov                  rsi,                   r8
     push                   r8
     push                   r9
     push                  rsi
@@ -1411,7 +1411,7 @@ main.8.if_true:
      pop                  rsi
      pop                   r9
      pop                   r8
-     mov                  rdi,                  rax
+     mov                   r8,                  rax
      mov                  rdi,       qword [@C - 0]
     push                   r8
     push                   r9
@@ -1429,6 +1429,7 @@ main.8.if_true:
      pop                   r9
      pop                   r8
      mov                  rsi,                  rax
+     mov                  rdi,                   r8
     push                   r8
     push                   r9
     push                  rsi

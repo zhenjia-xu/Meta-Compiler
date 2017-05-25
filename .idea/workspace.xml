@@ -5,115 +5,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/a.out" afterPath="$PROJECT_DIR$/a.out" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/program.o" afterPath="$PROJECT_DIR$/program.o" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/program.asm" afterPath="$PROJECT_DIR$/program.asm" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/program.txt" afterPath="$PROJECT_DIR$/program.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Constant/BoolConstant.java" afterPath="$PROJECT_DIR$/src/AST/Constant/BoolConstant.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Constant/Constant.java" afterPath="$PROJECT_DIR$/src/AST/Constant/Constant.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Constant/IntConstant.java" afterPath="$PROJECT_DIR$/src/AST/Constant/IntConstant.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Constant/NullConstant.java" afterPath="$PROJECT_DIR$/src/AST/Constant/NullConstant.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Constant/StringConstant.java" afterPath="$PROJECT_DIR$/src/AST/Constant/StringConstant.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/ArrayExpression.java" afterPath="$PROJECT_DIR$/src/AST/Expression/ArrayExpression.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/AssignmentExpression.java" afterPath="$PROJECT_DIR$/src/AST/Expression/AssignmentExpression.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryBitAnd.java" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryBitAnd.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryBitOr.java" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryBitOr.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryBitXor.java" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryBitXor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryDivision.java" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryDivision.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryEqual.java" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryEqual.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryGreater.java" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryGreater.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryGreaterEqual.java" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryGreaterEqual.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryLeftShift.java" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryLeftShift.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryLess.java" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryLess.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryLessEqual.java" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryLessEqual.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryLogicalAnd.java" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryLogicalAnd.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryLogicalOr.java" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryLogicalOr.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryMinus.java" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryMinus.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryModulo.java" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryModulo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryMultiplication.java" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryMultiplication.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryNotEqual.java" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryNotEqual.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryPlus.java" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryPlus.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryRightShift.java" afterPath="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryRightShift.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/CreationExpression.java" afterPath="$PROJECT_DIR$/src/AST/Expression/CreationExpression.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/Expression.java" afterPath="$PROJECT_DIR$/src/AST/Expression/Expression.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/FunctionCallExpression.java" afterPath="$PROJECT_DIR$/src/AST/Expression/FunctionCallExpression.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/IdentifierExpression.java" afterPath="$PROJECT_DIR$/src/AST/Expression/IdentifierExpression.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/MemberExpression.java" afterPath="$PROJECT_DIR$/src/AST/Expression/MemberExpression.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/PrefixOperation/PrefixDecrement.java" afterPath="$PROJECT_DIR$/src/AST/Expression/PrefixOperation/PrefixDecrement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/PrefixOperation/PrefixIncrement.java" afterPath="$PROJECT_DIR$/src/AST/Expression/PrefixOperation/PrefixIncrement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/PrefixOperation/PrefixMinus.java" afterPath="$PROJECT_DIR$/src/AST/Expression/PrefixOperation/PrefixMinus.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/PrefixOperation/PrefixNot.java" afterPath="$PROJECT_DIR$/src/AST/Expression/PrefixOperation/PrefixNot.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/PrefixOperation/PrefixPlus.java" afterPath="$PROJECT_DIR$/src/AST/Expression/PrefixOperation/PrefixPlus.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/PrefixOperation/PrefixReverse.java" afterPath="$PROJECT_DIR$/src/AST/Expression/PrefixOperation/PrefixReverse.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/SuffixOperation/SuffixDecrement.java" afterPath="$PROJECT_DIR$/src/AST/Expression/SuffixOperation/SuffixDecrement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Expression/SuffixOperation/SuffixIncrement.java" afterPath="$PROJECT_DIR$/src/AST/Expression/SuffixOperation/SuffixIncrement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/ProgramAST.java" afterPath="$PROJECT_DIR$/src/AST/ProgramAST.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Statement/BlockStatement.java" afterPath="$PROJECT_DIR$/src/AST/Statement/BlockStatement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Statement/BreakStatement.java" afterPath="$PROJECT_DIR$/src/AST/Statement/BreakStatement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Statement/ContinueStatement.java" afterPath="$PROJECT_DIR$/src/AST/Statement/ContinueStatement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Statement/ExpressionStatement.java" afterPath="$PROJECT_DIR$/src/AST/Statement/ExpressionStatement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Statement/ForStatement.java" afterPath="$PROJECT_DIR$/src/AST/Statement/ForStatement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Statement/IfStatement.java" afterPath="$PROJECT_DIR$/src/AST/Statement/IfStatement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Statement/LoopStatement.java" afterPath="$PROJECT_DIR$/src/AST/Statement/LoopStatement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Statement/ReturnStatement.java" afterPath="$PROJECT_DIR$/src/AST/Statement/ReturnStatement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Statement/Statement.java" afterPath="$PROJECT_DIR$/src/AST/Statement/Statement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Statement/VariableDeclarationStatement.java" afterPath="$PROJECT_DIR$/src/AST/Statement/VariableDeclarationStatement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Statement/WhileStatement.java" afterPath="$PROJECT_DIR$/src/AST/Statement/WhileStatement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Symbol/ProgramScope.java" afterPath="$PROJECT_DIR$/src/AST/Symbol/ProgramScope.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Symbol/Symbol.java" afterPath="$PROJECT_DIR$/src/AST/Symbol/Symbol.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Symbol/SymbolTable.java" afterPath="$PROJECT_DIR$/src/AST/Symbol/SymbolTable.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Type/ArrayType.java" afterPath="$PROJECT_DIR$/src/AST/Type/ArrayType.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Type/BoolType.java" afterPath="$PROJECT_DIR$/src/AST/Type/BoolType.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Type/ClassTable.java" afterPath="$PROJECT_DIR$/src/AST/Type/ClassTable.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Type/ClassType.java" afterPath="$PROJECT_DIR$/src/AST/Type/ClassType.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Type/FunctionTable.java" afterPath="$PROJECT_DIR$/src/AST/Type/FunctionTable.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Type/FunctionType.java" afterPath="$PROJECT_DIR$/src/AST/Type/FunctionType.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Type/IntType.java" afterPath="$PROJECT_DIR$/src/AST/Type/IntType.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Type/NullType.java" afterPath="$PROJECT_DIR$/src/AST/Type/NullType.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Type/StringType.java" afterPath="$PROJECT_DIR$/src/AST/Type/StringType.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Type/Type.java" afterPath="$PROJECT_DIR$/src/AST/Type/Type.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Type/VariableTable.java" afterPath="$PROJECT_DIR$/src/AST/Type/VariableTable.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Type/VoidType.java" afterPath="$PROJECT_DIR$/src/AST/Type/VoidType.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FrontEnd/Listener/ASTreeListener.java" afterPath="$PROJECT_DIR$/src/FrontEnd/Listener/ASTreeListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FrontEnd/Listener/BaseListener.java" afterPath="$PROJECT_DIR$/src/FrontEnd/Listener/BaseListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FrontEnd/Listener/ClassDeclarationListener.java" afterPath="$PROJECT_DIR$/src/FrontEnd/Listener/ClassDeclarationListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FrontEnd/Listener/OtherDeclarationListener.java" afterPath="$PROJECT_DIR$/src/FrontEnd/Listener/OtherDeclarationListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FrontEnd/Parser/MetaBaseListener.java" afterPath="$PROJECT_DIR$/src/FrontEnd/Parser/MetaBaseListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FrontEnd/Parser/MetaLexer.java" afterPath="$PROJECT_DIR$/src/FrontEnd/Parser/MetaLexer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FrontEnd/Parser/MetaListener.java" afterPath="$PROJECT_DIR$/src/FrontEnd/Parser/MetaListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FrontEnd/Parser/MetaParser.java" afterPath="$PROJECT_DIR$/src/FrontEnd/Parser/MetaParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IR/Address.java" afterPath="$PROJECT_DIR$/src/IR/Address.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IR/Block.java" afterPath="$PROJECT_DIR$/src/IR/Block.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IR/FunctionIR.java" afterPath="$PROJECT_DIR$/src/IR/FunctionIR.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IR/ImmediateOperand.java" afterPath="$PROJECT_DIR$/src/IR/ImmediateOperand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IR/Instruction/AllocateInstruction.java" afterPath="$PROJECT_DIR$/src/IR/Instruction/AllocateInstruction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IR/Instruction/BinaryInstruction.java" afterPath="$PROJECT_DIR$/src/IR/Instruction/BinaryInstruction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IR/Instruction/CjumpInstruction.java" afterPath="$PROJECT_DIR$/src/IR/Instruction/CjumpInstruction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IR/Instruction/CompareInstruction.java" afterPath="$PROJECT_DIR$/src/IR/Instruction/CompareInstruction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IR/Instruction/CsetInstruction.java" afterPath="$PROJECT_DIR$/src/IR/Instruction/CsetInstruction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IR/Instruction/FunctionCallInstruction.java" afterPath="$PROJECT_DIR$/src/IR/Instruction/FunctionCallInstruction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IR/Instruction/Instruction.java" afterPath="$PROJECT_DIR$/src/IR/Instruction/Instruction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IR/Instruction/JumpInstruction.java" afterPath="$PROJECT_DIR$/src/IR/Instruction/JumpInstruction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IR/Instruction/LabelInstruction.java" afterPath="$PROJECT_DIR$/src/IR/Instruction/LabelInstruction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IR/Instruction/MoveInstruction.java" afterPath="$PROJECT_DIR$/src/IR/Instruction/MoveInstruction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IR/Instruction/ReturnInstruction.java" afterPath="$PROJECT_DIR$/src/IR/Instruction/ReturnInstruction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IR/Instruction/UnaryInstruction.java" afterPath="$PROJECT_DIR$/src/IR/Instruction/UnaryInstruction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IR/MemoryTag.java" afterPath="$PROJECT_DIR$/src/IR/MemoryTag.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IR/Operand.java" afterPath="$PROJECT_DIR$/src/IR/Operand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IR/ProgramIR.java" afterPath="$PROJECT_DIR$/src/IR/ProgramIR.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IR/RegisterManager.java" afterPath="$PROJECT_DIR$/src/IR/RegisterManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IR/VirtualRegister.java" afterPath="$PROJECT_DIR$/src/IR/VirtualRegister.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main.java" afterPath="$PROJECT_DIR$/src/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Optimization/LivenessAnalysis.java" afterPath="$PROJECT_DIR$/src/Optimization/LivenessAnalysis.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Optimization/NaiveOptimize.java" afterPath="$PROJECT_DIR$/src/Optimization/NaiveOptimize.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Optimization/Optimization.java" afterPath="$PROJECT_DIR$/src/Optimization/Optimization.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Optimization/RegisterAllocator.java" afterPath="$PROJECT_DIR$/src/Optimization/RegisterAllocator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Translation/PhysicalOperand/PhysicalAdd.java" afterPath="$PROJECT_DIR$/src/Translation/PhysicalOperand/PhysicalAdd.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Translation/PhysicalOperand/PhysicalImm.java" afterPath="$PROJECT_DIR$/src/Translation/PhysicalOperand/PhysicalImm.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Translation/PhysicalOperand/PhysicalOperand.java" afterPath="$PROJECT_DIR$/src/Translation/PhysicalOperand/PhysicalOperand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Translation/PhysicalOperand/PhysicalReg.java" afterPath="$PROJECT_DIR$/src/Translation/PhysicalOperand/PhysicalReg.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Translation/PhysicalOperand/PhysicalTag.java" afterPath="$PROJECT_DIR$/src/Translation/PhysicalOperand/PhysicalTag.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Translation/Translator.java" afterPath="$PROJECT_DIR$/src/Translation/Translator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Utility/CompilationError.java" afterPath="$PROJECT_DIR$/src/Utility/CompilationError.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Utility/RuntimeError.java" afterPath="$PROJECT_DIR$/src/Utility/RuntimeError.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Utility/Utility.java" afterPath="$PROJECT_DIR$/src/Utility/Utility.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -167,10 +59,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/Main.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-249">
+                <state relative-caret-position="431">
                   <caret line="41" column="8" lean-forward="false" selection-start-line="41" selection-start-column="8" selection-end-line="41" selection-end-column="8" />
                   <folding />
                 </state>
@@ -187,11 +79,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="RegisterAllocator.java" pinned="false" current-in-tab="false">
+          <file leaf-file-name="RegisterAllocator.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/Optimization/RegisterAllocator.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="351">
-                  <caret line="56" column="43" lean-forward="true" selection-start-line="56" selection-start-column="43" selection-end-line="56" selection-end-column="43" />
+                <state relative-caret-position="526">
+                  <caret line="66" column="17" lean-forward="true" selection-start-line="66" selection-start-column="17" selection-end-line="66" selection-end-column="17" />
                   <folding />
                 </state>
               </provider>
@@ -242,7 +134,7 @@
             <entry file="file://$PROJECT_DIR$/program.txt">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="25">
-                  <caret line="10" column="11" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="1041" selection-end-column="0" />
+                  <caret line="10" column="11" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="1041" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -388,8 +280,8 @@
         <option value="$PROJECT_DIR$/src/IR/FunctionIR.java" />
         <option value="$PROJECT_DIR$/src/Optimization/NaiveOptimize.java" />
         <option value="$PROJECT_DIR$/src/Optimization/Optimization.java" />
-        <option value="$PROJECT_DIR$/src/Optimization/RegisterAllocator.java" />
         <option value="$PROJECT_DIR$/program.txt" />
+        <option value="$PROJECT_DIR$/src/Optimization/RegisterAllocator.java" />
       </list>
     </option>
   </component>
@@ -1123,9 +1015,9 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4162331" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4162331" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298647" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.035379812" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25494277" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2192159" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32778355" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1542,6 +1434,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/program.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="10" column="11" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="1041" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="431">
+          <caret line="41" column="8" lean-forward="false" selection-start-line="41" selection-start-column="8" selection-end-line="41" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Optimization/LivenessAnalysis.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="732">
@@ -1550,26 +1458,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/program.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="10" column="11" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="1041" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Optimization/RegisterAllocator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="56" column="43" lean-forward="true" selection-start-line="56" selection-start-column="43" selection-end-line="56" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-249">
-          <caret line="41" column="8" lean-forward="false" selection-start-line="41" selection-start-column="8" selection-end-line="41" selection-end-column="8" />
+        <state relative-caret-position="526">
+          <caret line="66" column="17" lean-forward="true" selection-start-line="66" selection-start-column="17" selection-end-line="66" selection-end-column="17" />
           <folding />
         </state>
       </provider>

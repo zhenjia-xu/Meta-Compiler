@@ -54,6 +54,10 @@ public class RegisterAllocator {
 			}
 		}
 		else{
+			mapping = new HashMap<>();
+			for (VirtualRegister reg : must) {
+				tryColor(reg, reg.realRegister);
+			}
 			for(VirtualRegister reg: list){
 				for(String name: physicalRegister){
 					if(tryColor(reg, name)){
