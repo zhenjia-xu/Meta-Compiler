@@ -11,7 +11,7 @@ import java.util.Map;
 public class NaiveOptimize {
 	static public void Optimize(FunctionIR functionIR){
 		RemoveEmptyBlock(functionIR);
-		//RemoveUselessJump(functionIR);
+		RemoveUselessJump(functionIR);
 	}
 	static public void RemoveEmptyBlock(FunctionIR functionIR){
 		boolean flag = true;
