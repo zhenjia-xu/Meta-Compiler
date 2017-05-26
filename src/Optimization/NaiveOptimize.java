@@ -1,12 +1,47 @@
 package Optimization;
 
+import AST.ProgramAST;
 import IR.*;
 import IR.Instruction.*;
+import jdk.nashorn.internal.runtime.FunctionInitializer;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class NaiveOptimize {
+	static public void printOptimize(FunctionIR functionIR){
+		for(Block block: functionIR.blockList){
+			for(int i = 0; i + 3 < block.instructionList.size(); i++){
+				if(block.instructionList.get(i) instanceof FunctionCallInstruction &&
+						block.instructionList.get(i + 1) instanceof MoveInstruction &&
+						block.instructionList.get(i + 2) instanceof MoveInstruction &&
+						block.instructionList.get(i + 3) instanceof FunctionCallInstruction){
+					FunctionCallInstruction i0 = (FunctionCallInstruction) block.instructionList.get(i);
+					MoveInstruction i1 = (MoveInstruction) block.instructionList.get(i + 1);
+					MoveInstruction i2 = (MoveInstruction) block.instructionList.get(i + 2);
+					FunctionCallInstruction i3 = (FunctionCallInstruction) block.instructionList.get(i + 3);
+					if(i0.function.getName().equals("toString") &&
+							i1.source instanceof VirtualRegister && ((VirtualRegister) i1.source).realRegister != null && ((VirtualRegister) i1.source).realRegister.equals("rax") &&
+							i2.target instanceof VirtualRegister && ((VirtualRegister) i2.target).realRegister != null  && ((VirtualRegister) i2.target).realRegister.equals("rdi") &&
+							i1.target instanceof VirtualRegister && i1.target == i2.source){
+						if(i3.function.getName().equals("print")){
+							i3.function = ProgramAST.globalFunctionTable.getFunctionType("print_Int");
+							block.instructionList.remove(i);
+							block.instructionList.remove(i);
+							block.instructionList.remove(i);
+						}
+						if(i3.function.getName().equals("println")){
+							i3.function = ProgramAST.globalFunctionTable.getFunctionType("println_Int");
+							block.instructionList.remove(i);
+							block.instructionList.remove(i);
+							block.instructionList.remove(i);
+						}
+					}
+				}
+			}
+		}
+	}
+
 	static public void moveMerge(FunctionIR functionIR){
 		boolean flag = true;
 		while (flag) {
@@ -34,6 +69,7 @@ public class NaiveOptimize {
 			}
 		}
 	}
+
 	static public void loopConditionImprovement(FunctionIR functionIR){
 		for(Block block: functionIR.blockList){
 			for(int i = 0; i + 3 < block.instructionList.size(); i++){

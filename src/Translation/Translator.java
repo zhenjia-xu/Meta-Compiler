@@ -95,7 +95,7 @@ public class Translator {
 
 	public static String IRtoNASM() throws Exception {
 		StringBuilder str = new StringBuilder();
-		str.append("global main\nextern printf, malloc, strcpy, scanf, strlen, sscanf, sprintf, memcpy, strcmp\n");
+		str.append("global main\nextern printf, malloc, strcpy, scanf, strlen, sscanf, sprintf, memcpy, strcmp, puts\n");
 
 		//Section .text
 		str.append(Translator.getTextSection());
@@ -125,12 +125,12 @@ public class Translator {
 			str.append("__string_const" + String.valueOf(i) + ":\n");
 			str.append(Translator.getInstruction("db", Translator.getStringConst(s)));
 		}
-		str.append("__printIntFormat:\n");
+		str.append("__println_IntFormat:\n");
 		str.append(Translator.getInstruction("db", "\"%ld\", 10, 0"));
+		str.append("__print_IntFormat:\n");
+		str.append(Translator.getInstruction("db", "\"%ld\", 0"));
 		str.append("__printFormat:\n");
 		str.append(Translator.getInstruction("db", "\"%s\", 0"));
-		str.append("__printlnFormat:\n");
-		str.append(Translator.getInstruction("db", "\"%s\", 10, 0"));
 		str.append("__getIntFormat:\n");
 		str.append(Translator.getInstruction("db", "\"%ld\", 0"));
 		str.append("__getStringFormat:\n");
@@ -180,12 +180,14 @@ public class Translator {
 
 	static private String getBuiltinFunction() {
 		StringBuilder str = new StringBuilder();
-		//printInt
-		str.append(Translator.getNASMprint("printInt"));
+		//print_Int
+		str.append(Translator.getNASMprint("print_Int"));
+		//println_Int
+		str.append(Translator.getNASMprint("println_Int"));
 		//print
 		str.append(Translator.getNASMprint("print"));
 		//println
-		str.append(Translator.getNASMprint("println"));
+		str.append(Translator.getNASMprintln());
 		//getInt
 		str.append(Translator.getNASMgetInt());
 		//getString
@@ -221,6 +223,14 @@ public class Translator {
 		str.append(Translator.getInstruction("mov", "rsi", "rdi"));
 		str.append(Translator.getInstruction("mov", "rdi", "__" + Format + "Format"));
 		str.append(Translator.getCall("printf"));
+		str.append(Translator.getInstruction("ret"));
+
+		return str.toString();
+	}
+	static private String getNASMprintln() {
+		StringBuilder str = new StringBuilder();
+		str.append("println:\n");
+		str.append(Translator.getCall("puts"));
 		str.append(Translator.getInstruction("ret"));
 
 		return str.toString();

@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FunctionCallInstruction extends Instruction {
-	private FunctionType function;
+	public FunctionType function;
 	private VirtualRegister returnValue;
 	private List<Operand> parameterList;
 

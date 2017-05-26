@@ -18,7 +18,8 @@ public class ProgramAST {
 	public static List<VariableDeclarationStatement> globalDeclarationList;
 
 	private static void addBuiltinFunction() {
-		globalFunctionTable.addFunction(function_printInt());
+		globalFunctionTable.addFunction(function_print_Int());
+		globalFunctionTable.addFunction(function_println_Int());
 		globalFunctionTable.addFunction(function_print());
 		globalFunctionTable.addFunction(function_println());
 		globalFunctionTable.addFunction(function_getString());
@@ -59,8 +60,18 @@ public class ProgramAST {
 		System.out.println(str.toString());
 	}
 
-	private static FunctionType function_printInt() {
-		String functionName = "printInt";
+	private static FunctionType function_print_Int() {
+		String functionName = "print_Int";
+		Type returnType = VoidType.getInstance();
+		List<Symbol> parameterList = new ArrayList<>();
+		parameterList.add(new Symbol("num", IntType.getInstance()));
+		FunctionType function = new FunctionType(functionName, returnType, parameterList);
+		function.setBuiltin();
+		return function;
+	}
+
+	private static FunctionType function_println_Int() {
+		String functionName = "println_Int";
 		Type returnType = VoidType.getInstance();
 		List<Symbol> parameterList = new ArrayList<>();
 		parameterList.add(new Symbol("num", IntType.getInstance()));
