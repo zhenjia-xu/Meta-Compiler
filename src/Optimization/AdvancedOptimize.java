@@ -16,8 +16,8 @@ public class AdvancedOptimize {
 		useful = new HashSet<>();
 		importantOperandIn = new HashMap<>();
 		importantOperandOut = new HashMap<>();
-		//useful.add(functionIR.enterBlock);
-		//useful.add(functionIR.exitBlock);
+		useful.add(functionIR.enterBlock);
+		useful.add(functionIR.exitBlock);
 		for(Block block: functionIR.blockList){
 			importantOperandIn.put(block.labelInstruction, new HashSet<>());
 			importantOperandOut.put(block.labelInstruction, new HashSet<>());
@@ -65,18 +65,18 @@ public class AdvancedOptimize {
 				flag |= calc(block.labelInstruction, block.instructionList.isEmpty() ? null: block.instructionList.get(0));
 			}
 		}
-/*
+
 		for(Block block: functionIR.blockList){
 			System.out.println(useful.contains(block.labelInstruction) + "   " + block.getName() + "  " + importantOperandIn.get(block.labelInstruction));
 			for(Instruction instruction: block.instructionList){
 				System.out.println("    " + useful.contains(instruction) + "    " + instruction + "  " + importantOperandIn.get(instruction));
 			}
 		}
-*/
+
 		for(int i = 0; i < functionIR.blockList.size(); i++){
 			Block block = functionIR.blockList.get(i);
 			for(int j = 0; j < block.instructionList.size(); j++){
-				if(!useful.contains(block.instructionList.get(j))){
+				if(!useful.contains(block.instructionList.get(j)) && !(block.instructionList.get(j) instanceof JumpInstruction)){
 					block.instructionList.remove(j);
 					j--;
 				}

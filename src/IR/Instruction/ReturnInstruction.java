@@ -40,6 +40,7 @@ public class ReturnInstruction extends Instruction {
 		StringBuilder str = new StringBuilder();
 		PhysicalOperand PhysicalReturnValue = PhysicalOperand.get(str, returnValue);
 		str.append(Translator.getInstruction("mov", "rax", PhysicalReturnValue.toString()));
+		//str.append(Translator.getInstruction("ret"));
 		return str.toString();
 	}
 
