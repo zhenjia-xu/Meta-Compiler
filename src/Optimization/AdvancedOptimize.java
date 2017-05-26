@@ -13,6 +13,11 @@ public class AdvancedOptimize {
 	static public Set<Instruction> useful;
 	static public Map<Instruction, Set<VirtualRegister>> importantOperandIn, importantOperandOut;
 	static public void uselessCodeElimination(FunctionIR functionIR){
+		for(Block block: functionIR.blockList){
+			if(block.instructionList.size() > 1000){
+				return;
+			}
+		}
 		useful = new HashSet<>();
 		importantOperandIn = new HashMap<>();
 		importantOperandOut = new HashMap<>();
