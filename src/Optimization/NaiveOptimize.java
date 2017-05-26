@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class NaiveOptimize {
-	static public void MoveMerge(FunctionIR functionIR){
+	static public void moveMerge(FunctionIR functionIR){
 		boolean flag = true;
 		while (flag) {
 			flag = false;
@@ -34,7 +34,7 @@ public class NaiveOptimize {
 			}
 		}
 	}
-	static public void LoopConditionImprovement(FunctionIR functionIR){
+	static public void loopConditionImprovement(FunctionIR functionIR){
 		for(Block block: functionIR.blockList){
 			for(int i = 0; i + 3 < block.instructionList.size(); i++){
 				Instruction i0 = block.instructionList.get(i);
@@ -55,7 +55,7 @@ public class NaiveOptimize {
 		}
 	}
 
-	static public void RemoveEmptyBlock(FunctionIR functionIR) {
+	static public void removeEmptyBlock(FunctionIR functionIR) {
 		boolean flag = true;
 		while (flag) {
 			flag = false;
@@ -92,7 +92,7 @@ public class NaiveOptimize {
 		}
 	}
 
-	static public void RemoveUselessJump(FunctionIR functionIR) {
+	static public void removeUselessJump(FunctionIR functionIR) {
 		for (int i = 0; i < functionIR.blockList.size() - 1; i++) {
 			Block block = functionIR.blockList.get(i);
 			if (block.instructionList.isEmpty()) {

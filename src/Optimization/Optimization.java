@@ -8,12 +8,15 @@ public class Optimization {
 	public static void Optimize() {
 		if (RegisterManager.temporaryId > 4000) return;
 		for (FunctionIR functionIR : ProgramIR.functionMap.values()) {
-			NaiveOptimize.LoopConditionImprovement(functionIR);
+			AdvancedOptimize.uselessCodeElimination(functionIR);
+			/*
+			NaiveOptimize.loopConditionImprovement(functionIR);
 			LivenessAnalysis.analysis(functionIR);
-			NaiveOptimize.MoveMerge(functionIR);
+			NaiveOptimize.moveMerge(functionIR);
 			RegisterAllocator.allocate(LivenessAnalysis.virtualRegisterMap, LivenessAnalysis.edgeMap);
-			NaiveOptimize.RemoveEmptyBlock(functionIR);
-			NaiveOptimize.RemoveUselessJump(functionIR);
+			NaiveOptimize.removeEmptyBlock(functionIR);
+			NaiveOptimize.removeUselessJump(functionIR);
+			*/
 		}
 	}
 }

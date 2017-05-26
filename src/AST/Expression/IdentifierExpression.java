@@ -56,6 +56,7 @@ public class IdentifierExpression extends Expression {
 		if (symbol.global) {
 			VirtualRegister tmp = new VirtualRegister(symbol.getName());
 			tmp.realRegister = "@" + symbol.getName();
+			tmp.global = true;
 			operand = new Address(tmp);
 		} else {
 			operand = symbol.virtualRegister;
