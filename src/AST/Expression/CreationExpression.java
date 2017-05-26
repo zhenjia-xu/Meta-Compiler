@@ -62,7 +62,6 @@ public class CreationExpression extends Expression {
 			instructionList.add(new UnaryInstruction(UnaryInstruction.UnaryOp.INC, allocateSize));
 			instructionList.add(new BinaryInstruction(BinaryInstruction.BinaryOp.MUL, allocateSize, new ImmediateOperand(8)));
 			instructionList.add(new AllocateInstruction(base, allocateSize));
-			instructionList.add(new BinaryInstruction(BinaryInstruction.BinaryOp.SUB, allocateSize, new ImmediateOperand(8)));
 			if (list.get(0) instanceof Address) {
 				VirtualRegister tmp = RegisterManager.getTemporaryRegister();
 				instructionList.add(new MoveInstruction(tmp, list.get(0)));
@@ -96,6 +95,7 @@ public class CreationExpression extends Expression {
 				VirtualRegister end = RegisterManager.getTemporaryRegister();
 				instructionList.add(new MoveInstruction(pos, base));
 				instructionList.add(new MoveInstruction(end, base));
+				instructionList.add(new BinaryInstruction(BinaryInstruction.BinaryOp.SUB, allocateSize, new ImmediateOperand(8)));
 				instructionList.add(new BinaryInstruction(BinaryInstruction.BinaryOp.ADD, end, allocateSize));
 				instructionList.add(new JumpInstruction(conditionLabel));
 

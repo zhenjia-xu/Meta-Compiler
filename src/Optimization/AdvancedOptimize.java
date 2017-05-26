@@ -16,8 +16,8 @@ public class AdvancedOptimize {
 		useful = new HashSet<>();
 		importantOperandIn = new HashMap<>();
 		importantOperandOut = new HashMap<>();
-		useful.add(functionIR.enterBlock);
-		useful.add(functionIR.exitBlock);
+		//useful.add(functionIR.enterBlock);
+		//useful.add(functionIR.exitBlock);
 		for(Block block: functionIR.blockList){
 			importantOperandIn.put(block.labelInstruction, new HashSet<>());
 			importantOperandOut.put(block.labelInstruction, new HashSet<>());
@@ -39,6 +39,20 @@ public class AdvancedOptimize {
 						emit(instruction);
 					}
 				}
+				if(instruction instanceof BinaryInstruction){
+					Operand target = ((BinaryInstruction) instruction).target;
+					if(target instanceof Address || (target instanceof VirtualRegister && ((VirtualRegister) target).realRegister != null)) {
+						useful.add(instruction);
+						emit(instruction);
+					}
+				}
+				if(instruction instanceof UnaryInstruction){
+					Operand target = ((UnaryInstruction) instruction).target;
+					if(target instanceof Address || (target instanceof VirtualRegister && ((VirtualRegister) target).realRegister != null)) {
+						useful.add(instruction);
+						emit(instruction);
+					}
+				}
 			}
 		}
 		boolean flag = true;
@@ -51,14 +65,14 @@ public class AdvancedOptimize {
 				flag |= calc(block.labelInstruction, block.instructionList.isEmpty() ? null: block.instructionList.get(0));
 			}
 		}
-		/*
+/*
 		for(Block block: functionIR.blockList){
 			System.out.println(useful.contains(block.labelInstruction) + "   " + block.getName() + "  " + importantOperandIn.get(block.labelInstruction));
 			for(Instruction instruction: block.instructionList){
 				System.out.println("    " + useful.contains(instruction) + "    " + instruction + "  " + importantOperandIn.get(instruction));
 			}
 		}
-		*/
+*/
 		for(int i = 0; i < functionIR.blockList.size(); i++){
 			Block block = functionIR.blockList.get(i);
 			for(int j = 0; j < block.instructionList.size(); j++){
@@ -72,6 +86,7 @@ public class AdvancedOptimize {
 	static public boolean calc(Instruction instruction, Instruction next){
 		int sizeIn = importantOperandIn.get(instruction).size();
 		int sizeOut = importantOperandOut.get(instruction).size();
+		int usefulSize = useful.size();
 		if(instruction instanceof JumpInstruction){
 			setUnion(importantOperandOut.get(instruction), importantOperandIn.get(((JumpInstruction) instruction).target));
 		}else{
@@ -115,7 +130,10 @@ public class AdvancedOptimize {
 				}
 			}
 		}
-		return importantOperandIn.get(instruction).size() != sizeIn || importantOperandOut.get(instruction).size() != sizeOut;
+		if (importantOperandIn.get(instruction).size() != sizeIn) return true;
+		if (importantOperandOut.get(instruction).size() != sizeOut) return true;
+		if (useful.size() != usefulSize) return true;
+		return false;
 	}
 	static public void emit(Instruction instruction){
 		for(VirtualRegister reg: instruction.useSet){
