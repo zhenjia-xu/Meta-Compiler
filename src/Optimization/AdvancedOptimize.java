@@ -65,14 +65,14 @@ public class AdvancedOptimize {
 				flag |= calc(block.labelInstruction, block.instructionList.isEmpty() ? null: block.instructionList.get(0));
 			}
 		}
-
+/*
 		for(Block block: functionIR.blockList){
 			System.out.println(useful.contains(block.labelInstruction) + "   " + block.getName() + "  " + importantOperandIn.get(block.labelInstruction));
 			for(Instruction instruction: block.instructionList){
 				System.out.println("    " + useful.contains(instruction) + "    " + instruction + "  " + importantOperandIn.get(instruction));
 			}
 		}
-
+*/
 		for(int i = 0; i < functionIR.blockList.size(); i++){
 			Block block = functionIR.blockList.get(i);
 			for(int j = 0; j < block.instructionList.size(); j++){
