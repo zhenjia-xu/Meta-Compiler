@@ -55,8 +55,7 @@ public class IdentifierExpression extends Expression {
 	public void generateInstruction(List<Instruction> instructionList) {
 		if (symbol.global) {
 			VirtualRegister tmp = new VirtualRegister(symbol.getName());
-			tmp.realRegister = "@" + symbol.getName();
-			tmp.global = true;
+			tmp.systemReg = "@" + symbol.getName();
 			operand = new Address(tmp);
 		} else {
 			operand = symbol.virtualRegister;

@@ -1,5 +1,6 @@
 package Optimization;
 
+import IR.FunctionIR;
 import IR.Instruction.CompareInstruction;
 import IR.VirtualRegister;
 import Utility.RuntimeError;
@@ -7,7 +8,7 @@ import Utility.RuntimeError;
 import java.util.*;
 
 public class RegisterAllocator {
-	static private Map<VirtualRegister, String> mapping;
+	static private Map<VirtualRegister, String> registerMap;
 	static private List<VirtualRegister> must;
 	static private Map<VirtualRegister, Set<VirtualRegister>> edgeMap;
 	static private List<String> physicalRegister = new ArrayList<String>() {{
@@ -16,16 +17,16 @@ public class RegisterAllocator {
 		add("r12");add("r13");add("r14");add("r15");
 	}};
 
-	static public void allocate(Map<VirtualRegister, Integer> virtualRegisterIntegerMap, Map<VirtualRegister, Set<VirtualRegister>> edgeMap) {
+	static public void allocate(Map<VirtualRegister, Integer> virtualRegisterIntegerMap, Map<VirtualRegister, Set<VirtualRegister>> edgeMap, FunctionIR functionIR) {
 		RegisterAllocator.edgeMap = edgeMap;
 		List<VirtualRegister> list = new ArrayList<>();
 		List<VirtualRegister> listAllocate = new ArrayList<>();
 		must = new ArrayList<>();
 		for (VirtualRegister reg : virtualRegisterIntegerMap.keySet()) {
-			if (reg.id != 0) {
+			if (functionIR.idMap.containsKey(reg)) {
 				continue;
 			}
-			if (reg.realRegister != null) {
+			if (reg.systemReg != null) {
 				must.add(reg);
 			} else {
 				list.add(reg);
@@ -49,31 +50,28 @@ public class RegisterAllocator {
 				}
 			}
 			coloring(listAllocate);
-			for (VirtualRegister reg : mapping.keySet()) {
-				reg.realRegister = mapping.get(reg);
-			}
 		}
 		else{
-			mapping = new HashMap<>();
+			registerMap = new HashMap<>();
 			for (VirtualRegister reg : must) {
-				tryColor(reg, reg.realRegister);
+				tryColor(reg, reg.systemReg);
 			}
 			for(VirtualRegister reg: list){
 				for(String name: physicalRegister){
 					if(tryColor(reg, name)){
-						reg.realRegister = name;
 						break;
 					}
 				}
 			}
 		}
+		functionIR.registerMap = registerMap;
 	}
 
 	static private boolean coloring(List<VirtualRegister> list_in) {
 		List<VirtualRegister> list = new ArrayList<>(list_in);
-		mapping = new HashMap<>();
+		registerMap = new HashMap<>();
 		for (VirtualRegister reg : must) {
-			if (!tryColor(reg, reg.realRegister)) {
+			if (!tryColor(reg, reg.systemReg)) {
 				throw new RuntimeError("must_list is error");
 			}
 		}
@@ -104,11 +102,11 @@ public class RegisterAllocator {
 
 	static private boolean tryColor(VirtualRegister reg, String name) {
 		for (VirtualRegister neighbour : edgeMap.get(reg)) {
-			if (mapping.containsKey(neighbour) && mapping.get(neighbour).equals(name)) {
+			if (registerMap.containsKey(neighbour) && registerMap.get(neighbour).equals(name)) {
 				return false;
 			}
 		}
-		mapping.put(reg, name);
+		registerMap.put(reg, name);
 		return true;
 	}
 }

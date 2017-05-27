@@ -86,7 +86,7 @@ public class VariableDeclarationStatement extends Statement {
 			Operand target;
 			if (symbol.global) {
 				VirtualRegister tmp = new VirtualRegister(symbol.getName());
-				tmp.realRegister = "@" + symbol.getName();
+				tmp.systemReg = "@" + symbol.getName();
 				target = new Address(tmp);
 			} else {
 				target = symbol.virtualRegister;

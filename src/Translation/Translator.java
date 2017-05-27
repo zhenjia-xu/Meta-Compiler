@@ -5,6 +5,7 @@ import AST.Statement.VariableDeclarationStatement;
 import IR.FunctionIR;
 import IR.ProgramIR;
 import IR.RegisterManager;
+import com.sun.org.apache.xpath.internal.functions.FuncUnparsedEntityURI;
 import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 import java.io.*;
@@ -13,6 +14,7 @@ import java.util.List;
 
 public class Translator {
 	public static int rsp_offset;
+	public static FunctionIR nowFunction;
 
 	public static String getInstruction(String type) {
 		return String.format("%8s\n", type);
@@ -110,6 +112,7 @@ public class Translator {
 		StringBuilder str = new StringBuilder();
 		str.append("SECTION .text\n");
 		for (FunctionIR functionIR : ProgramIR.functionMap.values()) {
+			nowFunction = functionIR;
 			str.append(functionIR.toNASM());
 		}
 		str.append(Translator.getBuiltinFunction());

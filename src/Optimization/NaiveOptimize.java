@@ -21,8 +21,8 @@ public class NaiveOptimize {
 					MoveInstruction i2 = (MoveInstruction) block.instructionList.get(i + 2);
 					FunctionCallInstruction i3 = (FunctionCallInstruction) block.instructionList.get(i + 3);
 					if(i0.function.getName().equals("toString") &&
-							i1.source instanceof VirtualRegister && ((VirtualRegister) i1.source).realRegister != null && ((VirtualRegister) i1.source).realRegister.equals("rax") &&
-							i2.target instanceof VirtualRegister && ((VirtualRegister) i2.target).realRegister != null  && ((VirtualRegister) i2.target).realRegister.equals("rdi") &&
+							i1.source instanceof VirtualRegister && functionIR.registerMap.containsKey((VirtualRegister) i1.source) && functionIR.registerMap.get((VirtualRegister) i1.source).equals("rax") &&
+							i2.target instanceof VirtualRegister && functionIR.registerMap.containsKey((VirtualRegister) i2.target) && functionIR.registerMap.get((VirtualRegister) i2.target).equals("rdi") &&
 							i1.target instanceof VirtualRegister && i1.target == i2.source){
 						if(i3.function.getName().equals("print")){
 							i3.function = ProgramAST.globalFunctionTable.getFunctionType("print_Int");
@@ -51,7 +51,7 @@ public class NaiveOptimize {
 					if (instruction instanceof MoveInstruction) {
 						Operand target = ((MoveInstruction) instruction).target;
 						Operand source = ((MoveInstruction) instruction).source;
-						if (target instanceof VirtualRegister && source instanceof VirtualRegister && target != source && ((VirtualRegister) target).realRegister == null && ((VirtualRegister) source).realRegister == null){
+						if (target instanceof VirtualRegister && source instanceof VirtualRegister && target != source && !functionIR.registerMap.containsKey((VirtualRegister) target) && !functionIR.registerMap.containsKey((VirtualRegister) source)){
 							if(!LivenessAnalysis.edgeMap.containsKey(target)){
 								System.out.println(target);
 							}

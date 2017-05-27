@@ -71,11 +71,11 @@ public class FunctionCallExpression extends Expression {
 		VirtualRegister tmp = null;
 		if (!(function.getReturnType() instanceof VoidType)) {
 			tmp = RegisterManager.getTemporaryRegister();
-			tmp.realRegister = "rax";
+			tmp.systemReg = "rax";
 		}
 		for (int i = 0; i < 6 && parameterList.size() > 0; i++) {
 			VirtualRegister physical = RegisterManager.getTemporaryRegister();
-			physical.realRegister = RegisterManager.parameterRegList.get(i);
+			physical.systemReg = RegisterManager.parameterRegList.get(i);
 			instructionList.add(new MoveInstruction(physical, parameterList.get(0)));
 			parameterList.remove(0);
 		}

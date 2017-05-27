@@ -1,5 +1,6 @@
 package IR;
 
+import Translation.Translator;
 import Utility.RuntimeError;
 
 import java.util.ArrayList;
@@ -30,14 +31,14 @@ public class RegisterManager {
 	}
 
 	private static void getID(VirtualRegister reg) {
-		if (reg.realRegister == null && reg.id == 0) {
-			reg.id = ++NumberOfRegInMem;
+		if (!Translator.nowFunction.registerMap.containsKey(reg) && !Translator.nowFunction.idMap.containsKey(reg)) {
+			Translator.nowFunction.idMap.put(reg, new Integer(++NumberOfRegInMem));
 		}
 	}
 
 	private static void statictics(VirtualRegister reg) {
-		if (reg.realRegister != null) {
-			usedRegister.add(reg.realRegister);
+		if (Translator.nowFunction.registerMap.containsKey(reg)) {
+			usedRegister.add(Translator.nowFunction.registerMap.get(reg));
 		}
 	}
 

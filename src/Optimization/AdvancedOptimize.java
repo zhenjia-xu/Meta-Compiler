@@ -39,21 +39,21 @@ public class AdvancedOptimize {
 				}
 				if(instruction instanceof MoveInstruction){
 					Operand target = ((MoveInstruction) instruction).target;
-					if(target instanceof Address || (target instanceof VirtualRegister && ((VirtualRegister) target).realRegister != null)) {
+					if(target instanceof Address || (target instanceof VirtualRegister && ((VirtualRegister) target).systemReg != null)) {
 						useful.add(instruction);
 						emit(instruction);
 					}
 				}
 				if(instruction instanceof BinaryInstruction){
 					Operand target = ((BinaryInstruction) instruction).target;
-					if(target instanceof Address || (target instanceof VirtualRegister && ((VirtualRegister) target).realRegister != null)) {
+					if(target instanceof Address || (target instanceof VirtualRegister && ((VirtualRegister) target).systemReg != null)) {
 						useful.add(instruction);
 						emit(instruction);
 					}
 				}
 				if(instruction instanceof UnaryInstruction){
 					Operand target = ((UnaryInstruction) instruction).target;
-					if(target instanceof Address || (target instanceof VirtualRegister && ((VirtualRegister) target).realRegister != null)) {
+					if(target instanceof Address || (target instanceof VirtualRegister && ((VirtualRegister) target).systemReg != null)) {
 						useful.add(instruction);
 						emit(instruction);
 					}

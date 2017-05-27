@@ -52,7 +52,7 @@ public class CreationExpression extends Expression {
 				VirtualRegister bak = RegisterManager.getTemporaryRegister();
 				List<Operand> parameterList = new ArrayList<>();
 				VirtualRegister physical = RegisterManager.getTemporaryRegister();
-				physical.realRegister = RegisterManager.parameterRegList.get(0);
+				physical.systemReg = RegisterManager.parameterRegList.get(0);
 				instructionList.add(new MoveInstruction(physical, base));
 				instructionList.add(new FunctionCallInstruction(((ClassType) type).getConstrustFunction(), null, parameterList));
 			}

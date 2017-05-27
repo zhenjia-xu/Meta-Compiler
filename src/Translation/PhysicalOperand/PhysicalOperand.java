@@ -14,24 +14,34 @@ public abstract class PhysicalOperand {
 		}
 		if (x instanceof VirtualRegister) {
 			VirtualRegister xx = (VirtualRegister) x;
-			if (xx.realRegister != null) {
-				return new PhysicalReg(xx.realRegister);
+			if (getReg(xx) != null) {
+				return new PhysicalReg(getReg(xx));
 			} else {
-				return new PhysicalAdd("rbp", -(xx.id) * 8);
-				//need to change******* + 2
+				return new PhysicalAdd("rbp", -getId(xx) * 8);
 			}
 		}
 		if (x instanceof Address) {
 			Address xx = (Address) x;
-			if (xx.base.realRegister != null) {
-				return new PhysicalAdd(xx.base.realRegister, xx.offset.value);
+			if (getReg(xx.base) != null) {
+				return new PhysicalAdd(getReg(xx.base), xx.offset.value);
 			} else {
-				PhysicalAdd newBase = new PhysicalAdd("rbp", -(xx.base.id) * 8);
-				//need to change*******
+				PhysicalAdd newBase = new PhysicalAdd("rbp", -getId(xx.base) * 8);
 				str.append(Translator.getInstruction("mov", "rcx", newBase.toString()));
 				return new PhysicalAdd("rcx", xx.offset.value);
 			}
 		}
 		throw new RuntimeError("get physical operand ERROR");
+	}
+	static private String getReg(VirtualRegister reg){
+		if(reg.systemReg != null){
+			return reg.systemReg;
+		}
+		if(Translator.nowFunction.registerMap.containsKey(reg)){
+			return Translator.nowFunction.registerMap.get(reg);
+		}
+		return null;
+	}
+	static private int getId(VirtualRegister reg){
+		return Translator.nowFunction.idMap.get(reg).intValue();
 	}
 }

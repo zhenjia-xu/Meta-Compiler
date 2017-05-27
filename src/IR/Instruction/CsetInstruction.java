@@ -56,15 +56,12 @@ public class CsetInstruction extends Instruction {
 	public String getInstructionOfNASM() {
 		StringBuilder str = new StringBuilder();
 		PhysicalOperand physicalTarget = PhysicalOperand.get(str, target);
-		if (target.id != 0) {
+		if (Translator.nowFunction.idMap.containsKey(target)) {
 			str.append(Translator.getInstruction("mov", "rax", physicalTarget.toString()));
 			str.append(Translator.getInstruction("mov", "rax", "0"));
 			str.append(Translator.getInstruction("set" + Translator.getNASMofCondition(op), "al"));
 			str.append(Translator.getInstruction("mov", physicalTarget.toString(), "rax"));
 		} else {
-			if (!(physicalTarget instanceof PhysicalReg)) {
-				throw new RuntimeError("Cset getInstructionOfNASM ERROR");
-			}
 			str.append(Translator.getInstruction("mov", physicalTarget.toString(), "0"));
 			str.append(Translator.getInstruction("set" + Translator.getNASMofCondition(op), lowest8Reg.get(physicalTarget.toString())));
 		}

@@ -10,7 +10,9 @@ import Translation.Translator;
 import Utility.Utility;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class FunctionIR {
 	private FunctionType function;
@@ -19,8 +21,9 @@ public class FunctionIR {
 	public LabelInstruction enterBlock, exitBlock;
 	public static List<String> callerRegisterList;
 	public static List<String> calleeRegisterList;
+	public static Map<VirtualRegister, String> registerMap;
+	public static Map<VirtualRegister, Integer> idMap;
 	public static List<String> callerAll = new ArrayList<String>() {{
-		//add("rcx");
 		add("rdx");
 		add("rsi");
 		add("rdi");
@@ -39,6 +42,8 @@ public class FunctionIR {
 
 	public FunctionIR(FunctionType function) {
 		this.function = function;
+		this.registerMap = new HashMap<>();
+		this.idMap = new HashMap<>();
 		parameterList = new ArrayList<>();
 		for (Symbol x : function.getParameterList()) {
 			parameterList.add(x.virtualRegister);
@@ -61,10 +66,10 @@ public class FunctionIR {
 		for (int i = 0; i < parameterList.size(); i++) {
 			if (i < 6) {
 				VirtualRegister tmp = RegisterManager.getTemporaryRegister();
-				tmp.realRegister = RegisterManager.parameterRegList.get(i);
+				tmp.systemReg = RegisterManager.parameterRegList.get(i);
 				instructionList.add(new MoveInstruction(parameterList.get(i), tmp));
 			} else {
-				parameterList.get(i).id = 4 - i;
+				idMap.put(parameterList.get(i), new Integer(4 - i));
 			}
 		}
 		function.getBlockStatement().generateInstruction(instructionList);
