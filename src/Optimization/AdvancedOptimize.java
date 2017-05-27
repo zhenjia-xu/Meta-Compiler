@@ -105,7 +105,7 @@ public class AdvancedOptimize {
 		if(instruction instanceof LabelInstruction){
 			setUnion(importantOperandIn.get(instruction), importantOperandOut.get(instruction));
 			for(Instruction x: ((LabelInstruction) instruction).block.instructionList){
-				if(useful.contains(x)){
+				if(!(x instanceof JumpInstruction) && !(x instanceof CjumpInstruction) && useful.contains(x)){
 					useful.add(instruction);
 				}
 			}

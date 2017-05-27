@@ -17,18 +17,9 @@ main:
      sub                  rsp,                    0
 main.0.enter:
      mov                  rbx,                    0
-     jmp main.3.loop_condition
-main.1.loop_body:
-     mov                  rdi,                  rbx
-    push                  rdi
-    call            print_Int
-     pop                  rdi
-main.2.loop_increment:
-     add                  rbx,                    1
-main.3.loop_condition:
-     cmp                  rbx,              1000000
-      jl     main.1.loop_body
-main.5.exit:
+main.3.loop_exit:
+     mov                  rax,                  rbx
+main.4.exit:
      pop                  rbx
      add                  rsp,                    0
      pop                  rbp

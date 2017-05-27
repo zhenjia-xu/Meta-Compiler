@@ -1,9 +1,26 @@
-int main(){
-	int x = 123456789;
-	int i;
-	for(i = 0; i < 1000000; i++){
-		print(toString(i));
-		//println_Int(i);
-	}
+int main() {
+	int a = 0;
+	int b = 0;
+	int i = 0;
+	while(i < 100000000) b = b + 1;
+	return a;
 
 }
+
+/*!! metadata:
+=== comment ===
+optim-515030910625-longsishan.txt
+=== assert ===
+exitcode
+=== timeout ===
+1.0
+=== input ===
+
+=== phase ===
+optim extended
+=== is_public ===
+True
+=== exitcode ===
+0
+
+!!*/
