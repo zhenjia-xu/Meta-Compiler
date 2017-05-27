@@ -16,7 +16,6 @@ public class Optimization {
 			RegisterAllocator.allocate(LivenessAnalysis.virtualRegisterMap, LivenessAnalysis.edgeMap);
 			NaiveOptimize.removeEmptyBlock(functionIR);
 			NaiveOptimize.removeUselessJump(functionIR);
-
 		}
 	}
 }

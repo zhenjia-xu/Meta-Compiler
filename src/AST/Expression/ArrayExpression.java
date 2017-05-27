@@ -49,7 +49,7 @@ public class ArrayExpression extends Expression {
 		ArrayType arrayType = (ArrayType) arrayExpression.getType();
 		Type newType = arrayType.reduceDimension();
 		instructionList.add(new MoveInstruction(offset, subscriptExpression.operand));
-		instructionList.add(new BinaryInstruction(BinaryInstruction.BinaryOp.MUL, offset, new ImmediateOperand(8)));
+		instructionList.add(new BinaryInstruction(BinaryInstruction.BinaryOp.SHL, offset, new ImmediateOperand(3)));
 		VirtualRegister pos = RegisterManager.getTemporaryRegister();
 		instructionList.add(new MoveInstruction(pos, arrayExpression.operand));
 		instructionList.add(new BinaryInstruction(BinaryInstruction.BinaryOp.ADD, pos, offset));

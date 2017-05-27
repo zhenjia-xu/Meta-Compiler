@@ -60,7 +60,7 @@ public class CreationExpression extends Expression {
 			VirtualRegister allocateSize = RegisterManager.getTemporaryRegister();
 			instructionList.add(new MoveInstruction(allocateSize, list.get(0)));
 			instructionList.add(new UnaryInstruction(UnaryInstruction.UnaryOp.INC, allocateSize));
-			instructionList.add(new BinaryInstruction(BinaryInstruction.BinaryOp.MUL, allocateSize, new ImmediateOperand(8)));
+			instructionList.add(new BinaryInstruction(BinaryInstruction.BinaryOp.SHL, allocateSize, new ImmediateOperand(3)));
 			instructionList.add(new AllocateInstruction(base, allocateSize));
 			if (list.get(0) instanceof Address) {
 				VirtualRegister tmp = RegisterManager.getTemporaryRegister();

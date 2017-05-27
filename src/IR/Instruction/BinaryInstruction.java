@@ -2,6 +2,7 @@ package IR.Instruction;
 
 import IR.*;
 import Translation.PhysicalOperand.PhysicalAdd;
+import Translation.PhysicalOperand.PhysicalImm;
 import Translation.PhysicalOperand.PhysicalOperand;
 import Translation.PhysicalOperand.PhysicalReg;
 import Translation.Translator;
@@ -73,13 +74,22 @@ public class BinaryInstruction extends Instruction {
 		PhysicalOperand PhysicalSource = PhysicalOperand.get(str, operand);
 		PhysicalOperand PhysicalTarget = PhysicalOperand.get(str, target);
 		if (opNASM.equals("shl")) {
-			str.append(Translator.getInstruction("mov", "rcx", PhysicalSource.toString()));
-			str.append(Translator.getInstruction("sal", PhysicalTarget.toString(), "cl"));
+			if(PhysicalSource instanceof PhysicalImm){
+				str.append(Translator.getInstruction("sal", PhysicalTarget.toString(), PhysicalSource.toString()));
+			}else {
+				str.append(Translator.getInstruction("mov", "rcx", PhysicalSource.toString()));
+				str.append(Translator.getInstruction("sal", PhysicalTarget.toString(), "cl"));
+			}
 			return str.toString();
 		}
 		if (opNASM.equals("shr")) {
-			str.append(Translator.getInstruction("mov", "rcx", PhysicalSource.toString()));
-			str.append(Translator.getInstruction("sar", PhysicalTarget.toString(), "cl"));
+
+			if(PhysicalSource instanceof PhysicalImm){
+				str.append(Translator.getInstruction("sar", PhysicalTarget.toString(), PhysicalSource.toString()));
+			}else {
+				str.append(Translator.getInstruction("mov", "rcx", PhysicalSource.toString()));
+				str.append(Translator.getInstruction("sar", PhysicalTarget.toString(), "cl"));
+			}
 			return str.toString();
 		}
 		if (opNASM.equals("mul")) {

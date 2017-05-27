@@ -65,9 +65,9 @@ public class AdvancedOptimize {
 			flag = false;
 			for (Block block: functionIR.blockList){
 				for(int i = block.instructionList.size() - 1; i >= 0; i--){
-					flag |= calc(block.instructionList.get(i), (i + 1 < block.instructionList.size()) ? block.instructionList.get(i + 1) : null);
+					flag |= calc(block.instructionList.get(i), (i + 1 < block.instructionList.size()) ? block.instructionList.get(i + 1) : null, block.labelInstruction.getName());
 				}
-				flag |= calc(block.labelInstruction, block.instructionList.isEmpty() ? null: block.instructionList.get(0));
+				flag |= calc(block.labelInstruction, block.instructionList.isEmpty() ? null: block.instructionList.get(0), block.labelInstruction.getName());
 			}
 		}
 /*
@@ -88,7 +88,7 @@ public class AdvancedOptimize {
 			}
 		}
 	}
-	static public boolean calc(Instruction instruction, Instruction next){
+	static public boolean calc(Instruction instruction, Instruction next, String labelName){
 		int sizeIn = importantOperandIn.get(instruction).size();
 		int sizeOut = importantOperandOut.get(instruction).size();
 		int usefulSize = useful.size();
@@ -105,36 +105,36 @@ public class AdvancedOptimize {
 		if(instruction instanceof LabelInstruction){
 			setUnion(importantOperandIn.get(instruction), importantOperandOut.get(instruction));
 			for(Instruction x: ((LabelInstruction) instruction).block.instructionList){
-				if(!(x instanceof JumpInstruction) && !(x instanceof CjumpInstruction) && useful.contains(x)){
+				if(useful.contains(x)){
 					useful.add(instruction);
 				}
 			}
 		}else//Jump, Cjump
-		if(instruction instanceof JumpInstruction || instruction instanceof CjumpInstruction || instruction instanceof LabelInstruction){
-			setUnion(importantOperandIn.get(instruction), importantOperandOut.get(instruction));
-			if(instruction instanceof JumpInstruction && useful.contains(((JumpInstruction) instruction).target)){
-				useful.add(instruction);
-			}
-			if(instruction instanceof CjumpInstruction && useful.contains(((CjumpInstruction) instruction).target)){
-				useful.add(instruction);
-			}
-		}else//Cmp
-		if(instruction instanceof CompareInstruction){
-			setUnion(importantOperandIn.get(instruction), importantOperandOut.get(instruction));
-			if (useful.contains(next)) {
-				useful.add(instruction);
-				emit(instruction);
-			}
-		}else{//Allocate, Binary, Cset, FunctionCall, Move, Return, Unary
-			for(VirtualRegister reg: importantOperandOut.get(instruction)){
-				if(instruction.killSet.contains(reg)){
+			if(instruction instanceof JumpInstruction || instruction instanceof CjumpInstruction || instruction instanceof LabelInstruction){
+				setUnion(importantOperandIn.get(instruction), importantOperandOut.get(instruction));
+				if(instruction instanceof JumpInstruction && useful.contains(((JumpInstruction) instruction).target) && !labelName.equals("loop_condition")){
 					useful.add(instruction);
-					emit(instruction);
-				}else{
-					importantOperandIn.get(instruction).add(reg);
 				}
-			}
-		}
+				if(instruction instanceof CjumpInstruction && useful.contains(((CjumpInstruction) instruction).target)){
+					useful.add(instruction);
+				}
+			}else//Cmp
+				if(instruction instanceof CompareInstruction){
+					setUnion(importantOperandIn.get(instruction), importantOperandOut.get(instruction));
+					if (useful.contains(next)) {
+						useful.add(instruction);
+						emit(instruction);
+					}
+				}else{//Allocate, Binary, Cset, FunctionCall, Move, Return, Unary
+					for(VirtualRegister reg: importantOperandOut.get(instruction)){
+						if(instruction.killSet.contains(reg)){
+							useful.add(instruction);
+							emit(instruction);
+						}else{
+							importantOperandIn.get(instruction).add(reg);
+						}
+					}
+				}
 		if (importantOperandIn.get(instruction).size() != sizeIn) return true;
 		if (importantOperandOut.get(instruction).size() != sizeOut) return true;
 		if (useful.size() != usefulSize) return true;
