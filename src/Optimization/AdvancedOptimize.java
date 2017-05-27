@@ -1,15 +1,66 @@
 package Optimization;
 
+import AST.Type.FunctionType;
 import IR.*;
 import IR.Instruction.*;
 import org.omg.PortableInterceptor.INACTIVE;
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class AdvancedOptimize {
+	static public void functionInline(FunctionIR functionIR){
+		for(int i = 0; i < functionIR.blockList.size(); i++){
+			Block block = functionIR.blockList.get(i);
+			for(int j = 0; j < block.instructionList.size(); j++){
+				Instruction instruction = block.instructionList.get(j);
+				if(instruction instanceof FunctionCallInstruction && !((FunctionCallInstruction) instruction).function.isBuiltin()){
+					FunctionType fun = ((FunctionCallInstruction) instruction).function;
+					block.instructionList.remove(j);
+					int num = Math.min(6, fun.getParameterList().size());
+					for(int k = 0; k < num; k++){
+						((MoveInstruction) block.instructionList.get(j - num + k)).target = fun.getParameterList().get(k).virtualRegister;
+					}
+					for(int k = 6; k < fun.getParameterList().size(); k++){
+						block.instructionList.add(j, new MoveInstruction(fun.getParameterList().get(k).virtualRegister, ((FunctionCallInstruction) instruction).parameterList.get(k - 6)));
+						j++;
+					}
+
+//optimize return value
+					LabelInstruction enterBlock = new LabelInstruction("enter");
+					LabelInstruction exitBlock = new LabelInstruction("exit");
+					fun.enterLabel = enterBlock;
+					fun.exitLabel = exitBlock;
+
+					block.instructionList.add(j, new JumpInstruction(enterBlock));
+					j++;
+
+					List<Instruction> instructionList = new ArrayList<>();
+					instructionList.add(enterBlock);
+					fun.getBlockStatement().generateInstruction(instructionList);
+					instructionList.add(exitBlock);
+					while(j < block.instructionList.size()){
+						instructionList.add(block.instructionList.get(j));
+						block.instructionList.remove(j);
+					}
+
+					for (int ti = 0, tj; ti < instructionList.size(); ti = tj) {
+						LabelInstruction label = (LabelInstruction) instructionList.get(ti);
+						Block newblock = new Block(functionIR, label.getName(), functionIR.blockList.size(), label);
+						for (tj = ti + 1; tj < instructionList.size(); tj++) {
+							Instruction newinstruction = instructionList.get(tj);
+							if (newinstruction instanceof LabelInstruction) break;
+							newblock.add(newinstruction);
+						}
+						label.block = newblock;
+						i++;
+						functionIR.blockList.add(i, newblock);
+					}
+				}
+
+			}
+		}
+	}
 	static public Set<Instruction> useful;
 	static public Map<Instruction, Set<VirtualRegister>> importantOperandIn, importantOperandOut;
 	static public void uselessCodeElimination(FunctionIR functionIR){

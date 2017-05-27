@@ -15,7 +15,7 @@ import java.util.List;
 public class FunctionCallInstruction extends Instruction {
 	public FunctionType function;
 	private VirtualRegister returnValue;
-	private List<Operand> parameterList;
+	public List<Operand> parameterList;
 
 	public FunctionCallInstruction(FunctionType function, VirtualRegister returnValue, List<Operand> parameterList) {
 		this.function = function;
