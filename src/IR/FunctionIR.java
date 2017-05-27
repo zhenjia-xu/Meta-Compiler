@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 public class FunctionIR {
-	private FunctionType function;
+	public FunctionType function;
 	private List<VirtualRegister> parameterList;
 	public List<Block> blockList;
 	public LabelInstruction enterBlock, exitBlock;
