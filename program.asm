@@ -1,28 +1,40 @@
 global main
 extern printf, malloc, strcpy, scanf, strlen, sscanf, sprintf, memcpy, strcmp, puts
 SECTION .text
-func:
+a:
     push                  rbp
      mov                  rbp,                  rsp
-     sub                  rsp,                   72
-func.0.enter:
-     mov      qword [rbp - 8],                  rdi
-     mov     qword [rbp - 24],                  rsi
-     mov     qword [rbp - 40],                  rdx
-     mov                  rax,      qword [rbp - 8]
-     mov     qword [rbp - 56],                  rax
-     mov                  rax,     qword [rbp - 24]
-     add     qword [rbp - 56],                  rax
-     mov                  rax,     qword [rbp - 56]
-     mov     qword [rbp - 64],                  rax
-     mov                  rax,     qword [rbp - 40]
-     add     qword [rbp - 64],                  rax
-     mov                  rax,     qword [rbp - 64]
-     mov     qword [rbp - 72],                  rax
-     and     qword [rbp - 72],           1073741823
-     mov                  rax,     qword [rbp - 72]
-func.1.exit:
-     add                  rsp,                   72
+    push                  r12
+    push                  rbx
+     sub                  rsp,                    0
+a.0.enter:
+     mov                  r11,                  rdi
+     mov                  r12,                  rdx
+     mov                  r10,                  rcx
+     mov                  rdi,                   r8
+     mov                  rbx,                   r9
+     mov                   r8,                  r11
+     add                   r8,                  rsi
+     mov                  rsi,                   r8
+     add                  rsi,                  r12
+     add                  rsi,                  r10
+     add                  rsi,                  rdi
+     add                  rsi,                  rbx
+     mov                  rbx,                  rsi
+     add                  rbx,     qword [rbp + 16]
+     add                  rbx,     qword [rbp + 24]
+     add                  rbx,     qword [rbp + 32]
+     add                  rbx,     qword [rbp + 40]
+     add                  rbx,     qword [rbp + 48]
+     add                  rbx,     qword [rbp + 56]
+     add                  rbx,     qword [rbp + 64]
+     add                  rbx,     qword [rbp + 72]
+     add                  rbx,     qword [rbp + 80]
+     mov                  rax,                  rbx
+a.1.exit:
+     pop                  rbx
+     pop                  r12
+     add                  rsp,                    0
      pop                  rbp
      ret
 @GlobalDeclaration:
@@ -37,496 +49,66 @@ main:
     push                  rbp
      mov                  rbp,                  rsp
     call   @GlobalDeclaration
-    push                  r12
-    push                  r14
-    push                  r13
-    push                  r15
     push                  rbx
      sub                  rsp,                    0
 main.0.enter:
-     mov                  rbx,                  700
-     mov                   r9,                  rbx
-     add                   r9,                    1
-     sal                   r9,                    3
-    push                  r10
-    push                  r11
+     mov                  rdi,                    1
+     mov                  rsi,                    2
+     mov                  rdx,                    3
+     mov                  rcx,                    4
+     mov                   r8,                    5
+     mov                   r9,                    6
     push                  rdi
     push                   r8
-    push                   r9
-    push                  rsi
-     mov                  rdi,                   r9
-     sub                  rsp,                    8
-    call               malloc
-     add                  rsp,                    8
-     pop                  rsi
-     pop                   r9
-     pop                   r8
-     pop                  rdi
-     pop                  r11
-     pop                  r10
-     mov                  rsi,                  rax
-     mov      qword [rsi - 0],                  rbx
-     add                  rsi,                    8
-     mov                  rdi,                  rsi
-     mov                   r8,                  rsi
-     sub                   r9,                    8
-     add                   r8,                   r9
-     jmp main.2.allocate_condition
-main.1.allocate_body:
-     mov                   r9,      qword [rdi - 0]
-     mov                   r9,                  rbx
-     add                   r9,                    1
-     sal                   r9,                    3
-    push                  r10
-    push                  r11
-    push                  rdi
-    push                   r8
-    push                   r9
-    push                  rsi
-     mov                  rdi,                   r9
-     sub                  rsp,                    8
-    call               malloc
-     add                  rsp,                    8
-     pop                  rsi
-     pop                   r9
-     pop                   r8
-     pop                  rdi
-     pop                  r11
-     pop                  r10
-     mov                   r9,                  rax
-     mov       qword [r9 - 0],                  rbx
-     add                   r9,                    8
-     mov      qword [rdi - 0],                   r9
-     add                  rdi,                    8
-main.2.allocate_condition:
-     cmp                  rdi,                   r8
-      jl main.1.allocate_body
-main.3.allocate_exit:
-     mov                  rdi,                  rsi
-     mov                  r10,                  rbx
-     add                  r10,                    1
-     sal                  r10,                    3
-    push                  r10
-    push                  r11
-    push                  rdi
-    push                   r8
-    push                   r9
-    push                  rsi
-     mov                  rdi,                  r10
-     sub                  rsp,                    8
-    call               malloc
-     add                  rsp,                    8
-     pop                  rsi
-     pop                   r9
-     pop                   r8
-     pop                  rdi
-     pop                  r11
-     pop                  r10
-     mov                  rsi,                  rax
-     mov      qword [rsi - 0],                  rbx
-     add                  rsi,                    8
-     mov                   r8,                  rsi
-     mov                   r9,                  rsi
-     sub                  r10,                    8
-     add                   r9,                  r10
-     jmp main.5.allocate_condition
-main.4.allocate_body:
-     mov                  r10,       qword [r8 - 0]
-     mov                  r10,                  rbx
-     add                  r10,                    1
-     sal                  r10,                    3
-    push                  r10
-    push                  r11
-    push                  rdi
-    push                   r8
-    push                   r9
-    push                  rsi
-     mov                  rdi,                  r10
-     sub                  rsp,                    8
-    call               malloc
-     add                  rsp,                    8
-     pop                  rsi
-     pop                   r9
-     pop                   r8
-     pop                  rdi
-     pop                  r11
-     pop                  r10
-     mov                  r10,                  rax
-     mov      qword [r10 - 0],                  rbx
-     add                  r10,                    8
-     mov       qword [r8 - 0],                  r10
-     add                   r8,                    8
-main.5.allocate_condition:
-     cmp                   r8,                   r9
-      jl main.4.allocate_body
-main.6.allocate_exit:
-     mov                  r11,                  rbx
-     add                  r11,                    1
-     sal                  r11,                    3
-    push                  r10
-    push                  r11
-    push                  rdi
-    push                   r8
-    push                   r9
-    push                  rsi
-     mov                  rdi,                  r11
-     sub                  rsp,                    8
-    call               malloc
-     add                  rsp,                    8
-     pop                  rsi
-     pop                   r9
-     pop                   r8
-     pop                  rdi
-     pop                  r11
-     pop                  r10
-     mov                   r8,                  rax
-     mov       qword [r8 - 0],                  rbx
-     add                   r8,                    8
-     mov                   r9,                   r8
-     mov                  r10,                   r8
-     sub                  r11,                    8
-     add                  r10,                  r11
-     jmp main.8.allocate_condition
-main.7.allocate_body:
-     mov                  r11,       qword [r9 - 0]
-     mov                  r11,                  rbx
-     add                  r11,                    1
-     sal                  r11,                    3
-    push                  r10
-    push                  r11
-    push                  rdi
-    push                   r8
-    push                   r9
-    push                  rsi
-     mov                  rdi,                  r11
-     sub                  rsp,                    8
-    call               malloc
-     add                  rsp,                    8
-     pop                  rsi
-     pop                   r9
-     pop                   r8
-     pop                  rdi
-     pop                  r11
-     pop                  r10
-     mov                  r11,                  rax
-     mov      qword [r11 - 0],                  rbx
-     add                  r11,                    8
-     mov       qword [r9 - 0],                  r11
-     add                   r9,                    8
-main.8.allocate_condition:
-     cmp                   r9,                  r10
-      jl main.7.allocate_body
-main.9.allocate_exit:
-     mov                  r10,                   r8
-     mov                   r8,                    0
-     jmp main.16.loop_condition
-main.10.loop_body:
-     mov                   r9,                    0
-     jmp main.13.loop_condition
-main.11.loop_body:
-     mov                  r12,                   r8
-     sal                  r12,                    3
-     mov                  r11,                  rdi
-     add                  r11,                  r12
-     mov                  r12,                   r9
-     sal                  r12,                    3
-     mov                  r11,      qword [r11 - 0]
-     add                  r11,                  r12
-     mov                  r12,                   r8
-     add                  r12,                   r9
-     mov      qword [r11 - 0],                  r12
-main.12.loop_increment:
-     add                   r9,                    1
-main.13.loop_condition:
-     cmp                   r9,                  rbx
-      jl    main.11.loop_body
-main.15.loop_increment:
-     add                   r8,                    1
-main.16.loop_condition:
-     cmp                   r8,                  rbx
-      jl    main.10.loop_body
-main.17.loop_exit:
-     mov                   r8,                    0
-     jmp main.31.loop_condition
-main.18.loop_body:
-     mov                   r9,                    0
-     jmp main.28.loop_condition
-main.19.loop_body:
-     mov                  r11,                    0
-     jmp main.25.loop_condition
-main.20.loop_body:
-     cmp                   r9,                   r8
-     jge      main.21.if_true
-     jmp main.24.loop_increment
-main.21.if_true:
-     mov                  r13,                   r8
-     sal                  r13,                    3
-     mov                  r12,                  rsi
-     add                  r12,                  r13
-     mov                  r13,                   r9
-     sal                  r13,                    3
-     mov                  r12,      qword [r12 - 0]
-     add                  r12,                  r13
-     mov                  r14,                   r8
-     sal                  r14,                    3
-     mov                  r13,                  rsi
-     add                  r13,                  r14
-     mov                  r14,                   r9
-     sal                  r14,                    3
-     mov                  r13,      qword [r13 - 0]
-     add                  r13,                  r14
-     mov                  r14,                   r8
-     sal                  r14,                    3
-     mov                  r15,                  rdi
-     add                  r15,                  r14
-     mov                  r14,                  r11
-     sal                  r14,                    3
-     mov                  r15,      qword [r15 - 0]
-     add                  r15,                  r14
-     mov                  r13,      qword [r13 - 0]
-     add                  r13,      qword [r15 - 0]
-     mov                  r15,                  r11
-     sal                  r15,                    3
-     mov                  r14,                  rdi
-     add                  r14,                  r15
-     mov                  r15,                   r9
-     sal                  r15,                    3
-     mov                  r14,      qword [r14 - 0]
-     add                  r14,                  r15
-     add                  r13,      qword [r14 - 0]
-     and                  r13,           1073741823
-     mov      qword [r12 - 0],                  r13
-     mov                  r13,                   r8
-     sal                  r13,                    3
-     mov                  r12,                  r10
-     add                  r12,                  r13
-     mov                  r13,                   r9
-     sal                  r13,                    3
-     mov                  r12,      qword [r12 - 0]
-     add                  r12,                  r13
-     mov                  r14,                   r8
-     sal                  r14,                    3
-     mov                  r13,                  rsi
-     add                  r13,                  r14
-     mov                  r14,                   r9
-     sal                  r14,                    3
-     mov                  r13,      qword [r13 - 0]
-     add                  r13,                  r14
-     mov                  r14,                   r8
-     sal                  r14,                    3
-     mov                  r15,                  rdi
-     add                  r15,                  r14
-     mov                  r14,                  r11
-     sal                  r14,                    3
-     mov                  r15,      qword [r15 - 0]
-     add                  r15,                  r14
-     mov                  r13,      qword [r13 - 0]
-     add                  r13,      qword [r15 - 0]
-     mov                  r14,                  r11
-     sal                  r14,                    3
-     mov                  r15,                  rdi
-     add                  r15,                  r14
-     mov                  r14,                   r9
-     sal                  r14,                    3
-     mov                  r15,      qword [r15 - 0]
-     add                  r15,                  r14
-     add                  r13,      qword [r15 - 0]
-     and                  r13,           1073741823
-     mov      qword [r12 - 0],                  r13
-     mov                  r13,                   r8
-     sal                  r13,                    3
-     mov                  r12,                  r10
-     add                  r12,                  r13
-     mov                  r13,                   r9
-     sal                  r13,                    3
-     mov                  r12,      qword [r12 - 0]
-     add                  r12,                  r13
-     mov                  r14,                   r8
-     sal                  r14,                    3
-     mov                  r13,                  rsi
-     add                  r13,                  r14
-     mov                  r14,                   r9
-     sal                  r14,                    3
-     mov                  r13,      qword [r13 - 0]
-     add                  r13,                  r14
-     mov                  r15,                   r8
-     sal                  r15,                    3
-     mov                  r14,                  rdi
-     add                  r14,                  r15
-     mov                  r15,                  r11
-     sal                  r15,                    3
-     mov                  r14,      qword [r14 - 0]
-     add                  r14,                  r15
-     mov                  r13,      qword [r13 - 0]
-     add                  r13,      qword [r14 - 0]
-     mov                  r15,                  r11
-     sal                  r15,                    3
-     mov                  r14,                  rdi
-     add                  r14,                  r15
-     mov                  r15,                   r9
-     sal                  r15,                    3
-     mov                  r14,      qword [r14 - 0]
-     add                  r14,                  r15
-     add                  r13,      qword [r14 - 0]
-     and                  r13,           1073741823
-     mov      qword [r12 - 0],                  r13
-     mov                  r13,                   r8
-     sal                  r13,                    3
-     mov                  r12,                  r10
-     add                  r12,                  r13
-     mov                  r13,                   r9
-     sal                  r13,                    3
-     mov                  r12,      qword [r12 - 0]
-     add                  r12,                  r13
-     mov                  r14,                   r8
-     sal                  r14,                    3
-     mov                  r13,                  rsi
-     add                  r13,                  r14
-     mov                  r14,                   r9
-     sal                  r14,                    3
-     mov                  r13,      qword [r13 - 0]
-     add                  r13,                  r14
-     mov                  r15,                   r8
-     sal                  r15,                    3
-     mov                  r14,                  rdi
-     add                  r14,                  r15
-     mov                  r15,                  r11
-     sal                  r15,                    3
-     mov                  r14,      qword [r14 - 0]
-     add                  r14,                  r15
-     mov                  r13,      qword [r13 - 0]
-     add                  r13,      qword [r14 - 0]
-     mov                  r14,                  r11
-     sal                  r14,                    3
-     mov                  r15,                  rdi
-     add                  r15,                  r14
-     mov                  r14,                   r9
-     sal                  r14,                    3
-     mov                  r15,      qword [r15 - 0]
-     add                  r15,                  r14
-     add                  r13,      qword [r15 - 0]
-     and                  r13,           1073741823
-     mov      qword [r12 - 0],                  r13
-     mov                  r13,                   r8
-     sal                  r13,                    3
-     mov                  r12,                  r10
-     add                  r12,                  r13
-     mov                  r13,                   r9
-     sal                  r13,                    3
-     mov                  r12,      qword [r12 - 0]
-     add                  r12,                  r13
-     mov                  r14,                   r8
-     sal                  r14,                    3
-     mov                  r13,                  rsi
-     add                  r13,                  r14
-     mov                  r14,                   r9
-     sal                  r14,                    3
-     mov                  r13,      qword [r13 - 0]
-     add                  r13,                  r14
-     mov                  r15,                   r8
-     sal                  r15,                    3
-     mov                  r14,                  rdi
-     add                  r14,                  r15
-     mov                  r15,                  r11
-     sal                  r15,                    3
-     mov                  r14,      qword [r14 - 0]
-     add                  r14,                  r15
-     mov                  r13,      qword [r13 - 0]
-     add                  r13,      qword [r14 - 0]
-     mov                  r14,                  r11
-     sal                  r14,                    3
-     mov                  r15,                  rdi
-     add                  r15,                  r14
-     mov                  r14,                   r9
-     sal                  r14,                    3
-     mov                  r15,      qword [r15 - 0]
-     add                  r15,                  r14
-     add                  r13,      qword [r15 - 0]
-     and                  r13,           1073741823
-     mov      qword [r12 - 0],                  r13
-main.24.loop_increment:
-     add                  r11,                    1
-main.25.loop_condition:
-     cmp                  r11,                  rbx
-      jl    main.20.loop_body
-main.27.loop_increment:
-     add                   r9,                    1
-main.28.loop_condition:
-     cmp                   r9,                  rbx
-      jl    main.19.loop_body
-main.30.loop_increment:
-     add                   r8,                    1
-main.31.loop_condition:
-     cmp                   r8,                  rbx
-      jl    main.18.loop_body
-main.32.loop_exit:
-     mov                  rdi,                    0
-     mov                   r8,                    0
-     jmp main.39.loop_condition
-main.33.loop_body:
-     mov                   r9,                    0
-     jmp main.36.loop_condition
-main.34.loop_body:
-     mov                  r11,                   r8
-     sal                  r11,                    3
-     mov                  r10,                  rsi
-     add                  r10,                  r11
-     mov                  r11,                   r9
-     sal                  r11,                    3
-     mov                  r10,      qword [r10 - 0]
-     add                  r10,                  r11
-     add                  rdi,      qword [r10 - 0]
-     and                  rdi,           1073741823
-main.35.loop_increment:
-     add                   r9,                    1
-main.36.loop_condition:
-     cmp                   r9,                  rbx
-      jl    main.34.loop_body
-main.38.loop_increment:
-     add                   r8,                    1
-main.39.loop_condition:
-     cmp                   r8,                  rbx
-      jl    main.33.loop_body
-main.40.loop_exit:
-    push                  r10
-    push                  r11
-    push                  rdi
-    push                   r8
+    push                  rdx
     push                   r9
     push                  rsi
      sub                  rsp,                    8
-    call             toString
-     add                  rsp,                    8
+    push                   15
+    push                   14
+    push                   13
+    push                   12
+    push                   11
+    push                   10
+    push                    9
+    push                    8
+    push                    7
+    call                    a
+     add                  rsp,                   80
      pop                  rsi
      pop                   r9
+     pop                  rdx
      pop                   r8
      pop                  rdi
-     pop                  r11
-     pop                  r10
      mov                  rbx,                  rax
      mov                  rdi,                  rbx
-    push                  r10
-    push                  r11
     push                  rdi
     push                   r8
+    push                  rdx
     push                   r9
     push                  rsi
-     sub                  rsp,                    8
-    call                print
-     add                  rsp,                    8
+    call             toString
      pop                  rsi
      pop                   r9
+     pop                  rdx
      pop                   r8
      pop                  rdi
-     pop                  r11
-     pop                  r10
+     mov                  rbx,                  rax
+     mov                  rdi,                  rbx
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                   r9
+    push                  rsi
+    call              println
+     pop                  rsi
+     pop                   r9
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
      mov                  rax,                    0
-main.41.exit:
+main.1.exit:
      pop                  rbx
-     pop                  r15
-     pop                  r13
-     pop                  r14
-     pop                  r12
      add                  rsp,                    0
      pop                  rbp
      ret

@@ -8,6 +8,7 @@ public class Optimization {
 	public static void Optimize() {
 		if (RegisterManager.temporaryId > 4000) return;
 		for (FunctionIR functionIR : ProgramIR.functionMap.values()) {
+
 			NaiveOptimize.printOptimize(functionIR);
 			//AdvancedOptimize.uselessCodeElimination(functionIR);
 			NaiveOptimize.loopConditionImprovement(functionIR);
@@ -16,6 +17,7 @@ public class Optimization {
 			RegisterAllocator.allocate(LivenessAnalysis.virtualRegisterMap, LivenessAnalysis.edgeMap, functionIR);
 			NaiveOptimize.removeEmptyBlock(functionIR);
 			NaiveOptimize.removeUselessJump(functionIR);
+
 		}
 	}
 }

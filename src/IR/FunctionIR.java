@@ -21,8 +21,8 @@ public class FunctionIR {
 	public LabelInstruction enterBlock, exitBlock;
 	public static List<String> callerRegisterList;
 	public static List<String> calleeRegisterList;
-	public static Map<VirtualRegister, String> registerMap;
-	public static Map<VirtualRegister, Integer> idMap;
+	public Map<VirtualRegister, String> registerMap;
+	public Map<VirtualRegister, Integer> idMap;
 	public static List<String> callerAll = new ArrayList<String>() {{
 		add("rdx");
 		add("rsi");
