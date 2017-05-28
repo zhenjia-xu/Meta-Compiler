@@ -1,55 +1,124 @@
-//Target: use loops to calculate calculator of 6!
-//@author yixi
+///////////////////////////////////
 
-int N;
-int h = 99;
-int i = 100;
-int j = 101;
-int k = 102;
-int total = 0;
+int countA;
+int countB;
+int countC;
+C something;
 
-int main() {
-  	int a;
-    int b;
-	int c;
-	int d;
-	int e;
-	int f;
-	N=17;
-	for ( a=1; a<=N; a++ )
-	for ( b=1; b<=N; b++ )
-	for ( c=1; c<=N; c++ )
-	for ( d=1; d<=N; d++ )
-	for ( e=1; e<=N; e++ )
-	for ( f=1; f<=N; f++ )
-		if (a!=b && a!=c && a!=d && a!=e && a!=f && a!=h && a!=i && a!=j && a!=k
-              && b!=c && b!=d && b!=e && b!=f && b!=h && b!=i && b!=j && b!=k
-              && c!=d && c!=e && c!=f && c!=h && c!=i && c!=j && c!=k
-              && d!=e && d!=f && d!=h && d!=i && d!=j && d!=k
-              && e!=f && e!=h && e!=i && e!=j && e!=k
-              && f!=h && f!=i && f!=j && f!=k && i!=j && h!=k)
+class A
+{
+	A a;
+	B b;
+	A()
+	{
+		idx = countA++;
+		if(idx % 2 == 0)
 		{
-			total++;
+			a = new A;
+			if(countB % 2 == 0)
+				b = new B;
+			else
+				b = null;
 		}
+		else
+			a = null;
+		c = new C[2][];
+		c[0] = (new C[6][6][6][6])[2][3][3];
+		c[1] = null;
+		if(c.size() != 2)
+			println("Oops!");
+	}
+	C[] getc0()
+	{
+		return c[0];
+	}
+	C[][] c;
+	int idx;
+}
 
-	println(toString(total));
+class B
+{
+	int idx;
+	C c;
+	B()
+	{
+		idx = countB++;
+		c = (new A).getc0()[0].Me().Me();
+	}
+}
+
+class C
+{
+	int idx;
+	C()
+	{
+		this.idx = countC++;
+		str = toString(idx);
+		something = Me();
+	}
+	C Me() { return this; }
+	string str;
+}
+
+void count()
+{
+	countA = 0;
+	countB = 0;
+	countC = 0;
+	B b = new B;
+	println(toString(countA) + " " + toString(countB) + " " + toString(countC));
+	countA = 1;
+	countB = 1;
+	countC = 1;
+	b = new B;
+	print(toString(countA-1) + " " + toString(countB-1) + " " + toString(countC-1));
+	print("\n");
+	println(toString(something.Me().str.substring(1, something.str.length()-1).parseInt()));
+	string temp = toString(something.str.ord(42 & 21));
+	if(something.str > temp)
+		println(something.str + ">" + temp);
+	else
+		println(something.str + "<=" + temp);
+}
+
+///////////////////////////////////
+
+int main()
+{
+	{{{;};{}}};
+	int i;
+	for(i=0;;i++)
+		if(((i ^ 891 & 759) == 666) == !false)
+		{
+			println(toString(i));
+			int i = 0;
+			println(toString(i));
+			{
+				int i = 1;
+				println(toString(i));
+			}
+			count();
+			break;
+		}
+	while(true)
+	{
+		if(i % 2 == 0)
+			continue;
+		print(toString(i)+",");
+	}
+	println("");
 	return 0;
 }
 
 
 /*!! metadata:
 === comment ===
-superloop-5090379042-jiaxiao.mx
-=== input ===
-17
+naive-test-515030910628-zhangzhekai.txt
+naive test by zk
 === assert ===
-output
-=== timeout ===
-2.0
-=== output ===
-8910720
+success_compile
 === phase ===
-optim pretest
+semantic extended
 === is_public ===
 True
 

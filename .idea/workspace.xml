@@ -2,30 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fcadd001-2a06-4938-849d-b3b3c3569bfe" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.fuse_hidden000012dd00000001" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.fuse_hidden0000147d00000002" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/a.out" afterPath="$PROJECT_DIR$/a.out" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/Instruction/MoveInstruction.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/Instruction/MoveInstruction.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/Instruction/ReturnInstruction.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/Instruction/ReturnInstruction.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/ProgramIR.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/ProgramIR.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/VirtualRegister.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/VirtualRegister.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Type/FunctionType.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/AST/Type/FunctionType.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/Optimization/AdvancedOptimize.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/Optimization/AdvancedOptimize.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/Optimization/LivenessAnalysis.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/Optimization/LivenessAnalysis.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/Optimization/Optimization.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/Optimization/Optimization.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/Optimization/RegisterAllocator$3.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/Optimization/RegisterAllocator$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/Optimization/RegisterAllocator.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/Optimization/RegisterAllocator.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/program.o" afterPath="$PROJECT_DIR$/program.o" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/program.asm" afterPath="$PROJECT_DIR$/program.asm" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/program.txt" afterPath="$PROJECT_DIR$/program.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IR/Instruction/MoveInstruction.java" afterPath="$PROJECT_DIR$/src/IR/Instruction/MoveInstruction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IR/Instruction/ReturnInstruction.java" afterPath="$PROJECT_DIR$/src/IR/Instruction/ReturnInstruction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IR/ProgramIR.java" afterPath="$PROJECT_DIR$/src/IR/ProgramIR.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IR/VirtualRegister.java" afterPath="$PROJECT_DIR$/src/IR/VirtualRegister.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AST/Type/FunctionType.java" afterPath="$PROJECT_DIR$/src/AST/Type/FunctionType.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Optimization/AdvancedOptimize.java" afterPath="$PROJECT_DIR$/src/Optimization/AdvancedOptimize.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Optimization/LivenessAnalysis.java" afterPath="$PROJECT_DIR$/src/Optimization/LivenessAnalysis.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Optimization/Optimization.java" afterPath="$PROJECT_DIR$/src/Optimization/Optimization.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Optimization/RegisterAllocator.java" afterPath="$PROJECT_DIR$/src/Optimization/RegisterAllocator.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -46,11 +33,11 @@
     <splitter split-orientation="horizontal" split-proportion="0.6679947">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+          <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/Main.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="401">
-                  <caret line="42" column="26" lean-forward="false" selection-start-line="42" selection-start-column="26" selection-end-line="42" selection-end-column="26" />
+                <state relative-caret-position="276">
+                  <caret line="55" column="5" lean-forward="true" selection-start-line="55" selection-start-column="5" selection-end-line="55" selection-end-column="5" />
                   <folding />
                 </state>
               </provider>
@@ -59,11 +46,21 @@
           <file leaf-file-name="AdvancedOptimize.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/Optimization/AdvancedOptimize.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="169">
-                  <caret line="58" column="59" lean-forward="false" selection-start-line="58" selection-start-column="59" selection-end-line="58" selection-end-column="59" />
+                <state relative-caret-position="102">
+                  <caret line="22" column="20" lean-forward="false" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="FunctionType.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/AST/Type/FunctionType.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="125">
+                  <caret line="12" column="10" lean-forward="false" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -78,11 +75,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Optimization.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="Optimization.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/Optimization/Optimization.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="350">
-                  <caret line="14" column="48" lean-forward="true" selection-start-line="14" selection-start-column="48" selection-end-line="14" selection-end-column="48" />
+                <state relative-caret-position="125">
+                  <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -141,8 +138,8 @@
           <file leaf-file-name="program.txt" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/program.txt">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="319">
-                  <caret line="17" column="8" lean-forward="false" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
+                <state relative-caret-position="-1257">
+                  <caret line="45" column="25" lean-forward="false" selection-start-line="45" selection-start-column="20" selection-end-line="45" selection-end-column="25" />
                   <folding />
                 </state>
               </provider>
@@ -151,8 +148,8 @@
           <file leaf-file-name="program.asm" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/program.asm">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="10100">
-                  <caret line="523" column="5" lean-forward="false" selection-start-line="523" selection-start-column="5" selection-end-line="523" selection-end-column="5" />
+                <state relative-caret-position="55750">
+                  <caret line="2244" column="5" lean-forward="false" selection-start-line="2244" selection-start-column="5" selection-end-line="2244" selection-end-column="5" />
                   <folding />
                 </state>
               </provider>
@@ -172,9 +169,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>idiv</find>
-      <find>cmp</find>
-      <find>allocateS</find>
       <find>r15</find>
       <find>toStrin</find>
       <find>r14</find>
@@ -201,7 +195,10 @@
       <find>System.o</find>
       <find>rax</find>
       <find>Sys</find>
+      <find>call</find>
+      <find>get</find>
       <find>Move</find>
+      <find>System.ou</find>
     </findStrings>
     <replaceStrings>
       <replace>getTemporaryAddress</replace>
@@ -243,7 +240,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/AST/Expression/SuffixOperation/SuffixIncrement.java" />
         <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryEqual.java" />
         <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryMinus.java" />
         <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryPlus.java" />
@@ -290,10 +286,11 @@
         <option value="$PROJECT_DIR$/src/IR/VirtualRegister.java" />
         <option value="$PROJECT_DIR$/src/IR/Instruction/MoveInstruction.java" />
         <option value="$PROJECT_DIR$/src/Optimization/LivenessAnalysis.java" />
-        <option value="$PROJECT_DIR$/src/Optimization/AdvancedOptimize.java" />
-        <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/Optimization/Optimization.java" />
         <option value="$PROJECT_DIR$/program.txt" />
+        <option value="$PROJECT_DIR$/src/AST/Type/FunctionType.java" />
+        <option value="$PROJECT_DIR$/src/Optimization/AdvancedOptimize.java" />
+        <option value="$PROJECT_DIR$/src/Main.java" />
       </list>
     </option>
   </component>
@@ -1031,9 +1028,9 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4578564" sideWeight="0.49806738" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.42976066" sideWeight="0.49806738" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298647" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3548387" sideWeight="0.49806738" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3548387" sideWeight="0.49806738" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16841523" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
@@ -1064,13 +1061,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryLessEqual.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="73" column="44" lean-forward="false" selection-start-line="73" selection-start-column="44" selection-end-line="73" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryNotEqual.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="312">
@@ -1329,8 +1319,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/program.asm">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10100">
-          <caret line="523" column="5" lean-forward="false" selection-start-line="523" selection-start-column="5" selection-end-line="523" selection-end-column="5" />
+        <state relative-caret-position="55750">
+          <caret line="2244" column="5" lean-forward="false" selection-start-line="2244" selection-start-column="5" selection-end-line="2244" selection-end-column="5" />
           <folding />
         </state>
       </provider>
@@ -1361,14 +1351,6 @@
           <folding>
             <element signature="method#ReturnStatement#0;class#ReturnStatement#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/IR/Instruction/FunctionCallInstruction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="14" column="58" lean-forward="false" selection-start-line="14" selection-start-column="58" selection-end-line="14" selection-end-column="58" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1461,18 +1443,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/IR/Instruction/FunctionCallInstruction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
-          <caret line="42" column="26" lean-forward="false" selection-start-line="42" selection-start-column="26" selection-end-line="42" selection-end-column="26" />
+        <state relative-caret-position="72">
+          <caret line="14" column="58" lean-forward="false" selection-start-line="14" selection-start-column="58" selection-end-line="14" selection-end-column="58" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Optimization/AdvancedOptimize.java">
+    <entry file="file://$PROJECT_DIR$/src/Optimization/Optimization.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="58" column="59" lean-forward="false" selection-start-line="58" selection-start-column="59" selection-end-line="58" selection-end-column="59" />
+        <state relative-caret-position="125">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1481,19 +1463,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/program.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="17" column="8" lean-forward="false" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
+        <state relative-caret-position="-1257">
+          <caret line="45" column="25" lean-forward="false" selection-start-line="45" selection-start-column="20" selection-end-line="45" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Optimization/Optimization.java">
+    <entry file="file://$PROJECT_DIR$/src/AST/Type/FunctionType.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="14" column="48" lean-forward="true" selection-start-line="14" selection-start-column="48" selection-end-line="14" selection-end-column="48" />
+        <state relative-caret-position="125">
+          <caret line="12" column="10" lean-forward="false" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Optimization/AdvancedOptimize.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="22" column="20" lean-forward="false" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="55" column="5" lean-forward="true" selection-start-line="55" selection-start-column="5" selection-end-line="55" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>

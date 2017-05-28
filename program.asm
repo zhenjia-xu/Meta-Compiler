@@ -1,488 +1,354 @@
 global main
 extern printf, malloc, strcpy, scanf, strlen, sscanf, sprintf, memcpy, strcmp, puts
 SECTION .text
-@GlobalDeclaration:
+A.null:
     push                  rbp
      mov                  rbp,                  rsp
-     sub                  rsp,                    0
-@GlobalDeclaration.0.enter:
-     mov       qword [@h - 0],                   99
-     mov       qword [@i - 0],                  100
-     mov       qword [@j - 0],                  101
-     mov       qword [@k - 0],                  102
-     mov   qword [@total - 0],                    0
-@GlobalDeclaration.1.exit:
-     add                  rsp,                    0
-     pop                  rbp
-     ret
-main:
-    push                  rbp
-     mov                  rbp,                  rsp
-    call   @GlobalDeclaration
     push                  rbx
-     sub                  rsp,                    0
-main.0.enter:
-     mov       qword [@N - 0],                   17
-     mov                  rsi,                    1
-     jmp main.146.loop_condition
-main.1.loop_body:
-     mov                  rbx,                    1
-     jmp main.143.loop_condition
-main.2.loop_body:
-     mov                   r9,                    1
-     jmp main.140.loop_condition
-main.3.loop_body:
-     mov                  r10,                    1
-     jmp main.137.loop_condition
-main.4.loop_body:
-     mov                  rdi,                    1
-     jmp main.134.loop_condition
-main.5.loop_body:
-     mov                   r8,                    1
-     jmp main.131.loop_condition
-main.6.loop_body:
-     cmp                  rsi,                  rbx
-     mov                  r11,                    0
-   setne                 r11b
-     cmp                  r11,                    1
-     jne main.8.logical_false
-main.7.logical_true:
-     cmp                  rsi,                   r9
-     mov                  r11,                    0
-   setne                 r11b
-     jmp  main.9.logical_exit
-main.8.logical_false:
-     mov                  r11,                    0
-main.9.logical_exit:
-     cmp                  r11,                    1
-     jne main.11.logical_false
-main.10.logical_true:
-     cmp                  rsi,                  r10
-     mov                  r11,                    0
-   setne                 r11b
-     jmp main.12.logical_exit
-main.11.logical_false:
-     mov                  r11,                    0
-main.12.logical_exit:
-     cmp                  r11,                    1
-     jne main.14.logical_false
-main.13.logical_true:
-     cmp                  rsi,                  rdi
-     mov                  r11,                    0
-   setne                 r11b
-     jmp main.15.logical_exit
-main.14.logical_false:
-     mov                  r11,                    0
-main.15.logical_exit:
-     cmp                  r11,                    1
-     jne main.17.logical_false
-main.16.logical_true:
-     cmp                  rsi,                   r8
-     mov                  r11,                    0
-   setne                 r11b
-     jmp main.18.logical_exit
-main.17.logical_false:
-     mov                  r11,                    0
-main.18.logical_exit:
-     cmp                  r11,                    1
-     jne main.20.logical_false
-main.19.logical_true:
-     cmp                  rsi,       qword [@h - 0]
-     mov                  r11,                    0
-   setne                 r11b
-     jmp main.21.logical_exit
-main.20.logical_false:
-     mov                  r11,                    0
-main.21.logical_exit:
-     cmp                  r11,                    1
-     jne main.23.logical_false
-main.22.logical_true:
-     cmp                  rsi,       qword [@i - 0]
-     mov                  r11,                    0
-   setne                 r11b
-     jmp main.24.logical_exit
-main.23.logical_false:
-     mov                  r11,                    0
-main.24.logical_exit:
-     cmp                  r11,                    1
-     jne main.26.logical_false
-main.25.logical_true:
-     cmp                  rsi,       qword [@j - 0]
-     mov                  r11,                    0
-   setne                 r11b
-     jmp main.27.logical_exit
-main.26.logical_false:
-     mov                  r11,                    0
-main.27.logical_exit:
-     cmp                  r11,                    1
-     jne main.29.logical_false
-main.28.logical_true:
-     cmp                  rsi,       qword [@k - 0]
-     mov                  r11,                    0
-   setne                 r11b
-     jmp main.30.logical_exit
-main.29.logical_false:
-     mov                  r11,                    0
-main.30.logical_exit:
-     cmp                  r11,                    1
-     jne main.32.logical_false
-main.31.logical_true:
-     cmp                  rbx,                   r9
-     mov                  r11,                    0
-   setne                 r11b
-     jmp main.33.logical_exit
-main.32.logical_false:
-     mov                  r11,                    0
-main.33.logical_exit:
-     cmp                  r11,                    1
-     jne main.35.logical_false
-main.34.logical_true:
-     cmp                  rbx,                  r10
-     mov                  r11,                    0
-   setne                 r11b
-     jmp main.36.logical_exit
-main.35.logical_false:
-     mov                  r11,                    0
-main.36.logical_exit:
-     cmp                  r11,                    1
-     jne main.38.logical_false
-main.37.logical_true:
-     cmp                  rbx,                  rdi
-     mov                  r11,                    0
-   setne                 r11b
-     jmp main.39.logical_exit
-main.38.logical_false:
-     mov                  r11,                    0
-main.39.logical_exit:
-     cmp                  r11,                    1
-     jne main.41.logical_false
-main.40.logical_true:
-     cmp                  rbx,                   r8
-     mov                  r11,                    0
-   setne                 r11b
-     jmp main.42.logical_exit
-main.41.logical_false:
-     mov                  r11,                    0
-main.42.logical_exit:
-     cmp                  r11,                    1
-     jne main.44.logical_false
-main.43.logical_true:
-     cmp                  rbx,       qword [@h - 0]
-     mov                  r11,                    0
-   setne                 r11b
-     jmp main.45.logical_exit
-main.44.logical_false:
-     mov                  r11,                    0
-main.45.logical_exit:
-     cmp                  r11,                    1
-     jne main.47.logical_false
-main.46.logical_true:
-     cmp                  rbx,       qword [@i - 0]
-     mov                  r11,                    0
-   setne                 r11b
-     jmp main.48.logical_exit
-main.47.logical_false:
-     mov                  r11,                    0
-main.48.logical_exit:
-     cmp                  r11,                    1
-     jne main.50.logical_false
-main.49.logical_true:
-     cmp                  rbx,       qword [@j - 0]
-     mov                  r11,                    0
-   setne                 r11b
-     jmp main.51.logical_exit
-main.50.logical_false:
-     mov                  r11,                    0
-main.51.logical_exit:
-     cmp                  r11,                    1
-     jne main.53.logical_false
-main.52.logical_true:
-     cmp                  rbx,       qword [@k - 0]
-     mov                  r11,                    0
-   setne                 r11b
-     jmp main.54.logical_exit
-main.53.logical_false:
-     mov                  r11,                    0
-main.54.logical_exit:
-     cmp                  r11,                    1
-     jne main.56.logical_false
-main.55.logical_true:
-     cmp                   r9,                  r10
-     mov                  r11,                    0
-   setne                 r11b
-     jmp main.57.logical_exit
-main.56.logical_false:
-     mov                  r11,                    0
-main.57.logical_exit:
-     cmp                  r11,                    1
-     jne main.59.logical_false
-main.58.logical_true:
-     cmp                   r9,                  rdi
-     mov                  r11,                    0
-   setne                 r11b
-     jmp main.60.logical_exit
-main.59.logical_false:
-     mov                  r11,                    0
-main.60.logical_exit:
-     cmp                  r11,                    1
-     jne main.62.logical_false
-main.61.logical_true:
-     cmp                   r9,                   r8
-     mov                  r11,                    0
-   setne                 r11b
-     jmp main.63.logical_exit
-main.62.logical_false:
-     mov                  r11,                    0
-main.63.logical_exit:
-     cmp                  r11,                    1
-     jne main.65.logical_false
-main.64.logical_true:
-     cmp                   r9,       qword [@h - 0]
-     mov                  r11,                    0
-   setne                 r11b
-     jmp main.66.logical_exit
-main.65.logical_false:
-     mov                  r11,                    0
-main.66.logical_exit:
-     cmp                  r11,                    1
-     jne main.68.logical_false
-main.67.logical_true:
-     cmp                   r9,       qword [@i - 0]
-     mov                  r11,                    0
-   setne                 r11b
-     jmp main.69.logical_exit
-main.68.logical_false:
-     mov                  r11,                    0
-main.69.logical_exit:
-     cmp                  r11,                    1
-     jne main.71.logical_false
-main.70.logical_true:
-     cmp                   r9,       qword [@j - 0]
-     mov                  r11,                    0
-   setne                 r11b
-     jmp main.72.logical_exit
-main.71.logical_false:
-     mov                  r11,                    0
-main.72.logical_exit:
-     cmp                  r11,                    1
-     jne main.74.logical_false
-main.73.logical_true:
-     cmp                   r9,       qword [@k - 0]
-     mov                  r11,                    0
-   setne                 r11b
-     jmp main.75.logical_exit
-main.74.logical_false:
-     mov                  r11,                    0
-main.75.logical_exit:
-     cmp                  r11,                    1
-     jne main.77.logical_false
-main.76.logical_true:
-     cmp                  r10,                  rdi
-     mov                  r11,                    0
-   setne                 r11b
-     jmp main.78.logical_exit
-main.77.logical_false:
-     mov                  r11,                    0
-main.78.logical_exit:
-     cmp                  r11,                    1
-     jne main.80.logical_false
-main.79.logical_true:
-     cmp                  r10,                   r8
-     mov                  r11,                    0
-   setne                 r11b
-     jmp main.81.logical_exit
-main.80.logical_false:
-     mov                  r11,                    0
-main.81.logical_exit:
-     cmp                  r11,                    1
-     jne main.83.logical_false
-main.82.logical_true:
-     cmp                  r10,       qword [@h - 0]
-     mov                  r11,                    0
-   setne                 r11b
-     jmp main.84.logical_exit
-main.83.logical_false:
-     mov                  r11,                    0
-main.84.logical_exit:
-     cmp                  r11,                    1
-     jne main.86.logical_false
-main.85.logical_true:
-     cmp                  r10,       qword [@i - 0]
-     mov                  r11,                    0
-   setne                 r11b
-     jmp main.87.logical_exit
-main.86.logical_false:
-     mov                  r11,                    0
-main.87.logical_exit:
-     cmp                  r11,                    1
-     jne main.89.logical_false
-main.88.logical_true:
-     cmp                  r10,       qword [@j - 0]
-     mov                  r11,                    0
-   setne                 r11b
-     jmp main.90.logical_exit
-main.89.logical_false:
-     mov                  r11,                    0
-main.90.logical_exit:
-     cmp                  r11,                    1
-     jne main.92.logical_false
-main.91.logical_true:
-     cmp                  r10,       qword [@k - 0]
-     mov                  r11,                    0
-   setne                 r11b
-     jmp main.93.logical_exit
-main.92.logical_false:
-     mov                  r11,                    0
-main.93.logical_exit:
-     cmp                  r11,                    1
-     jne main.95.logical_false
-main.94.logical_true:
-     cmp                  rdi,                   r8
-     mov                  r11,                    0
-   setne                 r11b
-     jmp main.96.logical_exit
-main.95.logical_false:
-     mov                  r11,                    0
-main.96.logical_exit:
-     cmp                  r11,                    1
-     jne main.98.logical_false
-main.97.logical_true:
-     cmp                  rdi,       qword [@h - 0]
-     mov                  r11,                    0
-   setne                 r11b
-     jmp main.99.logical_exit
-main.98.logical_false:
-     mov                  r11,                    0
-main.99.logical_exit:
-     cmp                  r11,                    1
-     jne main.101.logical_false
-main.100.logical_true:
-     cmp                  rdi,       qword [@i - 0]
-     mov                  r11,                    0
-   setne                 r11b
-     jmp main.102.logical_exit
-main.101.logical_false:
-     mov                  r11,                    0
-main.102.logical_exit:
-     cmp                  r11,                    1
-     jne main.104.logical_false
-main.103.logical_true:
-     cmp                  rdi,       qword [@j - 0]
-     mov                  r11,                    0
-   setne                 r11b
-     jmp main.105.logical_exit
-main.104.logical_false:
-     mov                  r11,                    0
-main.105.logical_exit:
-     cmp                  r11,                    1
-     jne main.107.logical_false
-main.106.logical_true:
-     cmp                  rdi,       qword [@k - 0]
-     mov                  r11,                    0
-   setne                 r11b
-     jmp main.108.logical_exit
-main.107.logical_false:
-     mov                  r11,                    0
-main.108.logical_exit:
-     cmp                  r11,                    1
-     jne main.110.logical_false
-main.109.logical_true:
-     cmp                   r8,       qword [@h - 0]
-     mov                  r11,                    0
-   setne                 r11b
-     jmp main.111.logical_exit
-main.110.logical_false:
-     mov                  r11,                    0
-main.111.logical_exit:
-     cmp                  r11,                    1
-     jne main.113.logical_false
-main.112.logical_true:
-     cmp                   r8,       qword [@i - 0]
-     mov                  r11,                    0
-   setne                 r11b
-     jmp main.114.logical_exit
-main.113.logical_false:
-     mov                  r11,                    0
-main.114.logical_exit:
-     cmp                  r11,                    1
-     jne main.116.logical_false
-main.115.logical_true:
-     cmp                   r8,       qword [@j - 0]
-     mov                  r11,                    0
-   setne                 r11b
-     jmp main.117.logical_exit
-main.116.logical_false:
-     mov                  r11,                    0
-main.117.logical_exit:
-     cmp                  r11,                    1
-     jne main.119.logical_false
-main.118.logical_true:
-     cmp                   r8,       qword [@k - 0]
-     mov                  r11,                    0
-   setne                 r11b
-     jmp main.120.logical_exit
-main.119.logical_false:
-     mov                  r11,                    0
-main.120.logical_exit:
-     cmp                  r11,                    1
-     jne main.122.logical_false
-main.121.logical_true:
-     mov                  r11,       qword [@i - 0]
-     cmp                  r11,       qword [@j - 0]
-     mov                  r11,                    0
-   setne                 r11b
-     jmp main.123.logical_exit
-main.122.logical_false:
-     mov                  r11,                    0
-main.123.logical_exit:
-     cmp                  r11,                    1
-     jne main.125.logical_false
-main.124.logical_true:
-     mov                  r11,       qword [@h - 0]
-     cmp                  r11,       qword [@k - 0]
-     mov                  r11,                    0
-   setne                 r11b
-     jmp main.126.logical_exit
-main.125.logical_false:
-     mov                  r11,                    0
-main.126.logical_exit:
-     cmp                  r11,                    1
-      je     main.127.if_true
-     jmp main.130.loop_increment
-main.127.if_true:
-     add   qword [@total - 0],                    1
-main.130.loop_increment:
-     add                   r8,                    1
-main.131.loop_condition:
-     cmp                   r8,       qword [@N - 0]
-     jle     main.6.loop_body
-main.133.loop_increment:
-     add                  rdi,                    1
-main.134.loop_condition:
-     cmp                  rdi,       qword [@N - 0]
-     jle     main.5.loop_body
-main.136.loop_increment:
-     add                  r10,                    1
-main.137.loop_condition:
-     cmp                  r10,       qword [@N - 0]
-     jle     main.4.loop_body
-main.139.loop_increment:
-     add                   r9,                    1
-main.140.loop_condition:
-     cmp                   r9,       qword [@N - 0]
-     jle     main.3.loop_body
-main.142.loop_increment:
-     add                  rbx,                    1
-main.143.loop_condition:
-     cmp                  rbx,       qword [@N - 0]
-     jle     main.2.loop_body
-main.145.loop_increment:
+    push                  r12
+    push                  r14
+    push                  r13
+    push                  r15
+     sub                  rsp,                   32
+A.null.0.enter:
+     mov                  rbx,                  rdi
+     mov                  rsi,  qword [@countA - 0]
+     add  qword [@countA - 0],                    1
+     mov     qword [rbx + 24],                  rsi
+     mov                  rsi,     qword [rbx + 24]
+     mov                  rax,                  rsi
+     mov                  rcx,                    2
+     cqo
+    idiv                  rcx
+     mov                  rsi,                  rdx
+     cmp                  rsi,                    0
+      je     A.null.1.if_true
+     jmp    A.null.5.if_false
+A.null.1.if_true:
+    push                   r8
+    push                   r9
+    push                  rsi
+    push                  r10
+    push                  r11
+    push                  rdi
+     mov                  rdi,                   32
+     sub                  rsp,                    8
+    call               malloc
+     add                  rsp,                    8
+     pop                  rdi
+     pop                  r11
+     pop                  r10
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     mov                  rsi,                  rax
+     mov                  rdi,                  rsi
+    push                   r8
+    push                   r9
+    push                  rsi
+    push                  r10
+    push                  r11
+    push                  rdi
+     sub                  rsp,                    8
+    call               A.null
+     add                  rsp,                    8
+     pop                  rdi
+     pop                  r11
+     pop                  r10
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     mov      qword [rbx - 0],                  rsi
+     mov                  rsi,  qword [@countB - 0]
+     mov                  rax,                  rsi
+     mov                  rcx,                    2
+     cqo
+    idiv                  rcx
+     mov                  rsi,                  rdx
+     cmp                  rsi,                    0
+      je     A.null.2.if_true
+     jmp    A.null.3.if_false
+A.null.2.if_true:
+    push                   r8
+    push                   r9
+    push                  rsi
+    push                  r10
+    push                  r11
+    push                  rdi
+     mov                  rdi,                   16
+     sub                  rsp,                    8
+    call               malloc
+     add                  rsp,                    8
+     pop                  rdi
+     pop                  r11
+     pop                  r10
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     mov                  rbx,                  rax
+A.null.23.enter:
+     mov                  rsi,  qword [@countB - 0]
+     add  qword [@countB - 0],                    1
+     mov      qword [rbx - 0],                  rsi
+    push                   r8
+    push                   r9
+    push                  rsi
+    push                  r10
+    push                  r11
+    push                  rdi
+     mov                  rdi,                   32
+     sub                  rsp,                    8
+    call               malloc
+     add                  rsp,                    8
+     pop                  rdi
+     pop                  r11
+     pop                  r10
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     mov                  rsi,                  rax
+     mov                  rdi,                  rsi
+    push                   r8
+    push                   r9
+    push                  rsi
+    push                  r10
+    push                  r11
+    push                  rdi
+     sub                  rsp,                    8
+    call               A.null
+     add                  rsp,                    8
+     pop                  rdi
+     pop                  r11
+     pop                  r10
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     mov                  rdi,                  rsi
+    push                   r8
+    push                   r9
+    push                  rsi
+    push                  r10
+    push                  r11
+    push                  rdi
+     sub                  rsp,                    8
+    call              A.getc0
+     add                  rsp,                    8
+     pop                  rdi
+     pop                  r11
+     pop                  r10
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     mov                  rdi,                  rax
+     mov                  rsi,                    0
+     sal                  rsi,                    3
+     add                  rdi,                  rsi
+     mov                  rdi,      qword [rdi - 0]
+    push                   r8
+    push                   r9
+    push                  rsi
+    push                  r10
+    push                  r11
+    push                  rdi
+     sub                  rsp,                    8
+    call                 C.Me
+     add                  rsp,                    8
+     pop                  rdi
+     pop                  r11
+     pop                  r10
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     mov                  rsi,                  rax
+     mov                  rdi,                  rsi
+    push                   r8
+    push                   r9
+    push                  rsi
+    push                  r10
+    push                  r11
+    push                  rdi
+     sub                  rsp,                    8
+    call                 C.Me
+     add                  rsp,                    8
+     pop                  rdi
+     pop                  r11
+     pop                  r10
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     mov                  rsi,                  rax
+     mov      qword [rbx + 8],                  rsi
+A.null.24.exit:
+     mov      qword [rbx + 8],                  rbx
+     jmp     A.null.6.if_exit
+A.null.3.if_false:
+     mov      qword [rbx + 8],                    0
+     jmp     A.null.6.if_exit
+A.null.5.if_false:
+     mov      qword [rbx - 0],                    0
+A.null.6.if_exit:
+     mov                  rsi,                    2
      add                  rsi,                    1
-main.146.loop_condition:
-     cmp                  rsi,       qword [@N - 0]
-     jle     main.1.loop_body
-main.147.loop_exit:
-     mov                  rdi,   qword [@total - 0]
+     sal                  rsi,                    3
+    push                   r8
+    push                   r9
+    push                  rsi
+    push                  r10
+    push                  r11
+    push                  rdi
+     mov                  rdi,                  rsi
+     sub                  rsp,                    8
+    call               malloc
+     add                  rsp,                    8
+     pop                  rdi
+     pop                  r11
+     pop                  r10
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     mov                  rsi,                  rax
+     mov      qword [rsi - 0],                    2
+     add                  rsi,                    8
+     mov     qword [rbx + 16],                  rsi
+     mov                  rsi,                    0
+     sal                  rsi,                    3
+     mov                  rax,     qword [rbx + 16]
+     mov      qword [rbp - 8],                  rax
+     add      qword [rbp - 8],                  rsi
+     mov                   r8,                    6
+     add                   r8,                    1
+     sal                   r8,                    3
+    push                   r8
+    push                   r9
+    push                  rsi
+    push                  r10
+    push                  r11
+    push                  rdi
+     mov                  rdi,                   r8
+     sub                  rsp,                    8
+    call               malloc
+     add                  rsp,                    8
+     pop                  rdi
+     pop                  r11
+     pop                  r10
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     mov                  rsi,                  rax
+     mov      qword [rsi - 0],                    6
+     add                  rsi,                    8
+     mov                  rdi,                  rsi
+     mov     qword [rbp - 16],                  rsi
+     sub                   r8,                    8
+     add     qword [rbp - 16],                   r8
+     jmp A.null.17.allocate_condition
+A.null.7.allocate_body:
+     mov                  r11,                    6
+     add                  r11,                    1
+     sal                  r11,                    3
+    push                   r8
+    push                   r9
+    push                  rsi
+    push                  r10
+    push                  r11
+    push                  rdi
+     mov                  rdi,                  r11
+     sub                  rsp,                    8
+    call               malloc
+     add                  rsp,                    8
+     pop                  rdi
+     pop                  r11
+     pop                  r10
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     mov                   r8,                  rax
+     mov       qword [r8 - 0],                    6
+     add                   r8,                    8
+     mov                   r9,                   r8
+     mov                  r10,                   r8
+     sub                  r11,                    8
+     add                  r10,                  r11
+     jmp A.null.15.allocate_condition
+A.null.8.allocate_body:
+     mov                  r13,                    6
+     add                  r13,                    1
+     sal                  r13,                    3
+    push                   r8
+    push                   r9
+    push                  rsi
+    push                  r10
+    push                  r11
+    push                  rdi
+     mov                  rdi,                  r13
+     sub                  rsp,                    8
+    call               malloc
+     add                  rsp,                    8
+     pop                  rdi
+     pop                  r11
+     pop                  r10
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     mov                  r11,                  rax
+     mov      qword [r11 - 0],                    6
+     add                  r11,                    8
+     mov                  r12,                  r11
+     mov     qword [rbp - 24],                  r11
+     sub                  r13,                    8
+     add     qword [rbp - 24],                  r13
+     jmp A.null.13.allocate_condition
+A.null.9.allocate_body:
+     mov                  r13,                    6
+     add                  r13,                    1
+     sal                  r13,                    3
+    push                   r8
+    push                   r9
+    push                  rsi
+    push                  r10
+    push                  r11
+    push                  rdi
+     mov                  rdi,                  r13
+     sub                  rsp,                    8
+    call               malloc
+     add                  rsp,                    8
+     pop                  rdi
+     pop                  r11
+     pop                  r10
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     mov                  r14,                  rax
+     mov      qword [r14 - 0],                    6
+     add                  r14,                    8
+     mov                  r15,                  r14
+     mov     qword [rbp - 32],                  r14
+     sub                  r13,                    8
+     add     qword [rbp - 32],                  r13
+     jmp A.null.11.allocate_condition
+A.null.10.allocate_body:
+    push                   r8
+    push                   r9
+    push                  rsi
+    push                  r10
+    push                  r11
+    push                  rdi
+     mov                  rdi,                   16
+     sub                  rsp,                    8
+    call               malloc
+     add                  rsp,                    8
+     pop                  rdi
+     pop                  r11
+     pop                  r10
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     mov                  rbx,                  rax
+A.null.25.enter:
+     mov                  rsi,  qword [@countC - 0]
+     add  qword [@countC - 0],                    1
+     mov      qword [rbx - 0],                  rsi
+     mov                  rdi,      qword [rbx - 0]
     push                   r8
     push                   r9
     push                  rsi
@@ -498,8 +364,93 @@ main.147.loop_exit:
      pop                  rsi
      pop                   r9
      pop                   r8
-     mov                  rbx,                  rax
+     mov                  rsi,                  rax
+     mov      qword [rbx + 8],                  rsi
      mov                  rdi,                  rbx
+    push                   r8
+    push                   r9
+    push                  rsi
+    push                  r10
+    push                  r11
+    push                  rdi
+     sub                  rsp,                    8
+    call                 C.Me
+     add                  rsp,                    8
+     pop                  rdi
+     pop                  r11
+     pop                  r10
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     mov                  rbx,                  rax
+     mov qword [@something - 0],                  rbx
+A.null.26.exit:
+     mov      qword [r15 - 0],                  rbx
+     add                  r15,                    8
+A.null.11.allocate_condition:
+     cmp                  r15,     qword [rbp - 32]
+      jl A.null.10.allocate_body
+A.null.12.allocate_exit:
+     mov      qword [r12 - 0],                  r14
+     add                  r12,                    8
+A.null.13.allocate_condition:
+     cmp                  r12,     qword [rbp - 24]
+      jl A.null.9.allocate_body
+A.null.14.allocate_exit:
+     mov       qword [r9 - 0],                  r11
+     add                   r9,                    8
+A.null.15.allocate_condition:
+     cmp                   r9,                  r10
+      jl A.null.8.allocate_body
+A.null.16.allocate_exit:
+     mov      qword [rdi - 0],                   r8
+     add                  rdi,                    8
+A.null.17.allocate_condition:
+     cmp                  rdi,     qword [rbp - 16]
+      jl A.null.7.allocate_body
+A.null.18.allocate_exit:
+     mov                  rdi,                    2
+     sal                  rdi,                    3
+     mov                   r8,                  rsi
+     add                   r8,                  rdi
+     mov                  rsi,                    3
+     sal                  rsi,                    3
+     mov                  rdi,       qword [r8 - 0]
+     add                  rdi,                  rsi
+     mov                  rsi,                    3
+     sal                  rsi,                    3
+     mov                  rdi,      qword [rdi - 0]
+     add                  rdi,                  rsi
+     mov                  rsi,      qword [rdi - 0]
+     mov                  rcx,      qword [rbp - 8]
+     mov      qword [rcx - 0],                  rsi
+     mov                  rsi,                    1
+     sal                  rsi,                    3
+     mov                  rdi,     qword [rbx + 16]
+     add                  rdi,                  rsi
+     mov      qword [rdi - 0],                    0
+     mov                  rdi,     qword [rbx + 16]
+    push                   r8
+    push                   r9
+    push                  rsi
+    push                  r10
+    push                  r11
+    push                  rdi
+     sub                  rsp,                    8
+    call         __array_size
+     add                  rsp,                    8
+     pop                  rdi
+     pop                  r11
+     pop                  r10
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     mov                  rbx,                  rax
+     cmp                  rbx,                    2
+     jne    A.null.19.if_true
+     jmp       A.null.22.exit
+A.null.19.if_true:
+     mov                  rdi,      __string_const9
     push                   r8
     push                   r9
     push                  rsi
@@ -515,8 +466,1778 @@ main.147.loop_exit:
      pop                  rsi
      pop                   r9
      pop                   r8
+A.null.22.exit:
+     pop                  r15
+     pop                  r13
+     pop                  r14
+     pop                  r12
+     pop                  rbx
+     add                  rsp,                   32
+     pop                  rbp
+     ret
+C.null:
+    push                  rbp
+     mov                  rbp,                  rsp
+    push                  rbx
+     sub                  rsp,                    0
+C.null.0.enter:
+     mov                  rbx,                  rdi
+     mov                  rsi,  qword [@countC - 0]
+     add  qword [@countC - 0],                    1
+     mov      qword [rbx - 0],                  rsi
+     mov                  rdi,      qword [rbx - 0]
+    push                  rdi
+    push                  rsi
+     sub                  rsp,                    8
+    call             toString
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdi
+     mov                  rsi,                  rax
+     mov      qword [rbx + 8],                  rsi
+C.null.2.enter:
+C.null.3.exit:
+     mov qword [@something - 0],                  rbx
+C.null.1.exit:
+     pop                  rbx
+     add                  rsp,                    0
+     pop                  rbp
+     ret
+@GlobalDeclaration:
+    push                  rbp
+     mov                  rbp,                  rsp
+     sub                  rsp,                    0
+@GlobalDeclaration.1.exit:
+     add                  rsp,                    0
+     pop                  rbp
+     ret
+count:
+    push                  rbp
+     mov                  rbp,                  rsp
+    push                  rbx
+     sub                  rsp,                    0
+count.0.enter:
+     mov  qword [@countA - 0],                    0
+     mov  qword [@countB - 0],                    0
+     mov  qword [@countC - 0],                    0
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     mov                  rdi,                   16
+     sub                  rsp,                    8
+    call               malloc
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rbx,                  rax
+count.5.enter:
+     mov                  rsi,  qword [@countB - 0]
+     add  qword [@countB - 0],                    1
+     mov      qword [rbx - 0],                  rsi
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     mov                  rdi,                   32
+     sub                  rsp,                    8
+    call               malloc
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rsi,                  rax
+     mov                  rdi,                  rsi
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call               A.null
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rdi,                  rsi
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call              A.getc0
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rdi,                  rax
+     mov                  rsi,                    0
+     sal                  rsi,                    3
+     add                  rdi,                  rsi
+     mov                  rdi,      qword [rdi - 0]
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call                 C.Me
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rsi,                  rax
+     mov                  rdi,                  rsi
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call                 C.Me
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rsi,                  rax
+     mov      qword [rbx + 8],                  rsi
+count.6.exit:
+     mov                  rdi,  qword [@countA - 0]
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call             toString
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rbx,                  rax
+     mov                  rdi,                  rbx
+     mov                  rsi,      __string_const0
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call  __string_connection
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rbx,                  rax
+     mov                  rdi,  qword [@countB - 0]
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call             toString
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rsi,                  rax
+     mov                  rdi,                  rbx
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call  __string_connection
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rbx,                  rax
+     mov                  rdi,                  rbx
+     mov                  rsi,      __string_const1
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call  __string_connection
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rbx,                  rax
+     mov                  rdi,  qword [@countC - 0]
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call             toString
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rsi,                  rax
+     mov                  rdi,                  rbx
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call  __string_connection
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rbx,                  rax
+     mov                  rdi,                  rbx
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call              println
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov  qword [@countA - 0],                    1
+     mov  qword [@countB - 0],                    1
+     mov  qword [@countC - 0],                    1
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     mov                  rdi,                   16
+     sub                  rsp,                    8
+    call               malloc
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rbx,                  rax
+count.7.enter:
+     mov                  rsi,  qword [@countB - 0]
+     add  qword [@countB - 0],                    1
+     mov      qword [rbx - 0],                  rsi
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     mov                  rdi,                   32
+     sub                  rsp,                    8
+    call               malloc
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rsi,                  rax
+     mov                  rdi,                  rsi
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call               A.null
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rdi,                  rsi
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call              A.getc0
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rdi,                  rax
+     mov                  rsi,                    0
+     sal                  rsi,                    3
+     add                  rdi,                  rsi
+     mov                  rdi,      qword [rdi - 0]
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call                 C.Me
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rsi,                  rax
+     mov                  rdi,                  rsi
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call                 C.Me
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rsi,                  rax
+     mov      qword [rbx + 8],                  rsi
+count.8.exit:
+     mov                  rbx,  qword [@countA - 0]
+     sub                  rbx,                    1
+     mov                  rdi,                  rbx
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call             toString
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rbx,                  rax
+     mov                  rdi,                  rbx
+     mov                  rsi,      __string_const2
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call  __string_connection
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rbx,                  rax
+     mov                  rsi,  qword [@countB - 0]
+     sub                  rsi,                    1
+     mov                  rdi,                  rsi
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call             toString
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rsi,                  rax
+     mov                  rdi,                  rbx
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call  __string_connection
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rbx,                  rax
+     mov                  rdi,                  rbx
+     mov                  rsi,      __string_const3
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call  __string_connection
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rbx,                  rax
+     mov                  rsi,  qword [@countC - 0]
+     sub                  rsi,                    1
+     mov                  rdi,                  rsi
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call             toString
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rsi,                  rax
+     mov                  rdi,                  rbx
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call  __string_connection
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rbx,                  rax
+     mov                  rdi,                  rbx
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call                print
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rdi,      __string_const4
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call                print
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rbx, qword [@something - 0]
+count.9.enter:
+count.10.exit:
+     mov                  rsi, qword [@something - 0]
+     mov                  rdi,      qword [rsi + 8]
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call      __string_length
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rsi,                  rax
+     mov                   r8,                  rsi
+     sub                   r8,                    1
+     mov                  rdi,      qword [rbx + 8]
+     mov                  rsi,                    1
+     mov                  rdx,                   r8
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call   __string_substring
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rbx,                  rax
+     mov                  rdi,                  rbx
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call    __string_parseInt
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rbx,                  rax
+     mov                  rdi,                  rbx
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call             toString
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rbx,                  rax
+     mov                  rdi,                  rbx
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call              println
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rbx, qword [@something - 0]
+     mov                  rdi,      qword [rbx + 8]
+     mov                  rsi,                    0
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call         __string_ord
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rbx,                  rax
+     mov                  rdi,                  rbx
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call             toString
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rbx,                  rax
+     mov                  rsi, qword [@something - 0]
+     mov                  rdi,      qword [rsi + 8]
+     mov                  rsi,                  rbx
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call          __string_GR
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rsi,                  rax
+     cmp                  rsi,                    1
+      je      count.1.if_true
+     jmp     count.2.if_false
+count.1.if_true:
+     mov                  rsi, qword [@something - 0]
+     mov                  rdi,      qword [rsi + 8]
+     mov                  rsi,      __string_const5
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call  __string_connection
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rsi,                  rax
+     mov                  rdi,                  rsi
+     mov                  rsi,                  rbx
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call  __string_connection
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rbx,                  rax
+     mov                  rdi,                  rbx
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call              println
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     jmp         count.4.exit
+count.2.if_false:
+     mov                  rsi, qword [@something - 0]
+     mov                  rdi,      qword [rsi + 8]
+     mov                  rsi,      __string_const6
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call  __string_connection
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rsi,                  rax
+     mov                  rdi,                  rsi
+     mov                  rsi,                  rbx
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call  __string_connection
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rbx,                  rax
+     mov                  rdi,                  rbx
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call              println
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+count.4.exit:
+     pop                  rbx
+     add                  rsp,                    0
+     pop                  rbp
+     ret
+B.null:
+    push                  rbp
+     mov                  rbp,                  rsp
+    push                  rbx
+    push                  r12
+    push                  r14
+    push                  r13
+    push                  r15
+     sub                  rsp,                   32
+B.null.0.enter:
+     mov                  rbx,                  rdi
+     mov                  rsi,  qword [@countB - 0]
+     add  qword [@countB - 0],                    1
+     mov      qword [rbx - 0],                  rsi
+    push                   r8
+    push                   r9
+    push                  rsi
+    push                  r10
+    push                  r11
+    push                  rdi
+     mov                  rdi,                   32
+     sub                  rsp,                    8
+    call               malloc
+     add                  rsp,                    8
+     pop                  rdi
+     pop                  r11
+     pop                  r10
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     mov                  rbx,                  rax
+B.null.2.enter:
+     mov                  rsi,  qword [@countA - 0]
+     add  qword [@countA - 0],                    1
+     mov     qword [rbx + 24],                  rsi
+     mov                  rsi,     qword [rbx + 24]
+     mov                  rax,                  rsi
+     mov                  rcx,                    2
+     cqo
+    idiv                  rcx
+     mov                  rsi,                  rdx
+     cmp                  rsi,                    0
+      je     B.null.3.if_true
+     jmp    B.null.7.if_false
+B.null.3.if_true:
+    push                   r8
+    push                   r9
+    push                  rsi
+    push                  r10
+    push                  r11
+    push                  rdi
+     mov                  rdi,                   32
+     sub                  rsp,                    8
+    call               malloc
+     add                  rsp,                    8
+     pop                  rdi
+     pop                  r11
+     pop                  r10
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     mov                  rsi,                  rax
+     mov                  rdi,                  rsi
+    push                   r8
+    push                   r9
+    push                  rsi
+    push                  r10
+    push                  r11
+    push                  rdi
+     sub                  rsp,                    8
+    call               A.null
+     add                  rsp,                    8
+     pop                  rdi
+     pop                  r11
+     pop                  r10
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     mov      qword [rbx - 0],                  rsi
+     mov                  rsi,  qword [@countB - 0]
+     mov                  rax,                  rsi
+     mov                  rcx,                    2
+     cqo
+    idiv                  rcx
+     mov                  rsi,                  rdx
+     cmp                  rsi,                    0
+      je     B.null.4.if_true
+     jmp    B.null.5.if_false
+B.null.4.if_true:
+    push                   r8
+    push                   r9
+    push                  rsi
+    push                  r10
+    push                  r11
+    push                  rdi
+     mov                  rdi,                   16
+     sub                  rsp,                    8
+    call               malloc
+     add                  rsp,                    8
+     pop                  rdi
+     pop                  r11
+     pop                  r10
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     mov                  rsi,                  rax
+     mov                  rdi,                  rsi
+    push                   r8
+    push                   r9
+    push                  rsi
+    push                  r10
+    push                  r11
+    push                  rdi
+     sub                  rsp,                    8
+    call               B.null
+     add                  rsp,                    8
+     pop                  rdi
+     pop                  r11
+     pop                  r10
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     mov      qword [rbx + 8],                  rsi
+     jmp     B.null.8.if_exit
+B.null.5.if_false:
+     mov      qword [rbx + 8],                    0
+     jmp     B.null.8.if_exit
+B.null.7.if_false:
+     mov      qword [rbx - 0],                    0
+B.null.8.if_exit:
+     mov                  rsi,                    2
+     add                  rsi,                    1
+     sal                  rsi,                    3
+    push                   r8
+    push                   r9
+    push                  rsi
+    push                  r10
+    push                  r11
+    push                  rdi
+     mov                  rdi,                  rsi
+     sub                  rsp,                    8
+    call               malloc
+     add                  rsp,                    8
+     pop                  rdi
+     pop                  r11
+     pop                  r10
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     mov                  rsi,                  rax
+     mov      qword [rsi - 0],                    2
+     add                  rsi,                    8
+     mov     qword [rbx + 16],                  rsi
+     mov                  rdi,                    0
+     sal                  rdi,                    3
+     mov                  rsi,     qword [rbx + 16]
+     add                  rsi,                  rdi
+     mov                  rdi,                    6
+     add                  rdi,                    1
+     sal                  rdi,                    3
+    push                   r8
+    push                   r9
+    push                  rsi
+    push                  r10
+    push                  r11
+    push                  rdi
+     sub                  rsp,                    8
+    call               malloc
+     add                  rsp,                    8
+     pop                  rdi
+     pop                  r11
+     pop                  r10
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     mov                   r8,                  rax
+     mov       qword [r8 - 0],                    6
+     add                   r8,                    8
+     mov                   r9,                   r8
+     mov      qword [rbp - 8],                   r8
+     sub                  rdi,                    8
+     add      qword [rbp - 8],                  rdi
+     jmp B.null.19.allocate_condition
+B.null.9.allocate_body:
+     mov                  rdi,                    6
+     add                  rdi,                    1
+     sal                  rdi,                    3
+    push                   r8
+    push                   r9
+    push                  rsi
+    push                  r10
+    push                  r11
+    push                  rdi
+     sub                  rsp,                    8
+    call               malloc
+     add                  rsp,                    8
+     pop                  rdi
+     pop                  r11
+     pop                  r10
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     mov                  r10,                  rax
+     mov      qword [r10 - 0],                    6
+     add                  r10,                    8
+     mov                  r11,                  r10
+     mov     qword [rbp - 16],                  r10
+     sub                  rdi,                    8
+     add     qword [rbp - 16],                  rdi
+     jmp B.null.17.allocate_condition
+B.null.10.allocate_body:
+     mov                  rdi,                    6
+     add                  rdi,                    1
+     sal                  rdi,                    3
+    push                   r8
+    push                   r9
+    push                  rsi
+    push                  r10
+    push                  r11
+    push                  rdi
+     sub                  rsp,                    8
+    call               malloc
+     add                  rsp,                    8
+     pop                  rdi
+     pop                  r11
+     pop                  r10
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     mov                  r12,                  rax
+     mov      qword [r12 - 0],                    6
+     add                  r12,                    8
+     mov                  r13,                  r12
+     mov     qword [rbp - 24],                  r12
+     sub                  rdi,                    8
+     add     qword [rbp - 24],                  rdi
+     jmp B.null.15.allocate_condition
+B.null.11.allocate_body:
+     mov                  rdi,                    6
+     add                  rdi,                    1
+     sal                  rdi,                    3
+    push                   r8
+    push                   r9
+    push                  rsi
+    push                  r10
+    push                  r11
+    push                  rdi
+     sub                  rsp,                    8
+    call               malloc
+     add                  rsp,                    8
+     pop                  rdi
+     pop                  r11
+     pop                  r10
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     mov                  r14,                  rax
+     mov      qword [r14 - 0],                    6
+     add                  r14,                    8
+     mov                  r15,                  r14
+     mov     qword [rbp - 32],                  r14
+     sub                  rdi,                    8
+     add     qword [rbp - 32],                  rdi
+     jmp B.null.13.allocate_condition
+B.null.12.allocate_body:
+    push                   r8
+    push                   r9
+    push                  rsi
+    push                  r10
+    push                  r11
+    push                  rdi
+     mov                  rdi,                   16
+     sub                  rsp,                    8
+    call               malloc
+     add                  rsp,                    8
+     pop                  rdi
+     pop                  r11
+     pop                  r10
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     mov                  rdi,                  rax
+    push                   r8
+    push                   r9
+    push                  rsi
+    push                  r10
+    push                  r11
+    push                  rdi
+     sub                  rsp,                    8
+    call               C.null
+     add                  rsp,                    8
+     pop                  rdi
+     pop                  r11
+     pop                  r10
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     mov      qword [r15 - 0],                  rdi
+     add                  r15,                    8
+B.null.13.allocate_condition:
+     cmp                  r15,     qword [rbp - 32]
+      jl B.null.12.allocate_body
+B.null.14.allocate_exit:
+     mov      qword [r13 - 0],                  r14
+     add                  r13,                    8
+B.null.15.allocate_condition:
+     cmp                  r13,     qword [rbp - 24]
+      jl B.null.11.allocate_body
+B.null.16.allocate_exit:
+     mov      qword [r11 - 0],                  r12
+     add                  r11,                    8
+B.null.17.allocate_condition:
+     cmp                  r11,     qword [rbp - 16]
+      jl B.null.10.allocate_body
+B.null.18.allocate_exit:
+     mov       qword [r9 - 0],                  r10
+     add                   r9,                    8
+B.null.19.allocate_condition:
+     cmp                   r9,      qword [rbp - 8]
+      jl B.null.9.allocate_body
+B.null.20.allocate_exit:
+     mov                  rdi,                    2
+     sal                  rdi,                    3
+     add                   r8,                  rdi
+     mov                  rdi,                    3
+     sal                  rdi,                    3
+     mov                   r8,       qword [r8 - 0]
+     add                   r8,                  rdi
+     mov                  rdi,                    3
+     sal                  rdi,                    3
+     mov                   r8,       qword [r8 - 0]
+     add                   r8,                  rdi
+     mov                  rdi,       qword [r8 - 0]
+     mov      qword [rsi - 0],                  rdi
+     mov                  rsi,                    1
+     sal                  rsi,                    3
+     mov                  rdi,     qword [rbx + 16]
+     add                  rdi,                  rsi
+     mov      qword [rdi - 0],                    0
+     mov                  rdi,     qword [rbx + 16]
+    push                   r8
+    push                   r9
+    push                  rsi
+    push                  r10
+    push                  r11
+    push                  rdi
+     sub                  rsp,                    8
+    call         __array_size
+     add                  rsp,                    8
+     pop                  rdi
+     pop                  r11
+     pop                  r10
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+     mov                  rbx,                  rax
+     cmp                  rbx,                    2
+     jne    B.null.21.if_true
+     jmp       B.null.24.exit
+B.null.21.if_true:
+     mov                  rdi,     __string_const10
+    push                   r8
+    push                   r9
+    push                  rsi
+    push                  r10
+    push                  r11
+    push                  rdi
+     sub                  rsp,                    8
+    call              println
+     add                  rsp,                    8
+     pop                  rdi
+     pop                  r11
+     pop                  r10
+     pop                  rsi
+     pop                   r9
+     pop                   r8
+B.null.24.exit:
+     mov                  rdi,                  rbx
+B.null.25.enter:
+     mov                  rsi,                    0
+     sal                  rsi,                    3
+     mov                  rdi,     qword [rdi + 16]
+     add                  rdi,                  rsi
+     mov                  rdi,      qword [rdi - 0]
+B.null.26.exit:
+     mov                  rsi,                    0
+     sal                  rsi,                    3
+     add                  rdi,                  rsi
+     mov                  rsi,      qword [rdi - 0]
+B.null.27.enter:
+B.null.28.exit:
+B.null.29.enter:
+B.null.30.exit:
+     mov      qword [rbx + 8],                  rsi
+B.null.1.exit:
+     pop                  r15
+     pop                  r13
+     pop                  r14
+     pop                  r12
+     pop                  rbx
+     add                  rsp,                   32
+     pop                  rbp
+     ret
+A.getc0:
+    push                  rbp
+     mov                  rbp,                  rsp
+    push                  rbx
+     sub                  rsp,                    0
+A.getc0.0.enter:
+     mov                  rsi,                  rdi
+     mov                  rbx,                    0
+     sal                  rbx,                    3
+     mov                  rsi,     qword [rsi + 16]
+     add                  rsi,                  rbx
+     mov                  rax,      qword [rsi - 0]
+A.getc0.1.exit:
+     pop                  rbx
+     add                  rsp,                    0
+     pop                  rbp
+     ret
+main:
+    push                  rbp
+     mov                  rbp,                  rsp
+    call   @GlobalDeclaration
+    push                  rbx
+     sub                  rsp,                    0
+main.0.enter:
+     mov                  rbx,                    0
+     jmp main.6.loop_condition
+main.1.loop_body:
+     mov                  rsi,                  rbx
+     xor                  rsi,                  627
+     cmp                  rsi,                  666
+     mov                  rdi,                    0
+    sete                  dil
+     mov                  rsi,                    0
+     cmp                  rsi,                    1
+     mov                  rsi,                    0
+   setne                  sil
+     cmp                  rdi,                  rsi
+      je       main.2.if_true
+     jmp main.5.loop_increment
+main.2.if_true:
+     mov                  rdi,                  rbx
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call             toString
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rbx,                  rax
+     mov                  rdi,                  rbx
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call              println
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rbx,                    0
+     mov                  rdi,                  rbx
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call             toString
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rbx,                  rax
+     mov                  rdi,                  rbx
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call              println
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rbx,                    1
+     mov                  rdi,                  rbx
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call             toString
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rbx,                  rax
+     mov                  rdi,                  rbx
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call              println
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+main.15.enter:
+     mov  qword [@countA - 0],                    0
+     mov  qword [@countB - 0],                    0
+     mov  qword [@countC - 0],                    0
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     mov                  rdi,                   16
+     sub                  rsp,                    8
+    call               malloc
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rbx,                  rax
+     mov                  rdi,                  rbx
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call               B.null
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rdi,  qword [@countA - 0]
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call             toString
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rbx,                  rax
+     mov                  rdi,                  rbx
+     mov                  rsi,     __string_const11
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call  __string_connection
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rbx,                  rax
+     mov                  rdi,  qword [@countB - 0]
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call             toString
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rsi,                  rax
+     mov                  rdi,                  rbx
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call  __string_connection
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rbx,                  rax
+     mov                  rdi,                  rbx
+     mov                  rsi,     __string_const12
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call  __string_connection
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rbx,                  rax
+     mov                  rdi,  qword [@countC - 0]
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call             toString
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rsi,                  rax
+     mov                  rdi,                  rbx
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call  __string_connection
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rbx,                  rax
+     mov                  rdi,                  rbx
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call              println
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov  qword [@countA - 0],                    1
+     mov  qword [@countB - 0],                    1
+     mov  qword [@countC - 0],                    1
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     mov                  rdi,                   16
+     sub                  rsp,                    8
+    call               malloc
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rbx,                  rax
+     mov                  rdi,                  rbx
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call               B.null
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rbx,  qword [@countA - 0]
+     sub                  rbx,                    1
+     mov                  rdi,                  rbx
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call             toString
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rbx,                  rax
+     mov                  rdi,                  rbx
+     mov                  rsi,     __string_const13
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call  __string_connection
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rbx,                  rax
+     mov                  rsi,  qword [@countB - 0]
+     sub                  rsi,                    1
+     mov                  rdi,                  rsi
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call             toString
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rsi,                  rax
+     mov                  rdi,                  rbx
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call  __string_connection
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rbx,                  rax
+     mov                  rdi,                  rbx
+     mov                  rsi,     __string_const14
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call  __string_connection
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rbx,                  rax
+     mov                  rsi,  qword [@countC - 0]
+     sub                  rsi,                    1
+     mov                  rdi,                  rsi
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call             toString
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rsi,                  rax
+     mov                  rdi,                  rbx
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call  __string_connection
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rbx,                  rax
+     mov                  rdi,                  rbx
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call                print
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rdi,     __string_const15
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call                print
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rdi, qword [@something - 0]
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call                 C.Me
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rbx,                  rax
+     mov                  rsi, qword [@something - 0]
+     mov                  rdi,      qword [rsi + 8]
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call      __string_length
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rsi,                  rax
+     mov                   r8,                  rsi
+     sub                   r8,                    1
+     mov                  rdi,      qword [rbx + 8]
+     mov                  rsi,                    1
+     mov                  rdx,                   r8
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call   __string_substring
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rbx,                  rax
+     mov                  rdi,                  rbx
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call    __string_parseInt
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rbx,                  rax
+     mov                  rdi,                  rbx
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call             toString
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rbx,                  rax
+     mov                  rdi,                  rbx
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call              println
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rbx, qword [@something - 0]
+     mov                  rdi,      qword [rbx + 8]
+     mov                  rsi,                    0
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call         __string_ord
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rbx,                  rax
+     mov                  rdi,                  rbx
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call             toString
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rbx,                  rax
+     mov                  rsi, qword [@something - 0]
+     mov                  rdi,      qword [rsi + 8]
+     mov                  rsi,                  rbx
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call          __string_GR
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rsi,                  rax
+     cmp                  rsi,                    1
+      je      main.16.if_true
+     jmp     main.17.if_false
+main.16.if_true:
+     mov                  rsi, qword [@something - 0]
+     mov                  rdi,      qword [rsi + 8]
+     mov                  rsi,     __string_const16
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call  __string_connection
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rsi,                  rax
+     mov                  rdi,                  rsi
+     mov                  rsi,                  rbx
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call  __string_connection
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rbx,                  rax
+     mov                  rdi,                  rbx
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call              println
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     jmp main.12.loop_condition
+main.17.if_false:
+     mov                  rsi, qword [@something - 0]
+     mov                  rdi,      qword [rsi + 8]
+     mov                  rsi,     __string_const17
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call  __string_connection
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rsi,                  rax
+     mov                  rdi,                  rsi
+     mov                  rsi,                  rbx
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call  __string_connection
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rbx,                  rax
+     mov                  rdi,                  rbx
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call              println
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     jmp main.12.loop_condition
+main.5.loop_increment:
+     add                  rbx,                    1
+main.6.loop_condition:
+     mov                  rax,                    1
+     cmp                  rax,                    1
+      je     main.1.loop_body
+     jmp main.12.loop_condition
+main.8.loop_body:
+     mov                  rsi,                  rbx
+     mov                  rax,                  rsi
+     mov                  rcx,                    2
+     cqo
+    idiv                  rcx
+     mov                  rsi,                  rdx
+     cmp                  rsi,                    0
+      je main.12.loop_condition
+main.11.if_exit:
+     mov                  rdi,                  rbx
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call             toString
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rsi,                  rax
+     mov                  rdi,                  rsi
+     mov                  rsi,      __string_const7
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call  __string_connection
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+     mov                  rsi,                  rax
+     mov                  rdi,                  rsi
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call                print
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
+main.12.loop_condition:
+     mov                  rax,                    1
+     cmp                  rax,                    1
+      je     main.8.loop_body
+main.13.loop_exit:
+     mov                  rdi,      __string_const8
+    push                  rdi
+    push                   r8
+    push                  rdx
+    push                  rsi
+     sub                  rsp,                    8
+    call              println
+     add                  rsp,                    8
+     pop                  rsi
+     pop                  rdx
+     pop                   r8
+     pop                  rdi
      mov                  rax,                    0
-main.148.exit:
+main.14.exit:
+     pop                  rbx
+     add                  rsp,                    0
+     pop                  rbp
+     ret
+C.Me:
+    push                  rbp
+     mov                  rbp,                  rsp
+    push                  rbx
+     sub                  rsp,                    0
+C.Me.0.enter:
+     mov                  rbx,                  rdi
+     mov                  rax,                  rbx
+C.Me.1.exit:
      pop                  rbx
      add                  rsp,                    0
      pop                  rbp
@@ -711,6 +2432,60 @@ __string_LEEQ:
    setle                   al
      ret
 SECTION .data
+      dq                    1
+__string_const0:
+      db               " ", 0
+      dq                    1
+__string_const1:
+      db               " ", 0
+      dq                    1
+__string_const2:
+      db               " ", 0
+      dq                    1
+__string_const3:
+      db               " ", 0
+      dq                    2
+__string_const4:
+      db        "", 10, "", 0
+      dq                    1
+__string_const5:
+      db               ">", 0
+      dq                    2
+__string_const6:
+      db              "<=", 0
+      dq                    1
+__string_const7:
+      db               ",", 0
+      dq                    0
+__string_const8:
+      db                "", 0
+      dq                    5
+__string_const9:
+      db           "Oops!", 0
+      dq                    5
+__string_const10:
+      db           "Oops!", 0
+      dq                    1
+__string_const11:
+      db               " ", 0
+      dq                    1
+__string_const12:
+      db               " ", 0
+      dq                    1
+__string_const13:
+      db               " ", 0
+      dq                    1
+__string_const14:
+      db               " ", 0
+      dq                    2
+__string_const15:
+      db        "", 10, "", 0
+      dq                    1
+__string_const16:
+      db               ">", 0
+      dq                    2
+__string_const17:
+      db              "<=", 0
 __println_IntFormat:
       db         "%ld", 10, 0
 __print_IntFormat:
@@ -726,17 +2501,13 @@ __toStringFormat:
 __parseIntFormat:
       db             "%ld", 0
 SECTION .bss
-@N:
+@countA:
     resq                    1
-@h:
+@countB:
     resq                    1
-@i:
+@countC:
     resq                    1
-@j:
-    resq                    1
-@k:
-    resq                    1
-@total:
+@something:
     resq                    1
 @getIntBuf:
     resq                    1

@@ -10,7 +10,7 @@ import Utility.Utility;
 import java.util.List;
 
 public class FunctionType extends Type implements Scope {
-	private String name;
+	public String name;
 	private Type returnType;
 	private List<Symbol> parameterList;
 	private BlockStatement blockStatement;

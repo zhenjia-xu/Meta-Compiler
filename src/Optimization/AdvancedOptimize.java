@@ -47,7 +47,7 @@ public class AdvancedOptimize {
 							instructionList.add(k, new MoveInstruction(operand, ((ReturnInstruction) ins).returnValue));
 						}
 					}
-					if(!(fun.getReturnType() instanceof VoidType)){
+					if(!(fun.getReturnType() instanceof VoidType) && fun.name != null){
 						block.instructionList.remove(j);
 					}
 					instructionList.add(exitBlock);
