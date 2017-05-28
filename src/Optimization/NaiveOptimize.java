@@ -141,7 +141,7 @@ public class NaiveOptimize {
 	}
 
 	static public void superBlock(FunctionIR functionIR){
-		for(int iter = 0; iter < 10; iter++){
+		for(int iter = 0; iter < 4; iter++){
 			for(Block block: functionIR.blockList){
 				if(!block.instructionList.isEmpty() && block.instructionList.get(block.instructionList.size() - 1) instanceof JumpInstruction){
 					LabelInstruction target = ((JumpInstruction) block.instructionList.get(block.instructionList.size() - 1)).target;
