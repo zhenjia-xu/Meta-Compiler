@@ -53,12 +53,6 @@ public class IdentifierExpression extends Expression {
 
 	@Override
 	public void generateInstruction(List<Instruction> instructionList) {
-		if (symbol.global) {
-			VirtualRegister tmp = new VirtualRegister(symbol.getName());
-			tmp.systemReg = "@" + symbol.getName();
-			operand = new Address(tmp);
-		} else {
-			operand = symbol.virtualRegister;
-		}
+		operand = symbol.virtualRegister;
 	}
 }

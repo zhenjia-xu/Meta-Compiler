@@ -9,6 +9,7 @@ import IR.Instruction.MoveInstruction;
 import IR.VirtualRegister;
 import Utility.RuntimeError;
 import com.sun.org.apache.regexp.internal.RE;
+import org.omg.Messaging.SYNC_WITH_TRANSPORT;
 import org.omg.PortableInterceptor.INACTIVE;
 
 import java.awt.image.VolatileImage;
@@ -27,6 +28,14 @@ public class LivenessAnalysis {
 		prepare(functionIR);
 		calculateBlock(functionIR);
 		calculateInstruction(functionIR);
+//		for(Block block: functionIR.blockList){
+//			System.out.println(block.getName());
+//			for(Instruction instruction: block.instructionList){
+//				System.out.println(instruction);
+//				System.out.println("liveIn:  " + instruction.liveIn);
+//				System.out.println("liveOut: " + instruction.liveOut);
+//			}
+//		}
 	}
 
 	static private void calculateInstruction(FunctionIR functionIR) {
@@ -67,7 +76,7 @@ public class LivenessAnalysis {
 				}
 //				for(VirtualRegister reg1: instruction.liveOut)
 //					for(VirtualRegister reg2: instruction.liveOut)
-//						if(reg1 != reg2 && reg1.systemReg == null && reg2.systemReg == null){
+//						if(reg1 != reg2){
 //							addEdge(reg1, reg2);
 //						}
 			}

@@ -46,7 +46,7 @@ public class FunctionIR {
 		this.idMap = new HashMap<>();
 		parameterList = new ArrayList<>();
 		for (Symbol x : function.getParameterList()) {
-			parameterList.add(x.virtualRegister);
+			parameterList.add((VirtualRegister) x.virtualRegister);
 		}
 		buildGraph();
 	}

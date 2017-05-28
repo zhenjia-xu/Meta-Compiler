@@ -72,6 +72,7 @@ public class RegisterAllocator {
 		registerMap = new HashMap<>();
 		for (VirtualRegister reg : must) {
 			if (!tryColor(reg, reg.systemReg)) {
+				System.out.print(reg);
 				throw new RuntimeError("must_list is error");
 			}
 		}

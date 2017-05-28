@@ -84,13 +84,7 @@ public class VariableDeclarationStatement extends Statement {
 			expression.generateInstruction(instructionList);
 			Operand source = expression.operand;
 			Operand target;
-			if (symbol.global) {
-				VirtualRegister tmp = new VirtualRegister(symbol.getName());
-				tmp.systemReg = "@" + symbol.getName();
-				target = new Address(tmp);
-			} else {
-				target = symbol.virtualRegister;
-			}
+			target = symbol.virtualRegister;
 			if (target instanceof Address && source instanceof Address) {
 				VirtualRegister x = RegisterManager.getTemporaryRegister();
 				instructionList.add(new MoveInstruction(x, source));

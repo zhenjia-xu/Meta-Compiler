@@ -27,6 +27,11 @@ public class ProgramIR {
 				functionMap.put(function.getName(), new FunctionIR(function));
 			}
 		}
+		for (VariableDeclarationStatement variable: ProgramAST.globalDeclarationList){
+			VirtualRegister tmp = new VirtualRegister(variable.getSymbol().getName());
+			tmp.systemReg = "@" + variable.getSymbol().getName();
+			variable.getSymbol().virtualRegister = new Address(tmp);
+		}
 		for (ClassType classType : ProgramAST.classTable.getClassMap().values()) {
 			for (FunctionType function : classType.getMemberFunctionTable().values()) {
 				if (!function.isBuiltin()) {

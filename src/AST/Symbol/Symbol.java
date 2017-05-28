@@ -2,13 +2,14 @@ package AST.Symbol;
 
 import AST.Type.ClassType;
 import AST.Type.Type;
+import IR.Operand;
 import IR.VirtualRegister;
 import Utility.Utility;
 
 public class Symbol {
 	private String name;
 	private Type type;
-	public VirtualRegister virtualRegister;
+	public Operand virtualRegister;
 	public ClassType classScope;
 	public boolean global;
 

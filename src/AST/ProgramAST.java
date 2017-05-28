@@ -14,7 +14,6 @@ public class ProgramAST {
 	public static ClassTable classTable;
 	public static SymbolTable symbolTable;
 	public static FunctionTable globalFunctionTable;
-	//public static VariableTable globalVariableTable;
 	public static List<VariableDeclarationStatement> globalDeclarationList;
 
 	private static void addBuiltinFunction() {
