@@ -1,6 +1,7 @@
 package Optimization;
 
 import AST.Type.FunctionType;
+import AST.Type.VoidType;
 import IR.*;
 import IR.Instruction.*;
 import org.omg.PortableInterceptor.INACTIVE;
@@ -16,18 +17,17 @@ public class AdvancedOptimize {
 				Instruction instruction = block.instructionList.get(j);
 				if(instruction instanceof FunctionCallInstruction && !((FunctionCallInstruction) instruction).function.isBuiltin()){
 					FunctionType fun = ((FunctionCallInstruction) instruction).function;
-if(fun == functionIR.function)continue;
+					if(fun == functionIR.function)continue;
 					block.instructionList.remove(j);
 					int num = Math.min(6, fun.getParameterList().size());
 					for(int k = 0; k < num; k++){
-						((MoveInstruction) block.instructionList.get(j - num + k)).target = fun.getParameterList().get(k).virtualRegister;
+						((MoveInstruction) block.instructionList.get(j - num + k)).changeTarget(fun.getParameterList().get(k).virtualRegister);
 					}
 					for(int k = 6; k < fun.getParameterList().size(); k++){
 						block.instructionList.add(j, new MoveInstruction(fun.getParameterList().get(k).virtualRegister, ((FunctionCallInstruction) instruction).parameterList.get(k - 6)));
 						j++;
 					}
 
-//optimize return value
 					LabelInstruction enterBlock = new LabelInstruction("enter");
 					LabelInstruction exitBlock = new LabelInstruction("exit");
 					fun.enterLabel = enterBlock;
@@ -39,6 +39,17 @@ if(fun == functionIR.function)continue;
 					List<Instruction> instructionList = new ArrayList<>();
 					instructionList.add(enterBlock);
 					fun.getBlockStatement().generateInstruction(instructionList);
+					for(int k = 0; k < instructionList.size(); k++){
+						Instruction ins = instructionList.get(k);
+						if(ins instanceof ReturnInstruction){
+							Operand operand = ((MoveInstruction)block.instructionList.get(j)).target;
+							instructionList.remove(k);
+							instructionList.add(k, new MoveInstruction(operand, ((ReturnInstruction) ins).returnValue));
+						}
+					}
+					if(!(fun.getReturnType() instanceof VoidType)){
+						block.instructionList.remove(j);
+					}
 					instructionList.add(exitBlock);
 					while(j < block.instructionList.size()){
 						instructionList.add(block.instructionList.get(j));
@@ -57,6 +68,7 @@ if(fun == functionIR.function)continue;
 						i++;
 						functionIR.blockList.add(i, newblock);
 					}
+					i--;
 				}
 
 			}

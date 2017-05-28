@@ -9,6 +9,7 @@ import IR.Instruction.MoveInstruction;
 import IR.VirtualRegister;
 import Utility.RuntimeError;
 import com.sun.org.apache.regexp.internal.RE;
+import org.omg.PortableInterceptor.INACTIVE;
 
 import java.util.HashMap;
 import java.util.HashSet;

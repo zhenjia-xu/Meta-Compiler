@@ -9,7 +9,6 @@ public class Optimization {
 		if (RegisterManager.temporaryId > 4000) return;
 		for (FunctionIR functionIR : ProgramIR.functionMap.values()) {
 			AdvancedOptimize.functionInline(functionIR);
-			/*
 			NaiveOptimize.printOptimize(functionIR);
 			AdvancedOptimize.uselessCodeElimination(functionIR);
 			NaiveOptimize.loopConditionImprovement(functionIR);
@@ -18,7 +17,7 @@ public class Optimization {
 			RegisterAllocator.allocate(LivenessAnalysis.virtualRegisterMap, LivenessAnalysis.edgeMap, functionIR);
 			NaiveOptimize.removeEmptyBlock(functionIR);
 			NaiveOptimize.removeUselessJump(functionIR);
-			*/
+
 		}
 	}
 }

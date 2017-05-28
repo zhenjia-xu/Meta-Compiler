@@ -17,6 +17,7 @@ public class ProgramIR {
 
 	public static Map<String, FunctionIR> functionMap;
 	public static List<String> constStringList;
+	public static FunctionIR nowFunction;
 
 	public static void BuildProgramIR() {
 		functionMap = new HashMap<>();
@@ -48,6 +49,7 @@ public class ProgramIR {
 	public static String toString(int indents) {
 		StringBuilder str = new StringBuilder();
 		for (FunctionIR functionIR : functionMap.values()) {
+			ProgramIR.nowFunction = functionIR;
 			str.append(functionIR.toString(indents));
 		}
 		return str.toString();

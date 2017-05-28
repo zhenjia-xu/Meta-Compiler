@@ -9,6 +9,8 @@ import Translation.PhysicalOperand.PhysicalOperand;
 import Translation.Translator;
 import Utility.RuntimeError;
 
+import java.util.HashSet;
+
 public class MoveInstruction extends Instruction {
 	public Operand target;
 	public Operand source;
@@ -19,6 +21,11 @@ public class MoveInstruction extends Instruction {
 		}
 		this.target = target;
 		this.source = source;
+		calc();
+	}
+	private void calc(){
+		killSet = new HashSet<>();
+		useSet = new HashSet<>();
 		if (target instanceof VirtualRegister) {
 			killSet.add((VirtualRegister) target);
 		}
@@ -31,6 +38,10 @@ public class MoveInstruction extends Instruction {
 		if (source instanceof Address) {
 			useSet.add(((Address) source).base);
 		}
+	}
+	public void changeTarget(Operand target){
+		this.target = target;
+		calc();
 	}
 
 	@Override

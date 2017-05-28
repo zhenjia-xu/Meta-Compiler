@@ -8,7 +8,7 @@ import Translation.PhysicalOperand.PhysicalOperand;
 import Translation.Translator;
 
 public class ReturnInstruction extends Instruction {
-	private Operand returnValue;
+	public Operand returnValue;
 
 	public ReturnInstruction(Operand returnValue) {
 		this.returnValue = returnValue;
