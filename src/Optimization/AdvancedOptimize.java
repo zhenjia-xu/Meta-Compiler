@@ -15,9 +15,9 @@ public class AdvancedOptimize {
 			Block block = functionIR.blockList.get(i);
 			for(int j = 0; j < block.instructionList.size(); j++){
 				Instruction instruction = block.instructionList.get(j);
-				if(instruction instanceof FunctionCallInstruction && !((FunctionCallInstruction) instruction).function.isBuiltin()){
+				if(instruction instanceof FunctionCallInstruction){
 					FunctionType fun = ((FunctionCallInstruction) instruction).function;
-					if(fun == functionIR.function)continue;
+					if(fun.isBuiltin() || fun == functionIR.function)continue;
 					block.instructionList.remove(j);
 					int num = Math.min(6, fun.getParameterList().size());
 					for(int k = 0; k < num; k++){

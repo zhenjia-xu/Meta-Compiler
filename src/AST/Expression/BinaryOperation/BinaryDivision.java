@@ -63,7 +63,22 @@ public class BinaryDivision extends Expression {
 		}
 		operand = RegisterManager.getTemporaryRegister();
 		instructionList.add(new MoveInstruction(operand, leftExpression.operand));
-		Instruction instruction = new BinaryInstruction(BinaryInstruction.BinaryOp.DIV, operand, rightExpression.operand);
+		Instruction instruction;
+		if (right instanceof ImmediateOperand && ((ImmediateOperand) right).value == 2) {
+			instruction = new BinaryInstruction(BinaryInstruction.BinaryOp.SHR, operand, new ImmediateOperand(1));
+		}else if (right instanceof ImmediateOperand && ((ImmediateOperand) right).value == 4) {
+			instruction = new BinaryInstruction(BinaryInstruction.BinaryOp.SHR, operand, new ImmediateOperand(2));
+		}else if (right instanceof ImmediateOperand && ((ImmediateOperand) right).value == 8) {
+			instruction = new BinaryInstruction(BinaryInstruction.BinaryOp.SHR, operand, new ImmediateOperand(3));
+		}else if (right instanceof ImmediateOperand && ((ImmediateOperand) right).value == 16) {
+			instruction = new BinaryInstruction(BinaryInstruction.BinaryOp.SHR, operand, new ImmediateOperand(4));
+		}else if (right instanceof ImmediateOperand && ((ImmediateOperand) right).value == 32) {
+			instruction = new BinaryInstruction(BinaryInstruction.BinaryOp.SHR, operand, new ImmediateOperand(5));
+		}else if (right instanceof ImmediateOperand && ((ImmediateOperand) right).value == 64) {
+			instruction = new BinaryInstruction(BinaryInstruction.BinaryOp.SHR, operand, new ImmediateOperand(6));
+		}else {
+			instruction = new BinaryInstruction(BinaryInstruction.BinaryOp.DIV, operand, rightExpression.operand);
+		}
 		instructionList.add(instruction);
 	}
 }

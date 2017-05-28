@@ -47,12 +47,12 @@ public class Main {
 
 	public static void getIR() {
 		ProgramIR.BuildProgramIR();
-		//ProgramIR.print();
+//		ProgramIR.print();
 	}
 
 	public static void Optimize() {
 		Optimization.Optimize();
-		//ProgramIR.print();
+//		ProgramIR.print();
 	}
 
 	public static void Translate() throws Exception {

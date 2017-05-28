@@ -11,6 +11,7 @@ import Utility.RuntimeError;
 import com.sun.org.apache.regexp.internal.RE;
 import org.omg.PortableInterceptor.INACTIVE;
 
+import java.awt.image.VolatileImage;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -64,6 +65,11 @@ public class LivenessAnalysis {
 							addEdge(reg1, reg2);
 						}
 				}
+//				for(VirtualRegister reg1: instruction.liveOut)
+//					for(VirtualRegister reg2: instruction.liveOut)
+//						if(reg1 != reg2 && reg1.systemReg == null && reg2.systemReg == null){
+//							addEdge(reg1, reg2);
+//						}
 			}
 		}
 	}
