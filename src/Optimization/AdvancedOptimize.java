@@ -50,6 +50,9 @@ public class AdvancedOptimize {
 					if(!(fun.getReturnType() instanceof VoidType) && fun.name != null){
 						block.instructionList.remove(j);
 					}
+					if(instructionList.isEmpty() || !(instructionList.get(instructionList.size() - 1) instanceof JumpInstruction)){
+						instructionList.add(new JumpInstruction(exitBlock));
+					}
 					instructionList.add(exitBlock);
 					while(j < block.instructionList.size()){
 						instructionList.add(block.instructionList.get(j));

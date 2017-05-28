@@ -8,7 +8,6 @@ public class Optimization {
 	public static void Optimize() {
 		if (RegisterManager.temporaryId > 4000) return;
 		for (FunctionIR functionIR : ProgramIR.functionMap.values()) {
-
 			AdvancedOptimize.functionInline(functionIR);
 			NaiveOptimize.printOptimize(functionIR);
 			AdvancedOptimize.uselessCodeElimination(functionIR);

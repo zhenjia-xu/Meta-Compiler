@@ -3,6 +3,7 @@ package IR;
 import AST.Symbol.Symbol;
 import AST.Type.FunctionType;
 import AST.Type.VoidType;
+import IR.Instruction.JumpInstruction;
 import IR.Instruction.LabelInstruction;
 import IR.Instruction.Instruction;
 import IR.Instruction.MoveInstruction;
@@ -73,6 +74,9 @@ public class FunctionIR {
 			}
 		}
 		function.getBlockStatement().generateInstruction(instructionList);
+		if(instructionList.isEmpty() || !(instructionList.get(instructionList.size() - 1) instanceof JumpInstruction)){
+			instructionList.add(new JumpInstruction(exitBlock));
+		}
 		instructionList.add(exitBlock);
 
 		blockList = new ArrayList<>();
