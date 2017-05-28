@@ -22,15 +22,15 @@ public class ProgramIR {
 	public static void BuildProgramIR() {
 		functionMap = new HashMap<>();
 		constStringList = new ArrayList<>();
-		for (FunctionType function : ProgramAST.globalFunctionTable.getFunctionMap().values()) {
-			if (!function.isBuiltin()) {
-				functionMap.put(function.getName(), new FunctionIR(function));
-			}
-		}
 		for (VariableDeclarationStatement variable: ProgramAST.globalDeclarationList){
 			VirtualRegister tmp = new VirtualRegister(variable.getSymbol().getName());
 			tmp.systemReg = "@" + variable.getSymbol().getName();
 			variable.getSymbol().virtualRegister = new Address(tmp);
+		}
+		for (FunctionType function : ProgramAST.globalFunctionTable.getFunctionMap().values()) {
+			if (!function.isBuiltin()) {
+				functionMap.put(function.getName(), new FunctionIR(function));
+			}
 		}
 		for (ClassType classType : ProgramAST.classTable.getClassMap().values()) {
 			for (FunctionType function : classType.getMemberFunctionTable().values()) {
