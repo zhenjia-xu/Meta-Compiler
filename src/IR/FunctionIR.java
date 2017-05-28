@@ -20,7 +20,6 @@ public class FunctionIR {
 	private List<VirtualRegister> parameterList;
 	public List<Block> blockList;
 	public LabelInstruction enterBlock, exitBlock;
-	public static List<String> callerRegisterList;
 	public static List<String> calleeRegisterList;
 	public Map<VirtualRegister, String> registerMap;
 	public Map<VirtualRegister, Integer> idMap;
@@ -136,13 +135,13 @@ public class FunctionIR {
 
 	static private void calculateSavingMessage() {
 		calleeRegisterList = new ArrayList<>();
-		callerRegisterList = new ArrayList<>();
+//		callerRegisterList = new ArrayList<>();
 		for (String reg : RegisterManager.usedRegister) {
 			if (calleeAll.contains(reg)) {
 				calleeRegisterList.add(reg);
 			}
 			if (callerAll.contains(reg)) {
-				callerRegisterList.add(reg);
+//				callerRegisterList.add(reg);
 			}
 		}
 	}

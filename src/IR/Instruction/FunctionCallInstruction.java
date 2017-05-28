@@ -1,16 +1,15 @@
 package IR.Instruction;
 
 import AST.Type.FunctionType;
-import IR.Address;
-import IR.Operand;
-import IR.RegisterManager;
-import IR.VirtualRegister;
+import IR.*;
 import Translation.PhysicalOperand.PhysicalOperand;
 import Translation.Translator;
 import com.sun.org.apache.regexp.internal.RE;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class FunctionCallInstruction extends Instruction {
 	public FunctionType function;
@@ -61,7 +60,19 @@ public class FunctionCallInstruction extends Instruction {
 	@Override
 	public String getInstructionOfNASM() {
 		StringBuilder str = new StringBuilder();
-		str.append(Translator.saveRegister_Caller());
+		Set<String> callerSet = new HashSet<>();
+		List<String> callerList = new ArrayList<>();
+		for(VirtualRegister reg: liveOut){
+			if(Translator.nowFunction.registerMap.containsKey(reg)){
+				callerSet.add(Translator.nowFunction.registerMap.get(reg));
+			}
+		}
+		for(String reg: callerSet){
+			if(FunctionIR.callerAll.contains(reg)) {
+				callerList.add(reg);
+			}
+		}
+		str.append(Translator.saveRegister_Caller(callerList));
 		int numToMem = parameterList.size();
 
 		boolean flag = false;
@@ -83,7 +94,7 @@ public class FunctionCallInstruction extends Instruction {
 		if (numToMem > 0) {
 			str.append(Translator.getInstruction("add", "rsp", String.valueOf(numToMem * 8)));
 		}
-		str.append(Translator.restoreRegister_Caller());
+		str.append(Translator.restoreRegister_Caller(callerList));
 		return str.toString();
 	}
 

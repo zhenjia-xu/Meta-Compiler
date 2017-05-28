@@ -3,14 +3,17 @@ package Translation;
 import AST.ProgramAST;
 import AST.Statement.VariableDeclarationStatement;
 import IR.FunctionIR;
+import IR.Instruction.FunctionCallInstruction;
 import IR.ProgramIR;
 import IR.RegisterManager;
+import IR.VirtualRegister;
 import com.sun.org.apache.xpath.internal.functions.FuncUnparsedEntityURI;
 import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class Translator {
 	public static int rsp_offset;
@@ -55,17 +58,19 @@ public class Translator {
 		return "ERROR";
 	}
 
-	public static String saveRegister_Caller() {
+	public static String saveRegister_Caller(List<String> list) {
 		StringBuilder str = new StringBuilder();
-		for (int i = 0; i <= FunctionIR.callerRegisterList.size() - 1; i++)
-			str.append(Translator.getInstruction("push", FunctionIR.callerRegisterList.get(i)));
+		for(int i = 0; i <= list.size() - 1; i++){
+			str.append(Translator.getInstruction("push", list.get(i)));
+		}
 		return str.toString();
 	}
 
-	public static String restoreRegister_Caller() {
+	public static String restoreRegister_Caller(List<String> list) {
 		StringBuilder str = new StringBuilder();
-		for (int i = FunctionIR.callerRegisterList.size() - 1; i >= 0; i--)
-			str.append(Translator.getInstruction("pop", FunctionIR.callerRegisterList.get(i)));
+		for(int i = list.size() - 1; i >= 0; i--){
+			str.append(Translator.getInstruction("pop", list.get(i)));
+		}
 		return str.toString();
 	}
 
