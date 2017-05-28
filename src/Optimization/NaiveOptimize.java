@@ -145,7 +145,7 @@ public class NaiveOptimize {
 			for(Block block: functionIR.blockList){
 				if(!block.instructionList.isEmpty() && block.instructionList.get(block.instructionList.size() - 1) instanceof JumpInstruction){
 					LabelInstruction target = ((JumpInstruction) block.instructionList.get(block.instructionList.size() - 1)).target;
-					if(target != functionIR.exitBlock && target.block.instructionList.size() < 30){
+					if(target != functionIR.exitBlock && target.block.instructionList.size() < 100){
 						block.instructionList.remove(block.instructionList.size() - 1);
 						for(Instruction instruction: target.block.instructionList){
 							block.instructionList.add(instruction);
