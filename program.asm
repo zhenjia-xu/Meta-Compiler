@@ -57,74 +57,7 @@ main.0.enter:
      mov                   r8,                  rsi
      sub                   r9,                    8
      add                   r8,                   r9
-     cmp                  rdi,                   r8
-      jl main.1.allocate_body
-     mov                  rdi,                  rsi
-     mov                  r10,                  rbx
-     add                  r10,                    1
-     sal                  r10,                    3
-    push                  r10
-    push                  rdi
-    push                  rsi
-     mov                  rdi,                  r10
-    call               malloc
-     pop                  rsi
-     pop                  rdi
-     pop                  r10
-     mov                  rsi,                  rax
-     mov      qword [rsi - 0],                  rbx
-     add                  rsi,                    8
-     mov                   r8,                  rsi
-     mov                   r9,                  rsi
-     sub                  r10,                    8
-     add                   r9,                  r10
-     cmp                   r8,                   r9
-      jl main.4.allocate_body
-     mov                  r11,                  rbx
-     add                  r11,                    1
-     sal                  r11,                    3
-    push                  r11
-    push                   r8
-    push                  rdi
-    push                  rsi
-     mov                  rdi,                  r11
-     sub                  rsp,                    8
-    call               malloc
-     add                  rsp,                    8
-     pop                  rsi
-     pop                  rdi
-     pop                   r8
-     pop                  r11
-     mov                   r8,                  rax
-     mov       qword [r8 - 0],                  rbx
-     add                   r8,                    8
-     mov                   r9,                   r8
-     mov                  r10,                   r8
-     sub                  r11,                    8
-     add                  r10,                  r11
-     cmp                   r9,                  r10
-      jl main.7.allocate_body
-     mov                  r10,                   r8
-     mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.10.loop_body
-     mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.18.loop_body
-     mov                  rdi,                    0
-     mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.33.loop_body
-     sub                  rsp,                    8
-    call             toString
-     add                  rsp,                    8
-     mov                  rbx,                  rax
-     mov                  rdi,                  rbx
-     sub                  rsp,                    8
-    call                print
-     add                  rsp,                    8
-     mov                  rax,                    0
-     jmp         main.41.exit
+     jmp main.2.allocate_condition
 main.1.allocate_body:
      mov                   r9,                  rbx
      add                   r9,                    1
@@ -146,143 +79,9 @@ main.1.allocate_body:
      add                   r9,                    8
      mov      qword [rdi - 0],                   r9
      add                  rdi,                    8
-     cmp                  rdi,                   r8
-      jl main.1.allocate_body
-     mov                  rdi,                  rsi
-     mov                  r10,                  rbx
-     add                  r10,                    1
-     sal                  r10,                    3
-    push                  r10
-    push                  rdi
-    push                  rsi
-     mov                  rdi,                  r10
-    call               malloc
-     pop                  rsi
-     pop                  rdi
-     pop                  r10
-     mov                  rsi,                  rax
-     mov      qword [rsi - 0],                  rbx
-     add                  rsi,                    8
-     mov                   r8,                  rsi
-     mov                   r9,                  rsi
-     sub                  r10,                    8
-     add                   r9,                  r10
-     cmp                   r8,                   r9
-      jl main.4.allocate_body
-     mov                  r11,                  rbx
-     add                  r11,                    1
-     sal                  r11,                    3
-    push                  r11
-    push                   r8
-    push                  rdi
-    push                  rsi
-     mov                  rdi,                  r11
-     sub                  rsp,                    8
-    call               malloc
-     add                  rsp,                    8
-     pop                  rsi
-     pop                  rdi
-     pop                   r8
-     pop                  r11
-     mov                   r8,                  rax
-     mov       qword [r8 - 0],                  rbx
-     add                   r8,                    8
-     mov                   r9,                   r8
-     mov                  r10,                   r8
-     sub                  r11,                    8
-     add                  r10,                  r11
-     cmp                   r9,                  r10
-      jl main.7.allocate_body
-     mov                  r10,                   r8
-     mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.10.loop_body
-     mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.18.loop_body
-     mov                  rdi,                    0
-     mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.33.loop_body
-     sub                  rsp,                    8
-    call             toString
-     add                  rsp,                    8
-     mov                  rbx,                  rax
-     mov                  rdi,                  rbx
-     sub                  rsp,                    8
-    call                print
-     add                  rsp,                    8
-     mov                  rax,                    0
-     jmp         main.41.exit
 main.2.allocate_condition:
      cmp                  rdi,                   r8
       jl main.1.allocate_body
-     mov                  rdi,                  rsi
-     mov                  r10,                  rbx
-     add                  r10,                    1
-     sal                  r10,                    3
-    push                  r10
-    push                  rdi
-    push                  rsi
-     mov                  rdi,                  r10
-    call               malloc
-     pop                  rsi
-     pop                  rdi
-     pop                  r10
-     mov                  rsi,                  rax
-     mov      qword [rsi - 0],                  rbx
-     add                  rsi,                    8
-     mov                   r8,                  rsi
-     mov                   r9,                  rsi
-     sub                  r10,                    8
-     add                   r9,                  r10
-     cmp                   r8,                   r9
-      jl main.4.allocate_body
-     mov                  r11,                  rbx
-     add                  r11,                    1
-     sal                  r11,                    3
-    push                  r11
-    push                   r8
-    push                  rdi
-    push                  rsi
-     mov                  rdi,                  r11
-     sub                  rsp,                    8
-    call               malloc
-     add                  rsp,                    8
-     pop                  rsi
-     pop                  rdi
-     pop                   r8
-     pop                  r11
-     mov                   r8,                  rax
-     mov       qword [r8 - 0],                  rbx
-     add                   r8,                    8
-     mov                   r9,                   r8
-     mov                  r10,                   r8
-     sub                  r11,                    8
-     add                  r10,                  r11
-     cmp                   r9,                  r10
-      jl main.7.allocate_body
-     mov                  r10,                   r8
-     mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.10.loop_body
-     mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.18.loop_body
-     mov                  rdi,                    0
-     mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.33.loop_body
-     sub                  rsp,                    8
-    call             toString
-     add                  rsp,                    8
-     mov                  rbx,                  rax
-     mov                  rdi,                  rbx
-     sub                  rsp,                    8
-    call                print
-     add                  rsp,                    8
-     mov                  rax,                    0
-     jmp         main.41.exit
 main.3.allocate_exit:
      mov                  rdi,                  rsi
      mov                  r10,                  rbx
@@ -303,53 +102,7 @@ main.3.allocate_exit:
      mov                   r9,                  rsi
      sub                  r10,                    8
      add                   r9,                  r10
-     cmp                   r8,                   r9
-      jl main.4.allocate_body
-     mov                  r11,                  rbx
-     add                  r11,                    1
-     sal                  r11,                    3
-    push                  r11
-    push                   r8
-    push                  rdi
-    push                  rsi
-     mov                  rdi,                  r11
-     sub                  rsp,                    8
-    call               malloc
-     add                  rsp,                    8
-     pop                  rsi
-     pop                  rdi
-     pop                   r8
-     pop                  r11
-     mov                   r8,                  rax
-     mov       qword [r8 - 0],                  rbx
-     add                   r8,                    8
-     mov                   r9,                   r8
-     mov                  r10,                   r8
-     sub                  r11,                    8
-     add                  r10,                  r11
-     cmp                   r9,                  r10
-      jl main.7.allocate_body
-     mov                  r10,                   r8
-     mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.10.loop_body
-     mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.18.loop_body
-     mov                  rdi,                    0
-     mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.33.loop_body
-     sub                  rsp,                    8
-    call             toString
-     add                  rsp,                    8
-     mov                  rbx,                  rax
-     mov                  rdi,                  rbx
-     sub                  rsp,                    8
-    call                print
-     add                  rsp,                    8
-     mov                  rax,                    0
-     jmp         main.41.exit
+     jmp main.5.allocate_condition
 main.4.allocate_body:
      mov                  r10,                  rbx
      add                  r10,                    1
@@ -371,101 +124,9 @@ main.4.allocate_body:
      add                  r10,                    8
      mov       qword [r8 - 0],                  r10
      add                   r8,                    8
-     cmp                   r8,                   r9
-      jl main.4.allocate_body
-     mov                  r11,                  rbx
-     add                  r11,                    1
-     sal                  r11,                    3
-    push                  r11
-    push                   r8
-    push                  rdi
-    push                  rsi
-     mov                  rdi,                  r11
-     sub                  rsp,                    8
-    call               malloc
-     add                  rsp,                    8
-     pop                  rsi
-     pop                  rdi
-     pop                   r8
-     pop                  r11
-     mov                   r8,                  rax
-     mov       qword [r8 - 0],                  rbx
-     add                   r8,                    8
-     mov                   r9,                   r8
-     mov                  r10,                   r8
-     sub                  r11,                    8
-     add                  r10,                  r11
-     cmp                   r9,                  r10
-      jl main.7.allocate_body
-     mov                  r10,                   r8
-     mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.10.loop_body
-     mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.18.loop_body
-     mov                  rdi,                    0
-     mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.33.loop_body
-     sub                  rsp,                    8
-    call             toString
-     add                  rsp,                    8
-     mov                  rbx,                  rax
-     mov                  rdi,                  rbx
-     sub                  rsp,                    8
-    call                print
-     add                  rsp,                    8
-     mov                  rax,                    0
-     jmp         main.41.exit
 main.5.allocate_condition:
      cmp                   r8,                   r9
       jl main.4.allocate_body
-     mov                  r11,                  rbx
-     add                  r11,                    1
-     sal                  r11,                    3
-    push                  r11
-    push                   r8
-    push                  rdi
-    push                  rsi
-     mov                  rdi,                  r11
-     sub                  rsp,                    8
-    call               malloc
-     add                  rsp,                    8
-     pop                  rsi
-     pop                  rdi
-     pop                   r8
-     pop                  r11
-     mov                   r8,                  rax
-     mov       qword [r8 - 0],                  rbx
-     add                   r8,                    8
-     mov                   r9,                   r8
-     mov                  r10,                   r8
-     sub                  r11,                    8
-     add                  r10,                  r11
-     cmp                   r9,                  r10
-      jl main.7.allocate_body
-     mov                  r10,                   r8
-     mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.10.loop_body
-     mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.18.loop_body
-     mov                  rdi,                    0
-     mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.33.loop_body
-     sub                  rsp,                    8
-    call             toString
-     add                  rsp,                    8
-     mov                  rbx,                  rax
-     mov                  rdi,                  rbx
-     sub                  rsp,                    8
-    call                print
-     add                  rsp,                    8
-     mov                  rax,                    0
-     jmp         main.41.exit
 main.6.allocate_exit:
      mov                  r11,                  rbx
      add                  r11,                    1
@@ -489,29 +150,7 @@ main.6.allocate_exit:
      mov                  r10,                   r8
      sub                  r11,                    8
      add                  r10,                  r11
-     cmp                   r9,                  r10
-      jl main.7.allocate_body
-     mov                  r10,                   r8
-     mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.10.loop_body
-     mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.18.loop_body
-     mov                  rdi,                    0
-     mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.33.loop_body
-     sub                  rsp,                    8
-    call             toString
-     add                  rsp,                    8
-     mov                  rbx,                  rax
-     mov                  rdi,                  rbx
-     sub                  rsp,                    8
-    call                print
-     add                  rsp,                    8
-     mov                  rax,                    0
-     jmp         main.41.exit
+     jmp main.8.allocate_condition
 main.7.allocate_body:
      mov                  r11,                  rbx
      add                  r11,                    1
@@ -537,99 +176,16 @@ main.7.allocate_body:
      add                  r11,                    8
      mov       qword [r9 - 0],                  r11
      add                   r9,                    8
-     cmp                   r9,                  r10
-      jl main.7.allocate_body
-     mov                  r10,                   r8
-     mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.10.loop_body
-     mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.18.loop_body
-     mov                  rdi,                    0
-     mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.33.loop_body
-     sub                  rsp,                    8
-    call             toString
-     add                  rsp,                    8
-     mov                  rbx,                  rax
-     mov                  rdi,                  rbx
-     sub                  rsp,                    8
-    call                print
-     add                  rsp,                    8
-     mov                  rax,                    0
-     jmp         main.41.exit
 main.8.allocate_condition:
      cmp                   r9,                  r10
       jl main.7.allocate_body
-     mov                  r10,                   r8
-     mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.10.loop_body
-     mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.18.loop_body
-     mov                  rdi,                    0
-     mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.33.loop_body
-     sub                  rsp,                    8
-    call             toString
-     add                  rsp,                    8
-     mov                  rbx,                  rax
-     mov                  rdi,                  rbx
-     sub                  rsp,                    8
-    call                print
-     add                  rsp,                    8
-     mov                  rax,                    0
-     jmp         main.41.exit
 main.9.allocate_exit:
      mov                  r10,                   r8
      mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.10.loop_body
-     mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.18.loop_body
-     mov                  rdi,                    0
-     mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.33.loop_body
-     sub                  rsp,                    8
-    call             toString
-     add                  rsp,                    8
-     mov                  rbx,                  rax
-     mov                  rdi,                  rbx
-     sub                  rsp,                    8
-    call                print
-     add                  rsp,                    8
-     mov                  rax,                    0
-     jmp         main.41.exit
+     jmp main.16.loop_condition
 main.10.loop_body:
      mov                   r8,                    0
-     cmp                   r8,                  rbx
-      jl    main.11.loop_body
-     add                   r9,                    1
-     cmp                   r9,                  rbx
-      jl    main.10.loop_body
-     mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.18.loop_body
-     mov                  rdi,                    0
-     mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.33.loop_body
-     sub                  rsp,                    8
-    call             toString
-     add                  rsp,                    8
-     mov                  rbx,                  rax
-     mov                  rdi,                  rbx
-     sub                  rsp,                    8
-    call                print
-     add                  rsp,                    8
-     mov                  rax,                    0
-     jmp         main.41.exit
+     jmp main.13.loop_condition
 main.11.loop_body:
      mov                  r12,                   r9
      sal                  r12,                    3
@@ -642,206 +198,29 @@ main.11.loop_body:
      mov                  r12,                   r9
      add                  r12,                   r8
      mov      qword [r11 - 0],                  r12
-     add                   r8,                    1
-     cmp                   r8,                  rbx
-      jl    main.11.loop_body
-     add                   r9,                    1
-     cmp                   r9,                  rbx
-      jl    main.10.loop_body
-     mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.18.loop_body
-     mov                  rdi,                    0
-     mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.33.loop_body
-     sub                  rsp,                    8
-    call             toString
-     add                  rsp,                    8
-     mov                  rbx,                  rax
-     mov                  rdi,                  rbx
-     sub                  rsp,                    8
-    call                print
-     add                  rsp,                    8
-     mov                  rax,                    0
-     jmp         main.41.exit
 main.12.loop_increment:
      add                   r8,                    1
-     cmp                   r8,                  rbx
-      jl    main.11.loop_body
-     add                   r9,                    1
-     cmp                   r9,                  rbx
-      jl    main.10.loop_body
-     mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.18.loop_body
-     mov                  rdi,                    0
-     mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.33.loop_body
-     sub                  rsp,                    8
-    call             toString
-     add                  rsp,                    8
-     mov                  rbx,                  rax
-     mov                  rdi,                  rbx
-     sub                  rsp,                    8
-    call                print
-     add                  rsp,                    8
-     mov                  rax,                    0
-     jmp         main.41.exit
 main.13.loop_condition:
      cmp                   r8,                  rbx
       jl    main.11.loop_body
-     add                   r9,                    1
-     cmp                   r9,                  rbx
-      jl    main.10.loop_body
-     mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.18.loop_body
-     mov                  rdi,                    0
-     mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.33.loop_body
-     sub                  rsp,                    8
-    call             toString
-     add                  rsp,                    8
-     mov                  rbx,                  rax
-     mov                  rdi,                  rbx
-     sub                  rsp,                    8
-    call                print
-     add                  rsp,                    8
-     mov                  rax,                    0
-     jmp         main.41.exit
 main.15.loop_increment:
      add                   r9,                    1
-     cmp                   r9,                  rbx
-      jl    main.10.loop_body
-     mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.18.loop_body
-     mov                  rdi,                    0
-     mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.33.loop_body
-     sub                  rsp,                    8
-    call             toString
-     add                  rsp,                    8
-     mov                  rbx,                  rax
-     mov                  rdi,                  rbx
-     sub                  rsp,                    8
-    call                print
-     add                  rsp,                    8
-     mov                  rax,                    0
-     jmp         main.41.exit
 main.16.loop_condition:
      cmp                   r9,                  rbx
       jl    main.10.loop_body
-     mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.18.loop_body
-     mov                  rdi,                    0
-     mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.33.loop_body
-     sub                  rsp,                    8
-    call             toString
-     add                  rsp,                    8
-     mov                  rbx,                  rax
-     mov                  rdi,                  rbx
-     sub                  rsp,                    8
-    call                print
-     add                  rsp,                    8
-     mov                  rax,                    0
-     jmp         main.41.exit
 main.17.loop_exit:
      mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.18.loop_body
-     mov                  rdi,                    0
-     mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.33.loop_body
-     sub                  rsp,                    8
-    call             toString
-     add                  rsp,                    8
-     mov                  rbx,                  rax
-     mov                  rdi,                  rbx
-     sub                  rsp,                    8
-    call                print
-     add                  rsp,                    8
-     mov                  rax,                    0
-     jmp         main.41.exit
+     jmp main.31.loop_condition
 main.18.loop_body:
      mov                   r8,                    0
-     cmp                   r8,                  rbx
-      jl    main.19.loop_body
-     add                   r9,                    1
-     cmp                   r9,                  rbx
-      jl    main.18.loop_body
-     mov                  rdi,                    0
-     mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.33.loop_body
-     sub                  rsp,                    8
-    call             toString
-     add                  rsp,                    8
-     mov                  rbx,                  rax
-     mov                  rdi,                  rbx
-     sub                  rsp,                    8
-    call                print
-     add                  rsp,                    8
-     mov                  rax,                    0
-     jmp         main.41.exit
+     jmp main.28.loop_condition
 main.19.loop_body:
      mov                  r11,                    0
-     cmp                  r11,                  rbx
-      jl    main.20.loop_body
-     add                   r8,                    1
-     cmp                   r8,                  rbx
-      jl    main.19.loop_body
-     add                   r9,                    1
-     cmp                   r9,                  rbx
-      jl    main.18.loop_body
-     mov                  rdi,                    0
-     mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.33.loop_body
-     sub                  rsp,                    8
-    call             toString
-     add                  rsp,                    8
-     mov                  rbx,                  rax
-     mov                  rdi,                  rbx
-     sub                  rsp,                    8
-    call                print
-     add                  rsp,                    8
-     mov                  rax,                    0
-     jmp         main.41.exit
+     jmp main.25.loop_condition
 main.20.loop_body:
      cmp                   r8,                   r9
      jge      main.21.if_true
-     add                  r11,                    1
-     cmp                  r11,                  rbx
-      jl    main.20.loop_body
-     add                   r8,                    1
-     cmp                   r8,                  rbx
-      jl    main.19.loop_body
-     add                   r9,                    1
-     cmp                   r9,                  rbx
-      jl    main.18.loop_body
-     mov                  rdi,                    0
-     mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.33.loop_body
-     sub                  rsp,                    8
-    call             toString
-     add                  rsp,                    8
-     mov                  rbx,                  rax
-     mov                  rdi,                  rbx
-     sub                  rsp,                    8
-    call                print
-     add                  rsp,                    8
-     mov                  rax,                    0
-     jmp         main.41.exit
+     jmp main.24.loop_increment
 main.21.if_true:
      mov                  r13,                   r9
      sal                  r13,                    3
@@ -882,325 +261,11 @@ main.21.if_true:
      mov                  r15,      qword [rcx - 0]
      mov                  rcx,     qword [rbp - 16]
      mov                  r13,      qword [rcx - 0]
-     add                  r14,                  r15
-     add                  r14,                  r13
-     mov                  r13,                  r14
-     and                  r13,           1073741823
-     mov      qword [r12 - 0],                  r13
-     mov                  r13,                   r9
-     sal                  r13,                    3
-     mov                  r12,                  r10
-     add                  r12,                  r13
-     mov                  r13,                   r8
-     sal                  r13,                    3
-     mov                  r12,      qword [r12 - 0]
-     add                  r12,                  r13
-     mov                  r14,                   r9
-     sal                  r14,                    3
-     mov                  r13,                  rsi
-     add                  r13,                  r14
-     mov                  r14,                   r8
-     sal                  r14,                    3
-     mov                  rax,      qword [r13 - 0]
-     mov     qword [rbp - 24],                  rax
-     add     qword [rbp - 24],                  r14
-     mov                  r14,                   r9
-     sal                  r14,                    3
-     mov                  r13,                  rdi
-     add                  r13,                  r14
-     mov                  r14,                  r11
-     sal                  r14,                    3
-     mov                  rax,      qword [r13 - 0]
-     mov     qword [rbp - 32],                  rax
-     add     qword [rbp - 32],                  r14
-     mov                  r14,                  r11
-     sal                  r14,                    3
-     mov                  r13,                  rdi
-     add                  r13,                  r14
-     mov                  r14,                   r8
-     sal                  r14,                    3
-     mov                  r13,      qword [r13 - 0]
-     add                  r13,                  r14
-     mov                  rcx,     qword [rbp - 24]
-     mov                  r14,      qword [rcx - 0]
-     mov                  rcx,     qword [rbp - 32]
-     mov                  r15,      qword [rcx - 0]
-     mov                  r13,      qword [r13 - 0]
-     add                  r14,                  r15
-     add                  r14,                  r13
-     mov                  r13,                  r14
-     and                  r13,           1073741823
-     mov      qword [r12 - 0],                  r13
-     mov                  r13,                   r9
-     sal                  r13,                    3
-     mov                  r12,                  r10
-     add                  r12,                  r13
-     mov                  r13,                   r8
-     sal                  r13,                    3
-     mov                  r12,      qword [r12 - 0]
-     add                  r12,                  r13
-     mov                  r14,                   r9
-     sal                  r14,                    3
-     mov                  r13,                  rsi
-     add                  r13,                  r14
-     mov                  r14,                   r8
-     sal                  r14,                    3
-     mov                  r13,      qword [r13 - 0]
-     add                  r13,                  r14
-     mov                  r14,                   r9
-     sal                  r14,                    3
-     mov                  r15,                  rdi
-     add                  r15,                  r14
-     mov                  r14,                  r11
-     sal                  r14,                    3
-     mov                  r15,      qword [r15 - 0]
-     add                  r15,                  r14
-     mov                  r14,                  r11
-     sal                  r14,                    3
-     mov     qword [rbp - 40],                  rdi
-     add     qword [rbp - 40],                  r14
-     mov                  r14,                   r8
-     sal                  r14,                    3
-     mov                  rcx,     qword [rbp - 40]
-     mov                  rax,      qword [rcx - 0]
-     mov     qword [rbp - 48],                  rax
-     add     qword [rbp - 48],                  r14
-     mov                  r14,      qword [r13 - 0]
-     mov                  r15,      qword [r15 - 0]
-     mov                  rcx,     qword [rbp - 48]
-     mov                  r13,      qword [rcx - 0]
-     add                  r14,                  r15
-     add                  r14,                  r13
-     mov                  r13,                  r14
-     and                  r13,           1073741823
-     mov      qword [r12 - 0],                  r13
-     mov                  r13,                   r9
-     sal                  r13,                    3
-     mov                  r12,                  r10
-     add                  r12,                  r13
-     mov                  r13,                   r8
-     sal                  r13,                    3
-     mov                  r12,      qword [r12 - 0]
-     add                  r12,                  r13
-     mov                  r14,                   r9
-     sal                  r14,                    3
-     mov                  r13,                  rsi
-     add                  r13,                  r14
-     mov                  r14,                   r8
-     sal                  r14,                    3
-     mov                  rax,      qword [r13 - 0]
-     mov     qword [rbp - 56],                  rax
-     add     qword [rbp - 56],                  r14
-     mov                  r14,                   r9
-     sal                  r14,                    3
-     mov                  r13,                  rdi
-     add                  r13,                  r14
-     mov                  r14,                  r11
-     sal                  r14,                    3
-     mov                  r13,      qword [r13 - 0]
-     add                  r13,                  r14
-     mov                  r15,                  r11
-     sal                  r15,                    3
-     mov                  r14,                  rdi
-     add                  r14,                  r15
-     mov                  r15,                   r8
-     sal                  r15,                    3
-     mov                  rax,      qword [r14 - 0]
-     mov     qword [rbp - 64],                  rax
-     add     qword [rbp - 64],                  r15
-     mov                  rcx,     qword [rbp - 56]
-     mov                  r14,      qword [rcx - 0]
-     mov                  r15,      qword [r13 - 0]
-     mov                  rcx,     qword [rbp - 64]
-     mov                  r13,      qword [rcx - 0]
-     add                  r14,                  r15
-     add                  r14,                  r13
-     mov                  r13,                  r14
-     and                  r13,           1073741823
-     mov      qword [r12 - 0],                  r13
-     add                  r11,                    1
-     cmp                  r11,                  rbx
-      jl    main.20.loop_body
-     add                   r8,                    1
-     cmp                   r8,                  rbx
-      jl    main.19.loop_body
-     add                   r9,                    1
-     cmp                   r9,                  rbx
-      jl    main.18.loop_body
-     mov                  rdi,                    0
-     mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.33.loop_body
-     sub                  rsp,                    8
-    call             toString
-     add                  rsp,                    8
-     mov                  rbx,                  rax
-     mov                  rdi,                  rbx
-     sub                  rsp,                    8
-    call                print
-     add                  rsp,                    8
-     mov                  rax,                    0
-     jmp         main.41.exit
 main.42.enter:
      add                  r14,                  r15
      add                  r14,                  r13
      mov                  r13,                  r14
      and                  r13,           1073741823
-     mov      qword [r12 - 0],                  r13
-     mov                  r13,                   r9
-     sal                  r13,                    3
-     mov                  r12,                  r10
-     add                  r12,                  r13
-     mov                  r13,                   r8
-     sal                  r13,                    3
-     mov                  r12,      qword [r12 - 0]
-     add                  r12,                  r13
-     mov                  r14,                   r9
-     sal                  r14,                    3
-     mov                  r13,                  rsi
-     add                  r13,                  r14
-     mov                  r14,                   r8
-     sal                  r14,                    3
-     mov                  rax,      qword [r13 - 0]
-     mov     qword [rbp - 24],                  rax
-     add     qword [rbp - 24],                  r14
-     mov                  r14,                   r9
-     sal                  r14,                    3
-     mov                  r13,                  rdi
-     add                  r13,                  r14
-     mov                  r14,                  r11
-     sal                  r14,                    3
-     mov                  rax,      qword [r13 - 0]
-     mov     qword [rbp - 32],                  rax
-     add     qword [rbp - 32],                  r14
-     mov                  r14,                  r11
-     sal                  r14,                    3
-     mov                  r13,                  rdi
-     add                  r13,                  r14
-     mov                  r14,                   r8
-     sal                  r14,                    3
-     mov                  r13,      qword [r13 - 0]
-     add                  r13,                  r14
-     mov                  rcx,     qword [rbp - 24]
-     mov                  r14,      qword [rcx - 0]
-     mov                  rcx,     qword [rbp - 32]
-     mov                  r15,      qword [rcx - 0]
-     mov                  r13,      qword [r13 - 0]
-     add                  r14,                  r15
-     add                  r14,                  r13
-     mov                  r13,                  r14
-     and                  r13,           1073741823
-     mov      qword [r12 - 0],                  r13
-     mov                  r13,                   r9
-     sal                  r13,                    3
-     mov                  r12,                  r10
-     add                  r12,                  r13
-     mov                  r13,                   r8
-     sal                  r13,                    3
-     mov                  r12,      qword [r12 - 0]
-     add                  r12,                  r13
-     mov                  r14,                   r9
-     sal                  r14,                    3
-     mov                  r13,                  rsi
-     add                  r13,                  r14
-     mov                  r14,                   r8
-     sal                  r14,                    3
-     mov                  r13,      qword [r13 - 0]
-     add                  r13,                  r14
-     mov                  r14,                   r9
-     sal                  r14,                    3
-     mov                  r15,                  rdi
-     add                  r15,                  r14
-     mov                  r14,                  r11
-     sal                  r14,                    3
-     mov                  r15,      qword [r15 - 0]
-     add                  r15,                  r14
-     mov                  r14,                  r11
-     sal                  r14,                    3
-     mov     qword [rbp - 40],                  rdi
-     add     qword [rbp - 40],                  r14
-     mov                  r14,                   r8
-     sal                  r14,                    3
-     mov                  rcx,     qword [rbp - 40]
-     mov                  rax,      qword [rcx - 0]
-     mov     qword [rbp - 48],                  rax
-     add     qword [rbp - 48],                  r14
-     mov                  r14,      qword [r13 - 0]
-     mov                  r15,      qword [r15 - 0]
-     mov                  rcx,     qword [rbp - 48]
-     mov                  r13,      qword [rcx - 0]
-     add                  r14,                  r15
-     add                  r14,                  r13
-     mov                  r13,                  r14
-     and                  r13,           1073741823
-     mov      qword [r12 - 0],                  r13
-     mov                  r13,                   r9
-     sal                  r13,                    3
-     mov                  r12,                  r10
-     add                  r12,                  r13
-     mov                  r13,                   r8
-     sal                  r13,                    3
-     mov                  r12,      qword [r12 - 0]
-     add                  r12,                  r13
-     mov                  r14,                   r9
-     sal                  r14,                    3
-     mov                  r13,                  rsi
-     add                  r13,                  r14
-     mov                  r14,                   r8
-     sal                  r14,                    3
-     mov                  rax,      qword [r13 - 0]
-     mov     qword [rbp - 56],                  rax
-     add     qword [rbp - 56],                  r14
-     mov                  r14,                   r9
-     sal                  r14,                    3
-     mov                  r13,                  rdi
-     add                  r13,                  r14
-     mov                  r14,                  r11
-     sal                  r14,                    3
-     mov                  r13,      qword [r13 - 0]
-     add                  r13,                  r14
-     mov                  r15,                  r11
-     sal                  r15,                    3
-     mov                  r14,                  rdi
-     add                  r14,                  r15
-     mov                  r15,                   r8
-     sal                  r15,                    3
-     mov                  rax,      qword [r14 - 0]
-     mov     qword [rbp - 64],                  rax
-     add     qword [rbp - 64],                  r15
-     mov                  rcx,     qword [rbp - 56]
-     mov                  r14,      qword [rcx - 0]
-     mov                  r15,      qword [r13 - 0]
-     mov                  rcx,     qword [rbp - 64]
-     mov                  r13,      qword [rcx - 0]
-     add                  r14,                  r15
-     add                  r14,                  r13
-     mov                  r13,                  r14
-     and                  r13,           1073741823
-     mov      qword [r12 - 0],                  r13
-     add                  r11,                    1
-     cmp                  r11,                  rbx
-      jl    main.20.loop_body
-     add                   r8,                    1
-     cmp                   r8,                  rbx
-      jl    main.19.loop_body
-     add                   r9,                    1
-     cmp                   r9,                  rbx
-      jl    main.18.loop_body
-     mov                  rdi,                    0
-     mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.33.loop_body
-     sub                  rsp,                    8
-    call             toString
-     add                  rsp,                    8
-     mov                  rbx,                  rax
-     mov                  rdi,                  rbx
-     sub                  rsp,                    8
-    call                print
-     add                  rsp,                    8
-     mov                  rax,                    0
-     jmp         main.41.exit
 main.43.exit:
      mov      qword [r12 - 0],                  r13
      mov                  r13,                   r9
@@ -1242,237 +307,11 @@ main.43.exit:
      mov                  rcx,     qword [rbp - 32]
      mov                  r15,      qword [rcx - 0]
      mov                  r13,      qword [r13 - 0]
-     add                  r14,                  r15
-     add                  r14,                  r13
-     mov                  r13,                  r14
-     and                  r13,           1073741823
-     mov      qword [r12 - 0],                  r13
-     mov                  r13,                   r9
-     sal                  r13,                    3
-     mov                  r12,                  r10
-     add                  r12,                  r13
-     mov                  r13,                   r8
-     sal                  r13,                    3
-     mov                  r12,      qword [r12 - 0]
-     add                  r12,                  r13
-     mov                  r14,                   r9
-     sal                  r14,                    3
-     mov                  r13,                  rsi
-     add                  r13,                  r14
-     mov                  r14,                   r8
-     sal                  r14,                    3
-     mov                  r13,      qword [r13 - 0]
-     add                  r13,                  r14
-     mov                  r14,                   r9
-     sal                  r14,                    3
-     mov                  r15,                  rdi
-     add                  r15,                  r14
-     mov                  r14,                  r11
-     sal                  r14,                    3
-     mov                  r15,      qword [r15 - 0]
-     add                  r15,                  r14
-     mov                  r14,                  r11
-     sal                  r14,                    3
-     mov     qword [rbp - 40],                  rdi
-     add     qword [rbp - 40],                  r14
-     mov                  r14,                   r8
-     sal                  r14,                    3
-     mov                  rcx,     qword [rbp - 40]
-     mov                  rax,      qword [rcx - 0]
-     mov     qword [rbp - 48],                  rax
-     add     qword [rbp - 48],                  r14
-     mov                  r14,      qword [r13 - 0]
-     mov                  r15,      qword [r15 - 0]
-     mov                  rcx,     qword [rbp - 48]
-     mov                  r13,      qword [rcx - 0]
-     add                  r14,                  r15
-     add                  r14,                  r13
-     mov                  r13,                  r14
-     and                  r13,           1073741823
-     mov      qword [r12 - 0],                  r13
-     mov                  r13,                   r9
-     sal                  r13,                    3
-     mov                  r12,                  r10
-     add                  r12,                  r13
-     mov                  r13,                   r8
-     sal                  r13,                    3
-     mov                  r12,      qword [r12 - 0]
-     add                  r12,                  r13
-     mov                  r14,                   r9
-     sal                  r14,                    3
-     mov                  r13,                  rsi
-     add                  r13,                  r14
-     mov                  r14,                   r8
-     sal                  r14,                    3
-     mov                  rax,      qword [r13 - 0]
-     mov     qword [rbp - 56],                  rax
-     add     qword [rbp - 56],                  r14
-     mov                  r14,                   r9
-     sal                  r14,                    3
-     mov                  r13,                  rdi
-     add                  r13,                  r14
-     mov                  r14,                  r11
-     sal                  r14,                    3
-     mov                  r13,      qword [r13 - 0]
-     add                  r13,                  r14
-     mov                  r15,                  r11
-     sal                  r15,                    3
-     mov                  r14,                  rdi
-     add                  r14,                  r15
-     mov                  r15,                   r8
-     sal                  r15,                    3
-     mov                  rax,      qword [r14 - 0]
-     mov     qword [rbp - 64],                  rax
-     add     qword [rbp - 64],                  r15
-     mov                  rcx,     qword [rbp - 56]
-     mov                  r14,      qword [rcx - 0]
-     mov                  r15,      qword [r13 - 0]
-     mov                  rcx,     qword [rbp - 64]
-     mov                  r13,      qword [rcx - 0]
-     add                  r14,                  r15
-     add                  r14,                  r13
-     mov                  r13,                  r14
-     and                  r13,           1073741823
-     mov      qword [r12 - 0],                  r13
-     add                  r11,                    1
-     cmp                  r11,                  rbx
-      jl    main.20.loop_body
-     add                   r8,                    1
-     cmp                   r8,                  rbx
-      jl    main.19.loop_body
-     add                   r9,                    1
-     cmp                   r9,                  rbx
-      jl    main.18.loop_body
-     mov                  rdi,                    0
-     mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.33.loop_body
-     sub                  rsp,                    8
-    call             toString
-     add                  rsp,                    8
-     mov                  rbx,                  rax
-     mov                  rdi,                  rbx
-     sub                  rsp,                    8
-    call                print
-     add                  rsp,                    8
-     mov                  rax,                    0
-     jmp         main.41.exit
 main.44.enter:
      add                  r14,                  r15
      add                  r14,                  r13
      mov                  r13,                  r14
      and                  r13,           1073741823
-     mov      qword [r12 - 0],                  r13
-     mov                  r13,                   r9
-     sal                  r13,                    3
-     mov                  r12,                  r10
-     add                  r12,                  r13
-     mov                  r13,                   r8
-     sal                  r13,                    3
-     mov                  r12,      qword [r12 - 0]
-     add                  r12,                  r13
-     mov                  r14,                   r9
-     sal                  r14,                    3
-     mov                  r13,                  rsi
-     add                  r13,                  r14
-     mov                  r14,                   r8
-     sal                  r14,                    3
-     mov                  r13,      qword [r13 - 0]
-     add                  r13,                  r14
-     mov                  r14,                   r9
-     sal                  r14,                    3
-     mov                  r15,                  rdi
-     add                  r15,                  r14
-     mov                  r14,                  r11
-     sal                  r14,                    3
-     mov                  r15,      qword [r15 - 0]
-     add                  r15,                  r14
-     mov                  r14,                  r11
-     sal                  r14,                    3
-     mov     qword [rbp - 40],                  rdi
-     add     qword [rbp - 40],                  r14
-     mov                  r14,                   r8
-     sal                  r14,                    3
-     mov                  rcx,     qword [rbp - 40]
-     mov                  rax,      qword [rcx - 0]
-     mov     qword [rbp - 48],                  rax
-     add     qword [rbp - 48],                  r14
-     mov                  r14,      qword [r13 - 0]
-     mov                  r15,      qword [r15 - 0]
-     mov                  rcx,     qword [rbp - 48]
-     mov                  r13,      qword [rcx - 0]
-     add                  r14,                  r15
-     add                  r14,                  r13
-     mov                  r13,                  r14
-     and                  r13,           1073741823
-     mov      qword [r12 - 0],                  r13
-     mov                  r13,                   r9
-     sal                  r13,                    3
-     mov                  r12,                  r10
-     add                  r12,                  r13
-     mov                  r13,                   r8
-     sal                  r13,                    3
-     mov                  r12,      qword [r12 - 0]
-     add                  r12,                  r13
-     mov                  r14,                   r9
-     sal                  r14,                    3
-     mov                  r13,                  rsi
-     add                  r13,                  r14
-     mov                  r14,                   r8
-     sal                  r14,                    3
-     mov                  rax,      qword [r13 - 0]
-     mov     qword [rbp - 56],                  rax
-     add     qword [rbp - 56],                  r14
-     mov                  r14,                   r9
-     sal                  r14,                    3
-     mov                  r13,                  rdi
-     add                  r13,                  r14
-     mov                  r14,                  r11
-     sal                  r14,                    3
-     mov                  r13,      qword [r13 - 0]
-     add                  r13,                  r14
-     mov                  r15,                  r11
-     sal                  r15,                    3
-     mov                  r14,                  rdi
-     add                  r14,                  r15
-     mov                  r15,                   r8
-     sal                  r15,                    3
-     mov                  rax,      qword [r14 - 0]
-     mov     qword [rbp - 64],                  rax
-     add     qword [rbp - 64],                  r15
-     mov                  rcx,     qword [rbp - 56]
-     mov                  r14,      qword [rcx - 0]
-     mov                  r15,      qword [r13 - 0]
-     mov                  rcx,     qword [rbp - 64]
-     mov                  r13,      qword [rcx - 0]
-     add                  r14,                  r15
-     add                  r14,                  r13
-     mov                  r13,                  r14
-     and                  r13,           1073741823
-     mov      qword [r12 - 0],                  r13
-     add                  r11,                    1
-     cmp                  r11,                  rbx
-      jl    main.20.loop_body
-     add                   r8,                    1
-     cmp                   r8,                  rbx
-      jl    main.19.loop_body
-     add                   r9,                    1
-     cmp                   r9,                  rbx
-      jl    main.18.loop_body
-     mov                  rdi,                    0
-     mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.33.loop_body
-     sub                  rsp,                    8
-    call             toString
-     add                  rsp,                    8
-     mov                  rbx,                  rax
-     mov                  rdi,                  rbx
-     sub                  rsp,                    8
-    call                print
-     add                  rsp,                    8
-     mov                  rax,                    0
-     jmp         main.41.exit
 main.45.exit:
      mov      qword [r12 - 0],                  r13
      mov                  r13,                   r9
@@ -1513,151 +352,11 @@ main.45.exit:
      mov                  r15,      qword [r15 - 0]
      mov                  rcx,     qword [rbp - 48]
      mov                  r13,      qword [rcx - 0]
-     add                  r14,                  r15
-     add                  r14,                  r13
-     mov                  r13,                  r14
-     and                  r13,           1073741823
-     mov      qword [r12 - 0],                  r13
-     mov                  r13,                   r9
-     sal                  r13,                    3
-     mov                  r12,                  r10
-     add                  r12,                  r13
-     mov                  r13,                   r8
-     sal                  r13,                    3
-     mov                  r12,      qword [r12 - 0]
-     add                  r12,                  r13
-     mov                  r14,                   r9
-     sal                  r14,                    3
-     mov                  r13,                  rsi
-     add                  r13,                  r14
-     mov                  r14,                   r8
-     sal                  r14,                    3
-     mov                  rax,      qword [r13 - 0]
-     mov     qword [rbp - 56],                  rax
-     add     qword [rbp - 56],                  r14
-     mov                  r14,                   r9
-     sal                  r14,                    3
-     mov                  r13,                  rdi
-     add                  r13,                  r14
-     mov                  r14,                  r11
-     sal                  r14,                    3
-     mov                  r13,      qword [r13 - 0]
-     add                  r13,                  r14
-     mov                  r15,                  r11
-     sal                  r15,                    3
-     mov                  r14,                  rdi
-     add                  r14,                  r15
-     mov                  r15,                   r8
-     sal                  r15,                    3
-     mov                  rax,      qword [r14 - 0]
-     mov     qword [rbp - 64],                  rax
-     add     qword [rbp - 64],                  r15
-     mov                  rcx,     qword [rbp - 56]
-     mov                  r14,      qword [rcx - 0]
-     mov                  r15,      qword [r13 - 0]
-     mov                  rcx,     qword [rbp - 64]
-     mov                  r13,      qword [rcx - 0]
-     add                  r14,                  r15
-     add                  r14,                  r13
-     mov                  r13,                  r14
-     and                  r13,           1073741823
-     mov      qword [r12 - 0],                  r13
-     add                  r11,                    1
-     cmp                  r11,                  rbx
-      jl    main.20.loop_body
-     add                   r8,                    1
-     cmp                   r8,                  rbx
-      jl    main.19.loop_body
-     add                   r9,                    1
-     cmp                   r9,                  rbx
-      jl    main.18.loop_body
-     mov                  rdi,                    0
-     mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.33.loop_body
-     sub                  rsp,                    8
-    call             toString
-     add                  rsp,                    8
-     mov                  rbx,                  rax
-     mov                  rdi,                  rbx
-     sub                  rsp,                    8
-    call                print
-     add                  rsp,                    8
-     mov                  rax,                    0
-     jmp         main.41.exit
 main.46.enter:
      add                  r14,                  r15
      add                  r14,                  r13
      mov                  r13,                  r14
      and                  r13,           1073741823
-     mov      qword [r12 - 0],                  r13
-     mov                  r13,                   r9
-     sal                  r13,                    3
-     mov                  r12,                  r10
-     add                  r12,                  r13
-     mov                  r13,                   r8
-     sal                  r13,                    3
-     mov                  r12,      qword [r12 - 0]
-     add                  r12,                  r13
-     mov                  r14,                   r9
-     sal                  r14,                    3
-     mov                  r13,                  rsi
-     add                  r13,                  r14
-     mov                  r14,                   r8
-     sal                  r14,                    3
-     mov                  rax,      qword [r13 - 0]
-     mov     qword [rbp - 56],                  rax
-     add     qword [rbp - 56],                  r14
-     mov                  r14,                   r9
-     sal                  r14,                    3
-     mov                  r13,                  rdi
-     add                  r13,                  r14
-     mov                  r14,                  r11
-     sal                  r14,                    3
-     mov                  r13,      qword [r13 - 0]
-     add                  r13,                  r14
-     mov                  r15,                  r11
-     sal                  r15,                    3
-     mov                  r14,                  rdi
-     add                  r14,                  r15
-     mov                  r15,                   r8
-     sal                  r15,                    3
-     mov                  rax,      qword [r14 - 0]
-     mov     qword [rbp - 64],                  rax
-     add     qword [rbp - 64],                  r15
-     mov                  rcx,     qword [rbp - 56]
-     mov                  r14,      qword [rcx - 0]
-     mov                  r15,      qword [r13 - 0]
-     mov                  rcx,     qword [rbp - 64]
-     mov                  r13,      qword [rcx - 0]
-     add                  r14,                  r15
-     add                  r14,                  r13
-     mov                  r13,                  r14
-     and                  r13,           1073741823
-     mov      qword [r12 - 0],                  r13
-     add                  r11,                    1
-     cmp                  r11,                  rbx
-      jl    main.20.loop_body
-     add                   r8,                    1
-     cmp                   r8,                  rbx
-      jl    main.19.loop_body
-     add                   r9,                    1
-     cmp                   r9,                  rbx
-      jl    main.18.loop_body
-     mov                  rdi,                    0
-     mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.33.loop_body
-     sub                  rsp,                    8
-    call             toString
-     add                  rsp,                    8
-     mov                  rbx,                  rax
-     mov                  rdi,                  rbx
-     sub                  rsp,                    8
-    call                print
-     add                  rsp,                    8
-     mov                  rax,                    0
-     jmp         main.41.exit
 main.47.exit:
      mov      qword [r12 - 0],                  r13
      mov                  r13,                   r9
@@ -1699,243 +398,35 @@ main.47.exit:
      mov                  r15,      qword [r13 - 0]
      mov                  rcx,     qword [rbp - 64]
      mov                  r13,      qword [rcx - 0]
-     add                  r14,                  r15
-     add                  r14,                  r13
-     mov                  r13,                  r14
-     and                  r13,           1073741823
-     mov      qword [r12 - 0],                  r13
-     add                  r11,                    1
-     cmp                  r11,                  rbx
-      jl    main.20.loop_body
-     add                   r8,                    1
-     cmp                   r8,                  rbx
-      jl    main.19.loop_body
-     add                   r9,                    1
-     cmp                   r9,                  rbx
-      jl    main.18.loop_body
-     mov                  rdi,                    0
-     mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.33.loop_body
-     sub                  rsp,                    8
-    call             toString
-     add                  rsp,                    8
-     mov                  rbx,                  rax
-     mov                  rdi,                  rbx
-     sub                  rsp,                    8
-    call                print
-     add                  rsp,                    8
-     mov                  rax,                    0
-     jmp         main.41.exit
 main.48.enter:
      add                  r14,                  r15
      add                  r14,                  r13
      mov                  r13,                  r14
      and                  r13,           1073741823
-     mov      qword [r12 - 0],                  r13
-     add                  r11,                    1
-     cmp                  r11,                  rbx
-      jl    main.20.loop_body
-     add                   r8,                    1
-     cmp                   r8,                  rbx
-      jl    main.19.loop_body
-     add                   r9,                    1
-     cmp                   r9,                  rbx
-      jl    main.18.loop_body
-     mov                  rdi,                    0
-     mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.33.loop_body
-     sub                  rsp,                    8
-    call             toString
-     add                  rsp,                    8
-     mov                  rbx,                  rax
-     mov                  rdi,                  rbx
-     sub                  rsp,                    8
-    call                print
-     add                  rsp,                    8
-     mov                  rax,                    0
-     jmp         main.41.exit
 main.49.exit:
      mov      qword [r12 - 0],                  r13
-     add                  r11,                    1
-     cmp                  r11,                  rbx
-      jl    main.20.loop_body
-     add                   r8,                    1
-     cmp                   r8,                  rbx
-      jl    main.19.loop_body
-     add                   r9,                    1
-     cmp                   r9,                  rbx
-      jl    main.18.loop_body
-     mov                  rdi,                    0
-     mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.33.loop_body
-     sub                  rsp,                    8
-    call             toString
-     add                  rsp,                    8
-     mov                  rbx,                  rax
-     mov                  rdi,                  rbx
-     sub                  rsp,                    8
-    call                print
-     add                  rsp,                    8
-     mov                  rax,                    0
-     jmp         main.41.exit
 main.24.loop_increment:
      add                  r11,                    1
-     cmp                  r11,                  rbx
-      jl    main.20.loop_body
-     add                   r8,                    1
-     cmp                   r8,                  rbx
-      jl    main.19.loop_body
-     add                   r9,                    1
-     cmp                   r9,                  rbx
-      jl    main.18.loop_body
-     mov                  rdi,                    0
-     mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.33.loop_body
-     sub                  rsp,                    8
-    call             toString
-     add                  rsp,                    8
-     mov                  rbx,                  rax
-     mov                  rdi,                  rbx
-     sub                  rsp,                    8
-    call                print
-     add                  rsp,                    8
-     mov                  rax,                    0
-     jmp         main.41.exit
 main.25.loop_condition:
      cmp                  r11,                  rbx
       jl    main.20.loop_body
-     add                   r8,                    1
-     cmp                   r8,                  rbx
-      jl    main.19.loop_body
-     add                   r9,                    1
-     cmp                   r9,                  rbx
-      jl    main.18.loop_body
-     mov                  rdi,                    0
-     mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.33.loop_body
-     sub                  rsp,                    8
-    call             toString
-     add                  rsp,                    8
-     mov                  rbx,                  rax
-     mov                  rdi,                  rbx
-     sub                  rsp,                    8
-    call                print
-     add                  rsp,                    8
-     mov                  rax,                    0
-     jmp         main.41.exit
 main.27.loop_increment:
      add                   r8,                    1
-     cmp                   r8,                  rbx
-      jl    main.19.loop_body
-     add                   r9,                    1
-     cmp                   r9,                  rbx
-      jl    main.18.loop_body
-     mov                  rdi,                    0
-     mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.33.loop_body
-     sub                  rsp,                    8
-    call             toString
-     add                  rsp,                    8
-     mov                  rbx,                  rax
-     mov                  rdi,                  rbx
-     sub                  rsp,                    8
-    call                print
-     add                  rsp,                    8
-     mov                  rax,                    0
-     jmp         main.41.exit
 main.28.loop_condition:
      cmp                   r8,                  rbx
       jl    main.19.loop_body
-     add                   r9,                    1
-     cmp                   r9,                  rbx
-      jl    main.18.loop_body
-     mov                  rdi,                    0
-     mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.33.loop_body
-     sub                  rsp,                    8
-    call             toString
-     add                  rsp,                    8
-     mov                  rbx,                  rax
-     mov                  rdi,                  rbx
-     sub                  rsp,                    8
-    call                print
-     add                  rsp,                    8
-     mov                  rax,                    0
-     jmp         main.41.exit
 main.30.loop_increment:
      add                   r9,                    1
-     cmp                   r9,                  rbx
-      jl    main.18.loop_body
-     mov                  rdi,                    0
-     mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.33.loop_body
-     sub                  rsp,                    8
-    call             toString
-     add                  rsp,                    8
-     mov                  rbx,                  rax
-     mov                  rdi,                  rbx
-     sub                  rsp,                    8
-    call                print
-     add                  rsp,                    8
-     mov                  rax,                    0
-     jmp         main.41.exit
 main.31.loop_condition:
      cmp                   r9,                  rbx
       jl    main.18.loop_body
-     mov                  rdi,                    0
-     mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.33.loop_body
-     sub                  rsp,                    8
-    call             toString
-     add                  rsp,                    8
-     mov                  rbx,                  rax
-     mov                  rdi,                  rbx
-     sub                  rsp,                    8
-    call                print
-     add                  rsp,                    8
-     mov                  rax,                    0
-     jmp         main.41.exit
 main.32.loop_exit:
      mov                  rdi,                    0
      mov                   r9,                    0
-     cmp                   r9,                  rbx
-      jl    main.33.loop_body
-     sub                  rsp,                    8
-    call             toString
-     add                  rsp,                    8
-     mov                  rbx,                  rax
-     mov                  rdi,                  rbx
-     sub                  rsp,                    8
-    call                print
-     add                  rsp,                    8
-     mov                  rax,                    0
-     jmp         main.41.exit
+     jmp main.39.loop_condition
 main.33.loop_body:
      mov                   r8,                    0
-     cmp                   r8,                  rbx
-      jl    main.34.loop_body
-     add                   r9,                    1
-     cmp                   r9,                  rbx
-      jl    main.33.loop_body
-     sub                  rsp,                    8
-    call             toString
-     add                  rsp,                    8
-     mov                  rbx,                  rax
-     mov                  rdi,                  rbx
-     sub                  rsp,                    8
-    call                print
-     add                  rsp,                    8
-     mov                  rax,                    0
-     jmp         main.41.exit
+     jmp main.36.loop_condition
 main.34.loop_body:
      mov                  r11,                   r9
      sal                  r11,                    3
@@ -1947,82 +438,16 @@ main.34.loop_body:
      add                  r10,                  r11
      add                  rdi,      qword [r10 - 0]
      and                  rdi,           1073741823
-     add                   r8,                    1
-     cmp                   r8,                  rbx
-      jl    main.34.loop_body
-     add                   r9,                    1
-     cmp                   r9,                  rbx
-      jl    main.33.loop_body
-     sub                  rsp,                    8
-    call             toString
-     add                  rsp,                    8
-     mov                  rbx,                  rax
-     mov                  rdi,                  rbx
-     sub                  rsp,                    8
-    call                print
-     add                  rsp,                    8
-     mov                  rax,                    0
-     jmp         main.41.exit
 main.35.loop_increment:
      add                   r8,                    1
-     cmp                   r8,                  rbx
-      jl    main.34.loop_body
-     add                   r9,                    1
-     cmp                   r9,                  rbx
-      jl    main.33.loop_body
-     sub                  rsp,                    8
-    call             toString
-     add                  rsp,                    8
-     mov                  rbx,                  rax
-     mov                  rdi,                  rbx
-     sub                  rsp,                    8
-    call                print
-     add                  rsp,                    8
-     mov                  rax,                    0
-     jmp         main.41.exit
 main.36.loop_condition:
      cmp                   r8,                  rbx
       jl    main.34.loop_body
-     add                   r9,                    1
-     cmp                   r9,                  rbx
-      jl    main.33.loop_body
-     sub                  rsp,                    8
-    call             toString
-     add                  rsp,                    8
-     mov                  rbx,                  rax
-     mov                  rdi,                  rbx
-     sub                  rsp,                    8
-    call                print
-     add                  rsp,                    8
-     mov                  rax,                    0
-     jmp         main.41.exit
 main.38.loop_increment:
      add                   r9,                    1
-     cmp                   r9,                  rbx
-      jl    main.33.loop_body
-     sub                  rsp,                    8
-    call             toString
-     add                  rsp,                    8
-     mov                  rbx,                  rax
-     mov                  rdi,                  rbx
-     sub                  rsp,                    8
-    call                print
-     add                  rsp,                    8
-     mov                  rax,                    0
-     jmp         main.41.exit
 main.39.loop_condition:
      cmp                   r9,                  rbx
       jl    main.33.loop_body
-     sub                  rsp,                    8
-    call             toString
-     add                  rsp,                    8
-     mov                  rbx,                  rax
-     mov                  rdi,                  rbx
-     sub                  rsp,                    8
-    call                print
-     add                  rsp,                    8
-     mov                  rax,                    0
-     jmp         main.41.exit
 main.40.loop_exit:
      sub                  rsp,                    8
     call             toString

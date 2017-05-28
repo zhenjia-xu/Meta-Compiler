@@ -17,7 +17,7 @@ public class Optimization {
 			//NaiveOptimize.moveMerge(functionIR);
 			RegisterAllocator.allocate(LivenessAnalysis.virtualRegisterMap, LivenessAnalysis.edgeMap, functionIR);
 			NaiveOptimize.removeEmptyBlock(functionIR);
-			NaiveOptimize.superBlock(functionIR);
+			//NaiveOptimize.superBlock(functionIR);
 			NaiveOptimize.removeUselessJump(functionIR);
 
 		}
