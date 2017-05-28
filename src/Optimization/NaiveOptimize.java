@@ -3,8 +3,11 @@ package Optimization;
 import AST.ProgramAST;
 import IR.*;
 import IR.Instruction.*;
+import Translation.PhysicalOperand.PhysicalOperand;
+import Translation.Translator;
 import jdk.nashorn.internal.runtime.FunctionInitializer;
 
+import java.rmi.MarshalledObject;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -92,10 +95,19 @@ public class NaiveOptimize {
 	}
 
 	static public void removeEmptyBlock(FunctionIR functionIR) {
+		for (Block block : functionIR.blockList){
+			for (int i = 0; i < block.instructionList.size(); i++) {
+				if(block.instructionList.get(i) instanceof MoveInstruction){
+					MoveInstruction move = (MoveInstruction) block.instructionList.get(i);
+					if(functionIR.registerMap.containsKey(move.target) && functionIR.registerMap.containsKey(move.source) && functionIR.registerMap.get(move.target).equals(functionIR.registerMap.get(move.source))){
+						block.instructionList.remove(i);
+					}
+				}
+			}
+		}
 		boolean flag = true;
 		while (flag) {
 			flag = false;
-
 			Map<LabelInstruction, LabelInstruction> labelMap = new HashMap<>();
 			for (int i = 0; i < functionIR.blockList.size(); i++) {
 				Block block = functionIR.blockList.get(i);
@@ -122,6 +134,22 @@ public class NaiveOptimize {
 					}
 					if (instruction instanceof CjumpInstruction) {
 						((CjumpInstruction) instruction).target = labelGetFa(labelMap, ((CjumpInstruction) instruction).target);
+					}
+				}
+			}
+		}
+	}
+
+	static public void superBlock(FunctionIR functionIR){
+		for(int iter = 0; iter < 10; iter++){
+			for(Block block: functionIR.blockList){
+				if(!block.instructionList.isEmpty() && block.instructionList.get(block.instructionList.size() - 1) instanceof JumpInstruction){
+					LabelInstruction target = ((JumpInstruction) block.instructionList.get(block.instructionList.size() - 1)).target;
+					if(target != functionIR.exitBlock && target.block.instructionList.size() < 30){
+						block.instructionList.remove(block.instructionList.size() - 1);
+						for(Instruction instruction: target.block.instructionList){
+							block.instructionList.add(instruction);
+						}
 					}
 				}
 			}

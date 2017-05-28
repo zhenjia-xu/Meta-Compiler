@@ -15,7 +15,7 @@ public class VirtualRegister extends Operand {
 
 	@Override
 	public String toString() {
-		if(ProgramIR.nowFunction.registerMap.containsKey(this)){
+		if(ProgramIR.nowFunction != null && ProgramIR.nowFunction.registerMap.containsKey(this)){
 			return "$" + name + "(" + ProgramIR.nowFunction.registerMap.get(this) + ")";
 		}
 		return "$" + name + "(" + systemReg + ")";

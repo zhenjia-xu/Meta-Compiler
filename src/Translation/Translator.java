@@ -230,6 +230,7 @@ public class Translator {
 
 		return str.toString();
 	}
+
 	static private String getNASMprintln() {
 		StringBuilder str = new StringBuilder();
 		str.append("println:\n");
