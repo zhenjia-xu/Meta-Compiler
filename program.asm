@@ -4,8 +4,6 @@ SECTION .text
 @GlobalDeclaration:
     push                  rbp
      mov                  rbp,                  rsp
-@GlobalDeclaration.0.enter:
-     jmp @GlobalDeclaration.1.exit
 @GlobalDeclaration.1.exit:
      pop                  rbp
      ret
@@ -18,41 +16,68 @@ h:
 h.0.enter:
      mov                  rsi,                  rdi
      cmp                  rsi,                    0
+      je     h.2.logical_true
+     cmp                  rsi,                    1
      mov                  rbx,                    0
     sete                   bl
      cmp                  rbx,                    1
-      je     h.2.logical_true
-     jmp    h.1.logical_false
+      je          h.4.if_true
+     mov                  r12,                    0
+     mov                  rbx,                    0
+     cmp                  rbx,                  rsi
+      jl        h.7.loop_body
+     mov                  rax,                  r12
+     jmp            h.11.exit
 h.1.logical_false:
      cmp                  rsi,                    1
      mov                  rbx,                    0
     sete                   bl
-     jmp     h.3.logical_exit
+     cmp                  rbx,                    1
+      je          h.4.if_true
+     mov                  r12,                    0
+     mov                  rbx,                    0
+     cmp                  rbx,                  rsi
+      jl        h.7.loop_body
+     mov                  rax,                  r12
+     jmp            h.11.exit
 h.2.logical_true:
      mov                  rbx,                    1
-     jmp     h.3.logical_exit
+     cmp                  rbx,                    1
+      je          h.4.if_true
+     mov                  r12,                    0
+     mov                  rbx,                    0
+     cmp                  rbx,                  rsi
+      jl        h.7.loop_body
+     mov                  rax,                  r12
+     jmp            h.11.exit
 h.3.logical_exit:
      cmp                  rbx,                    1
       je          h.4.if_true
-     jmp         h.5.if_false
+     mov                  r12,                    0
+     mov                  rbx,                    0
+     cmp                  rbx,                  rsi
+      jl        h.7.loop_body
+     mov                  rax,                  r12
+     jmp            h.11.exit
 h.4.if_true:
      mov                  rax,                    1
      jmp            h.11.exit
-h.5.if_false:
-     jmp          h.6.if_exit
 h.6.if_exit:
-     mov                  rbx,                    0
      mov                  r12,                    0
-     jmp   h.9.loop_condition
+     mov                  rbx,                    0
+     cmp                  rbx,                  rsi
+      jl        h.7.loop_body
+     mov                  rax,                  r12
+     jmp            h.11.exit
 h.7.loop_body:
-     mov                  rdi,                  r12
+     mov                  rdi,                  rbx
     push                  rsi
     call                    h
      pop                  rsi
      mov                   r8,                  rax
      mov                  rdi,                  rsi
      sub                  rdi,                    1
-     sub                  rdi,                  r12
+     sub                  rdi,                  rbx
     push                   r8
     push                  rsi
      sub                  rsp,                    8
@@ -63,22 +88,25 @@ h.7.loop_body:
      mov                  r13,                  rax
      mov                  rdi,                   r8
     imul                  rdi,                  r13
-     add                  rbx,                  rdi
-     jmp   h.8.loop_increment
-h.8.loop_increment:
-     mov                  rdi,                  r12
-     add                  r12,                    1
-     jmp   h.9.loop_condition
-h.9.loop_condition:
-     cmp                  r12,                  rsi
-     mov                  rdi,                    0
-    setl                  dil
-     cmp                  rdi,                    1
-      je        h.7.loop_body
-     jmp       h.10.loop_exit
-h.10.loop_exit:
-     mov                  rax,                  rbx
+     add                  r12,                  rdi
+     add                  rbx,                    1
+     cmp                  rbx,                  rsi
+      jl        h.7.loop_body
+     mov                  rax,                  r12
      jmp            h.11.exit
+h.8.loop_increment:
+     add                  rbx,                    1
+     cmp                  rbx,                  rsi
+      jl        h.7.loop_body
+     mov                  rax,                  r12
+     jmp            h.11.exit
+h.9.loop_condition:
+     cmp                  rbx,                  rsi
+      jl        h.7.loop_body
+     mov                  rax,                  r12
+     jmp            h.11.exit
+h.10.loop_exit:
+     mov                  rax,                  r12
 h.11.exit:
      pop                  rbx
      pop                  r13
@@ -89,18 +117,234 @@ main:
     push                  rbp
      mov                  rbp,                  rsp
     call   @GlobalDeclaration
+    push                  r12
+    push                  r13
+    push                  rbx
 main.0.enter:
+     sub                  rsp,                    8
     call               getInt
+     add                  rsp,                    8
      mov                  rsi,                  rax
+     cmp                  rsi,                    0
+      je  main.4.logical_true
+     cmp                  rsi,                    1
+     mov                  rbx,                    0
+    sete                   bl
+     cmp                  rbx,                    1
+      je       main.6.if_true
+     mov                  r12,                    0
+     mov                  rbx,                    0
+     cmp                  rbx,                  rsi
+      jl     main.9.loop_body
+     mov                  rsi,                  r12
      mov                  rdi,                  rsi
-    call                    h
-     mov                  rdi,                  rax
+     sub                  rsp,                    8
     call             toString
+     add                  rsp,                    8
      mov                  rdi,                  rax
+     sub                  rsp,                    8
     call              println
+     add                  rsp,                    8
      mov                  rax,                    0
      jmp          main.1.exit
+main.2.enter:
+     cmp                  rsi,                    0
+      je  main.4.logical_true
+     cmp                  rsi,                    1
+     mov                  rbx,                    0
+    sete                   bl
+     cmp                  rbx,                    1
+      je       main.6.if_true
+     mov                  r12,                    0
+     mov                  rbx,                    0
+     cmp                  rbx,                  rsi
+      jl     main.9.loop_body
+     mov                  rsi,                  r12
+     mov                  rdi,                  rsi
+     sub                  rsp,                    8
+    call             toString
+     add                  rsp,                    8
+     mov                  rdi,                  rax
+     sub                  rsp,                    8
+    call              println
+     add                  rsp,                    8
+     mov                  rax,                    0
+     jmp          main.1.exit
+main.3.logical_false:
+     cmp                  rsi,                    1
+     mov                  rbx,                    0
+    sete                   bl
+     cmp                  rbx,                    1
+      je       main.6.if_true
+     mov                  r12,                    0
+     mov                  rbx,                    0
+     cmp                  rbx,                  rsi
+      jl     main.9.loop_body
+     mov                  rsi,                  r12
+     mov                  rdi,                  rsi
+     sub                  rsp,                    8
+    call             toString
+     add                  rsp,                    8
+     mov                  rdi,                  rax
+     sub                  rsp,                    8
+    call              println
+     add                  rsp,                    8
+     mov                  rax,                    0
+     jmp          main.1.exit
+main.4.logical_true:
+     mov                  rbx,                    1
+     cmp                  rbx,                    1
+      je       main.6.if_true
+     mov                  r12,                    0
+     mov                  rbx,                    0
+     cmp                  rbx,                  rsi
+      jl     main.9.loop_body
+     mov                  rsi,                  r12
+     mov                  rdi,                  rsi
+     sub                  rsp,                    8
+    call             toString
+     add                  rsp,                    8
+     mov                  rdi,                  rax
+     sub                  rsp,                    8
+    call              println
+     add                  rsp,                    8
+     mov                  rax,                    0
+     jmp          main.1.exit
+main.5.logical_exit:
+     cmp                  rbx,                    1
+      je       main.6.if_true
+     mov                  r12,                    0
+     mov                  rbx,                    0
+     cmp                  rbx,                  rsi
+      jl     main.9.loop_body
+     mov                  rsi,                  r12
+     mov                  rdi,                  rsi
+     sub                  rsp,                    8
+    call             toString
+     add                  rsp,                    8
+     mov                  rdi,                  rax
+     sub                  rsp,                    8
+    call              println
+     add                  rsp,                    8
+     mov                  rax,                    0
+     jmp          main.1.exit
+main.6.if_true:
+     mov                  rsi,                    1
+     mov                  rdi,                  rsi
+     sub                  rsp,                    8
+    call             toString
+     add                  rsp,                    8
+     mov                  rdi,                  rax
+     sub                  rsp,                    8
+    call              println
+     add                  rsp,                    8
+     mov                  rax,                    0
+     jmp          main.1.exit
+main.8.if_exit:
+     mov                  r12,                    0
+     mov                  rbx,                    0
+     cmp                  rbx,                  rsi
+      jl     main.9.loop_body
+     mov                  rsi,                  r12
+     mov                  rdi,                  rsi
+     sub                  rsp,                    8
+    call             toString
+     add                  rsp,                    8
+     mov                  rdi,                  rax
+     sub                  rsp,                    8
+    call              println
+     add                  rsp,                    8
+     mov                  rax,                    0
+     jmp          main.1.exit
+main.9.loop_body:
+     mov                  rdi,                  rbx
+    push                  rsi
+    call                    h
+     pop                  rsi
+     mov                   r8,                  rax
+     mov                  rdi,                  rsi
+     sub                  rdi,                    1
+     sub                  rdi,                  rbx
+    push                   r8
+    push                  rsi
+     sub                  rsp,                    8
+    call                    h
+     add                  rsp,                    8
+     pop                  rsi
+     pop                   r8
+     mov                  r13,                  rax
+     mov                  rdi,                   r8
+    imul                  rdi,                  r13
+     add                  r12,                  rdi
+     add                  rbx,                    1
+     cmp                  rbx,                  rsi
+      jl     main.9.loop_body
+     mov                  rsi,                  r12
+     mov                  rdi,                  rsi
+     sub                  rsp,                    8
+    call             toString
+     add                  rsp,                    8
+     mov                  rdi,                  rax
+     sub                  rsp,                    8
+    call              println
+     add                  rsp,                    8
+     mov                  rax,                    0
+     jmp          main.1.exit
+main.10.loop_increment:
+     add                  rbx,                    1
+     cmp                  rbx,                  rsi
+      jl     main.9.loop_body
+     mov                  rsi,                  r12
+     mov                  rdi,                  rsi
+     sub                  rsp,                    8
+    call             toString
+     add                  rsp,                    8
+     mov                  rdi,                  rax
+     sub                  rsp,                    8
+    call              println
+     add                  rsp,                    8
+     mov                  rax,                    0
+     jmp          main.1.exit
+main.11.loop_condition:
+     cmp                  rbx,                  rsi
+      jl     main.9.loop_body
+     mov                  rsi,                  r12
+     mov                  rdi,                  rsi
+     sub                  rsp,                    8
+    call             toString
+     add                  rsp,                    8
+     mov                  rdi,                  rax
+     sub                  rsp,                    8
+    call              println
+     add                  rsp,                    8
+     mov                  rax,                    0
+     jmp          main.1.exit
+main.12.loop_exit:
+     mov                  rsi,                  r12
+     mov                  rdi,                  rsi
+     sub                  rsp,                    8
+    call             toString
+     add                  rsp,                    8
+     mov                  rdi,                  rax
+     sub                  rsp,                    8
+    call              println
+     add                  rsp,                    8
+     mov                  rax,                    0
+     jmp          main.1.exit
+main.13.exit:
+     mov                  rdi,                  rsi
+     sub                  rsp,                    8
+    call             toString
+     add                  rsp,                    8
+     mov                  rdi,                  rax
+     sub                  rsp,                    8
+    call              println
+     add                  rsp,                    8
+     mov                  rax,                    0
 main.1.exit:
+     pop                  rbx
+     pop                  r13
+     pop                  r12
      pop                  rbp
      ret
 SECTION .data
