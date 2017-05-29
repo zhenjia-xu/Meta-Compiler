@@ -24,16 +24,12 @@ public class FunctionIR {
 	public Map<VirtualRegister, String> registerMap;
 	public Map<VirtualRegister, Integer> idMap;
 	public static List<String> callerAll = new ArrayList<String>() {{
-		add("rdx");
 		add("rsi");
 		add("rdi");
 		add("r8");
 		add("r9");
 		add("r10");
 		add("r11");
-
-		add("rbx");
-		//add("r12");
 	}};
 	public static List<String> calleeAll = new ArrayList<String>() {{
 		add("rbx");
@@ -107,17 +103,18 @@ public class FunctionIR {
 		calculateSavingMessage();
 
 		Translator.rsp_offset = 1;
-		//save register
 		str.append(Translator.getInstruction("push", "rbp"));
 		str.append(Translator.getInstruction("mov", "rbp", "rsp"));
 		if (getName().equals("main")) {
 			str.append(Translator.getInstruction("call", "@GlobalDeclaration"));
 		}
-		str.append(Translator.saveRegister_Callee());
 
 		//add temporary variable
 		str.append(Translator.getInstruction("sub", "rsp", String.valueOf(8 * RegisterManager.NumberOfRegInMem)));
 		Translator.rsp_offset += RegisterManager.NumberOfRegInMem;
+
+		//save register
+		str.append(Translator.saveRegister_Callee());
 
 		//deal with each instruction
 		for (Block block : blockList) {

@@ -12,11 +12,13 @@ public class RegisterAllocator {
 	static private List<VirtualRegister> must;
 	static private Map<VirtualRegister, Set<VirtualRegister>> edgeMap;
 	static public List<String> physicalRegister = new ArrayList<String>() {{
-		add("rbx");add("rsi");add("rdi");
-		add("r8");add("r9");add("r10");add("r11");
-		add("r12");add("r13");add("r14");add("r15");
+		add("rsi");add("rbx");
+		add("rdi");add("r12");
+		add("r8");add("r13");
+		add("r9");add("r14");
+		add("r10");add("r15");
+		add("r11");
 	}};
-
 	static public void allocate(Map<VirtualRegister, Integer> virtualRegisterIntegerMap, Map<VirtualRegister, Set<VirtualRegister>> edgeMap, FunctionIR functionIR) {
 		RegisterAllocator.edgeMap = edgeMap;
 		List<VirtualRegister> list = new ArrayList<>();
