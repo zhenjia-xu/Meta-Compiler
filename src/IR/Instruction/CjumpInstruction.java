@@ -1,7 +1,6 @@
 package IR.Instruction;
 
 import IR.ProgramIR;
-import IR.VirtualRegister;
 import Translation.Translator;
 
 public class CjumpInstruction extends Instruction {

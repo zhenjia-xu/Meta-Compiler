@@ -7,8 +7,6 @@ import Translation.PhysicalOperand.PhysicalOperand;
 import Translation.Translator;
 import Utility.RuntimeError;
 
-import java.util.concurrent.TransferQueue;
-
 public class CompareInstruction extends Instruction {
 	public Operand leftOperand, rightOperand;
 

@@ -4,44 +4,37 @@
     <list default="true" id="fcadd001-2a06-4938-849d-b3b3c3569bfe" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/a.out" afterPath="$PROJECT_DIR$/a.out" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/Instruction/AllocateInstruction.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/Instruction/AllocateInstruction.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/Instruction/BinaryInstruction.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/Instruction/BinaryInstruction.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/Instruction/CjumpInstruction.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/Instruction/CjumpInstruction.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/Instruction/CompareInstruction.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/Instruction/CompareInstruction.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/Instruction/CsetInstruction$1.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/Instruction/CsetInstruction$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/Instruction/CsetInstruction.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/Instruction/CsetInstruction.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/Instruction/FunctionCallInstruction.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/Instruction/FunctionCallInstruction.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/Instruction/Instruction.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/Instruction/Instruction.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/Instruction/JumpInstruction.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/Instruction/JumpInstruction.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/Instruction/LabelInstruction.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/Instruction/LabelInstruction.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/Instruction/MoveInstruction.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/Instruction/MoveInstruction.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/Instruction/ReturnInstruction.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/Instruction/ReturnInstruction.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/Instruction/UnaryInstruction$1.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/Instruction/UnaryInstruction$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/Instruction/UnaryInstruction.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/Instruction/UnaryInstruction.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/ProgramIR$ConditionOp.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/ProgramIR$ConditionOp.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/ProgramIR.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/ProgramIR.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/RegisterManager$1.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/RegisterManager$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/RegisterManager.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/IR/RegisterManager.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/Main.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/Main.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/Optimization/NaiveOptimize.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/Optimization/NaiveOptimize.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/Optimization/Optimization.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/Optimization/Optimization.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/Optimization/RegisterAllocator$1.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/Optimization/RegisterAllocator$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/Optimization/RegisterAllocator$2.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/Optimization/RegisterAllocator$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/Optimization/RegisterAllocator$3.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/Optimization/RegisterAllocator$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/Optimization/RegisterAllocator.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/Optimization/RegisterAllocator.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/Translation/BuiltinFunction$1.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/Translation/BuiltinFunction$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/Translation/BuiltinFunction.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/Translation/BuiltinFunction.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/Translation/Translator$1.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/Translation/Translator$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Meta-Compiler/Translation/Translator.class" afterPath="$PROJECT_DIR$/out/production/Meta-Compiler/Translation/Translator.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/program.o" afterPath="$PROJECT_DIR$/program.o" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/program.asm" afterPath="$PROJECT_DIR$/program.asm" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/program.txt" afterPath="$PROJECT_DIR$/program.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IR/Instruction/AllocateInstruction.java" afterPath="$PROJECT_DIR$/src/IR/Instruction/AllocateInstruction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IR/Instruction/BinaryInstruction.java" afterPath="$PROJECT_DIR$/src/IR/Instruction/BinaryInstruction.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IR/Instruction/CjumpInstruction.java" afterPath="$PROJECT_DIR$/src/IR/Instruction/CjumpInstruction.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IR/Instruction/CompareInstruction.java" afterPath="$PROJECT_DIR$/src/IR/Instruction/CompareInstruction.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IR/Instruction/CsetInstruction.java" afterPath="$PROJECT_DIR$/src/IR/Instruction/CsetInstruction.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IR/Instruction/FunctionCallInstruction.java" afterPath="$PROJECT_DIR$/src/IR/Instruction/FunctionCallInstruction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IR/Instruction/Instruction.java" afterPath="$PROJECT_DIR$/src/IR/Instruction/Instruction.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IR/Instruction/JumpInstruction.java" afterPath="$PROJECT_DIR$/src/IR/Instruction/JumpInstruction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IR/Instruction/LabelInstruction.java" afterPath="$PROJECT_DIR$/src/IR/Instruction/LabelInstruction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IR/Instruction/MoveInstruction.java" afterPath="$PROJECT_DIR$/src/IR/Instruction/MoveInstruction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IR/Instruction/ReturnInstruction.java" afterPath="$PROJECT_DIR$/src/IR/Instruction/ReturnInstruction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IR/Instruction/UnaryInstruction.java" afterPath="$PROJECT_DIR$/src/IR/Instruction/UnaryInstruction.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IR/ProgramIR.java" afterPath="$PROJECT_DIR$/src/IR/ProgramIR.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IR/RegisterManager.java" afterPath="$PROJECT_DIR$/src/IR/RegisterManager.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main.java" afterPath="$PROJECT_DIR$/src/Main.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Optimization/NaiveOptimize.java" afterPath="$PROJECT_DIR$/src/Optimization/NaiveOptimize.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Optimization/Optimization.java" afterPath="$PROJECT_DIR$/src/Optimization/Optimization.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Optimization/RegisterAllocator.java" afterPath="$PROJECT_DIR$/src/Optimization/RegisterAllocator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Translation/BuiltinFunction.java" afterPath="$PROJECT_DIR$/src/Translation/BuiltinFunction.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Translation/Translator.java" afterPath="$PROJECT_DIR$/src/Translation/Translator.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -66,8 +59,8 @@
           <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/Main.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="176">
-                  <caret line="43" column="30" lean-forward="false" selection-start-line="43" selection-start-column="30" selection-end-line="43" selection-end-column="30" />
+                <state relative-caret-position="-721">
+                  <caret line="21" column="5" lean-forward="false" selection-start-line="14" selection-start-column="4" selection-end-line="21" selection-end-column="5" />
                   <folding />
                 </state>
               </provider>
@@ -89,7 +82,7 @@
             <entry file="file://$PROJECT_DIR$/src/Optimization/NaiveOptimize.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="150">
-                  <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+                  <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
                   <folding>
                     <element signature="method#printOptimize#0;class#NaiveOptimize#0" expanded="false" />
                     <element signature="method#loopConditionImprovement#0;class#NaiveOptimize#0" expanded="false" />
@@ -105,7 +98,7 @@
             <entry file="file://$PROJECT_DIR$/src/IR/Instruction/FunctionCallInstruction.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="362">
-                  <caret line="67" column="9" lean-forward="false" selection-start-line="67" selection-start-column="9" selection-end-line="67" selection-end-column="9" />
+                  <caret line="65" column="9" lean-forward="false" selection-start-line="65" selection-start-column="9" selection-end-line="65" selection-end-column="9" />
                   <folding />
                 </state>
               </provider>
@@ -114,12 +107,14 @@
           <file leaf-file-name="BuiltinFunction.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/Translation/BuiltinFunction.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="975">
-                  <caret line="223" column="26" lean-forward="false" selection-start-line="223" selection-start-column="26" selection-end-line="223" selection-end-column="26" />
+                <state relative-caret-position="300">
+                  <caret line="62" column="0" lean-forward="true" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
                   <folding>
+                    <element signature="class#ConditionOp#0;class#BuiltinFunction#0" expanded="false" />
                     <element signature="method#getBuiltinFunction#0;class#BuiltinFunction#0" expanded="false" />
                     <element signature="method#getInstruction#1;class#BuiltinFunction#0" expanded="false" />
                     <element signature="method#getInstruction#2;class#BuiltinFunction#0" expanded="false" />
+                    <element signature="method#getCall#0;class#BuiltinFunction#0" expanded="false" />
                     <element signature="method#getNASMofCondition#0;class#BuiltinFunction#0" expanded="false" />
                     <element signature="method#getDataSection#0;class#BuiltinFunction#0" expanded="false" />
                     <element signature="method#getBssSection#0;class#BuiltinFunction#0" expanded="false" />
@@ -134,6 +129,7 @@
                     <element signature="method#getNASMstringSubstring#0;class#BuiltinFunction#0" expanded="false" />
                     <element signature="method#getNASMstringOrd#0;class#BuiltinFunction#0" expanded="false" />
                     <element signature="method#getNASMstringConnection#0;class#BuiltinFunction#0" expanded="false" />
+                    <element signature="method#getNASMstringCompare#0;class#BuiltinFunction#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
@@ -143,7 +139,7 @@
             <entry file="file://$PROJECT_DIR$/src/IR/ProgramIR.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="175">
-                  <caret line="15" column="5" lean-forward="false" selection-start-line="13" selection-start-column="4" selection-end-line="15" selection-end-column="5" />
+                  <caret line="14" column="5" lean-forward="false" selection-start-line="12" selection-start-column="4" selection-end-line="14" selection-end-column="5" />
                   <folding />
                 </state>
               </provider>
@@ -153,10 +149,10 @@
             <entry file="file://$PROJECT_DIR$/src/IR/Instruction/JumpInstruction.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="264">
-                  <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+                  <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
                   <folding>
+                    <element signature="e#191#192#0" expanded="true" />
                     <element signature="e#218#219#0" expanded="true" />
-                    <element signature="e#245#246#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -165,18 +161,21 @@
           <file leaf-file-name="Translator.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/Translation/Translator.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="312">
-                  <caret line="133" column="55" lean-forward="false" selection-start-line="133" selection-start-column="55" selection-end-line="133" selection-end-column="55" />
+                <state relative-caret-position="192">
+                  <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
                   <folding>
+                    <element signature="imports" expanded="true" />
                     <element signature="method#getInstruction#1;class#Translator#0" expanded="false" />
                     <element signature="method#getInstruction#2;class#Translator#0" expanded="false" />
+                    <element signature="method#getCall#0;class#Translator#0" expanded="false" />
                     <element signature="method#getNASMofCondition#0;class#Translator#0" expanded="false" />
                     <element signature="method#saveRegister_Caller#0;class#Translator#0" expanded="false" />
                     <element signature="method#restoreRegister_Caller#0;class#Translator#0" expanded="false" />
                     <element signature="method#saveRegister_Callee#0;class#Translator#0" expanded="false" />
                     <element signature="method#restoreRegister_Callee#0;class#Translator#0" expanded="false" />
-                    <element signature="method#getCall#0;class#Translator#0" expanded="false" />
-                    <element signature="method#IRtoNASM#0;class#Translator#0" expanded="false" />
+                    <element signature="method#getTextSection#0;class#Translator#0" expanded="false" />
+                    <element signature="method#getDataSection#0;class#Translator#0" expanded="false" />
+                    <element signature="method#getBssSection#0;class#Translator#0" expanded="false" />
                     <element signature="method#getStringConst#0;class#Translator#0" expanded="false" />
                   </folding>
                 </state>
@@ -207,21 +206,21 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="program.txt" pinned="false" current-in-tab="false">
+          <file leaf-file-name="program.txt" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/program.txt">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="743">
-                  <caret line="296" column="0" lean-forward="false" selection-start-line="296" selection-start-column="0" selection-end-line="296" selection-end-column="0" />
+                  <caret line="65" column="0" lean-forward="false" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="program.asm" pinned="false" current-in-tab="true">
+          <file leaf-file-name="program.asm" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/program.asm">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="768">
-                  <caret line="27581" column="0" lean-forward="false" selection-start-line="27581" selection-start-column="0" selection-end-line="27581" selection-end-column="0" />
+                  <caret line="2192" column="0" lean-forward="false" selection-start-line="2192" selection-start-column="0" selection-end-line="2192" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -269,8 +268,8 @@
       <find>r12</find>
       <find>r13</find>
       <find>rbx</find>
-      <find>query</find>
       <find>sha1</find>
+      <find>query</find>
     </findStrings>
     <replaceStrings>
       <replace>getTemporaryAddress</replace>
@@ -313,8 +312,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryPlus.java" />
-        <option value="$PROJECT_DIR$/src/AST/Expression/BinaryOperation/BinaryMultiplication.java" />
         <option value="$PROJECT_DIR$/src/Optimize/RemoveUselessMove.java" />
         <option value="$PROJECT_DIR$/src/Optimize/NaiveOptimize.java" />
         <option value="$PROJECT_DIR$/src/Optimize/Optimize.java" />
@@ -344,7 +341,6 @@
         <option value="$PROJECT_DIR$/src/IR/ProgramIR.java" />
         <option value="$PROJECT_DIR$/src/Optimization/LivenessAnalysis.java" />
         <option value="$PROJECT_DIR$/src/IR/FunctionIR.java" />
-        <option value="$PROJECT_DIR$/program.txt" />
         <option value="$PROJECT_DIR$/src/Optimization/RegisterAllocator.java" />
         <option value="$PROJECT_DIR$/src/IR/Instruction/Instruction.java" />
         <option value="$PROJECT_DIR$/src/IR/Instruction/AllocateInstruction.java" />
@@ -361,9 +357,12 @@
         <option value="$PROJECT_DIR$/src/Optimization/NaiveOptimize.java" />
         <option value="$PROJECT_DIR$/src/IR/Instruction/FunctionCallInstruction.java" />
         <option value="$PROJECT_DIR$/program.asm" />
-        <option value="$PROJECT_DIR$/src/Translation/Translator.java" />
-        <option value="$PROJECT_DIR$/src/Translation/BuiltinFunction.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$PROJECT_DIR$/program.txt" />
+        <option value="$PROJECT_DIR$/src/Utility/Translator.java" />
+        <option value="$PROJECT_DIR$/src/Translation/Translator.java" />
+        <option value="$PROJECT_DIR$/src/Utility/BuiltinFunction.java" />
+        <option value="$PROJECT_DIR$/src/Translation/BuiltinFunction.java" />
       </list>
     </option>
   </component>
@@ -530,6 +529,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Meta-Compiler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Meta-Compiler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Utility" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1057,7 +1074,7 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.43912593" sideWeight="0.49806738" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.43912593" sideWeight="0.49806738" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298647" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3361082" sideWeight="0.49806738" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17338488" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1084,12 +1101,12 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Optimization/NaiveOptimize.java</url>
-          <line>131</line>
+          <line>127</line>
           <properties />
           <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="15" />
+      <option name="time" value="16" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1343,14 +1360,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/program.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="743">
-          <caret line="296" column="0" lean-forward="false" selection-start-line="296" selection-start-column="0" selection-end-line="296" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Optimization/RegisterAllocator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="353">
@@ -1455,7 +1464,7 @@
     <entry file="file://$PROJECT_DIR$/src/Optimization/NaiveOptimize.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
-          <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+          <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
           <folding>
             <element signature="method#printOptimize#0;class#NaiveOptimize#0" expanded="false" />
             <element signature="method#loopConditionImprovement#0;class#NaiveOptimize#0" expanded="false" />
@@ -1469,7 +1478,7 @@
     <entry file="file://$PROJECT_DIR$/program.asm">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="768">
-          <caret line="27581" column="0" lean-forward="false" selection-start-line="27581" selection-start-column="0" selection-end-line="27581" selection-end-column="0" />
+          <caret line="2192" column="0" lean-forward="false" selection-start-line="2192" selection-start-column="0" selection-end-line="2192" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1477,10 +1486,10 @@
     <entry file="file://$PROJECT_DIR$/src/IR/Instruction/JumpInstruction.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
-          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding>
+            <element signature="e#191#192#0" expanded="true" />
             <element signature="e#218#219#0" expanded="true" />
-            <element signature="e#245#246#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1488,7 +1497,7 @@
     <entry file="file://$PROJECT_DIR$/src/IR/ProgramIR.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
-          <caret line="15" column="5" lean-forward="false" selection-start-line="13" selection-start-column="4" selection-end-line="15" selection-end-column="5" />
+          <caret line="14" column="5" lean-forward="false" selection-start-line="12" selection-start-column="4" selection-end-line="14" selection-end-column="5" />
           <folding />
         </state>
       </provider>
@@ -1496,25 +1505,36 @@
     <entry file="file://$PROJECT_DIR$/src/IR/Instruction/FunctionCallInstruction.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="362">
-          <caret line="67" column="9" lean-forward="false" selection-start-line="67" selection-start-column="9" selection-end-line="67" selection-end-column="9" />
+          <caret line="65" column="9" lean-forward="false" selection-start-line="65" selection-start-column="9" selection-end-line="65" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/program.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="743">
+          <caret line="65" column="0" lean-forward="false" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Translation/Translator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="133" column="55" lean-forward="false" selection-start-line="133" selection-start-column="55" selection-end-line="133" selection-end-column="55" />
+        <state relative-caret-position="192">
+          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
           <folding>
+            <element signature="imports" expanded="true" />
             <element signature="method#getInstruction#1;class#Translator#0" expanded="false" />
             <element signature="method#getInstruction#2;class#Translator#0" expanded="false" />
+            <element signature="method#getCall#0;class#Translator#0" expanded="false" />
             <element signature="method#getNASMofCondition#0;class#Translator#0" expanded="false" />
             <element signature="method#saveRegister_Caller#0;class#Translator#0" expanded="false" />
             <element signature="method#restoreRegister_Caller#0;class#Translator#0" expanded="false" />
             <element signature="method#saveRegister_Callee#0;class#Translator#0" expanded="false" />
             <element signature="method#restoreRegister_Callee#0;class#Translator#0" expanded="false" />
-            <element signature="method#getCall#0;class#Translator#0" expanded="false" />
-            <element signature="method#IRtoNASM#0;class#Translator#0" expanded="false" />
+            <element signature="method#getTextSection#0;class#Translator#0" expanded="false" />
+            <element signature="method#getDataSection#0;class#Translator#0" expanded="false" />
+            <element signature="method#getBssSection#0;class#Translator#0" expanded="false" />
             <element signature="method#getStringConst#0;class#Translator#0" expanded="false" />
           </folding>
         </state>
@@ -1522,12 +1542,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Translation/BuiltinFunction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="975">
-          <caret line="223" column="26" lean-forward="false" selection-start-line="223" selection-start-column="26" selection-end-line="223" selection-end-column="26" />
+        <state relative-caret-position="300">
+          <caret line="62" column="0" lean-forward="true" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
           <folding>
+            <element signature="class#ConditionOp#0;class#BuiltinFunction#0" expanded="false" />
             <element signature="method#getBuiltinFunction#0;class#BuiltinFunction#0" expanded="false" />
             <element signature="method#getInstruction#1;class#BuiltinFunction#0" expanded="false" />
             <element signature="method#getInstruction#2;class#BuiltinFunction#0" expanded="false" />
+            <element signature="method#getCall#0;class#BuiltinFunction#0" expanded="false" />
             <element signature="method#getNASMofCondition#0;class#BuiltinFunction#0" expanded="false" />
             <element signature="method#getDataSection#0;class#BuiltinFunction#0" expanded="false" />
             <element signature="method#getBssSection#0;class#BuiltinFunction#0" expanded="false" />
@@ -1542,14 +1564,15 @@
             <element signature="method#getNASMstringSubstring#0;class#BuiltinFunction#0" expanded="false" />
             <element signature="method#getNASMstringOrd#0;class#BuiltinFunction#0" expanded="false" />
             <element signature="method#getNASMstringConnection#0;class#BuiltinFunction#0" expanded="false" />
+            <element signature="method#getNASMstringCompare#0;class#BuiltinFunction#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="43" column="30" lean-forward="false" selection-start-line="43" selection-start-column="30" selection-end-line="43" selection-end-column="30" />
+        <state relative-caret-position="-721">
+          <caret line="21" column="5" lean-forward="false" selection-start-line="14" selection-start-column="4" selection-end-line="21" selection-end-column="5" />
           <folding />
         </state>
       </provider>

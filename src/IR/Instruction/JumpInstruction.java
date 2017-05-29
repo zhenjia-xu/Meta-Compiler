@@ -1,6 +1,5 @@
 package IR.Instruction;
 
-import IR.VirtualRegister;
 import Translation.Translator;
 
 public class JumpInstruction extends Instruction {

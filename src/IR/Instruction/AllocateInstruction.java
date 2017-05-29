@@ -4,7 +4,6 @@ import IR.*;
 import Translation.PhysicalOperand.PhysicalOperand;
 import Translation.Translator;
 
-import java.nio.file.AccessDeniedException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;

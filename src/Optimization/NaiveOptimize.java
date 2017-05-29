@@ -3,11 +3,7 @@ package Optimization;
 import AST.ProgramAST;
 import IR.*;
 import IR.Instruction.*;
-import Translation.PhysicalOperand.PhysicalOperand;
-import Translation.Translator;
-import jdk.nashorn.internal.runtime.FunctionInitializer;
 
-import java.rmi.MarshalledObject;
 import java.util.HashMap;
 import java.util.Map;
 

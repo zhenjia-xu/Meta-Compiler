@@ -6,7 +6,6 @@ import AST.Statement.VariableDeclarationStatement;
 import AST.Type.ClassType;
 import AST.Type.FunctionType;
 import AST.Type.VoidType;
-import Translation.Translator;
 
 import java.util.*;
 

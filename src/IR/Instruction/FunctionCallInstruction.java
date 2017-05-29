@@ -2,10 +2,8 @@ package IR.Instruction;
 
 import AST.Type.FunctionType;
 import IR.*;
-import Optimization.RegisterAllocator;
 import Translation.PhysicalOperand.PhysicalOperand;
 import Translation.Translator;
-import com.sun.org.apache.regexp.internal.RE;
 
 import java.util.ArrayList;
 import java.util.HashSet;

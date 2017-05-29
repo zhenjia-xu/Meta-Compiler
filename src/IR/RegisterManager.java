@@ -1,7 +1,6 @@
 package IR;
 
 import Translation.Translator;
-import Utility.RuntimeError;
 
 import java.util.ArrayList;
 import java.util.HashSet;

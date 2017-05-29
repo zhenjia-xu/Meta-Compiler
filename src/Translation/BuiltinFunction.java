@@ -68,6 +68,18 @@ public class BuiltinFunction {
 		return String.format("%8s %20s, %20s\n", type, operand1, operand2);
 	}
 
+	public static String getCall(String func) {
+		StringBuilder str = new StringBuilder();
+		if (rsp_offset % 2 == 1) {
+			str.append(getInstruction("sub", "rsp", "8"));
+			str.append(getInstruction("call", func));
+			str.append(getInstruction("add", "rsp", "8"));
+		} else {
+			str.append(getInstruction("call", func));
+		}
+		return str.toString();
+	}
+
 	private static String getNASMofCondition(ConditionOp op) {
 		switch (op) {
 			case EQ:
@@ -90,19 +102,19 @@ public class BuiltinFunction {
 		StringBuilder str = new StringBuilder();
 		str.append("SECTION .data\n");
 		str.append("__println_IntFormat:\n");
-		str.append(Translator.getInstruction("db", "\"%ld\", 10, 0"));
+		str.append(getInstruction("db", "\"%ld\", 10, 0"));
 		str.append("__print_IntFormat:\n");
-		str.append(Translator.getInstruction("db", "\"%ld\", 0"));
+		str.append(getInstruction("db", "\"%ld\", 0"));
 		str.append("__printFormat:\n");
-		str.append(Translator.getInstruction("db", "\"%s\", 0"));
+		str.append(getInstruction("db", "\"%s\", 0"));
 		str.append("__getIntFormat:\n");
-		str.append(Translator.getInstruction("db", "\"%ld\", 0"));
+		str.append(getInstruction("db", "\"%ld\", 0"));
 		str.append("__getStringFormat:\n");
-		str.append(Translator.getInstruction("db", "\"%s\", 0"));
+		str.append(getInstruction("db", "\"%s\", 0"));
 		str.append("__toStringFormat:\n");
-		str.append(Translator.getInstruction("db", "\"%ld\", 0"));
+		str.append(getInstruction("db", "\"%ld\", 0"));
 		str.append("__parseIntFormat:\n");
-		str.append(Translator.getInstruction("db", "\"%ld\", 0"));
+		str.append(getInstruction("db", "\"%ld\", 0"));
 		return str.toString();
 	}
 
@@ -110,9 +122,9 @@ public class BuiltinFunction {
 		StringBuilder str = new StringBuilder();
 		str.append("SECTION .bss\n");
 		str.append("@getIntBuf:\n");
-		str.append(Translator.getInstruction("resq", "1"));
+		str.append(getInstruction("resq", "1"));
 		str.append("@parseIntBuf:\n");
-		str.append(Translator.getInstruction("resq", "1"));
+		str.append(getInstruction("resq", "1"));
 		return str.toString();
 	}
 
@@ -120,10 +132,10 @@ public class BuiltinFunction {
 		StringBuilder str = new StringBuilder();
 		str.append(Format + ":\n");
 		rsp_offset = 1;
-		str.append(Translator.getInstruction("mov", "rsi", "rdi"));
-		str.append(Translator.getInstruction("mov", "rdi", "__" + Format + "Format"));
-		str.append(Translator.getCall("printf"));
-		str.append(Translator.getInstruction("ret"));
+		str.append(getInstruction("mov", "rsi", "rdi"));
+		str.append(getInstruction("mov", "rdi", "__" + Format + "Format"));
+		str.append(getCall("printf"));
+		str.append(getInstruction("ret"));
 
 		return str.toString();
 	}
@@ -131,8 +143,8 @@ public class BuiltinFunction {
 	static private String getNASMprintln() {
 		StringBuilder str = new StringBuilder();
 		str.append("println:\n");
-		str.append(Translator.getCall("puts"));
-		str.append(Translator.getInstruction("ret"));
+		str.append(getCall("puts"));
+		str.append(getInstruction("ret"));
 
 		return str.toString();
 	}
@@ -141,11 +153,11 @@ public class BuiltinFunction {
 		StringBuilder str = new StringBuilder();
 		str.append("getInt:\n");
 		rsp_offset = 1;
-		str.append(Translator.getInstruction("mov", "rdi", "__getIntFormat"));
-		str.append(Translator.getInstruction("mov", "rsi", "@getIntBuf"));
-		str.append(Translator.getCall("scanf"));
-		str.append(Translator.getInstruction("mov", "rax", "qword [@getIntBuf]"));
-		str.append(Translator.getInstruction("ret"));
+		str.append(getInstruction("mov", "rdi", "__getIntFormat"));
+		str.append(getInstruction("mov", "rsi", "@getIntBuf"));
+		str.append(getCall("scanf"));
+		str.append(getInstruction("mov", "rax", "qword [@getIntBuf]"));
+		str.append(getInstruction("ret"));
 		return str.toString();
 	}
 
@@ -153,20 +165,20 @@ public class BuiltinFunction {
 		StringBuilder str = new StringBuilder();
 		str.append("getString:\n");
 		rsp_offset = 1;
-		str.append(Translator.getInstruction("push", "r15"));
-		str.append(Translator.getInstruction("mov", "rdi", "300"));
-		str.append(Translator.getCall("malloc"));
-		str.append(Translator.getInstruction("mov", "r15", "rax"));
-		str.append(Translator.getInstruction("add", "r15", "8"));
-		str.append(Translator.getInstruction("mov", "rdi", "__getStringFormat"));
-		str.append(Translator.getInstruction("mov", "rsi", "r15"));
-		str.append(Translator.getCall("scanf"));
-		str.append(Translator.getInstruction("mov", "rdi", "r15"));
-		str.append(Translator.getCall("strlen"));
-		str.append(Translator.getInstruction("mov", "qword [r15 - 8]", "rax"));
-		str.append(Translator.getInstruction("mov", "rax", "r15"));
-		str.append(Translator.getInstruction("pop", "r15"));
-		str.append(Translator.getInstruction("ret"));
+		str.append(getInstruction("push", "r15"));
+		str.append(getInstruction("mov", "rdi", "300"));
+		str.append(getCall("malloc"));
+		str.append(getInstruction("mov", "r15", "rax"));
+		str.append(getInstruction("add", "r15", "8"));
+		str.append(getInstruction("mov", "rdi", "__getStringFormat"));
+		str.append(getInstruction("mov", "rsi", "r15"));
+		str.append(getCall("scanf"));
+		str.append(getInstruction("mov", "rdi", "r15"));
+		str.append(getCall("strlen"));
+		str.append(getInstruction("mov", "qword [r15 - 8]", "rax"));
+		str.append(getInstruction("mov", "rax", "r15"));
+		str.append(getInstruction("pop", "r15"));
+		str.append(getInstruction("ret"));
 		return str.toString();
 	}
 
@@ -174,38 +186,38 @@ public class BuiltinFunction {
 		StringBuilder str = new StringBuilder();
 		str.append("toString:\n");
 		rsp_offset = 1;
-		str.append(Translator.getInstruction("push", "r15"));
-		str.append(Translator.getInstruction("push", "rdi"));
-		str.append(Translator.getInstruction("mov", "rdi", "20"));
-		str.append(Translator.getCall("malloc"));
-		str.append(Translator.getInstruction("mov", "r15", "rax"));
-		str.append(Translator.getInstruction("add", "r15", "8"));
-		str.append(Translator.getInstruction("mov", "rdi", "r15"));
-		str.append(Translator.getInstruction("mov", "rsi", "__toStringFormat"));
-		str.append(Translator.getInstruction("pop", "rdx"));
-		str.append(Translator.getCall("sprintf"));
-		str.append(Translator.getInstruction("mov", "rdi", "r15"));
-		str.append(Translator.getCall("strlen"));
-		str.append(Translator.getInstruction("mov", "qword [r15 - 8]", "rax"));
-		str.append(Translator.getInstruction("mov", "rax", "r15"));
-		str.append(Translator.getInstruction("pop", "r15"));
-		str.append(Translator.getInstruction("ret"));
+		str.append(getInstruction("push", "r15"));
+		str.append(getInstruction("push", "rdi"));
+		str.append(getInstruction("mov", "rdi", "20"));
+		str.append(getCall("malloc"));
+		str.append(getInstruction("mov", "r15", "rax"));
+		str.append(getInstruction("add", "r15", "8"));
+		str.append(getInstruction("mov", "rdi", "r15"));
+		str.append(getInstruction("mov", "rsi", "__toStringFormat"));
+		str.append(getInstruction("pop", "rdx"));
+		str.append(getCall("sprintf"));
+		str.append(getInstruction("mov", "rdi", "r15"));
+		str.append(getCall("strlen"));
+		str.append(getInstruction("mov", "qword [r15 - 8]", "rax"));
+		str.append(getInstruction("mov", "rax", "r15"));
+		str.append(getInstruction("pop", "r15"));
+		str.append(getInstruction("ret"));
 		return str.toString();
 	}
 
 	static private String getNASMarraySize() {
 		StringBuilder str = new StringBuilder();
 		str.append("__array_size:\n");
-		str.append(Translator.getInstruction("mov", "rax", "qword [rdi - 8]"));
-		str.append(Translator.getInstruction("ret"));
+		str.append(getInstruction("mov", "rax", "qword [rdi - 8]"));
+		str.append(getInstruction("ret"));
 		return str.toString();
 	}
 
 	static private String getNASMstringLength() {
 		StringBuilder str = new StringBuilder();
 		str.append("__string_length:\n");
-		str.append(Translator.getInstruction("mov", "rax", "qword [rdi - 8]"));
-		str.append(Translator.getInstruction("ret"));
+		str.append(getInstruction("mov", "rax", "qword [rdi - 8]"));
+		str.append(getInstruction("ret"));
 		return str.toString();
 	}
 
@@ -213,11 +225,11 @@ public class BuiltinFunction {
 		StringBuilder str = new StringBuilder();
 		str.append("__string_parseInt:\n");
 		rsp_offset = 1;
-		str.append(Translator.getInstruction("mov", "rsi", "__getIntFormat"));
-		str.append(Translator.getInstruction("mov", "rdx", "@parseIntBuf"));
-		str.append(Translator.getCall("sscanf"));
-		str.append(Translator.getInstruction("mov", "rax", "qword [@parseIntBuf]"));
-		str.append(Translator.getInstruction("ret"));
+		str.append(getInstruction("mov", "rsi", "__getIntFormat"));
+		str.append(getInstruction("mov", "rdx", "@parseIntBuf"));
+		str.append(getCall("sscanf"));
+		str.append(getInstruction("mov", "rax", "qword [@parseIntBuf]"));
+		str.append(getInstruction("ret"));
 		return str.toString();
 	}
 
@@ -225,28 +237,28 @@ public class BuiltinFunction {
 		StringBuilder str = new StringBuilder();
 		str.append("__string_substring:\n");
 		rsp_offset = 1;
-		str.append(Translator.getInstruction("push", "r15"));
-		str.append(Translator.getInstruction("push", "r14"));
-		str.append(Translator.getInstruction("mov", "r15", "rdi"));
-		str.append(Translator.getInstruction("add", "r15", "rsi"));
-		str.append(Translator.getInstruction("mov", "r14", "rdx"));
-		str.append(Translator.getInstruction("sub", "r14", "rsi"));
-		str.append(Translator.getInstruction("add", "r14", "1"));
-		str.append(Translator.getInstruction("mov", "rdi", "r14"));
-		str.append(Translator.getInstruction("add", "rdi", "9"));
-		str.append(Translator.getCall("malloc"));
-		str.append(Translator.getInstruction("add", "rax", "8"));
-		str.append(Translator.getInstruction("mov", "rdi", "rax"));
-		str.append(Translator.getInstruction("mov", "rsi", "r15"));
-		str.append(Translator.getInstruction("mov", "rdx", "r14"));
-		str.append(Translator.getCall("memcpy"));
-		str.append(Translator.getInstruction("mov", "qword [rax - 8]", "r14"));
-		str.append(Translator.getInstruction("mov", "r15", "rax"));
-		str.append(Translator.getInstruction("add", "r15", "r14"));
-		str.append(Translator.getInstruction("mov", "r15", "0"));
-		str.append(Translator.getInstruction("pop", "r14"));
-		str.append(Translator.getInstruction("pop", "r15"));
-		str.append(Translator.getInstruction("ret"));
+		str.append(getInstruction("push", "r15"));
+		str.append(getInstruction("push", "r14"));
+		str.append(getInstruction("mov", "r15", "rdi"));
+		str.append(getInstruction("add", "r15", "rsi"));
+		str.append(getInstruction("mov", "r14", "rdx"));
+		str.append(getInstruction("sub", "r14", "rsi"));
+		str.append(getInstruction("add", "r14", "1"));
+		str.append(getInstruction("mov", "rdi", "r14"));
+		str.append(getInstruction("add", "rdi", "9"));
+		str.append(getCall("malloc"));
+		str.append(getInstruction("add", "rax", "8"));
+		str.append(getInstruction("mov", "rdi", "rax"));
+		str.append(getInstruction("mov", "rsi", "r15"));
+		str.append(getInstruction("mov", "rdx", "r14"));
+		str.append(getCall("memcpy"));
+		str.append(getInstruction("mov", "qword [rax - 8]", "r14"));
+		str.append(getInstruction("mov", "r15", "rax"));
+		str.append(getInstruction("add", "r15", "r14"));
+		str.append(getInstruction("mov", "r15", "0"));
+		str.append(getInstruction("pop", "r14"));
+		str.append(getInstruction("pop", "r15"));
+		str.append(getInstruction("ret"));
 		return str.toString();
 	}
 
@@ -254,9 +266,9 @@ public class BuiltinFunction {
 		StringBuilder str = new StringBuilder();
 		str.append("__string_ord:\n");
 		rsp_offset = 1;
-		str.append(Translator.getInstruction("add", "rdi", "rsi"));
-		str.append(Translator.getInstruction("movsx", "rax", "byte [rdi]"));
-		str.append(Translator.getInstruction("ret"));
+		str.append(getInstruction("add", "rdi", "rsi"));
+		str.append(getInstruction("movsx", "rax", "byte [rdi]"));
+		str.append(getInstruction("ret"));
 		return str.toString();
 	}
 
@@ -264,33 +276,33 @@ public class BuiltinFunction {
 		StringBuilder str = new StringBuilder();
 		str.append("__string_connection:\n");
 		rsp_offset = 1;
-		str.append(Translator.getInstruction("push", "r15"));//length -> result
-		str.append(Translator.getInstruction("push", "r14"));//left
-		str.append(Translator.getInstruction("push", "r13"));//right
-		str.append(Translator.getInstruction("mov", "r15", "qword [rdi - 8]"));
-		str.append(Translator.getInstruction("add", "r15", "qword [rsi - 8]"));
-		str.append(Translator.getInstruction("add", "r15", "9"));
-		str.append(Translator.getInstruction("mov", "r14", "rdi"));
-		str.append(Translator.getInstruction("mov", "r13", "rsi"));
-		str.append(Translator.getInstruction("mov", "rdi", "r15"));
-		str.append(Translator.getCall("malloc"));
-		str.append(Translator.getInstruction("sub", "r15", "9"));
-		str.append(Translator.getInstruction("mov", "qword [rax]", "r15"));
-		str.append(Translator.getInstruction("mov", "r15", "rax"));
-		str.append(Translator.getInstruction("add", "r15", "8"));
-		str.append(Translator.getInstruction("mov", "rdi", "r15"));
-		str.append(Translator.getInstruction("mov", "rsi", "r14"));
-		str.append(Translator.getCall("strcpy"));
-		str.append(Translator.getInstruction("add", "r15", "qword [r14 - 8]"));
-		str.append(Translator.getInstruction("mov", "r14", "rax"));
-		str.append(Translator.getInstruction("mov", "rdi", "r15"));
-		str.append(Translator.getInstruction("mov", "rsi", "r13"));
-		str.append(Translator.getCall("strcpy"));
-		str.append(Translator.getInstruction("mov", "rax", "r14"));
-		str.append(Translator.getInstruction("pop", "r13"));
-		str.append(Translator.getInstruction("pop", "r14"));
-		str.append(Translator.getInstruction("pop", "r15"));
-		str.append(Translator.getInstruction("ret"));
+		str.append(getInstruction("push", "r15"));//length -> result
+		str.append(getInstruction("push", "r14"));//left
+		str.append(getInstruction("push", "r13"));//right
+		str.append(getInstruction("mov", "r15", "qword [rdi - 8]"));
+		str.append(getInstruction("add", "r15", "qword [rsi - 8]"));
+		str.append(getInstruction("add", "r15", "9"));
+		str.append(getInstruction("mov", "r14", "rdi"));
+		str.append(getInstruction("mov", "r13", "rsi"));
+		str.append(getInstruction("mov", "rdi", "r15"));
+		str.append(getCall("malloc"));
+		str.append(getInstruction("sub", "r15", "9"));
+		str.append(getInstruction("mov", "qword [rax]", "r15"));
+		str.append(getInstruction("mov", "r15", "rax"));
+		str.append(getInstruction("add", "r15", "8"));
+		str.append(getInstruction("mov", "rdi", "r15"));
+		str.append(getInstruction("mov", "rsi", "r14"));
+		str.append(getCall("strcpy"));
+		str.append(getInstruction("add", "r15", "qword [r14 - 8]"));
+		str.append(getInstruction("mov", "r14", "rax"));
+		str.append(getInstruction("mov", "rdi", "r15"));
+		str.append(getInstruction("mov", "rsi", "r13"));
+		str.append(getCall("strcpy"));
+		str.append(getInstruction("mov", "rax", "r14"));
+		str.append(getInstruction("pop", "r13"));
+		str.append(getInstruction("pop", "r14"));
+		str.append(getInstruction("pop", "r15"));
+		str.append(getInstruction("ret"));
 		return str.toString();
 	}
 
@@ -298,11 +310,11 @@ public class BuiltinFunction {
 		StringBuilder str = new StringBuilder();
 		str.append("__string_" + op + ":\n");
 		rsp_offset = 1;
-		str.append(Translator.getCall("strcmp"));
-		str.append(Translator.getInstruction("cmp", "eax", "0"));
-		str.append(Translator.getInstruction("mov", "rax", "0"));
-		str.append(Translator.getInstruction("set" + getNASMofCondition(op), "al"));
-		str.append(Translator.getInstruction("ret"));
+		str.append(getCall("strcmp"));
+		str.append(getInstruction("cmp", "eax", "0"));
+		str.append(getInstruction("mov", "rax", "0"));
+		str.append(getInstruction("set" + getNASMofCondition(op), "al"));
+		str.append(getInstruction("ret"));
 		return str.toString();
 	}
 }

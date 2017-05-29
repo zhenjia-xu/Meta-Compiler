@@ -2,7 +2,6 @@ package IR.Instruction;
 
 import IR.*;
 import Translation.PhysicalOperand.PhysicalOperand;
-import Translation.PhysicalOperand.PhysicalReg;
 import Translation.Translator;
 import Utility.RuntimeError;
 

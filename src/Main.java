@@ -1,8 +1,6 @@
 import AST.ProgramAST;
 import IR.ProgramIR;
-import IR.RegisterManager;
 import Optimization.Optimization;
-import Translation.BuiltinFunction;
 import Utility.CompilationError;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
@@ -12,7 +10,6 @@ import java.io.*;
 
 import FrontEnd.Listener.*;
 import Translation.Translator;
-import org.omg.Messaging.SYNC_WITH_TRANSPORT;
 
 public class Main {
 	public static void main(String[] args) throws Exception {

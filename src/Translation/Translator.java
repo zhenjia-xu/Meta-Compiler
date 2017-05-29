@@ -3,17 +3,9 @@ package Translation;
 import AST.ProgramAST;
 import AST.Statement.VariableDeclarationStatement;
 import IR.FunctionIR;
-import IR.Instruction.FunctionCallInstruction;
 import IR.ProgramIR;
-import IR.RegisterManager;
-import IR.VirtualRegister;
-import com.sun.org.apache.xpath.internal.functions.FuncUnparsedEntityURI;
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
-import java.io.*;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 public class Translator {
 	public static int rsp_offset;
@@ -38,6 +30,18 @@ public class Translator {
 			return "";
 		}
 		return String.format("%8s %20s, %20s\n", type, operand1, operand2);
+	}
+
+	public static String getCall(String func) {
+		StringBuilder str = new StringBuilder();
+		if (rsp_offset % 2 == 1) {
+			str.append(Translator.getInstruction("sub", "rsp", "8"));
+			str.append(Translator.getInstruction("call", func));
+			str.append(Translator.getInstruction("add", "rsp", "8"));
+		} else {
+			str.append(Translator.getInstruction("call", func));
+		}
+		return str.toString();
 	}
 
 	public static String getNASMofCondition(ProgramIR.ConditionOp op) {
@@ -85,18 +89,6 @@ public class Translator {
 		StringBuilder str = new StringBuilder();
 		for (int i = FunctionIR.calleeRegisterList.size() - 1; i >= 0; i--)
 			str.append(Translator.getInstruction("pop", FunctionIR.calleeRegisterList.get(i)));
-		return str.toString();
-	}
-
-	public static String getCall(String func) {
-		StringBuilder str = new StringBuilder();
-		if (rsp_offset % 2 == 1) {
-			str.append(Translator.getInstruction("sub", "rsp", "8"));
-			str.append(Translator.getInstruction("call", func));
-			str.append(Translator.getInstruction("add", "rsp", "8"));
-		} else {
-			str.append(Translator.getInstruction("call", func));
-		}
 		return str.toString();
 	}
 
