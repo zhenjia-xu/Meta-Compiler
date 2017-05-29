@@ -46,13 +46,6 @@ public class CsetInstruction extends Instruction {
 	}
 
 	@Override
-	public void merge(VirtualRegister x, VirtualRegister y){
-		if(target == x){
-			target = y;
-		}
-	}
-
-	@Override
 	public String getInstructionOfNASM() {
 		StringBuilder str = new StringBuilder();
 		PhysicalOperand physicalTarget = PhysicalOperand.get(str, target);

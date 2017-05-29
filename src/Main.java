@@ -2,6 +2,7 @@ import AST.ProgramAST;
 import IR.ProgramIR;
 import IR.RegisterManager;
 import Optimization.Optimization;
+import Translation.BuiltinFunction;
 import Utility.CompilationError;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;

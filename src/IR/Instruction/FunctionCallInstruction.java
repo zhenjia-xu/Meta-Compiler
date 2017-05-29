@@ -43,22 +43,6 @@ public class FunctionCallInstruction extends Instruction {
 	}
 
 	@Override
-	public void merge(VirtualRegister x, VirtualRegister y){
-		if(returnValue == x){
-			returnValue = y;
-		}
-		for(int i = 0; i < parameterList.size(); i++){
-			if(parameterList.get(i) instanceof VirtualRegister && parameterList.get(i) == x){
-				parameterList.remove(i);
-				parameterList.add(i, y);
-			}
-			if(parameterList.get(i) instanceof Address && ((Address) parameterList.get(i)).base == x){
-				((Address) parameterList.get(i)).base = y;
-			}
-		}
-	}
-
-	@Override
 	public String getInstructionOfNASM() {
 		StringBuilder str = new StringBuilder();
 		Set<String> callerSet = new HashSet<>();
@@ -69,8 +53,7 @@ public class FunctionCallInstruction extends Instruction {
 			}
 		}
 		for(String reg: callerSet){
-			if(FunctionIR.callerAll.contains(reg))
-			{
+			if(FunctionIR.callerAll.contains(reg)){
 				callerList.add(reg);
 			}
 		}

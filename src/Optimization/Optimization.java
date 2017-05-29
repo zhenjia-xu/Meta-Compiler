@@ -14,7 +14,6 @@ public class Optimization {
 			AdvancedOptimize.uselessCodeElimination(functionIR);
 			NaiveOptimize.loopConditionImprovement(functionIR);
 			LivenessAnalysis.analysis(functionIR);
-			//NaiveOptimize.moveMerge(functionIR);
 			RegisterAllocator.allocate(LivenessAnalysis.virtualRegisterMap, LivenessAnalysis.edgeMap, functionIR);
 			NaiveOptimize.removeEmptyBlock(functionIR);
 			NaiveOptimize.superBlock(functionIR);

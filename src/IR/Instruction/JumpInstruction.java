@@ -15,9 +15,6 @@ public class JumpInstruction extends Instruction {
 	}
 
 	@Override
-	public void merge(VirtualRegister x, VirtualRegister y){}
-
-	@Override
 	public String getInstructionOfNASM() {
 		return Translator.getInstruction("jmp", target.block.getName());
 	}

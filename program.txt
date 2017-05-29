@@ -1,251 +1,274 @@
-//Compute and Crack SHA-1
-//by zzk
+int Mod;
+int[][] p;
+int[] res;
+int[][] ksm;
+int[] prime;
+int tot;
+int[] v;
+int[][] q;
+int[][][] g;
+int[][][] Sum;
+int[] m;
+int[] b;
+int[][] Comb;
 
-int hex2int(string x)
-{
-	int i;
-	int result = 0;
-	for(i=0;i<x.length();i++)
-	{
-		int digit = x.ord(i);
-		if(digit >= 48 && digit <= 57)
-			result = result * 16 + digit - 48;
-		else if(digit >= 65 && digit <= 70)
-			result = result * 16 + digit - 65 + 10;
-		else if(digit >= 97 && digit <= 102)
-			result = result * 16 + digit - 97 + 10;
-		else
-			return 0;
-	}
-	return result;
-}
+int C;
+int M;
+int N;
+int[] fn;
+int[] fc;
+int[][] fm;
 
-string asciiTable = " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~";
-string int2chr(int x)
-{
-	if(x >= 32 && x <= 126)
-		return asciiTable.substring(x-32, x-32);
-	return "";
-}
-string toStringHex(int x)
-{
-	string ret = "";
-	int i;
-	for(i=28;i>=0;i=i-4)
-	{
-		int digit = (x >> i) & 15;
-		if(digit < 10)
-			ret = ret + int2chr(48+digit);
-		else
-			ret = ret + int2chr(65+digit-10);
-	}
-	return ret;
-}
-int rotate_left(int x, int shift)
-{
-	if(shift == 1)
-		return ((x & 2147483647) << 1) | ((x >> 31) & 1);
-	if(shift == 31)
-		return ((x & 1) << 31) | ((x >> 1) & 2147483647);
-	return ((x & ((1 << (32-shift)) - 1)) << shift) | ((x >> (32-shift)) & ((1 << shift) - 1));
-}
-int add(int x, int y)	//to avoid possible undefined behaviour when overflow
-{
-	int low = (x & 65535) + (y & 65535);
-	int high = (((x >> 16) & 65535) + ((y >> 16) & 65535) + (low >> 16)) & 65535;
-	return (high << 16) | (low & 65535);
-}
-int lohi(int lo, int hi)
-{
-	return lo | (hi << 16);
-}
-
-int MAXCHUNK = 100;
-int MAXLENGTH = (MAXCHUNK-1) * 64 - 16;
-int[][] chunks = new int[MAXCHUNK][80];
-int[] inputBuffer = new int[MAXLENGTH];
-int[] outputBuffer = new int[5];
-int[] sha1(int[] input, int length)
-{
-	int nChunk = (length + 64 - 56) / 64 + 1;
-	if(nChunk > MAXCHUNK)
-	{
-		println("nChunk > MAXCHUNK!");
-		return null;
-	}
+void init() {
+	tot = 0;
+	C = 0;
+	M = 0;
+	N = 0;
 	int i;
 	int j;
-	for(i=0;i<nChunk;i++)
-		for(j=0;j<80;j++)
-			chunks[i][j] = 0;
-	for(i=0;i<length;i++)
-		chunks[i/64][i%64/4] = chunks[i/64][i%64/4] | (input[i] << ((3-i%4)*8));
-	chunks[i/64][i%64/4] = chunks[i/64][i%64/4] | (128 << ((3-i%4)*8));
-	chunks[nChunk-1][15] = length << 3;
-	chunks[nChunk-1][14] = (length >> 29) & 7;
-
-	int h0 = 1732584193;  //0x67452301
-	int h1 = lohi(43913, 61389);  //0xEFCDAB89
-	int h2 = lohi(56574, 39098); //0x98BADCFE
-	int h3 = 271733878;   //0x10325476
-	int h4 = lohi(57840, 50130); //0xC3D2E1F0
-	for(i=0;i<nChunk;i++)
-	{
-		for(j=16;j<80;j++)
-			chunks[i][j] = rotate_left(chunks[i][j-3] ^ chunks[i][j-8] ^ chunks[i][j-14] ^ chunks[i][j-16], 1);
-
-		int a = h0;
-		int b = h1;
-		int c = h2;
-		int d = h3;
-		int e = h4;
-		for(j=0;j<80;j++)
-		{
-			int f;
-			int k;
-			if(j<20)
-			{
-				f = (b & c) | ((~b) & d);
-				k = 1518500249; //0x5A827999
-			}
-			else if(j<40)
-			{
-				f = b ^ c ^ d;
-				k = 1859775393; //0x6ED9EBA1
-			}
-			else if(j<60)
-			{
-				f = (b & c) | (b & d) | (c & d);
-				k = lohi(48348, 36635); //0x8F1BBCDC
-			}
-			else
-			{
-				f = b ^ c ^ d;
-				k = lohi(49622, 51810); //0xCA62C1D6
-			}
-			int temp = add(add(add(rotate_left(a, 5), e), add(f, k)), chunks[i][j]);
-			e = d;
-			d = c;
-			c = rotate_left(b, 30);
-			b = a;
-			a = temp;
+	int k;
+	g = new int[6][][];
+	for (i = 0; i < 6; i ++) {
+		g[i] = new int[100001][];
+		for (j = 0; j < 100001; j ++) {
+			g[i][j] = new int[15];
+			for (k = 0; k < 15; k ++)
+				g[i][j][k] = 0;
 		}
-		h0 = add(h0, a);
-		h1 = add(h1, b);
-		h2 = add(h2, c);
-		h3 = add(h3, d);
-		h4 = add(h4, e);
 	}
-	outputBuffer[0] = h0;
-	outputBuffer[1] = h1;
-	outputBuffer[2] = h2;
-	outputBuffer[3] = h3;
-	outputBuffer[4] = h4;
-	return outputBuffer;
-}
-
-void computeSHA1(string input)
-{
-	int i;
-	for(i=0; i<input.length(); i++)
-		inputBuffer[i] = input.ord(i);
-	int[] result = sha1(inputBuffer, input.length());
-	for(i=0; i<result.size(); i++)
-		print(toStringHex(result[i]));
-	println("");
-}
-
-int nextLetter(int now)
-{
-	if(now == 122) //'z'
-		return -1;
-	if(now == 90)  //'Z'
-		return 97; //'a'
-	if(now == 57)  //'9'
-		return 65;
-	return now + 1;
-}
-
-bool nextText(int[] now, int length)
-{
-	int i;
-	for(i=length-1; i>=0; i--)
-	{
-		now[i] = nextLetter(now[i]);
-		if(now[i] == -1)
-			now[i] = 48;	//'0'
-		else
-			return true;
+	Sum = new int[6][][];
+	for (i = 0; i < 6; i ++) {
+		Sum[i] = new int[100001][];
+		for (j = 0; j < 100001; j ++) {
+			Sum[i][j] = new int[15];
+			for (k = 0; k < 15; k ++)
+				Sum[i][j][k] = 0;
+		}
 	}
-	return false;
-}
-
-bool array_equal(int[] a, int[] b)
-{
-	if(a.size() != b.size())
-		return false;
-	int i;
-	for(i=0; i<a.size(); i++)
-		if(a[i] != b[i])
-			return false;
-	return true;
-}
-
-void crackSHA1(string input)
-{
-	int[] target = new int[5];
-	if(input.length() != 40)
-	{
-		println("Invalid input");
-		return;
+	fm = new int[1001][];
+	for (i = 0; i < 1001; i ++) {
+		fm[i] = new int[13];
+		for (j = 0; j < 13; j ++)
+			fm[i][j] = 0;
 	}
-	int i;
-	for(i=0;i<5;i++)
-		target[i] = 0;
-	for(i=0;i<40;i=i+4)
-		target[i/8] = target[i/8] | (hex2int(input.substring(i, i+3)) << (1 - (i / 4) % 2) * 16);
+	ksm = new int[100001][];
+	for (i = 0; i < 100001; i ++) {
+		ksm[i] = new int[21];
+		for (j = 0; j < 21; j ++)
+			ksm[i][j] = 0;
+	}
+	p = new int[21][];
+	for (i = 0; i < 21; i ++) {
+		p[i] = new int[21];
+		for (j = 0; j < 21; j ++)
+			p[i][j] = 0;
+	}
+	q = new int[21][];
+	for (i = 0; i < 21; i ++) {
+		q[i] = new int[100001];
+		for (j = 0; j < 100001; j ++)
+			q[i][j] = 0;
+	}
+	Comb = new int[100001][];
+	for (i = 0; i < 100001; i ++) {
+		Comb[i] = new int[21];
+		for (j = 0; j < 21; j ++)
+			Comb[i][j] = 0;
+	}
+	fn = new int[1001];
+	for (i = 0; i < 1001; i ++) fn[i] = 0;
+	fc = new int[1001];
+	for (i = 0; i < 1001; i ++) fc[i] = 0;
+	m = new int[1001];
+	for (i = 0; i < 1001; i ++) m[i] = 0;
+	res = new int[1001];
+	for (i = 0; i < 1001; i ++) res[i] = 0;
+	b = new int[1001];
+	for (i = 0; i < 1001; i ++) b[i] = 0;
+	v = new int[100001];
+	for (i = 0; i < 100001; i ++) v[i] = 0;
+	prime = new int[100001];
+	for (i = 0; i < 100001; i ++) prime[i] = 0;
+}
+int Ksm(int P, int x)
+{
+	if (x == 0) return 1;
+	if (x == 1) return P % Mod;
+	int tmp;
+	tmp = Ksm(P, x >> 1);
+	if (x % 2 == 1) return tmp * tmp % Mod * P % Mod;
+	else return tmp * tmp % Mod;
+}
 
-	int MAXDIGIT = 4;
-	int digit;
-	for(digit=1; digit <= MAXDIGIT; digit++)
+void Calculate_p()
+{
+	int i;
+	int j;
+	p[0][0] = 1;
+	p[1][1] = 1;
+	p[1][0] = Mod - 1;
+	for (i = 2; i <= C - 2; i ++)
 	{
-		for(i=0;i<digit;i++)
-			inputBuffer[i] = 48;
-		while(true)
+		int tmp;
+		tmp = Ksm(i, Mod - 2);
+		for (j = 0; j < i; j ++)
+			p[i][j + 1] = p[i - 1][j];
+		for (j = 0; j <= i; j ++)
+			p[i][j] = (p[i][j] - p[i - 1][j] * i % Mod + Mod) * tmp % Mod;
+	}
+}
+void Euler(int x)
+{
+
+	tot = 0;
+	q[x][1] = 1;
+	int i;
+	int j;
+	for (i = 0; i < 100001; i ++) v[i] = 0;
+	for (i = 2; i <= M; i ++)
+	{
+		if (v[i] == 0){
+			prime[++ tot] = i;
+			 q[x][i] = (ksm[i][x] + Mod - 1) % Mod;
+		}
+		for (j = 1; j <= tot && prime[j] * i <= M; j ++)
 		{
-			int[] out = sha1(inputBuffer, digit);
-			if(array_equal(out, target))
+			v[prime[j] * i] = 1;
+			if (i % prime[j] == 0)
 			{
-				for(i=0;i<digit;i++)
-					print(int2chr(inputBuffer[i]));
-				println("");
-				return;
-			}
-			if(!nextText(inputBuffer, digit))
+				q[x][i * prime[j]] = q[x][i] * ksm[prime[j]][x] % Mod;
 				break;
+			}
+			else q[x][i * prime[j]] = q[x][i] * q[x][prime[j]] % Mod;
 		}
 	}
-	println("Not Found!");
 }
-
-int main()
+void Calculate_q()
 {
-	int op;
-	string input;
-	while(true)
+	int i;
+	for (i = 0; i <= C - 2; i ++) Euler(i);
+}
+void Calculate_Ksm()
+{
+	int i;
+	int j;
+	for (i = 1; i <= M; i ++)
 	{
-		op = getInt();
-		if(op == 0)
-			break;
-		if(op == 1)
+		ksm[i][0] = 1;
+		for (j = 1; j <= C - 2; j ++)
+			ksm[i][j] = ksm[i][j - 1] * i % Mod;
+	}
+}
+void Calculate_G()
+{
+	Calculate_Ksm(); Calculate_p(); Calculate_q();
+	int i;
+	int j;
+	int k;
+	for (i = 1; i <= M; i ++)
+		for (j = 2; j <= C; j ++)
 		{
-			input = getString();
-			computeSHA1(input);
+			for (k = 0; k <= j - 2; k ++)
+				g[0][i][j] = (g[0][i][j] + p[j - 2][k] * q[k][i]) % Mod;
+			for (k = 1; k <= N; k ++)
+				g[k][i][j] = g[k - 1][i][j] * i % Mod;
 		}
-		else if(op == 2)
+	for (k = 0; k <= N; k ++)
+	{
+		for (i = 2; i <= C; i ++)
+			for (j = 1; j <= M; j ++)
+			{
+				Sum[k][j][i] = Sum[k][j - 1][i] + g[k][j][i];
+				if (Sum[k][j][i] >= Mod) Sum[k][j][i] = Sum[k][j][i] - Mod;
+			}
+	}
+}
+void Calculate_Comb()
+{
+	int i;
+	int j;
+	for (i = 0; i <= M; i ++)
+		Comb[i][0] = 1;
+	for (i = 1; i <= M; i ++)
+		for (j = 1; j <= C; j ++)
 		{
-			input = getString();
-			crackSHA1(input);
+			Comb[i][j] = Comb[i - 1][j] + Comb[i - 1][j - 1];
+			if (Comb[i][j] >= Mod) Comb[i][j] = Comb[i][j] - Mod;
+		}
+}
+int main( )
+{
+	int T;
+	int n;
+	int c;
+
+	T = 3;
+	init();
+	fn[1] = 2; fc[1] = 3;
+	fm[1][1] = 3; fm[1][2] = 4;
+	fn[2] = 3; fc[2] = 3;
+	fm[2][1] = 3; fm[2][2] = 4; fm[2][3] = 4;
+	fn[3] = 4; fc[3] = 4;
+	fm[3][1] = 5; fm[3][2] = 7; fm[3][3] = 8; fm[3][4] = 9;
+	C = 4; M = 9;
+	N = 4;
+	Mod = 10007;
+	Calculate_G(); Calculate_Comb();
+	int rp;
+	for (rp = 1; rp <= T; rp ++)
+	{
+		n = fn[rp];
+		c = fc[rp];
+		int ii;
+		for (ii = 1; ii <= n; ii ++)
+			m[ii] = fm[rp][ii];
+		if (n == 1) println(toString(Comb[m[1]][c]));
+		else
+		{
+			int ans;
+			int l;
+			int r;
+			int temp;
+			ans = 0;
+			temp = 0;
+			l = 0;
+			r = 1;
+
+			for (; r <= m[1]; r ++)
+			{
+				int tmp;
+				tmp = (m[1] / (m[1] / r));
+				int i;
+				for (i = 2; i <= n; i ++) {
+					int get;
+					get = m[i] / (m[i] / r);
+					if (get < tmp) tmp = get;
+				}
+				if (m[1] < tmp) tmp = m[1];
+				r = tmp;
+				b[0] = 1;
+				for (i = 1; i <= n; i ++)
+				{
+					int tmp1;
+					int tmp2;
+					int tmp3;
+					tmp1 = (m[i] / r) % Mod;
+					tmp2 = tmp1 * (tmp1 + 1) / 2 % Mod;
+					tmp3 = m[i] * tmp1 % Mod;
+					int j;
+					for (j = 0; j < i; j ++)
+						res[j + 1] = b[j] * (Mod - tmp2) % Mod;
+					res[0] = 0;
+					for (j = 0; j < i; j ++)
+						res[j] = (res[j] + tmp3 * b[j]) % Mod;
+					for (j = 0; j <= i; j ++) b[j] = res[j];
+				}
+				for (i = 0; i <= n; i ++)
+					ans = (ans + b[i] * (Sum[i][r][c] - Sum[i][l][c])) % Mod;
+				l = r;
+			}
+			if (ans < 0) ans = ans + Mod;
+			println(toString(ans));
 		}
 	}
 	return 0;
@@ -254,35 +277,17 @@ int main()
 
 /*!! metadata:
 === comment ===
-sha-515030910628-zhangzhekai.txt
-Compute and Crack SHA-1
+lunatic-515030910648-yangzhuolin.txt
 === input ===
-1 ACM
-1 acm2015
-1 compiler2017
-1 optim-extended
-1 SJTU
-1 2017
-2 ABC64A57029F21F165A96BDB59F0351C7C7D1769
-2 04E8696E6424C21D717E46008780505D598EB59A
-2 52fdb9f68c503e11d168fe52035901864c0a4861
-2 cd3f0c85b158c08a2b113464991810cf2cdfc387
-0
+
 === assert ===
 output
 === timeout ===
-16.0
+6.0
 === output ===
-ABC64A57029F21F165A96BDB59F0351C7C7D1769
-5B38674EB4BD02CEC1D41C8DE3CC14A9872A2656
-082178164865B8E6425C5955DEB97DDC21DEC6DC
-E77812CE4574964BC144E3DB97953235B5A149DA
-BD1B591F0B3E8FCC2035F9FB2043FAB18E0DBDDA
-04E8696E6424C21D717E46008780505D598EB59A
-ACM
-2017
-233
-666
+2
+4
+846
 === phase ===
 optim extended
 === is_public ===

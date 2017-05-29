@@ -26,16 +26,6 @@ public class ReturnInstruction extends Instruction {
 	}
 
 	@Override
-	public void merge(VirtualRegister x, VirtualRegister y){
-		if(returnValue instanceof VirtualRegister && returnValue == x){
-			returnValue = y;
-		}
-		if(returnValue instanceof Address && ((Address) returnValue).base == x){
-			((Address) returnValue).base = y;
-		}
-	}
-
-	@Override
 	public String getInstructionOfNASM() {
 		StringBuilder str = new StringBuilder();
 		PhysicalOperand PhysicalReturnValue = PhysicalOperand.get(str, returnValue);

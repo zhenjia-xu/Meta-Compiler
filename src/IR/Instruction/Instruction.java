@@ -22,7 +22,5 @@ public abstract class Instruction {
 
 	public abstract void Prepare();
 
-	public abstract void merge(VirtualRegister target, VirtualRegister source);
-
 	public abstract String getInstructionOfNASM();
 }

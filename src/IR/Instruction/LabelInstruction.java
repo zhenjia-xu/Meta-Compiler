@@ -21,9 +21,6 @@ public class LabelInstruction extends Instruction {
 	}
 
 	@Override
-	public void merge(VirtualRegister x, VirtualRegister y){}
-
-	@Override
 	public String getInstructionOfNASM() {
 		throw new RuntimeError("Label instruction should not getInstructionOfNASM");
 	}

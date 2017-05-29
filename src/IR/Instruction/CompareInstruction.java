@@ -39,22 +39,6 @@ public class CompareInstruction extends Instruction {
 	}
 
 	@Override
-	public void merge(VirtualRegister x, VirtualRegister y){
-		if(leftOperand instanceof VirtualRegister && leftOperand == x){
-			leftOperand = y;
-		}
-		if(leftOperand instanceof Address && ((Address) leftOperand).base == x){
-			((Address) leftOperand).base = y;
-		}
-		if(rightOperand instanceof VirtualRegister && rightOperand == x){
-			rightOperand = y;
-		}
-		if(rightOperand instanceof Address && ((Address) rightOperand).base == x){
-			((Address) rightOperand).base = y;
-		}
-	}
-
-	@Override
 	public String getInstructionOfNASM() {
 		StringBuilder str = new StringBuilder();
 		PhysicalOperand PhysicalRight = PhysicalOperand.get(str, rightOperand);

@@ -18,9 +18,6 @@ public class CjumpInstruction extends Instruction {
 	}
 
 	@Override
-	public void merge(VirtualRegister x, VirtualRegister y){}
-
-	@Override
 	public String getInstructionOfNASM() {
 		return Translator.getInstruction("j" + Translator.getNASMofCondition(op), target.block.getName());
 	}

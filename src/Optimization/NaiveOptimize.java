@@ -45,34 +45,6 @@ public class NaiveOptimize {
 		}
 	}
 
-	static public void moveMerge(FunctionIR functionIR){
-		boolean flag = true;
-		while (flag) {
-			flag = false;
-			for (Block block : functionIR.blockList) {
-				for (Instruction instruction : block.instructionList) {
-					if (instruction instanceof MoveInstruction) {
-						Operand target = ((MoveInstruction) instruction).target;
-						Operand source = ((MoveInstruction) instruction).source;
-						if (target instanceof VirtualRegister && source instanceof VirtualRegister && target != source && !functionIR.registerMap.containsKey((VirtualRegister) target) && !functionIR.registerMap.containsKey((VirtualRegister) source)){
-							if(!LivenessAnalysis.edgeMap.containsKey(target)){
-								System.out.println(target);
-							}
-							if(!LivenessAnalysis.edgeMap.get((VirtualRegister) target).contains((VirtualRegister) source)) {
-								merge((VirtualRegister) target, (VirtualRegister) source, functionIR);
-								flag = true;
-								break;
-							}
-						}
-					}
-				}
-				if (flag) {
-					break;
-				}
-			}
-		}
-	}
-
 	static public void loopConditionImprovement(FunctionIR functionIR){
 		for(Block block: functionIR.blockList){
 			for(int i = 0; i + 3 < block.instructionList.size(); i++){
@@ -175,21 +147,5 @@ public class NaiveOptimize {
 			instruction = labelMap.get(instruction);
 		}
 		return instruction;
-	}
-
-	private static void merge(VirtualRegister target, VirtualRegister source, FunctionIR functionIR){
-		for(Block block: functionIR.blockList){
-			for(Instruction instruction: block.instructionList){
-				instruction.merge(target, source);
-			}
-		}
-		for(VirtualRegister reg: LivenessAnalysis.edgeMap.get(target)) {
-			if (LivenessAnalysis.virtualRegisterMap.containsKey(reg)) {
-				LivenessAnalysis.edgeMap.get(source).add(reg);
-				LivenessAnalysis.edgeMap.get(reg).add(source);
-			}
-		}
-		LivenessAnalysis.edgeMap.remove(target);
-		LivenessAnalysis.virtualRegisterMap.remove(target);
 	}
 }

@@ -1,7 +1,10 @@
 package Optimization;
 
+import IR.Block;
 import IR.FunctionIR;
 import IR.Instruction.CompareInstruction;
+import IR.Instruction.FunctionCallInstruction;
+import IR.Instruction.Instruction;
 import IR.VirtualRegister;
 import Utility.RuntimeError;
 
@@ -11,7 +14,7 @@ public class RegisterAllocator {
 	static private Map<VirtualRegister, String> registerMap;
 	static private List<VirtualRegister> must;
 	static private Map<VirtualRegister, Set<VirtualRegister>> edgeMap;
-	static public List<String> physicalRegister = new ArrayList<String>() {{
+	static public List<String> normalOrder = new ArrayList<String>() {{
 		add("rsi");add("rbx");
 		add("rdi");add("r12");
 		add("r8");add("r13");
@@ -19,6 +22,20 @@ public class RegisterAllocator {
 		add("r10");add("r15");
 		add("r11");
 	}};
+	static public List<String> leafOrder = new ArrayList<String>() {{
+		add("rsi");
+		add("rdi");
+		add("r8");
+		add("r9");
+		add("r10");
+		add("r11");
+		add("rbx");
+		add("r12");
+		add("r13");
+		add("r14");
+		add("r15");
+	}};
+	static public List<String> regOrder;
 	static public void allocate(Map<VirtualRegister, Integer> virtualRegisterIntegerMap, Map<VirtualRegister, Set<VirtualRegister>> edgeMap, FunctionIR functionIR) {
 		RegisterAllocator.edgeMap = edgeMap;
 		List<VirtualRegister> list = new ArrayList<>();
@@ -34,6 +51,15 @@ public class RegisterAllocator {
 				list.add(reg);
 			}
 		}
+		boolean leaf = true;
+		for(Block block: functionIR.blockList){
+			for(Instruction instruction: block.instructionList){
+				if(instruction instanceof FunctionCallInstruction){
+					leaf = false;
+				}
+			}
+		}
+		regOrder = leaf ? leafOrder : normalOrder;
 		list.sort(new Comparator<VirtualRegister>() {
 			@Override
 			public int compare(VirtualRegister reg1, VirtualRegister reg2) {
@@ -59,7 +85,7 @@ public class RegisterAllocator {
 				tryColor(reg, reg.systemReg);
 			}
 			for(VirtualRegister reg: list){
-				for(String name: physicalRegister){
+				for(String name: regOrder){
 					if(tryColor(reg, name)){
 						break;
 					}
@@ -90,7 +116,7 @@ public class RegisterAllocator {
 		});
 		for (VirtualRegister reg : list) {
 			boolean flag = false;
-			for (String name : physicalRegister) {
+			for (String name : regOrder) {
 				if (tryColor(reg, name)) {
 					flag = true;
 					break;
