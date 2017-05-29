@@ -1,7 +1,7 @@
 package IR;
 
 public class VirtualRegister extends Operand {
-	private String name;
+	public String name;
 	public String systemReg;
 
 	public VirtualRegister(String name) {

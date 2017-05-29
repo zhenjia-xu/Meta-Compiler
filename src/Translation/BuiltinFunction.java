@@ -1,14 +1,9 @@
 package Translation;
 
 public class BuiltinFunction {
-	private static int rsp_offset;
-
-	public enum ConditionOp {
-		EQ, NEQ, GR, GREQ, LE, LEEQ
-	}
-
 	public static String getBuiltinFunction() {
 		StringBuilder str = new StringBuilder();
+		str.append("SECTION .text\n");
 		//print_Int
 		str.append(getNASMprint("print_Int"));
 		//println_Int
@@ -47,6 +42,12 @@ public class BuiltinFunction {
 		return str.toString();
 	}
 
+	private static int rsp_offset;
+
+	private enum ConditionOp {
+		EQ, NEQ, GR, GREQ, LE, LEEQ
+	}
+
 	private static String getInstruction(String type) {
 		return String.format("%8s\n", type);
 	}
@@ -68,7 +69,7 @@ public class BuiltinFunction {
 		return String.format("%8s %20s, %20s\n", type, operand1, operand2);
 	}
 
-	public static String getCall(String func) {
+	private static String getCall(String func) {
 		StringBuilder str = new StringBuilder();
 		if (rsp_offset % 2 == 1) {
 			str.append(getInstruction("sub", "rsp", "8"));

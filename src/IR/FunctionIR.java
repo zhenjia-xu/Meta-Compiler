@@ -110,7 +110,9 @@ public class FunctionIR {
 		}
 
 		//add temporary variable
-		str.append(Translator.getInstruction("sub", "rsp", String.valueOf(8 * RegisterManager.NumberOfRegInMem)));
+		if(RegisterManager.NumberOfRegInMem > 0){
+			str.append(Translator.getInstruction("sub", "rsp", String.valueOf(8 * RegisterManager.NumberOfRegInMem)));
+		}
 		Translator.rsp_offset += RegisterManager.NumberOfRegInMem;
 
 		//save register
@@ -126,7 +128,9 @@ public class FunctionIR {
 
 		//restore registers
 		str.append(Translator.restoreRegister_Callee());
-		str.append(Translator.getInstruction("add", "rsp", String.valueOf(8 * RegisterManager.NumberOfRegInMem)));
+		if(RegisterManager.NumberOfRegInMem > 0) {
+			str.append(Translator.getInstruction("add", "rsp", String.valueOf(8 * RegisterManager.NumberOfRegInMem)));
+		}
 		str.append(Translator.getInstruction("pop", "rbp"));
 
 		str.append(Translator.getInstruction("ret"));

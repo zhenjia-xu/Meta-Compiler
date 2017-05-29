@@ -8,6 +8,21 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class NaiveOptimize {
+	static public void removeUselessMove(FunctionIR functionIR){
+		for(Block block: functionIR.blockList){
+			for(int i = 0; i + 1 < block.instructionList.size(); i++){
+				if(block.instructionList.get(i) instanceof MoveInstruction && block.instructionList.get(i + 1) instanceof MoveInstruction){
+					MoveInstruction move1 = (MoveInstruction) block.instructionList.get(i);
+					MoveInstruction move2 = (MoveInstruction) block.instructionList.get(i + 1);
+					if(move1.target instanceof VirtualRegister && move1.target == move2.source && !move2.liveOut.contains(move1.target)){
+						move1.changeTarget(move2.target);
+						block.instructionList.remove(i + 1);
+					}
+				}
+			}
+		}
+	}
+
 	static public void printOptimize(FunctionIR functionIR){
 		for(Block block: functionIR.blockList){
 			for(int i = 0; i + 3 < block.instructionList.size(); i++){

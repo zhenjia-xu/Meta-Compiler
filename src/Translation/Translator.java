@@ -102,6 +102,8 @@ public class Translator {
 		str.append(Translator.getDataSection());
 		//Section .bss
 		str.append(Translator.getBssSection());
+		//Builtin function
+		str.append(BuiltinFunction.getBuiltinFunction());
 		return str.toString();
 	}
 
@@ -112,7 +114,6 @@ public class Translator {
 			nowFunction = functionIR;
 			str.append(functionIR.toNASM());
 		}
-		str.append(BuiltinFunction.getBuiltinFunction());
 		return str.toString();
 	}
 
