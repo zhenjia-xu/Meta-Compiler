@@ -31,6 +31,9 @@ public class FunctionIR {
 		add("r9");
 		add("r10");
 		add("r11");
+
+		add("rbx");
+		//add("r12");
 	}};
 	public static List<String> calleeAll = new ArrayList<String>() {{
 		add("rbx");

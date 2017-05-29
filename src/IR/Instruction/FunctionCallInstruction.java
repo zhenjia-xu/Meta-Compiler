@@ -69,8 +69,7 @@ public class FunctionCallInstruction extends Instruction {
 			}
 		}
 		for(String reg: callerSet){
-//			if(FunctionIR.callerAll.contains(reg))
-			if(RegisterAllocator.physicalRegister.contains(reg))
+			if(FunctionIR.callerAll.contains(reg))
 			{
 				callerList.add(reg);
 			}

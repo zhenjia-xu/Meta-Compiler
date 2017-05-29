@@ -9,19 +9,18 @@ public class Optimization {
 		if (RegisterManager.temporaryId > 4000) return;
 
 		for (FunctionIR functionIR : ProgramIR.functionMap.values()) {
-			AdvancedOptimize.functionInline(functionIR);
-			NaiveOptimize.printOptimize(functionIR);
-			AdvancedOptimize.uselessCodeElimination(functionIR);
-			NaiveOptimize.loopConditionImprovement(functionIR);
-//			if(functionIR.getName().equals("crackSHA1") ||
-//					functionIR.getName().equals("sha1")) {
-				LivenessAnalysis.analysis(functionIR);
+//			AdvancedOptimize.functionInline(functionIR);
+//			NaiveOptimize.printOptimize(functionIR);
+//			AdvancedOptimize.uselessCodeElimination(functionIR);
+//			NaiveOptimize.loopConditionImprovement(functionIR);
+//			if(functionIR.getName().equals("query")) {
+//				LivenessAnalysis.analysis(functionIR);
 				//NaiveOptimize.moveMerge(functionIR);
-			    RegisterAllocator.allocate(LivenessAnalysis.virtualRegisterMap, LivenessAnalysis.edgeMap, functionIR);
+//				RegisterAllocator.allocate(LivenessAnalysis.virtualRegisterMap, LivenessAnalysis.edgeMap, functionIR);
 //			}
-			NaiveOptimize.removeEmptyBlock(functionIR);
-			NaiveOptimize.superBlock(functionIR);
-			NaiveOptimize.removeUselessJump(functionIR);
+//			NaiveOptimize.removeEmptyBlock(functionIR);
+//			NaiveOptimize.superBlock(functionIR);
+//			NaiveOptimize.removeUselessJump(functionIR);
 
 		}
 	}
