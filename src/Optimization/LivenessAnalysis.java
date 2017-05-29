@@ -28,14 +28,6 @@ public class LivenessAnalysis {
 		prepare(functionIR);
 		calculateBlock(functionIR);
 		calculateInstruction(functionIR);
-//		for(Block block: functionIR.blockList){
-//			System.out.println(block.getName());
-//			for(Instruction instruction: block.instructionList){
-//				System.out.println(instruction);
-//				System.out.println("liveIn:  " + instruction.liveIn);
-//				System.out.println("liveOut: " + instruction.liveOut);
-//			}
-//		}
 	}
 
 	static private void calculateInstruction(FunctionIR functionIR) {
@@ -74,11 +66,6 @@ public class LivenessAnalysis {
 							addEdge(reg1, reg2);
 						}
 				}
-//				for(VirtualRegister reg1: instruction.liveOut)
-//					for(VirtualRegister reg2: instruction.liveOut)
-//						if(reg1 != reg2){
-//							addEdge(reg1, reg2);
-//						}
 			}
 		}
 	}

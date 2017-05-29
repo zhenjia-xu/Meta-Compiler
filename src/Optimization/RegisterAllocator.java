@@ -11,7 +11,7 @@ public class RegisterAllocator {
 	static private Map<VirtualRegister, String> registerMap;
 	static private List<VirtualRegister> must;
 	static private Map<VirtualRegister, Set<VirtualRegister>> edgeMap;
-	static private List<String> physicalRegister = new ArrayList<String>() {{
+	static public List<String> physicalRegister = new ArrayList<String>() {{
 		add("rbx");add("rsi");add("rdi");
 		add("r8");add("r9");add("r10");add("r11");
 		add("r12");add("r13");add("r14");add("r15");
