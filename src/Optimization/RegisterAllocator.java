@@ -158,12 +158,12 @@ public class RegisterAllocator {
 		while(selectStack.size() > 0){
 			VirtualRegister reg = selectStack.pop();
 			boolean flag = false;
-			for(VirtualRegister n: moveEdgeMap.get(reg)){
-				if(registerMap.containsKey(n) && regOrder.contains(registerMap.get(n)) && tryColor(reg, registerMap.get(n))){
-					flag = true;
-					break;
-				}
-			}
+//			for(VirtualRegister n: moveEdgeMap.get(reg)){
+//				if(registerMap.containsKey(n) && regOrder.contains(registerMap.get(n)) && tryColor(reg, registerMap.get(n))){
+//					flag = true;
+//					break;
+//				}
+//			}
 			if(!flag){
 				for (String name : regOrder) {
 					if (tryColor(reg, name)) {
