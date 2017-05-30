@@ -3,10 +3,12 @@ package IR;
 public class VirtualRegister extends Operand {
 	public String name;
 	public String systemReg;
+	public boolean global;
 
 	public VirtualRegister(String name) {
 		this.name = name;
 		this.systemReg = null;
+		this.global = false;
 	}
 
 	public String getName() {

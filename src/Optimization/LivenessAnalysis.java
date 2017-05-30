@@ -6,6 +6,7 @@ import IR.Instruction.CjumpInstruction;
 import IR.Instruction.Instruction;
 import IR.Instruction.JumpInstruction;
 import IR.Instruction.MoveInstruction;
+import IR.Operand;
 import IR.VirtualRegister;
 import Utility.RuntimeError;
 import com.sun.org.apache.regexp.internal.RE;
@@ -19,12 +20,16 @@ import java.util.Map;
 import java.util.Set;
 
 public class LivenessAnalysis {
-	static public Map<VirtualRegister, Set<VirtualRegister>> edgeMap;
+	static public Map<VirtualRegister, Set<VirtualRegister>> conflictEdgeMap;
+	static public Map<VirtualRegister, Set<VirtualRegister>> moveEdgeMap;
 	static public Map<VirtualRegister, Integer> virtualRegisterMap;
+	static private FunctionIR nowFunctionIR;
 
 	static public void analysis(FunctionIR functionIR) {
-		edgeMap = new HashMap<>();
+		nowFunctionIR = functionIR;
+		conflictEdgeMap = new HashMap<>();
 		virtualRegisterMap = new HashMap<>();
+		moveEdgeMap = new HashMap<>();
 		prepare(functionIR);
 		calculateBlock(functionIR);
 		calculateInstruction(functionIR);
@@ -57,13 +62,18 @@ public class LivenessAnalysis {
 					for (VirtualRegister reg1 : instruction.killSet)
 						for (VirtualRegister reg2 : instruction.liveOut) {
 							if (!(((MoveInstruction) instruction).source instanceof VirtualRegister) || !instruction.useSet.contains(reg2)) {
-								addEdge(reg1, reg2);
+								addConflictEdge(reg1, reg2);
 							}
 						}
+					Operand target = ((MoveInstruction) instruction).target;
+					Operand source = ((MoveInstruction) instruction).source;
+					if(target instanceof VirtualRegister && source instanceof VirtualRegister) {
+						addMoveEdge((VirtualRegister) target, (VirtualRegister) source);
+					}
 				} else {
 					for (VirtualRegister reg1 : instruction.killSet)
 						for (VirtualRegister reg2 : instruction.liveOut) {
-							addEdge(reg1, reg2);
+							addConflictEdge(reg1, reg2);
 						}
 				}
 			}
@@ -134,12 +144,25 @@ public class LivenessAnalysis {
 		to.blockIn.add(from);
 	}
 
-	static private void addEdge(VirtualRegister x, VirtualRegister y) {
-		if (x == y) return;
-		edgeMap.get(x).add(y);
-		edgeMap.get(y).add(x);
+	static private void addConflictEdge(VirtualRegister x, VirtualRegister y) {
+		if(!check(x) || !check(y) || x == y){
+			return;
+		}
+		conflictEdgeMap.get(x).add(y);
+		conflictEdgeMap.get(y).add(x);
 	}
-
+	static private void addMoveEdge(VirtualRegister x, VirtualRegister y) {
+		if(!check(x) || !check(y) || x == y){
+			return;
+		}
+		moveEdgeMap.get(x).add(y);
+	}
+	static public boolean check(VirtualRegister reg){
+		if(nowFunctionIR.idMap.containsKey(reg) || reg.global){
+			return false;
+		}
+		return true;
+	}
 	//   A = A + B
 	static private boolean setUnion(Set<VirtualRegister> A, Set<VirtualRegister> B) {
 		boolean flag = false;
@@ -154,12 +177,15 @@ public class LivenessAnalysis {
 
 	static private void mapUnion(Map<VirtualRegister, Integer> A, Set<VirtualRegister> B) {
 		for (VirtualRegister reg : B) {
-			if (!A.containsKey(reg)) {
-				A.put(reg, new Integer(0));
-				edgeMap.put(reg, new HashSet<>());
+			if(check(reg)) {
+				if (!A.containsKey(reg)) {
+					A.put(reg, new Integer(0));
+					conflictEdgeMap.put(reg, new HashSet<>());
+					moveEdgeMap.put(reg, new HashSet<>());
+				}
+				int now = A.get(reg).intValue();
+				A.put(reg, new Integer(now + 1));
 			}
-			int now = A.get(reg).intValue();
-			A.put(reg, new Integer(now + 1));
 		}
 	}
 }

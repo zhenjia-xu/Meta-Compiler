@@ -24,6 +24,7 @@ public class ProgramIR {
 		for (VariableDeclarationStatement variable: ProgramAST.globalDeclarationList){
 			VirtualRegister tmp = new VirtualRegister(variable.getSymbol().getName());
 			tmp.systemReg = "@" + variable.getSymbol().getName();
+			tmp.global = true;
 			variable.getSymbol().virtualRegister = new Address(tmp);
 		}
 		for (FunctionType function : ProgramAST.globalFunctionTable.getFunctionMap().values()) {

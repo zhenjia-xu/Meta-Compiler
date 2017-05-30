@@ -42,7 +42,6 @@ public class ProgramAST {
 		classTable = new ClassTable();
 		symbolTable = new SymbolTable();
 		globalFunctionTable = new FunctionTable();
-		//globalVariableTable = new VariableTable();
 		globalDeclarationList = new ArrayList<>();
 		addBuiltinFunction();
 	}
@@ -50,7 +49,6 @@ public class ProgramAST {
 	static public void print() {
 		System.out.println(classTable.toString(0));
 		System.out.println(globalFunctionTable.toString(0));
-		//System.out.print(globalVariableTable.toString(0));
 		StringBuilder str = new StringBuilder();
 		str.append("[global variable]\n");
 		for (VariableDeclarationStatement variable : globalDeclarationList) {
