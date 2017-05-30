@@ -14,9 +14,11 @@ public class Optimization {
 			AdvancedOptimize.uselessCodeElimination(functionIR);
 			NaiveOptimize.loopConditionImprovement(functionIR);
 			LivenessAnalysis.analysis(functionIR);
-			NaiveOptimize.removeUselessMove(functionIR);
+//			NaiveOptimize.removeUselessMove(functionIR);
+//			LivenessAnalysis.analysis(functionIR);
 //			RegisterAllocator.naiveAllocate(LivenessAnalysis.virtualRegisterMap, LivenessAnalysis.conflictEdgeMap, functionIR);
-			RegisterAllocator.basicAllocate(LivenessAnalysis.virtualRegisterMap, LivenessAnalysis.conflictEdgeMap, LivenessAnalysis.moveEdgeMap, functionIR);
+//			RegisterAllocator.basicAllocate(LivenessAnalysis.virtualRegisterMap, LivenessAnalysis.conflictEdgeMap, LivenessAnalysis.moveEdgeMap, functionIR);
+			RegisterAllocator.advancedAllocate(LivenessAnalysis.virtualRegisterMap, LivenessAnalysis.conflictEdgeMap, LivenessAnalysis.moveEdgeMap, functionIR);
 			NaiveOptimize.removeEmptyBlock(functionIR);
 			NaiveOptimize.superBlock(functionIR);
 			NaiveOptimize.removeUselessJump(functionIR);

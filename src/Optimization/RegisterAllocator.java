@@ -241,6 +241,7 @@ public class RegisterAllocator {
 	static public void advancedAllocate(Map<VirtualRegister, Integer> virtualRegisterMap, Map<VirtualRegister, Set<VirtualRegister>> conflictEdgeMap, Map<VirtualRegister, Set<VirtualRegister>> moveEdgeMap, FunctionIR functionIR){
 //		System.out.println(moveEdgeMap);
 //		System.out.println(conflictEdgeMap);
+		moveEdgeMap = new HashMap<>();
 		boolean leaf = true;
 		for(Block block: functionIR.blockList){
 			for(Instruction instruction: block.instructionList){
