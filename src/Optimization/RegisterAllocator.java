@@ -95,6 +95,88 @@ public class RegisterAllocator {
 		functionIR.registerMap = registerMap;
 	}
 
+	static public void basicAllocate(Map<VirtualRegister, Integer> virtualRegisterMap, Map<VirtualRegister, Set<VirtualRegister>> conflictEdgeMap, Map<VirtualRegister, Set<VirtualRegister>> moveEdgeMap, FunctionIR functionIR) {
+		RegisterAllocator.conflictEdgeMap = conflictEdgeMap;
+		List<VirtualRegister> list = new ArrayList<>();
+		List<VirtualRegister> listAllocate = new ArrayList<>();
+		must = new ArrayList<>();
+		for(VirtualRegister x: moveEdgeMap.keySet()){
+			for(VirtualRegister y: moveEdgeMap.get(x)){
+				moveEdgeMap.get(y).add(x);
+			}
+		}
+		for (VirtualRegister reg : virtualRegisterMap.keySet()) {
+			if (reg.systemReg != null) {
+				must.add(reg);
+			} else {
+				list.add(reg);
+			}
+		}
+		boolean leaf = true;
+		for(Block block: functionIR.blockList){
+			for(Instruction instruction: block.instructionList){
+				if(instruction instanceof FunctionCallInstruction){
+					leaf = false;
+				}
+			}
+		}
+		regOrder = leaf ? leafOrder : normalOrder;
+
+		selectStack = new Stack<>();
+		while(!list.isEmpty()){
+			VirtualRegister nowReg = null;
+			int nowNum = 0;
+			for(VirtualRegister reg: list){
+				if(conflictEdgeMap.get(reg).size() < K && (nowReg == null || conflictEdgeMap.get(reg).size() < nowNum)){
+					nowNum = conflictEdgeMap.get(reg).size();
+					nowReg = reg;
+				}
+			}
+			if(nowReg == null) {
+				Integer nowInt = null;
+				for (VirtualRegister reg : list) {
+					if (nowReg == null || virtualRegisterMap.get(reg).intValue() < nowInt.intValue()) {
+						nowReg = reg;
+						nowInt = virtualRegisterMap.get(reg);
+					}
+				}
+				nowReg = nowReg;
+			}
+			selectStack.push(nowReg);
+			for(VirtualRegister reg: conflictEdgeMap.get(nowReg)){
+				conflictEdgeMap.get(reg).remove(nowReg);
+			}
+			list.remove(nowReg);
+		}
+		registerMap = new HashMap<>();
+		registerMap = new HashMap<>();
+		for (VirtualRegister reg : must) {
+			if(!tryColor(reg, reg.systemReg)){
+				throw new RuntimeError("basic must ERROR");
+			}
+		}
+		while(selectStack.size() > 0){
+			VirtualRegister reg = selectStack.pop();
+			boolean flag = false;
+			for(VirtualRegister n: moveEdgeMap.get(reg)){
+				if(registerMap.containsKey(n) && regOrder.contains(registerMap.get(n)) && tryColor(reg, registerMap.get(n))){
+					flag = true;
+					break;
+				}
+			}
+			if(!flag){
+				for (String name : regOrder) {
+					if (tryColor(reg, name)) {
+						flag = true;
+						break;
+					}
+				}
+			}
+		}
+//		System.out.println(registerMap.size() + "     " + virtualRegisterMap.size());
+		functionIR.registerMap = registerMap;
+	}
+
 	static private boolean coloring(List<VirtualRegister> list_in) {
 		List<VirtualRegister> list = new ArrayList<>(list_in);
 		registerMap = new HashMap<>();
@@ -145,6 +227,10 @@ public class RegisterAllocator {
 			u = uu;
 			v = vv;
 		}
+		@Override
+		public String toString(){
+			return u + " <- " + v + "\n";
+		}
 	}
 	static private Set<VirtualRegister> simplifyWorklist, freezeWorklist, spillWorklist, coalescedNodes;
 	static private Set<Move> worklistMoves, activeMoves, coalescedMoves, constrainedMoves, frozenMoves;
@@ -153,7 +239,8 @@ public class RegisterAllocator {
 	static private Stack<VirtualRegister> selectStack;
 	static private int K = normalOrder.size();
 	static public void advancedAllocate(Map<VirtualRegister, Integer> virtualRegisterMap, Map<VirtualRegister, Set<VirtualRegister>> conflictEdgeMap, Map<VirtualRegister, Set<VirtualRegister>> moveEdgeMap, FunctionIR functionIR){
-		moveEdgeMap = new HashMap<>();
+//		System.out.println(moveEdgeMap);
+//		System.out.println(conflictEdgeMap);
 		boolean leaf = true;
 		for(Block block: functionIR.blockList){
 			for(Instruction instruction: block.instructionList){
@@ -184,8 +271,18 @@ public class RegisterAllocator {
 		moveList = new HashMap<>();
 		alias = new HashMap<>();
 		selectStack = new Stack<>();
-		for(VirtualRegister reg: virtualRegisterMap.keySet()){
+		for(VirtualRegister reg: virtualRegisterMap.keySet()) {
 			moveList.put(reg, new HashSet<>());
+		}
+		for(VirtualRegister target: moveEdgeMap.keySet()){
+			for(VirtualRegister source: moveEdgeMap.get(target)){
+				Move mo = new Move(target, source);
+				moveList.get(target).add(mo);
+				moveList.get(source).add(mo);
+				worklistMoves.add(mo);
+			}
+		}
+		for(VirtualRegister reg: virtualRegisterMap.keySet()){
 			if(reg.systemReg == null) {
 				if (conflictEdgeMap.get(reg).size() >= K) {
 					spillWorklist.add(reg);
@@ -194,14 +291,6 @@ public class RegisterAllocator {
 				} else {
 					simplifyWorklist.add(reg);
 				}
-			}
-		}
-		for(VirtualRegister target: moveEdgeMap.keySet()){
-			for(VirtualRegister source: moveEdgeMap.get(target)){
-				Move mo = new Move(target, source);
-				moveList.get(target).add(mo);
-				moveList.get(source).add(mo);
-				worklistMoves.add(mo);
 			}
 		}
 		while(simplifyWorklist.size() > 0 || freezeWorklist.size() > 0 || spillWorklist.size() > 0 || worklistMoves.size() > 0){
@@ -215,7 +304,6 @@ public class RegisterAllocator {
 				SelectSpill();
 			}
 		}
-		RegisterAllocator.conflictEdgeMap = conflictEdgeMap;
 		registerMap = new HashMap<>();
 		for(VirtualRegister reg: virtualRegisterMap.keySet()){
 			if(reg.systemReg != null){
@@ -231,7 +319,8 @@ public class RegisterAllocator {
 			}
 		}
 		for(VirtualRegister n: coalescedNodes){
-			if(!tryColor(n, registerMap.get(GetAlias(n)))){
+			if(registerMap.containsKey(GetAlias(n)) && !tryColor(n, registerMap.get(GetAlias(n)))){
+//				System.out.println(n + "   " + GetAlias(n) + "   " + registerMap.get(GetAlias(n)));
 				throw new RuntimeError("Coalesces color ERROR");
 			}
 		}
@@ -241,11 +330,11 @@ public class RegisterAllocator {
 	static private void Simplify(){
 		VirtualRegister n = SelectOneVR(simplifyWorklist);
 		selectStack.push(n);
-		for(Iterator<VirtualRegister> it = conflictEdgeMap.get(n).iterator(); it.hasNext();){
-			VirtualRegister m = it.next();
-			it.remove();
+		for(VirtualRegister m: conflictEdgeMap.get(n)){
+			conflictEdgeMap.get(m).remove(n);
 			DecrementDegree(m);
 		}
+//		conflictEdgeMap.get(n).clear();
 	}
 
 	static private void Coalesce(){
@@ -263,7 +352,7 @@ public class RegisterAllocator {
 		if(u == v){
 			coalescedMoves.add(m);
 			AddWorklist(u);
-		}else if(v.systemReg != null && conflictEdgeMap.get(u).contains(v)){
+		}else if(v.systemReg != null || (conflictEdgeMap.get(u).contains(v) || conflictEdgeMap.get(v).contains(u))){
 			constrainedMoves.add(m);
 			AddWorklist(u);
 			AddWorklist(v);
@@ -295,13 +384,20 @@ public class RegisterAllocator {
 			moveList.get(u).add(move);
 		}
 		EnableMoves(v);
-		for(Iterator<VirtualRegister> it = conflictEdgeMap.get(v).iterator(); it.hasNext();){
-			VirtualRegister t = it.next();
-			it.remove();
-			conflictEdgeMap.get(t).add(v);
+		for(VirtualRegister t: conflictEdgeMap.get(v)){
 			addConflictEdge(t, u);
+			conflictEdgeMap.get(t).remove(v);
 			DecrementDegree(t);
 		}
+//		conflictEdgeMap.get(v).clear();
+
+//		for(Iterator<VirtualRegister> it = conflictEdgeMap.get(v).iterator(); it.hasNext();){
+//			VirtualRegister t = it.next();
+//			it.remove();
+//			conflictEdgeMap.get(t).remove(v);
+//			addConflictEdge(t, u);
+//			DecrementDegree(t);
+//		}
 		if(conflictEdgeMap.get(u).size() >= K && freezeWorklist.contains(u)){
 			freezeWorklist.remove(u);
 			spillWorklist.add(u);
@@ -353,7 +449,7 @@ public class RegisterAllocator {
 	static private VirtualRegister GetAlias(VirtualRegister n){
 		if(alias.containsKey(n)){
 			VirtualRegister m = GetAlias(alias.get(n));
-			alias.put(n, m);
+			//alias.put(n, m);
 			return m;
 		}
 		return n;
@@ -399,7 +495,7 @@ public class RegisterAllocator {
 		for(Move move: moveList.get(n)){
 			if(activeMoves.contains(move)){
 				activeMoves.remove(move);
-				worklistMoves.remove(move);
+				worklistMoves.add(move);
 			}
 		}
 	}
