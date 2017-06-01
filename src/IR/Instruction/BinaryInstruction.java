@@ -87,16 +87,29 @@ public class BinaryInstruction extends Instruction {
 			return str.toString();
 		}
 		if (opNASM.equals("div") || opNASM.equals("mod")) {
+
 			str.append(Translator.getInstruction("mov", "rax", PhysicalTarget.toString()));
 			str.append(Translator.getInstruction("mov", "rcx", PhysicalSource.toString()));
-			str.append(Translator.getInstruction("cqo"));
-			str.append(Translator.getInstruction("idiv", "rcx"));
+			str.append(Translator.getInstruction("cdq"));
+			str.append(Translator.getInstruction("idiv", "ecx"));
 			if (opNASM.equals("div")) {
 				str.append(Translator.getInstruction("mov", PhysicalTarget.toString(), "rax"));
 			} else {
 				str.append(Translator.getInstruction("mov", PhysicalTarget.toString(), "rdx"));
 			}
 			return str.toString();
+			/*
+			str.append(Translator.getInstruction("mov", "rax", PhysicalTarget.toString()));
+			str.append(Translator.getInstruction("mov", "rcx", PhysicalSource.toString()));
+			str.append(Translator.getInstruction("cdq"));
+			str.append(Translator.getInstruction("idiv", "ecx"));
+			if (opNASM.equals("div")) {
+				str.append(Translator.getInstruction("movsx", PhysicalTarget.toString(), "eax"));
+			} else {
+				str.append(Translator.getInstruction("movsx", PhysicalTarget.toString(), "edx"));
+			}
+			return str.toString();
+			*/
 		}
 		if (PhysicalSource instanceof PhysicalAdd && PhysicalTarget instanceof PhysicalAdd) {
 			str.append(Translator.getInstruction("mov", "rax", PhysicalSource.toString()));
